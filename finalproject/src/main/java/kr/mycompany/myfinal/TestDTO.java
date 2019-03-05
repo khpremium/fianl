@@ -10,7 +10,7 @@ public class TestDTO {
 	}
 	
 	public void process() {
-		System.out.println("안녕하시오~");
+		System.out.println("마지막");
 
 	}
 }
