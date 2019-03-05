@@ -4,7 +4,7 @@ public class TestDTO {
 	private String pp;
 	private String dd;
 	public void process() {
-		System.out.println("유성은");
+		System.out.println("나라");
 	
 	}
 	
