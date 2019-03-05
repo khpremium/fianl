@@ -7,6 +7,11 @@ public class TestDTO {
 		System.out.println("유성은");
 	
 	}
+	
+	public void message() {
+		System.out.println("과연");
+	}
+	
 	public TestDTO() {
 	}
 }
