@@ -28,7 +28,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations">
 			<list>
-				<value>classpath:config/personMapper.xml</value>
+				<!-- <value>classpath:config/personMapper.xml</value> -->
 			</list>
 		</property>
 	</bean>
@@ -55,23 +55,17 @@
 	</tx:advice>
 
 	<!-- [6] 트랜잭션으로 처리할 메소드에 transactionManger설정 -->
-	<aop:config>
-		<aop:pointcut
-			expression="execution(* service.MarketServiceImp.*Process(..))"
-			id="aa" />
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="aa" />
-	</aop:config>
-
+	
 	<!-- DAO -->
-
+	
 
 	<!-- controller -->
-
+	<bean class="controller.HelpCController" />
 
 	<!-- viewResolver -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="prefix" value="/Son_cus/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 </beans>
