@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="res">
+
+	<select id="air" parameterType="reservation.AirinfoDTO" resultType="reservation.AirinfoDTO">
+		select * from airinfo
+		where d_time=#{d_time}
+		and city_code_dep=#{city_code_dep}
+		and city_code_arv=#{city_code_arv}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
