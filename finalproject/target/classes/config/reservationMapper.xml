@@ -12,6 +12,10 @@
 		and city_code_arv=#{city_code_arv}
 	</select>
 	
+	<select id="list" resultType="reservation.AirinfoDTO">
+		select * from airinfo
+	</select>
+	
 </mapper>
 
 

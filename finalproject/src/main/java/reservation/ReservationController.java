@@ -18,6 +18,15 @@ public class ReservationController {
 		this.service = service;
 	}
 	
+	// http://localhost:8090/myfinal/select.do
+	@RequestMapping("select.do")
+	public ModelAndView select() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", service.searchProcess());
+		mav.setViewName("/reservation/list");
+		return mav;
+	}
+	
 	@RequestMapping("selectFlight.do")
 	public ModelAndView selectFlight(AirinfoDTO dto) {
 		ModelAndView mav = new ModelAndView();

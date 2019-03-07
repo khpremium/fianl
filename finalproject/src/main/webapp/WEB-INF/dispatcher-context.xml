@@ -22,13 +22,11 @@
 	<!-- [2] SqlSessionFactoryBean 빈 선언 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<!-- <property name="mapperLocations">
+		<property name="mapperLocations">
 			<list>
-				<value>classpath:config/boardMapper.xml</value>
-				<value>classpath:config/replyMapper.xml</value>
-				<value>classpath:config/fileMapper.xml</value>
+				<value>classpath:config/reservationMapper.xml</value>
 			</list>
-		</property> -->
+		</property>
 	</bean>
 	
 	<!-- [3] SqlSessionTemplate 빈 선언 -->

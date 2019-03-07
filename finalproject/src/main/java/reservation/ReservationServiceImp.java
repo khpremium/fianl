@@ -17,5 +17,10 @@ public class ReservationServiceImp implements ReservationService {
 	public List<AirinfoDTO> searchAirinfoProcess(AirinfoDTO dto) {
 		return dao.searchAirinfo(dto);
 	}
+
+	@Override
+	public List<AirinfoDTO> searchProcess() {
+		return dao.search();
+	}
 	
 }

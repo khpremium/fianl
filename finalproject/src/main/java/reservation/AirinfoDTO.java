@@ -1,12 +1,10 @@
 package reservation;
 
-import java.util.Date;
-
 public class AirinfoDTO {
 	private String flight;
 	private String airline;
-	private Date d_time;
-	private Date a_time;
+	private String d_time;
+	private String a_time;
 	private int price;
 	private int seat;
 	private String city_code_dep;
@@ -32,19 +30,19 @@ public class AirinfoDTO {
 		this.airline = airline;
 	}
 
-	public Date getD_time() {
+	public String getD_time() {
 		return d_time;
 	}
 
-	public void setD_time(Date d_time) {
+	public void setD_time(String d_time) {
 		this.d_time = d_time;
 	}
 
-	public Date getA_time() {
+	public String getA_time() {
 		return a_time;
 	}
 
-	public void setA_time(Date a_time) {
+	public void setA_time(String a_time) {
 		this.a_time = a_time;
 	}
 

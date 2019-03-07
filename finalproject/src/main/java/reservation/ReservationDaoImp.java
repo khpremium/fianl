@@ -19,5 +19,10 @@ public class ReservationDaoImp implements ReservationDAO {
 	public List<AirinfoDTO> searchAirinfo(AirinfoDTO dto) {
 		return sqlSession.selectList("res.air", dto);
 	}
+
+	@Override
+	public List<AirinfoDTO> search() {
+		return sqlSession.selectList("res.list");
+	}
 	
 }
