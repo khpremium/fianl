@@ -7,6 +7,10 @@
 	</configSuffixes>
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
+<<<<<<< HEAD
+=======
+		<config>src/main/webapp/WEB-INF/dispatcher-final.xml</config>
+>>>>>>> refs/remotes/origin/Nara
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>

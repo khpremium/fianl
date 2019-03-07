@@ -7,9 +7,13 @@ public class TestDTO {
 	private String dd;
 	public void process() {
 		System.out.println("나라");
+<<<<<<< HEAD
 	}
 
 	public TestDTO() {
+=======
+	
+>>>>>>> refs/remotes/origin/Nara
 	}
 	
 	public void message() {
