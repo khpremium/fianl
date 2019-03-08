@@ -15,9 +15,22 @@ public class BoardDTO {
 	private int viewcount;
 	private int b_like;
 	private int city_code;
+	private String filename;
 	
+	public BoardDTO() {
+		// TODO Auto-generated constructor stub
+	}
+	public List<MultipartFile> getFilename2() {
+		return filename2;
+	}
+	public void setFilename2(List<MultipartFile> filename2) {
+		this.filename2 = filename2;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 	private List<FilesDTO> fileList;
-	private List<MultipartFile> filename;
+	private List<MultipartFile> filename2;
 	
 	public int getB_num() {
 		return b_num;
@@ -80,10 +93,10 @@ public class BoardDTO {
 		this.fileList = fileList;
 	}
 	public List<MultipartFile> getFilename() {
-		return filename;
+		return filename2;
 	}
 	public void setFilename(List<MultipartFile> filename) {
-		this.filename = filename;
+		this.filename2 = filename2;
 	}
 	
 	

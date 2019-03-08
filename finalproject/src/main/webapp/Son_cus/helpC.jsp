@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Blog Home - Start Bootstrap Template</title>
+<title>고객센터</title>
 
 <!-- Bootstrap core CSS -->
 <link href="Son_cus/vendor/bootstrap/css/bootstrap.min.css"
@@ -68,6 +68,13 @@
 							<th>Count</th>
 							<th>Date</th>
 						</tr>
+							<tr>
+							<td><a href="helpCBlog.do?b_num=1">01</td>
+							<td><a href="helpCBlog.do?b_num=1">test1</td>
+							<td><a href="helpCBlog.do?b_num=1">tttttttest</td>
+							<td><a href="helpCBlog.do?b_num=1">2019. 03. 07</td>
+						</tr>
+						
 						<c:forEach var="dto" items="${HList}">
 						<tr>
 							<td><a href="helpCBlog.do?${dto.b_num}">${dto.b_num }</td>
@@ -165,10 +172,11 @@
 
 				<!-- Side Widget -->
 				<div class="card my-4">
-					<h5 class="card-header">Side Widget</h5>
-					<div class="card-body">You can put anything you want inside
-						of these side widgets. They are easy to use, and feature the new
-						Bootstrap 4 card containers!</div>
+					<h5 class="card-header">1:1 고객상담센터</h5>
+					<div class="card-body" style="height:150px;">
+						<div id="chatMessageArea"></div>
+					</div>
+					<div><input type="text" style="width:auto;"/><input type="button" value="전송"></div>
 				</div>
 
 			</div>

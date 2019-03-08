@@ -1,5 +1,10 @@
 package dao;
 
-public class HelpCDAO {
+import java.util.List;
+
+import dto.BoardDTO;
+
+public interface HelpCDAO {
+	public List<BoardDTO> hListMethod();
 	
 }
