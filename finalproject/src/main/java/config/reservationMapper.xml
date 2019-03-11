@@ -5,11 +5,18 @@
 
 <mapper namespace="res">
 
-	<select id="air" parameterType="reservation.AirinfoDTO" resultType="reservation.AirinfoDTO">
+	<select id="dList" parameterType="reservation.AirinfoDTO" resultType="reservation.AirinfoDTO">
 		select * from airinfo
-		where d_time=#{d_time}
+		where d_time like #{d_time} || '%'
 		and city_code_dep=#{city_code_dep}
 		and city_code_arv=#{city_code_arv}
+	</select>
+	
+	<select id="rList" parameterType="reservation.AirinfoDTO" resultType="reservation.AirinfoDTO">
+		select * from airinfo
+		where d_time like #{a_time} || '%'
+		and city_code_dep=#{city_code_arv}
+		and city_code_arv=#{city_code_dep}
 	</select>
 	
 	<select id="list" resultType="reservation.AirinfoDTO">

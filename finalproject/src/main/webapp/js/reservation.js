@@ -7,46 +7,67 @@ $(document).ready(function() {
 	$('#arrv table').append('<tr><td class="airline">대한항공</td><td>hd600</td><td>201903121530</td><td>201903121830</td><td>320000</td><td>41</td><td><input type="radio" name="bb" value="1" /></td></tr>');
 	$('#arrv table').append('<tr><td class="airline">아시아나</td><td>hd600</td><td>201903121530</td><td>201903121830</td><td>330000</td><td>41</td><td><input type="radio" name="bb" value="2" /></td></tr>');
 	
-	$(document).on('click', 'input[type="radio"]', test);
+	$('#cancel').on('click', function() {
+		location.href="main.do";
+	});
+	$('#payment').on('click', paymentProcess);
+	$(document).on('click', 'table input[name="aa"]', test);
+	$(document).on('click', 'table input[name="bb"]', test2);
 });
 
+function paymentProcess() {
+	if($('.filghtName1').text() == '' || $('.filghtName2').text() == '') {
+		alert('항공편을 선택해주세요');
+		return false;
+	}
+	
+}
+
 function test() {
+	console.log($('input[name="aa"]').index(this));
 	var parent = $(this).parent().parent();
 	var num = Number($(parent).children('td:eq(4)').text());
 	// alert($(parent).children('td:eq(0)').text());
-	if($(this).prop('name') == 'aa') {
-		if(one == 0 && two == 0) {
+	if(one == 0) {
+		if(two == 0) {
 			$('.filghtName1').text($(parent).children('td:eq(1)').text());
 			$('.price').text(num);
 			$('.totalPrice').text(num * 3);
-		} else if(one == 0) {
+		} else {
 			var currNum = Number($('.price').text());
 			$('.filghtName1').text($(parent).children('td:eq(1)').text());
 			$('.price').text(currNum + num);
 			$('.totalPrice').text((currNum * 3) + (num * 3));
-		} else {
-			var currNum = Number($('.price').text());
-			$('.filghtName1').text($(parent).children('td:eq(1)').text());
-			$('.price').text(currNum - one + num);
-			$('.totalPrice').text((currNum * 3) - (one * 3) + (num * 3));
 		}
-		one = num;
 	} else {
-		if(one == 0 && two == 0) {
+		var currNum = Number($('.price').text());
+		$('.filghtName1').text($(parent).children('td:eq(1)').text());
+		$('.price').text(currNum - one + num);
+		$('.totalPrice').text((currNum * 3) - (one * 3) + (num * 3));
+	}
+	one = num;
+}
+
+function test2() {
+	console.log($(this).index());
+	var parent = $(this).parent().parent();
+	var num = Number($(parent).children('td:eq(4)').text());
+	if(two == 0) {
+		if(one == 0) {
 			$('.filghtName2').text($(parent).children('td:eq(1)').text());
 			$('.price').text(num);
 			$('.totalPrice').text(num * 3);
-		} else if(two == 0) {
+		} else {
 			var currNum = Number($('.price').text());
 			$('.filghtName2').text($(parent).children('td:eq(1)').text());
 			$('.price').text(currNum + num);
 			$('.totalPrice').text((currNum * 3) + (num * 3));
-		} else {
-			var currNum = Number($('.price').text());
-			$('.filghtName2').text($(parent).children('td:eq(1)').text());
-			$('.price').text(currNum - two + num);
-			$('.totalPrice').text((currNum * 3) - (two * 3) + (num * 3));
 		}
-		two = num;
+	} else {
+		var currNum = Number($('.price').text());
+		$('.filghtName2').text($(parent).children('td:eq(1)').text());
+		$('.price').text(currNum - two + num);
+		$('.totalPrice').text((currNum * 3) - (two * 3) + (num * 3));
 	}
+	two = num;
 }
