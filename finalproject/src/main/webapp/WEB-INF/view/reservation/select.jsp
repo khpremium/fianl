@@ -176,12 +176,5 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-	<form>
-		<c:if test="${!empty client_id}">
-			<input type="hidden" value="${client_id}">
-		</c:if>
-		<div id="wrap"></div>
-	</form>
 </body>
 </html>

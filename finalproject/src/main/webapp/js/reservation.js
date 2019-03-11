@@ -20,7 +20,6 @@ function paymentProcess() {
 		alert('항공편을 선택해주세요');
 		return false;
 	}
-	
 }
 
 function test() {

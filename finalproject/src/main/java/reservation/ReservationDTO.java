@@ -16,7 +16,25 @@ public class ReservationDTO {
 	private String city_code_arv;
 	private String dep_date;
 	private String arv_date;
+	private String dep_airinfo_flight;
+	private String arv_airinfo_flight;
 	
+	public String getDep_airinfo_flight() {
+		return dep_airinfo_flight;
+	}
+
+	public void setDep_airinfo_flight(String dep_airinfo_flight) {
+		this.dep_airinfo_flight = dep_airinfo_flight;
+	}
+
+	public String getArv_airinfo_flight() {
+		return arv_airinfo_flight;
+	}
+
+	public void setArv_airinfo_flight(String arv_airinfo_flight) {
+		this.arv_airinfo_flight = arv_airinfo_flight;
+	}
+
 	public ReservationDTO() {
 		
 	}

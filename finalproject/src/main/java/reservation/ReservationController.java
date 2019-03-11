@@ -24,7 +24,7 @@ public class ReservationController {
 	}
 	
 	// http://localhost:8090/myfinal/select.do
-	@RequestMapping("select.do")
+	@RequestMapping("/select.do")
 	public ModelAndView select() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", service.searchProcess());
@@ -32,7 +32,7 @@ public class ReservationController {
 		return mav;
 	}
 	
-	@RequestMapping("selectFlight.do")
+	@RequestMapping("/selectFlight.do")
 	public ModelAndView selectFlight(ReservationDTO rdto, String guestchk, HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView();
 		/*if(guestchk == "notguest") {
@@ -50,14 +50,21 @@ public class ReservationController {
 		return mav;
 	}
 	
-	@RequestMapping("guestReservation.do")
-	public ModelAndView guestReservation(List<AirinfoDTO> list, ReservationDTO rdto) {
+	@RequestMapping("/guestReservation.do")
+	public ModelAndView guestReservation(ReservationDTO rdto) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/reservation/guest");
+		return mav;
+	}
+	
+	@RequestMapping("/clientReservation.do")
+	public ModelAndView clientReservation(ReservationDTO rdto) {
 		ModelAndView mav = new ModelAndView();
 		return mav;
 	}
 	
-	@RequestMapping("clientReservation.do")
-	public ModelAndView clientReservation(List<AirinfoDTO> list, ReservationDTO rdto) {
+	@RequestMapping("/payment.do")
+	public ModelAndView paymentMethod(ReservationDTO dto) {
 		ModelAndView mav = new ModelAndView();
 		return mav;
 	}
