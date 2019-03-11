@@ -9,7 +9,7 @@ public class BoardDTO {
 	private int b_num;
 	private String title;
 	private int b_category_c_num;
-	private String content;
+	private String b_content;
 	private String client_id;
 	private Date upload_date;
 	private int viewcount;
@@ -50,11 +50,11 @@ public class BoardDTO {
 	public void setB_category_c_num(int b_category_c_num) {
 		this.b_category_c_num = b_category_c_num;
 	}
-	public String getContent() {
-		return content;
+	public String getB_content() {
+		return b_content;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setB_content(String b_content) {
+		this.b_content = b_content;
 	}
 	public String getClient_id() {
 		return client_id;

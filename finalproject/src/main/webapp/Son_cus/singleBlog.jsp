@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <head>
 
 <meta charset="utf-8">
@@ -10,14 +11,48 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>고객센터</title>
+<title>고객센터-공지사항</title>
 
 <!-- Bootstrap core CSS -->
 <link href="Son_cus/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="Son_cus/css/blog-home.css" rel="stylesheet">
+<link href="Son_cus/css/blog-post.css" rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$('#comIns').on('click', reply_list);
+
+	});
+
+function reply_list(){
+	alert($('#comInsText').val());
+	
+	$.ajax({
+		type:'GET',
+		dataType:'json',
+		url:'comInsertList.do?user_id=test01&cm_content='+$('#comInsText').val()+'&board_b_num=${bdto.b_num}',
+		success:reply_list_result
+	});
+	
+}
+
+function reply_list_result(res){
+	alert(res);
+	$('#comlist').empty();
+	
+	$.each(res, function(index, value){
+		$('#comlist').append('<div class="media mb-4"><img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""><div class="media-body"><h4 class="mt-0">'+
+				value.user_id+'</h4><h6 class="mt-0">'+value.c_date+'</h6>'+value.cm_content+'</div></div>');
+	});
+	alert("reply_list_result end!");
+	$('#comInsText').val('');
+	/* <div class="media mb-4"><img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""><div class="media-body"><h4 class="mt-0">${cdto.user_id }</h4><h6 class="mt-0">${cdto.c_date }</h6>${cdto.cm_content }</div></div> */
+}
+</script>
 
 </head>
 
@@ -52,75 +87,64 @@
 
 		<div class="row">
 
-			<!-- Blog Entries Column -->
-			<div class="col-md-8">
+			<!-- Post Content Column -->
+			<div class="col-lg-8">
 
-				<h1 class="my-4">
-					고객센터 <small>Secondary Text</small>
-				</h1>
+				<!-- Title -->
+				<h1 class="mt-4">${bdto.title }</h1>
+				<%-- <input type="hidden" value="${bdto.b_num }" id="bnum"> --%>
+				
+				<!-- Author -->
+				<p class="lead">
+					by <a href="#">admin<%-- ${bdto.client_id } --%></a>
+				</p>
 
-				<!-- Blog Post -->
-				<div class="card mb-4">
-					<table cellspacing='0'>
-						<tr>
-							<th>Num</th>
-							<th>Title</th>
-							<th>Count</th>
-							<th>Date</th>
-						</tr>
-						
-						<c:forEach var="dto" items="${HList}">
-						<tr>
-							<td><a href="helpBlog.do?b_num=${dto.b_num}">${dto.b_num }</td>
-							<td><a href="helpBlog.do?b_num=${dto.b_num}">${dto.title }</td>
-							<td>${dto.viewcount }</td>
-							<td>${dto.upload_date }</td>
-						</tr>
-						</c:forEach>
-					</table>
-				</div>
+				<hr>
 
-				<!-- Blog Post -->
-				<div class="card mb-4">
-					<img class="card-img-top" src="http://placehold.it/750x300"
-						alt="Card image cap">
+				<!-- Date/Time -->
+				<p>${bdto.upload_date }</p>
+				<hr>
+
+				<!-- Preview Image -->
+				<img class="img-fluid rounded" src="http://placehold.it/900x300"
+					alt="">
+
+				<hr>
+
+				<!-- Post Content -->
+				<p>${bdto.b_content }</p>
+
+				<hr>
+
+				<!-- Comments Form -->
+				<div class="card my-4">
+					<h5 class="card-header">Leave a Comment:</h5>
+					<form action=""></form>
 					<div class="card-body">
-						<h2 class="card-title">Post Title</h2>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex
-							quis soluta, a laboriosam. Dicta expedita corporis animi vero
-							voluptate voluptatibus possimus, veniam magni quis!</p>
-						<a href="#" class="btn btn-primary">Read More &rarr;</a>
-					</div>
-					<div class="card-footer text-muted">
-						Posted on January 1, 2017 by <a href="#">Start Bootstrap</a>
+						<form>
+							<div class="form-group">
+								<textarea class="form-control" rows="3" id="comInsText"></textarea>
+							</div>
+							<button type="submit" class="btn btn-primary" id="comIns">Submit</button>
+						</form>
 					</div>
 				</div>
 
-				<!-- Blog Post -->
-				<div class="card mb-4">
-					<img class="card-img-top" src="http://placehold.it/750x300"
-						alt="Card image cap">
-					<div class="card-body">
-						<h2 class="card-title">Post Title</h2>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex
-							quis soluta, a laboriosam. Dicta expedita corporis animi vero
-							voluptate voluptatibus possimus, veniam magni quis!</p>
-						<a href="#" class="btn btn-primary">Read More &rarr;</a>
-					</div>
-					<div class="card-footer text-muted">
-						Posted on January 1, 2017 by <a href="#">Start Bootstrap</a>
-					</div>
+				<div id="comlist">
+					<!-- Single Comment -->
+					<c:forEach var="cdto" items="${cList }">
+						<div class="media mb-4">
+							<img class="d-flex mr-3 rounded-circle"
+								src="http://placehold.it/50x50" alt="">
+							<div class="media-body">
+								<h4 class="mt-0">${cdto.user_id }</h4>
+								<h6 class="mt-0">${cdto.c_date }</h6>
+								${cdto.cm_content }
+							</div>
+						</div>
+					</c:forEach>
+					<!-- Comment with nested comments -->
 				</div>
-
-				<!-- Pagination -->
-				<ul class="pagination justify-content-center mb-4">
-					<li class="page-item"><a class="page-link" href="#">&larr;
-							Older</a></li>
-					<li class="page-item disabled"><a class="page-link" href="#">Newer
-							&rarr;</a></li>
-				</ul>
 
 			</div>
 
@@ -133,7 +157,7 @@
 					<div class="card-body">
 						<div class="input-group">
 							<input type="text" class="form-control"
-								placeholder="Search for..."> <span
+								placeholder="Search for..." > <span
 								class="input-group-btn">
 								<button class="btn btn-secondary" type="button">Go!</button>
 							</span>
@@ -167,10 +191,13 @@
 				<!-- Side Widget -->
 				<div class="card my-4">
 					<h5 class="card-header">1:1 고객상담센터</h5>
-					<div class="card-body" style="height:150px;">
+					<div class="card-body" style="height: 150px;">
 						<div id="chatMessageArea"></div>
 					</div>
-					<div><input type="text" style="width:85%;"/><input type="button" value="전송" style="width:15%;"></div>
+					<div>
+						<input type="text" style="width: 85%;" /><input type="button"
+							value="전송" style="width: 15%;">
+					</div>
 				</div>
 
 			</div>

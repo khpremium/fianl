@@ -50,3 +50,8 @@ gulp.task("default", gulp.parallel('vendor'));
 
 // dev task
 gulp.task("dev", gulp.parallel(watchFiles, browserSync));
+
+/*son*/
+$(document).ready(function(){
+	
+});
