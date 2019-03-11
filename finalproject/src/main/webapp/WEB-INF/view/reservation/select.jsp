@@ -52,7 +52,7 @@
 			<div class="col-lg-8">
 
 				<!-- Title -->
-				<h1 class="mt-4">${adto.city_code_dep}→${adto.city_code_arv}</h1>
+				<h1 class="mt-4">${rdto.city_code_dep}→${rdto.city_code_arv}</h1>
 				
 				<!-- Date/Time -->
 				<p>2019 03 15 ~ 2019 04 01</p>

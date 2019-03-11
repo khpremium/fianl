@@ -33,30 +33,31 @@ public class ReservationController {
 	}
 	
 	@RequestMapping("selectFlight.do")
-	public ModelAndView selectFlight(AirinfoDTO adto, String guestchk, HttpServletRequest req) {
+	public ModelAndView selectFlight(ReservationDTO rdto, String guestchk, HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView();
 		/*if(guestchk == "notguest") {
 			HttpSession session = req.getSession();
 			if(session.getAttribute("logOk") == null) {
-				
+				session.setAttribute("rtn", "selectFlight.do");
+				mav.setViewName("redirect:/.do");
 			} else {
 				mav.addObject("client_id", session.getAttribute("logOk"));
 			}
 		}*/
-		// mav.addObject("dList", service.deptListProcess(adto));
-		// mav.addObject("rList", service.returnListProcess(adto));
+		// mav.addObject("dList", service.deptListProcess(rdto));
+		// mav.addObject("rList", service.returnListProcess(rdto));
 		mav.setViewName("/reservation/select");
 		return mav;
 	}
 	
 	@RequestMapping("guestReservation.do")
-	public ModelAndView guestReservation(List<AirinfoDTO> list, GuestDTO dto) {
+	public ModelAndView guestReservation(List<AirinfoDTO> list, ReservationDTO rdto) {
 		ModelAndView mav = new ModelAndView();
 		return mav;
 	}
 	
 	@RequestMapping("clientReservation.do")
-	public ModelAndView clientReservation(List<AirinfoDTO> list) {
+	public ModelAndView clientReservation(List<AirinfoDTO> list, ReservationDTO rdto) {
 		ModelAndView mav = new ModelAndView();
 		return mav;
 	}
