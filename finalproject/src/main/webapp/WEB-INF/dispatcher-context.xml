@@ -24,7 +24,8 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations">
 			<list>
-				<value>classpath:config/reservationMapper.xml</value>
+ 			<value>classpath:mainmapper/mainMapper.xml</value>
+ 			<value>classpath:config/reservationMapper.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -52,18 +53,28 @@
 	</aop:config>
 	
 	<!-- DAO -->
-	<bean id="dao" class="reservation.ReservationDaoImp">
+	<bean id="rdao" class="reservation.ReservationDaoImp">
 		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+	<bean id="dao" class="maindao.MainDaoImp">
+		<property name="sqlSession" ref="sqlSession" />
+		<!-- <constructor-arg> <ref bean="sqlSession" /> </constructor-arg> -->
 	</bean>
 	
 	<!-- Service -->
-	<bean id="service" class="reservation.ReservationServiceImp">
+	<bean id="rservice" class="reservation.ReservationServiceImp">
+		<property name="dao" ref="rdao" />
+	</bean>
+	<bean id="service" class="mainservice.MainServiceImp">
 		<property name="dao" ref="dao" />
 	</bean>
 	
 	<!-- controller -->
 	<bean class="reservation.ReservationController">
-		<property name="service" ref="service" />
+		<property name="service" ref="rservice" />
+	</bean>
+	<bean class="maincontroller.MainController">
+		 <property name="service" ref="service" />
 	</bean>
 	
 	<!-- viewResolver -->
