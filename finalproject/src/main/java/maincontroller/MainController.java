@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import maindto.MainDto;
 import mainservice.MainService;
 
-//http://localhost:8090/mykh/main.do
+//http://localhost:8090/myfinal/main.do
 
 @Controller
 public class MainController {
