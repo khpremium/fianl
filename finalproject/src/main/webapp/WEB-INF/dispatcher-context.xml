@@ -67,9 +67,7 @@
 	</bean>
 	
 	<!-- viewResolver -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/view/" />
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="suffix" value=".jsp" />
 	</bean>
 </beans>
