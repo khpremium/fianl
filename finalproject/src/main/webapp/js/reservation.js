@@ -10,7 +10,9 @@ $(document).ready(function() {
 	$('#cancel').on('click', function() {
 		location.href="main.do";
 	});
+	
 	$('#payment').on('click', paymentProcess);
+	
 	$(document).on('click', 'table input[name="aa"]', test);
 	$(document).on('click', 'table input[name="bb"]', test2);
 });

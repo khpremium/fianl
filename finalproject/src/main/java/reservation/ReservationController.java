@@ -27,8 +27,8 @@ public class ReservationController {
 	@RequestMapping("/select.do")
 	public ModelAndView select() {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("list", service.searchProcess());
-		mav.setViewName("/reservation/list");
+		// mav.addObject("list", service.searchProcess());
+		mav.setViewName("/reservation/guest");
 		return mav;
 	}
 	
