@@ -135,7 +135,7 @@ function cityprocess(){
   <!-- 헤더 메뉴부분 끝 -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Start Bootstrap</a>
+      <a class="navbar-brand" href="#">Start Airline</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -147,13 +147,19 @@ function cityprocess(){
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="#">Join us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
+            <a class="nav-link" href="#">Notice</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="#">Board</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Priview</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">MyPage</a>
           </li>
         </ul>
       </div>
@@ -161,18 +167,22 @@ function cityprocess(){
   </nav>
   <!-- 헤더 메뉴부분 끝 -->
   
-  <!-- Header --><!-- 퍼런색 부분 -->
+  <!-- Header --><!-- 회식 바탕 부분 -->
   <header class="bg-primary py-5 mb-5">
     <div class="container h-100">
       <div class="row h-100 align-items-center">
         <div class="col-lg-12">
-          <h1 class="display-4 text-white mt-5 mb-2">Business Name or Tagline</h1>
-          <p class="lead mb-5 text-white-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non possimus ab labore provident mollitia. Id assumenda voluptate earum corporis facere quibusdam quisquam iste ipsa cumque unde nisi, totam quas ipsam.</p>
+          <h1 class="display-4 text-white mt-5 mb-2">Travel Reservation or Information</h1>
+          <p class="lead mb-5 text-white-50">
+			Life is short and the world is wide. Therefore,
+		 	it is good to start exploring the world quickly,<br/>		 	
+		 	Go when you are worried about going !
+			</p>
         </div>
       </div>
     </div>
   </header>
-  <!-- 퍼런색 부분끝 -->
+  <!-- 회색 바탕 부분끝 -->
 
   <!-- Page Content -->
   <div class="container">
@@ -234,17 +244,16 @@ function cityprocess(){
         <h2>Contact Us</h2>
         <hr>
         <address>
-          <strong>Start Bootstrap</strong>
-          <br>3481 Melrose Place
-          <br>Beverly Hills, CA 90210
-          <br>
+          <strong>Start Airline</strong>
+          <br>823-24 역삼동 
+          <br>서울 강남구 테헤란로14길 6 남도빌딩 2층          
         </address>
         <address>
           <abbr title="Phone">P:</abbr>
-          (123) 456-7890
+          (02) 1544-9970
           <br>
           <abbr title="Email">E:</abbr>
-          <a href="mailto:#">name@example.com</a>
+          <a href="mailto:#">Airline@gmail.com</a>
         </address>
         <hr/>
         <hr/>
