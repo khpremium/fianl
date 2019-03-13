@@ -8,7 +8,7 @@
 <title>예약페이지</title>
 
 <!-- Bootstrap core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="reservation/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="css/blog-post.css" rel="stylesheet">
@@ -176,8 +176,8 @@ var p_count = Number('${rdto.p_count}');
 	</footer>
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="reservation/vendor/jquery/jquery.min.js"></script>
+	<script src="reservation/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="js/reservation.js"></script>
 </body>
 </html>
