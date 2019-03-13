@@ -19,6 +19,31 @@
 <script type="text/javascript">
 var p_count = Number('${rdto.p_count}');
 </script>
+<script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"></script>
+<script>
+$(document).ready(function(){
+    var oPay = Naver.Pay.create({
+          "mode" : "production", // development or production
+          "clientId": "u86j4ripEt8LRfPGzQ8" // clientId
+    });
+
+    //직접 만드신 네이버페이 결제버튼에 click Event를 할당하세요
+    var elNaverPayBtn = document.getElementById("naverpayment");
+
+    elNaverPayBtn.addEventListener("click", function() {
+    	
+        oPay.open({
+          "merchantUserKey": "123",
+          "merchantPayKey": "123",
+          "productName": "항공권",
+          "totalPayAmount": "1000",
+          "taxScopeAmount": "1000",
+          "taxExScopeAmount": "0",
+          "returnUrl": "main.do"
+        });
+    });
+})
+</script>
 </head>
 <body>
 	<!-- Navigation -->
@@ -151,8 +176,12 @@ var p_count = Number('${rdto.p_count}');
 								<p>
 									총가격<span class="totalPrice">0</span>원
 								</p>
-								<button id="payment">결제</button>
-								<button id="cancel">취소</button>
+								<button id="naverpayment" class="btn btn-primary btn-lg">Naver Pay</button>
+								<hr/>
+								<button id="kakaopayment" class="btn btn-primary btn-lg">Kakao Pay</button>
+								<hr/>
+								<button id="payment2" class="btn btn-primary btn-lg">일반결제</button>
+								<button id="cancel" class="btn btn-primary btn-lg">취소</button>
 							</div>
 						</div>
 					</div>
