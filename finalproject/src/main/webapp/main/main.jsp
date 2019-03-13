@@ -11,10 +11,10 @@
   <title>Business Frontpage - Start Bootstrap Template</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="smain/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="main/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="smain/css/business-frontpage.css" rel="stylesheet">
+  <link href="main/css/business-frontpage.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -199,17 +199,17 @@ function cityprocess(){
         <c:forEach items="${aList}" var="dto">
         <option value="${dto.city_code}">${dto.city_name}</option>
         </c:forEach>
-        </select>   
-             
+        </select>
+        
         <label>인원 수</label>
-		<input class="count" value="1" readonly="" name="">
+		<input class="count" value="1" readonly="" name="p_count">
 		<input class="test1" value="-" type="button" count_range="m">
 		<input class="test1" value="+" type="button" count_range="p">	
 			
         <br/>
         <br/>
-        <label>출국일</label><input type="date" class="date" id="dep_date">       
-        <label>귀국일</label><input type="date" class="date" id="arv_date">
+        <label>출국일</label><input type="date" class="date" id="dep_date" name="dep_date">       
+        <label>귀국일</label><input type="date" class="date" id="arv_date" name="arv_date">
         <br/>
         <br/>
         
@@ -262,7 +262,7 @@ function cityprocess(){
       <div class="col-md-4 mb-5">
       <c:forEach var="rdto" items="${rList}">
         <div class="card h-100">
-          <img class="card-img-top" src="smain/images/오사카.jpg" alt="">
+          <img class="card-img-top" src="main/images/오사카.jpg" alt="">
           <div class="card-body">
             <h4 class="card-title">${rdto.title}</h4>
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
@@ -314,8 +314,8 @@ function cityprocess(){
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="smain/vendor/jquery/jquery.min.js"></script>
-  <script src="smain/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="main/vendor/jquery/jquery.min.js"></script>
+  <script src="main/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

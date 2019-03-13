@@ -15,8 +15,10 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="js/reservation.js"></script>
 <link rel="stylesheet" href="css/reservation.css">
+<script type="text/javascript">
+var p_count = Number('${rdto.p_count}');
+</script>
 </head>
 <body>
 	<!-- Navigation -->
@@ -52,10 +54,10 @@
 			<div class="col-lg-8">
 
 				<!-- Title -->
-				<h1 class="mt-4">${rdto.city_code_dep}→${rdto.city_code_arv}</h1>
+				<h1 class="mt-4">${dep_name}→${arv_name}</h1>
 				
 				<!-- Date/Time -->
-				<p>2019 03 15 ~ 2019 04 01</p>
+				<p>${dep_date} ~ ${arv_date}</p>
 
 				비행기선택ㄱㄱ
 				<p>여정1</p>
@@ -144,7 +146,7 @@
 									요금<span class="price">0</span>원
 								</p>
 								<p>
-									탑승객수<span>3</span>
+									탑승객수<span>${rdto.p_count}</span>
 								</p>
 								<p>
 									총가격<span class="totalPrice">0</span>원
@@ -176,5 +178,6 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="js/reservation.js"></script>
 </body>
 </html>

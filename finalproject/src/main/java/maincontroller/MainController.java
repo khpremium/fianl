@@ -1,6 +1,5 @@
 package maincontroller;
 
-import java.util.List;
 import java.util.Random;
 
 import org.springframework.stereotype.Controller;
@@ -10,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import maindto.MainDto;
 import mainservice.MainService;
 
-//http://localhost:8090/mykh/main.do
+//http://localhost:8090/myfinal/main.do
 
 @Controller
 public class MainController {
@@ -27,9 +26,9 @@ public class MainController {
 	
 	@RequestMapping("/main.do")
 	public ModelAndView listMethod(MainDto md){
-		Random ran = new Random();
+		/*Random ran = new Random();
 		int num;
-		num=ran.nextInt(10)+1;		
+		num=ran.nextInt(10)+1;*/
 		ModelAndView mav= new ModelAndView();
 		mav.addObject("aList",service.ListProcess());
 		mav.addObject("rList",service.rListProcess(2));

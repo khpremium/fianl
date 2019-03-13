@@ -33,19 +33,26 @@ public class ReservationController {
 	}
 	
 	@RequestMapping("/selectFlight.do")
-	public ModelAndView selectFlight(ReservationDTO rdto, String guestchk, HttpServletRequest req) {
+	public ModelAndView selectFlight(ReservationDTO rdto, HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView();
-		/*if(guestchk == "notguest") {
+		/*if(guestchk == "noguest") {
 			HttpSession session = req.getSession();
 			if(session.getAttribute("logOk") == null) {
-				session.setAttribute("rtn", "selectFlight.do");
-				mav.setViewName("redirect:/.do");
+				session.setAttribute("rtn", "main.do");
+				mav.setViewName("redirect:/login.do");
 			} else {
 				mav.addObject("client_id", session.getAttribute("logOk"));
 			}
 		}*/
-		// mav.addObject("dList", service.deptListProcess(rdto));
-		// mav.addObject("rList", service.returnListProcess(rdto));
+		mav.addObject("dep_date", rdto.getDep_date());
+		mav.addObject("arv_date", rdto.getArv_date());
+		rdto.setDep_date(rdto.getDep_date().replaceAll("-", ""));
+		rdto.setArv_date(rdto.getArv_date().replaceAll("-", ""));
+		mav.addObject("dList", service.deptListProcess(rdto));
+		mav.addObject("rList", service.returnListProcess(rdto));
+		mav.addObject("dep_name", service.cityNameProcess(rdto.getCity_code_dep()));
+		mav.addObject("arv_name", service.cityNameProcess(rdto.getCity_code_arv()));
+		mav.addObject("rdto", rdto);
 		mav.setViewName("/reservation/select");
 		return mav;
 	}

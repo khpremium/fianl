@@ -6,4 +6,5 @@ public interface ReservationDAO {
 	public List<AirinfoDTO> deptListMethod(ReservationDTO dto);
 	public List<AirinfoDTO> returnListMethod(ReservationDTO dto);
 	public List<AirinfoDTO> search();
+	public String cityNameMethod(String city_code);
 }

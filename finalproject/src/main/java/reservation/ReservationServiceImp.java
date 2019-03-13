@@ -27,5 +27,10 @@ public class ReservationServiceImp implements ReservationService {
 	public List<AirinfoDTO> returnListProcess(ReservationDTO dto) {
 		return dao.returnListMethod(dto);
 	}
+
+	@Override
+	public String cityNameProcess(String city_code) {
+		return dao.cityNameMethod(city_code);
+	}
 	
 }
