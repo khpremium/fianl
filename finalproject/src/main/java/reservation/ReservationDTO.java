@@ -7,8 +7,9 @@ public class ReservationDTO {
 	private String client_id;
 	private int p_count;
 	private String non_name;
-	private String non_phonenum;
+	private String non_phone;
 	private String non_email;
+	private String non_gender;
 	private String non_birth;
 	private String non_pass;
 	private String guestchk;
@@ -127,12 +128,12 @@ public class ReservationDTO {
 		this.non_name = non_name;
 	}
 
-	public String getNon_phonenum() {
-		return non_phonenum;
+	public String getNon_phone() {
+		return non_phone;
 	}
 
-	public void setNon_phonenum(String non_phonenum) {
-		this.non_phonenum = non_phonenum;
+	public void setNon_phone(String non_phone) {
+		this.non_phone = non_phone;
 	}
 
 	public String getNon_email() {
@@ -157,6 +158,14 @@ public class ReservationDTO {
 
 	public void setNon_pass(String non_pass) {
 		this.non_pass = non_pass;
+	}
+
+	public String getNon_gender() {
+		return non_gender;
+	}
+
+	public void setNon_gender(String non_gender) {
+		this.non_gender = non_gender;
 	}
 	
 }

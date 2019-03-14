@@ -13,7 +13,6 @@
 		select * from board where city_code=#{num} and b_category_c_num=1
 	</select>
 	
-
 </mapper>
 
 

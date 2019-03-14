@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 // http://localhost:8090/myfinal/selectFlight.do
@@ -25,9 +26,11 @@ public class ReservationController {
 	
 	// http://localhost:8090/myfinal/select.do
 	@RequestMapping("/select.do")
-	public ModelAndView select() {
+	public ModelAndView select(ReservationDTO rdto) {
 		ModelAndView mav = new ModelAndView();
 		// mav.addObject("list", service.searchProcess());
+		System.out.println(rdto.getGuestchk());
+		mav.addObject("rdto", rdto);
 		mav.setViewName("/reservation/guest");
 		return mav;
 	}
@@ -35,6 +38,7 @@ public class ReservationController {
 	@RequestMapping("/selectFlight.do")
 	public ModelAndView selectFlight(ReservationDTO rdto, HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView();
+		System.out.println(rdto.getGuestchk());
 		/*if(guestchk == "noguest") {
 			HttpSession session = req.getSession();
 			if(session.getAttribute("logOk") == null) {
@@ -57,23 +61,15 @@ public class ReservationController {
 		return mav;
 	}
 	
-	@RequestMapping("/guestReservation.do")
-	public ModelAndView guestReservation(ReservationDTO rdto) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/reservation/guest");
-		return mav;
-	}
-	
-	@RequestMapping("/clientReservation.do")
-	public ModelAndView clientReservation(ReservationDTO rdto) {
-		ModelAndView mav = new ModelAndView();
-		return mav;
+	@RequestMapping("/reservation.do")
+	public String guestReservation(ReservationDTO rdto) {
+		service.reservationProcess(rdto);
+		return "redirect:/main.do";
 	}
 	
 	@RequestMapping("/payment.do")
-	public ModelAndView paymentMethod(ReservationDTO dto) {
-		ModelAndView mav = new ModelAndView();
-		return mav;
+	public @ResponseBody String paymentMethod(String resultCode) {
+		return resultCode;
 	}
 
 }

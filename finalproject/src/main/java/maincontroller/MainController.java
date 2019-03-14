@@ -31,7 +31,7 @@ public class MainController {
 		num=ran.nextInt(10)+1;*/
 		ModelAndView mav= new ModelAndView();
 		mav.addObject("aList",service.ListProcess());
-		mav.addObject("rList",service.rListProcess(2));
+		// mav.addObject("rList",service.rListProcess(2));
 		mav.setViewName("main/main");
 		return mav;
 	}// list

@@ -85,6 +85,9 @@ function chkProcess() {
 	} else if($("#arv_date").val() == '') {
 		alert('nono');
 	} else {
+		if($('.guestpro:checked').val() == 'guest') {
+			$('form').attr('action', 'select.do');
+		}
 		alert("됫음");
 		$("form").submit();
 	}
@@ -181,7 +184,7 @@ function cityprocess(){
     <div class="row">
     
       <div class="col-md-8 mb-5">
-      	<form action="selectFlight.do" method="get">
+      	<form action="selectFlight.do" method="post">
         <h2>Reservaion now</h2>
         <hr/>
         
@@ -216,7 +219,7 @@ function cityprocess(){
         <input type="radio" name="guestchk" class="guestpro" value="noguest" checked="checked">
 		<label>회원</label> 
 		&nbsp;<input type="radio" name="guestchk" class="guestpro" value="guest">
-		<label>비회원</label>       
+		<label>비회원</label>
         <br/>
         <br/>
         

@@ -34,5 +34,20 @@ public class ReservationDaoImp implements ReservationDAO {
 	public String cityNameMethod(String city_code) {
 		return sqlSession.selectOne("res.name", city_code);
 	}
+
+	@Override
+	public void clientResMethod(ReservationDTO rdto) {
+		sqlSession.insert("res.client", rdto);
+	}
+
+	@Override
+	public void guestResMethod(ReservationDTO rdto) {
+		sqlSession.insert("res.guest", rdto);
+	}
+
+	@Override
+	public void seatUptMethod(String flight) {
+		sqlSession.update("res.seatUpt", flight);
+	}
 	
 }

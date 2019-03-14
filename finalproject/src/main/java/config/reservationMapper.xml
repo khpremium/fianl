@@ -27,6 +27,16 @@
 		select city_name from city where city_code=#{city_code}
 	</select>
 	
+	<update id="seatUpt" parameterType="string">
+		update from airinfo set seat=seat-1 where flight=#{flight}
+	</update>
+	
+	<insert id="client">
+		insert into reservation(rv_num) values()
+	</insert>
+	
+	<insert id="guest"></insert>
+	
 </mapper>
 
 

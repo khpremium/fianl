@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,20 +12,37 @@
 <link href="reservation/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="css/blog-post.css" rel="stylesheet">
+<link href="reservation/css/blog-post.css" rel="stylesheet">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="css/reservation.css">
+<link rel="stylesheet" href="reservation/css/reservation.css">
+<script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"></script>
 <script type="text/javascript">
 var p_count = Number('${rdto.p_count}');
-</script>
-<script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"></script>
-<script>
+
 $(document).ready(function(){
     var oPay = Naver.Pay.create({
           "mode" : "production", // development or production
-          "clientId": "u86j4ripEt8LRfPGzQ8" // clientId
+          "clientId": "u86j4ripEt8LRfPGzQ8", // clientId
+		  "openType": "layer",
+		  "onAuthorize" : function(oData) {
+			    /*
+			    layer 타입을 사용했을 때 페이지 전환 없이 구현이 가능하도록 지원되며, 그 외의 경우는 returnUrl 로 참조 정보와 함께 redirect 됩니다.
+			    oData 객체에는 결제 인증 결과와 전달한 returnUrl 정보가 함께 전달되며,
+			    이 정보는 이후 승인 요청 처리를 위한 정보 (resultCode, resultMessage, returnUrl, paymentId, reserveId 등) 입니다.
+			    전달되는 값은 https://developer.pay.naver.com/docs/v2/api#payments-payments_window 의 성공 & 실패 응답 값을 참조해주세요.
+			    */
+			  if(oData.resultCode === "Success") {
+			      // 네이버페이 결제 승인 요청 처리
+			      alert('결제성공');
+			      $('#payment_chk').val(1);
+			  } else {
+			      // 필요 시 oData.resultMessage 에 따라 적절한 사용자 안내 처리
+			      alert('결제실패\n사유:' + oData.resultMessage);
+			      $('#payment_chk').val(0);
+			  }
+		  }
     });
 
     //직접 만드신 네이버페이 결제버튼에 click Event를 할당하세요
@@ -39,7 +57,7 @@ $(document).ready(function(){
           "totalPayAmount": "1000",
           "taxScopeAmount": "1000",
           "taxExScopeAmount": "0",
-          "returnUrl": "main.do"
+          "returnUrl": "payment.do"
         });
     });
 })
@@ -102,8 +120,8 @@ $(document).ready(function(){
 							<tr>
 								<td>${dto.airline}</td>
 								<td>${dto.flight}</td>
-								<td>${dto.d_time}</td>
-								<td>${dto.a_time}</td>
+								<td>${fn:substring(dto.d_time,9,11)}시 ${fn:substring(dto.d_time,11,13)}분</td>
+								<td>${fn:substring(dto.a_time,9,11)}시 ${fn:substring(dto.a_time,11,13)}분</td>
 								<td>${dto.price}</td>
 								<td>${dto.seat}</td>
 								<td><input type="radio" name="flight" value="${dto.flight}" /></td>
@@ -194,6 +212,20 @@ $(document).ready(function(){
 
 	</div>
 	<!-- /.container -->
+	<form method="post">
+		<input type="hidden" name="p_count" value="${rdto.p_count}">
+		<input type="hidden" name="payment_chk" id="payment_chk">
+		<input type="hidden" name="dep_airinfo_flight">
+		<input type="hidden" name="arv_airinfo_flight">
+		<c:if test="${rdto.guestchk == 'guest'}">
+			<input type="hidden" name="guestchk" value="${rdto.guestchk}">
+			<input type="hidden" name="non_name"  value="${rdto.non_name}">
+			<input type="hidden" name="non_gender"  value="${rdto.non_gender}">
+			<input type="hidden" name="non_phone"  value="${rdto.non_phone}">
+			<input type="hidden" name="non_email"  value="${rdto.non_email}">
+			<input type="hidden" name="non_pass"  value="${rdto.non_pass}">
+		</c:if>
+	</form>
 
 	<!-- Footer -->
 	<footer class="py-5 bg-dark">
@@ -207,6 +239,6 @@ $(document).ready(function(){
 	<!-- Bootstrap core JavaScript -->
 	<script src="reservation/vendor/jquery/jquery.min.js"></script>
 	<script src="reservation/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="js/reservation.js"></script>
+	<script src="reservation/js/reservation.js"></script>
 </body>
 </html>
