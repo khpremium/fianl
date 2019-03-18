@@ -1,7 +1,5 @@
 package maincontroller;
 
-import java.util.Random;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,7 +12,6 @@ import mainservice.MainService;
 @Controller
 public class MainController {
 	private MainService service;
-	private MainDto md;
 	
 	public MainController() {
 		// TODO Auto-generated constructor stub
