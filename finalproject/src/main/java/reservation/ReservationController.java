@@ -33,7 +33,6 @@ public class ReservationController {
 	public ModelAndView select(ReservationDTO rdto) {
 		ModelAndView mav = new ModelAndView();
 		// mav.addObject("list", service.searchProcess());
-		System.out.println(rdto.getGuestchk());
 		mav.addObject("rdto", rdto);
 		mav.setViewName("/guest/guest");
 		return mav;

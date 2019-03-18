@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 
 <!-- Bootstrap core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="guest/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="css/scrolling-nav.css" rel="stylesheet">
+<link href="guest/css/scrolling-nav.css" rel="stylesheet">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -18,8 +18,7 @@
 <body id="page-top">
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
-		id="mainNav">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
 		<div class="container">
 			<a class="navbar-brand js-scroll-trigger" href="#page-top">Start
 				Bootstrap</a>
@@ -105,13 +104,13 @@
 	</footer>
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="guest/vendor/jquery/jquery.min.js"></script>
+	<script src="guest/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Plugin JavaScript -->
-	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="guest/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Custom JavaScript for this theme -->
-	<script src="js/scrolling-nav.js"></script>
+	<script src="guest/js/scrolling-nav.js"></script>
 </body>
 </html>
