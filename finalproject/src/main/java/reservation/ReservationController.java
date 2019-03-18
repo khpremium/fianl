@@ -4,14 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.URLEncoder;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,14 +35,13 @@ public class ReservationController {
 		// mav.addObject("list", service.searchProcess());
 		System.out.println(rdto.getGuestchk());
 		mav.addObject("rdto", rdto);
-		mav.setViewName("/reservation/guest");
+		mav.setViewName("/guest/guest");
 		return mav;
 	}
 	
 	@RequestMapping("/selectFlight.do")
 	public ModelAndView selectFlight(ReservationDTO rdto, HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView();
-		System.out.println(rdto.getGuestchk());
 		/*if(guestchk == "noguest") {
 			HttpSession session = req.getSession();
 			if(session.getAttribute("logOk") == null) {
@@ -89,7 +84,7 @@ public class ReservationController {
 		url += "&tax_free_amount=0";
 		url += "&approval_url=http://localhost:8090/myfinal/kakaoRes.do?result=success";
 		url += "&fail_url=http://localhost:8090/myfinal/kakaoRes.do?result=fail";
-		url += "&cancel_url=http://localhost:8090/myfinal/kakaoRes.do?result=cencel";
+		url += "&cancel_url=http://localhost:8090/myfinal/kakaoRes.do?result=cancel";
 		// url += "&query=" + URLEncoder.encode(search, "UTF-8");
 		
 		URL url2 = new URL(url);
@@ -103,7 +98,6 @@ public class ReservationController {
 		while((input = reader.readLine()) != null) {
 			total += input;
 		}
-		System.out.println(total);
 		
 		return total;
 	}

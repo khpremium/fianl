@@ -67,14 +67,17 @@ $(document).ready(function(){
     		url : 'kakaoPro.do',
     		dataType : 'json',
     		success : function(res) {
-    				window.open(res.next_redirect_pc_url);
+    				window.open(res.next_redirect_pc_url, '_blank', 'width=400, height=600, left=580, top=200');
     			}
     	});
     });
 });
 
 function kakaoResultProcess(res) {
-	alert(res);
+	if(res == 'cancel')
+		alert('결제가 취소되었습니다.');
+	else if(res == 'fail')
+		alert('결제에 실패하였습니다.');
 }
 </script>
 </head>
