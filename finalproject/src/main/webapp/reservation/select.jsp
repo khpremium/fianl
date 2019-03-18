@@ -60,7 +60,22 @@ $(document).ready(function(){
           "returnUrl": "payment.do"
         });
     });
-})
+    
+    $('#kakaopayment').on('click', function() {
+    	$.ajax({
+    		type : 'GET',
+    		url : 'kakaoPro.do',
+    		dataType : 'json',
+    		success : function(res) {
+    				window.open(res.next_redirect_pc_url);
+    			}
+    	});
+    });
+});
+
+function kakaoResultProcess(res) {
+	alert(res);
+}
 </script>
 </head>
 <body>

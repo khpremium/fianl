@@ -1,5 +1,13 @@
 package reservation;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -67,9 +75,50 @@ public class ReservationController {
 		return "redirect:/main.do";
 	}
 	
+	@RequestMapping("/kakaoPro.do")
+	public @ResponseBody String kakaoPayment() throws IOException {
+		String input = "";
+		String total = "";
+		String url = "https://kapi.kakao.com/v1/payment/ready";
+		url += "?cid=TC0ONETIME";
+		url += "&partner_order_id=partner_order_id";
+		url += "&partner_user_id=partner_user_id";
+		url += "&item_name=항공권";
+		url += "&quantity=1";
+		url += "&total_amount=200000";
+		url += "&tax_free_amount=0";
+		url += "&approval_url=http://localhost:8090/myfinal/kakaoRes.do?result=success";
+		url += "&fail_url=http://localhost:8090/myfinal/kakaoRes.do?result=fail";
+		url += "&cancel_url=http://localhost:8090/myfinal/kakaoRes.do?result=cencel";
+		// url += "&query=" + URLEncoder.encode(search, "UTF-8");
+		
+		URL url2 = new URL(url);
+		URLConnection conn = url2.openConnection();
+		HttpURLConnection urlConn = (HttpURLConnection) conn;
+		urlConn.setRequestMethod("POST");
+		urlConn.setRequestProperty("Authorization", "KakaoAK 364f647d9fb6e6e23fca64e838fb6fc7");
+		urlConn.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+		
+		BufferedReader reader = new BufferedReader(new InputStreamReader(urlConn.getInputStream()));
+		while((input = reader.readLine()) != null) {
+			total += input;
+		}
+		System.out.println(total);
+		
+		return total;
+	}
+	
 	@RequestMapping("/payment.do")
 	public @ResponseBody String paymentMethod(String resultCode) {
 		return resultCode;
+	}
+	
+	@RequestMapping("/kakaoRes.do")
+	public ModelAndView kakaoResult(String result) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("result", result);
+		mav.setViewName("/reservation/kakaores");
+		return mav;
 	}
 
 }
