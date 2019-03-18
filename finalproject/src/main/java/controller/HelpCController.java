@@ -133,4 +133,26 @@ public class HelpCController {
 		return "redirect:/helpMain.do";
 	}
 	
+	@RequestMapping("/blogSearch.do")
+	public ModelAndView blogSearch(PageDTO pv) {
+		System.out.println("Search");
+		System.out.println(pv.getSearchWord());
+		ModelAndView mav = new ModelAndView();
+		int totalRecord =  service.hBlogCountProcess2(pv.getSearchWord());
+		if(totalRecord >= 1) {
+			if (pv.getCurrentPage() == 0) {
+				currentPage =1;
+			} else {
+				currentPage = pv.getCurrentPage();
+			}
+		}
+		pdto = new PageDTO(currentPage, totalRecord);
+		pdto.setSearchWord(pv.getSearchWord());
+		mav.addObject("pv", pdto);
+		mav.addObject("HList", service.hListProcess2(pdto));
+		
+		mav.setViewName("helpC");
+		return mav;
+	}
+	
 }

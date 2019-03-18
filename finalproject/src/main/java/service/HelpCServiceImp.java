@@ -114,5 +114,15 @@ public class HelpCServiceImp implements HelpCService{
 		
 		return hdao.hBlogCountMethod();
 	}
+
+	@Override
+	public int hBlogCountProcess2(String searchText) {
+		return hdao.hBlogCountMethod2(searchText);
+	}
+
+	@Override
+	public List<BoardDTO> hListProcess2(PageDTO pdto) {
+		return hdao.hListMethod2(pdto);
+	}
 	
 }

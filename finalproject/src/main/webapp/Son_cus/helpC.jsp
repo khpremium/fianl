@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
 
 <meta charset="utf-8">
@@ -23,14 +23,14 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-		if(${pv.currentPage}==1){
+		if(${pv.currentPage==1}){
 			$('#preBtn').removeClass();
 			$('#preBtn').addClass('page-item disabled');
 		}else{
 			$('#preBtn').removeClass();
 			$('#preBtn').addClass('page-item');
 		}
-		if(${pv.currentPage}==${pv.totalPage}){
+		if(${pv.currentPage==pv.totalPage}){
 			$('#nextBtn').removeClass();
 			$('#nextBtn').addClass('page-item disabled');
 		}else{
@@ -77,7 +77,10 @@
 			<div class="col-md-8">
 
 				<h1 class="my-4">
-					고객센터 <small>Secondary Text</small>
+					고객센터 
+					<c:if test="${pv.searchWord!=null }">
+					<small>"${pv.searchWord }" 검색결과</small>
+					</c:if>
 				</h1>
 
 				<!-- Blog Post -->
@@ -89,17 +92,19 @@
 							<th>Count</th>
 							<th>Date</th>
 						</tr>
-						
+
 						<c:forEach var="dto" items="${HList}">
-						<tr>
-							<td><a href="helpBlog.do?b_num=${dto.b_num}&currentPage=${pv.currentPage}">${dto.b_num }</td>
-							<td><a href="helpBlog.do?b_num=${dto.b_num}&currentPage=${pv.currentPage}">${dto.title }</td>
-							<td>${dto.viewcount }</td>
-							<td>${dto.upload_date }</td>
-						</tr>
+							<tr>
+								<td><a
+									href="helpBlog.do?b_num=${dto.b_num}&currentPage=${pv.currentPage}">${dto.b_num }</td>
+								<td><a
+									href="helpBlog.do?b_num=${dto.b_num}&currentPage=${pv.currentPage}">${dto.title }</td>
+								<td>${dto.viewcount }</td>
+								<td>${dto.upload_date }</td>
+							</tr>
 						</c:forEach>
 					</table>
-					
+
 				</div>
 				<form action="boardWirete.do" method="post">
 					<input type="submit" id="bwriteBtn" value="글쓰기" />
@@ -140,14 +145,25 @@
 
 				<!-- Pagination -->
 				<ul class="pagination justify-content-center mb-4">
-				
-					<li id="preBtn"><a class="page-link" href="helpMain.do?currentPage=${pv.currentPage-1 }">&larr;Newer
-							</a></li>
-				
-				
-					<li id="nextBtn"><a class="page-link" href="helpMain.do?currentPage=${pv.currentPage+1 }">
-							Older&rarr;</a></li>
-					
+
+					<li id="preBtn">
+						<c:if test="${pv.searchWord != null }">
+						<a class="page-link" href="blogSearch.do?currentPage=${pv.currentPage-1 }&searchWord=${pv.searchWord}">&larr;Newer</a>
+						</c:if>
+						<c:if test="${pv.searchWord == null }">
+						<a class="page-link" href="helpMain.do?currentPage=${pv.currentPage-1 }">&larr;Newer</a>
+						</c:if>
+					</li>
+
+					<li id="nextBtn">
+						<c:if test="${pv.searchWord != null }">
+						<a class="page-link" href="blogSearch.do?currentPage=${pv.currentPage+1 }&searchWord=${pv.searchWord}">Older&rarr;</a>
+						</c:if>
+						<c:if test="${pv.searchWord == null }">
+						<a class="page-link" href="helpMain.do?currentPage=${pv.currentPage+1 }">Older&rarr;</a>
+						</c:if>
+					</li>
+
 				</ul>
 
 			</div>
@@ -157,14 +173,15 @@
 
 				<!-- Search Widget -->
 				<div class="card my-4">
-					<h5 class="card-header">Search</h5>
+					<h5 class="card-header">Title Search</h5>
 					<div class="card-body">
 						<div class="input-group">
-							<input type="text" class="form-control"
-								placeholder="Search for..."> <span
-								class="input-group-btn">
-								<button class="btn btn-secondary" type="button">Go!</button>
-							</span>
+							<form action="blogSearch.do" method="get">
+								<input name="searchWord" type="text" class="form-control" placeholder="Search for...">
+								<span class="input-group-btn">
+									<input type="submit" class="btn btn-secondary" value="Go!"></input>
+								</span>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -193,7 +210,7 @@
 				</div>
 
 				<!-- Side Widget -->
-				
+
 				<div class="card my-4">
 					<jsp:include page="helpchatOpen.jsp"></jsp:include>
 					<!-- <h5 class="card-header">1:1 고객상담센터</h5>
@@ -202,8 +219,8 @@
 					</div>
 					<div><input type="text" style="width:85%;"/><input type="button" value="전송" style="width:15%;"></div> -->
 				</div>
-				
-				
+
+
 			</div>
 
 		</div>

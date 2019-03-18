@@ -60,6 +60,21 @@
 	<select id="HBlogCount" resultType="int">
 		select count(*) from board where b_category_c_num=0
 	</select>
+	
+	<select id="HBlogCount2" resultType="int">
+		select count(*) from board where b_category_c_num=0 and upper(title) like '%' || upper(#{searchWord}) || '%'
+	</select>
+	
+	<select id="Hlist2" parameterType="dto.PageDTO" resultType="dto.BoardDTO">
+		<!-- select * from board where b_category_c_num=0 order by b_num desc -->
+		<![CDATA[
+		 select b.* from
+    	 (select rownum as rm, a.*   from(
+    	 select * from board where b_category_c_num=0 order by b_num desc)a)b
+    	 where b.rm>=#{startRow} and b.rm<=#{endRow}
+    	 and upper(title) like '%' || upper(#{searchWord}) || '%'
+		]]>
+	</select>
 </mapper>
 
 

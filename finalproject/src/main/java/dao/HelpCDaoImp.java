@@ -81,5 +81,15 @@ public class HelpCDaoImp implements HelpCDAO{
 		return sqlSession.selectOne("helpC.HBlogCount");
 		
 	}
+
+	@Override
+	public int hBlogCountMethod2(String searchText) {
+		return sqlSession.selectOne("helpC.HBlogCount2", searchText);
+	}
+
+	@Override
+	public List<BoardDTO> hListMethod2(PageDTO pdto) {
+		return sqlSession.selectList("helpC.Hlist2", pdto);
+	}
      
 } 

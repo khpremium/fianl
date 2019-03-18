@@ -18,4 +18,6 @@ public interface HelpCDAO {
 	public void hComDelAllMethod(int board_b_num);
 	public String getFilename(int b_num);
 	public int hBlogCountMethod();
+	public int hBlogCountMethod2(String searchText);
+	public List<BoardDTO> hListMethod2(PageDTO pdto);
 }

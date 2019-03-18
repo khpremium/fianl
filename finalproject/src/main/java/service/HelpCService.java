@@ -19,4 +19,6 @@ public interface HelpCService {
 	public void hBlogUpProcess(BoardDTO bdto ,HttpServletRequest request);
 	public void hComAllDelProcess(int board_b_num);
 	public int hBlogCountProcess();
+	public int hBlogCountProcess2(String searchText);
+	public List<BoardDTO> hListProcess2(PageDTO pdto);
 }

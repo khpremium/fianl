@@ -22,18 +22,17 @@
 
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
-	
 	$(document).ready(function() {
 		$('#comIns').on('click', reply_list);
-		
+
 		/* 삭제버튼 */
-		$('#delBtn').on('click',function(){
+		$('#delBtn').on('click', function() {
 			$('#sbf').attr('action', 'blogDel.do');
 			$('#sbf').submit();
 		});
-		
+
 		/* 수정버튼 */
-		$('#updBtn').on('click',function(){
+		$('#updBtn').on('click', function() {
 			$('#sbf').attr('action', 'blogUpForm.do');
 			$('#sbf').submit();
 		});
@@ -55,16 +54,19 @@
 		/* alert(res); */
 		$('#comlist').empty();
 
-		$.each(res,function(index, value) {
-			$('#comlist')
-				.append(
-					'<div class="media mb-4"><img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""><div class="media-body"><h4 class="mt-0">'
-						+ value.user_id
-						+ '</h4><h6 class="mt-0">'
-						+ value.c_date
-						+ '</h6>'
-						+ value.cm_content
-						+ '</div></div>');
+		$
+				.each(
+						res,
+						function(index, value) {
+							$('#comlist')
+									.append(
+											'<div class="media mb-4"><img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""><div class="media-body"><h4 class="mt-0">'
+													+ value.user_id
+													+ '</h4><h6 class="mt-0">'
+													+ value.c_date
+													+ '</h6>'
+													+ value.cm_content
+													+ '</div></div>');
 						});
 		alert("reply_list_result end!");
 		$('#comInsText').val('');
@@ -125,7 +127,9 @@
 
 				<!-- Preview Image -->
 				<c:if test="${bdto.filename!=null }">
-					<img class="img-fluid rounded" src="C:/job/workspace_spring/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/finalproject/temp/${bdto.filename }" alt="">
+					<img class="img-fluid rounded"
+						src="C:/job/workspace_spring/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/finalproject/temp/${bdto.filename }"
+						alt="">
 					<hr>
 				</c:if>
 				<!-- Post Content -->
@@ -133,19 +137,19 @@
 
 				<hr>
 				<form method="get" id="sbf">
-					<table >
+					<table>
 						<tr>
-							<td><a href="helpMain.do?b_num=${bdto.b_num }&currentPage=${currentPage }">글 목록으로..</a>
-							</td>
-							<td>
-								<input type="button" value="수정" class="pull-right" id="updBtn" style="'text-align':right"/>
-								<input type="button" value="삭제" class="pull-right" id="delBtn" style="'text-align':right"/>
-								
-							</td>
+							<td><a
+								href="helpMain.do?b_num=${bdto.b_num }&currentPage=${currentPage }">글
+									목록으로..</a></td>
+							<td><input type="button" value="수정" class="pull-right"
+								id="updBtn" style="text-align ': right" /> <input type="button"
+								value="삭제" class="pull-right" id="delBtn"
+								style="text-align ': right" /></td>
 						</tr>
 					</table>
-					<input type="hidden" name="b_num" value="${bdto.b_num }">
-					<input type="hidden" name="currentPage" vlaue="${currentPage }">
+					<input type="hidden" name="b_num" value="${bdto.b_num }"> <input
+						type="hidden" name="currentPage" vlaue="${currentPage }">
 				</form>
 				<hr>
 				<!-- Comments Form -->
@@ -185,14 +189,16 @@
 
 				<!-- Search Widget -->
 				<div class="card my-4">
-					<h5 class="card-header">Search</h5>
+					<h5 class="card-header">Title Search</h5>
 					<div class="card-body">
 						<div class="input-group">
-							<input type="text" class="form-control"
-								placeholder="Search for..."> <span
-								class="input-group-btn">
-								<button class="btn btn-secondary" type="button">Go!</button>
-							</span>
+							<form action="blogSearch.do" method="get">
+								<input id="searchWord" type="text" class="form-control"
+									placeholder="Search for..."> <span
+									class="input-group-btn">
+									<button class="btn btn-secondary" type="button" id="searchBtn">Go!</button>
+								</span>
+							</form>
 						</div>
 					</div>
 				</div>
