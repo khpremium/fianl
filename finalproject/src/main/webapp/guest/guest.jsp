@@ -7,18 +7,27 @@
 <title>Insert title here</title>
 
 <!-- Bootstrap core CSS -->
-<link href="guest/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="guest/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="guest/css/scrolling-nav.css" rel="stylesheet">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('button').on('click', function() {
+			
+		});
+	});
+</script>
 </head>
 <body id="page-top">
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+		id="mainNav">
 		<div class="container">
 			<a class="navbar-brand js-scroll-trigger" href="#page-top">Start
 				Bootstrap</a>
@@ -56,13 +65,17 @@
 					<form action="selectFlight.do" method="get">
 						<table>
 							<tr>
+								<th colspan="2">정보입력</th>
+							</tr>
+							<tr>
 								<td>name</td>
 								<td><input type="text" name="non_name"></td>
 							</tr>
 							<tr>
 								<td>gender</td>
-								<td><input type="radio" name="non_gender" value="남">남
-									<input type="radio" name="non_gender" value="여">여</td>
+								<td><input type="radio" name="non_gender" value="남"
+									checked="checked">남 <input type="radio"
+									name="non_gender" value="여">여</td>
 							</tr>
 							<tr>
 								<td>phone</td>
@@ -77,9 +90,6 @@
 								<td>password</td>
 								<td><input type="password" name="non_pass"></td>
 							</tr>
-							<tr>
-								<td><input type="submit" value="전송"></td>
-							</tr>
 						</table>
 						<input type="hidden" name="dep_date" value="${rdto.dep_date}">
 						<input type="hidden" name="arv_date" value="${rdto.arv_date}">
@@ -89,11 +99,12 @@
 							type="hidden" name="p_count" value="${rdto.p_count}"> <input
 							type="hidden" name="guestchk" value="${rdto.guestchk}">
 					</form>
+					<button>전송</button>
 				</div>
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- Footer -->
 	<footer class="py-5 bg-dark">
 		<div class="container">
