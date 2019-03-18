@@ -5,6 +5,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import dto.BoardDTO;
+import dto.PageDTO;
 import dto.ReplyDTO;
 
 public class HelpCDaoImp implements HelpCDAO{
@@ -18,8 +19,8 @@ public class HelpCDaoImp implements HelpCDAO{
 	}
 	
 	@Override
-	public List<BoardDTO> hListMethod() {
-		return sqlSession.selectList("helpC.Hlist");
+	public List<BoardDTO> hListMethod(PageDTO pdto) {
+		return sqlSession.selectList("helpC.Hlist", pdto);
 	}
 
 	@Override
@@ -37,6 +38,47 @@ public class HelpCDaoImp implements HelpCDAO{
 	@Override
 	public void hComInsMethod(ReplyDTO rdto) {
 		sqlSession.insert("helpC.Hcomins", rdto);
+		
+	}
+
+	@Override
+	public void hReplyCntMethod(int b_num) {
+		sqlSession.update("helpC.HviewCnt", b_num);
+		
+	}
+
+	@Override
+	public void hBlogInsMethod(BoardDTO bdto) {
+		sqlSession.insert("helpC.HblogIns", bdto);
+		
+	}
+
+	@Override
+	public void hBlogDelMethod(int b_num) {
+		sqlSession.delete("helpC.HblogDel", b_num);
+		
+	}
+
+	@Override
+	public void hBlogUpMethod(BoardDTO bdto) {
+		sqlSession.update("helpC.HblogUp", bdto);
+		
+	}
+
+	@Override
+	public void hComDelAllMethod(int board_b_num) {
+		sqlSession.delete("helpC.HcomAllDel", board_b_num);
+		
+	}
+
+	@Override
+	public String getFilename(int b_num) {
+		return sqlSession.selectOne("helpC.Hgetfile", b_num);
+	}
+
+	@Override
+	public int hBlogCountMethod() {
+		return sqlSession.selectOne("helpC.HBlogCount");
 		
 	}
      

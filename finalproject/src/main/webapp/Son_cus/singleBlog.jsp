@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<!DOCTYPE html>
 <head>
 
 <meta charset="utf-8">
@@ -22,36 +22,54 @@
 
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
+	
 	$(document).ready(function() {
-		
 		$('#comIns').on('click', reply_list);
-
+		
+		/* 삭제버튼 */
+		$('#delBtn').on('click',function(){
+			$('#sbf').attr('action', 'blogDel.do');
+			$('#sbf').submit();
+		});
+		
+		/* 수정버튼 */
+		$('#updBtn').on('click',function(){
+			$('#sbf').attr('action', 'blogUpForm.do');
+			$('#sbf').submit();
+		});
 	});
 
-function reply_list(){
-	alert($('#comInsText').val());
-	
-	$.ajax({
-		type:'GET',
-		dataType:'json',
-		url:'comInsertList.do?user_id=test01&cm_content='+$('#comInsText').val()+'&board_b_num=${bdto.b_num}',
-		success:reply_list_result
-	});
-	
-}
+	function reply_list() {
+		/* alert($('#comInsText').val());
+		alert(bnumm); */
+		$.ajax({
+			type : 'GET',
+			dataType : 'json',
+			url : 'comInsertList.do?user_id=test01&cm_content='
+					+ $('#comInsText').val() + '&board_b_num=${bdto.b_num}',
+			success : reply_list_result
+		});
+	}
 
-function reply_list_result(res){
-	alert(res);
-	$('#comlist').empty();
-	
-	$.each(res, function(index, value){
-		$('#comlist').append('<div class="media mb-4"><img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""><div class="media-body"><h4 class="mt-0">'+
-				value.user_id+'</h4><h6 class="mt-0">'+value.c_date+'</h6>'+value.cm_content+'</div></div>');
-	});
-	alert("reply_list_result end!");
-	$('#comInsText').val('');
-	/* <div class="media mb-4"><img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""><div class="media-body"><h4 class="mt-0">${cdto.user_id }</h4><h6 class="mt-0">${cdto.c_date }</h6>${cdto.cm_content }</div></div> */
-}
+	function reply_list_result(res) {
+		/* alert(res); */
+		$('#comlist').empty();
+
+		$.each(res,function(index, value) {
+			$('#comlist')
+				.append(
+					'<div class="media mb-4"><img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""><div class="media-body"><h4 class="mt-0">'
+						+ value.user_id
+						+ '</h4><h6 class="mt-0">'
+						+ value.c_date
+						+ '</h6>'
+						+ value.cm_content
+						+ '</div></div>');
+						});
+		alert("reply_list_result end!");
+		$('#comInsText').val('');
+		/* <div class="media mb-4"><img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""><div class="media-body"><h4 class="mt-0">${cdto.user_id }</h4><h6 class="mt-0">${cdto.c_date }</h6>${cdto.cm_content }</div></div> */
+	}
 </script>
 
 </head>
@@ -93,7 +111,7 @@ function reply_list_result(res){
 				<!-- Title -->
 				<h1 class="mt-4">${bdto.title }</h1>
 				<%-- <input type="hidden" value="${bdto.b_num }" id="bnum"> --%>
-				
+
 				<!-- Author -->
 				<p class="lead">
 					by <a href="#">admin<%-- ${bdto.client_id } --%></a>
@@ -106,27 +124,41 @@ function reply_list_result(res){
 				<hr>
 
 				<!-- Preview Image -->
-				<img class="img-fluid rounded" src="http://placehold.it/900x300"
-					alt="">
-
-				<hr>
-
+				<c:if test="${bdto.filename!=null }">
+					<img class="img-fluid rounded" src="C:/job/workspace_spring/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/finalproject/temp/${bdto.filename }" alt="">
+					<hr>
+				</c:if>
 				<!-- Post Content -->
 				<p>${bdto.b_content }</p>
 
 				<hr>
-
+				<form method="get" id="sbf">
+					<table >
+						<tr>
+							<td><a href="helpMain.do?b_num=${bdto.b_num }&currentPage=${currentPage }">글 목록으로..</a>
+							</td>
+							<td>
+								<input type="button" value="수정" class="pull-right" id="updBtn" style="'text-align':right"/>
+								<input type="button" value="삭제" class="pull-right" id="delBtn" style="'text-align':right"/>
+								
+							</td>
+						</tr>
+					</table>
+					<input type="hidden" name="b_num" value="${bdto.b_num }">
+					<input type="hidden" name="currentPage" vlaue="${currentPage }">
+				</form>
+				<hr>
 				<!-- Comments Form -->
 				<div class="card my-4">
 					<h5 class="card-header">Leave a Comment:</h5>
-					<form action=""></form>
+
 					<div class="card-body">
-						<form>
-							<div class="form-group">
-								<textarea class="form-control" rows="3" id="comInsText"></textarea>
-							</div>
-							<button type="submit" class="btn btn-primary" id="comIns">Submit</button>
-						</form>
+
+						<div class="form-group">
+							<textarea class="form-control" rows="3" id="comInsText"></textarea>
+						</div>
+						<button type="submit" class="btn btn-primary" id="comIns">Submit</button>
+
 					</div>
 				</div>
 
@@ -157,7 +189,7 @@ function reply_list_result(res){
 					<div class="card-body">
 						<div class="input-group">
 							<input type="text" class="form-control"
-								placeholder="Search for..." > <span
+								placeholder="Search for..."> <span
 								class="input-group-btn">
 								<button class="btn btn-secondary" type="button">Go!</button>
 							</span>
@@ -190,14 +222,7 @@ function reply_list_result(res){
 
 				<!-- Side Widget -->
 				<div class="card my-4">
-					<h5 class="card-header">1:1 고객상담센터</h5>
-					<div class="card-body" style="height: 150px;">
-						<div id="chatMessageArea"></div>
-					</div>
-					<div>
-						<input type="text" style="width: 85%;" /><input type="button"
-							value="전송" style="width: 15%;">
-					</div>
+					<jsp:include page="helpchatOpen.jsp"></jsp:include>
 				</div>
 
 			</div>
@@ -218,8 +243,8 @@ function reply_list_result(res){
 	</footer>
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="Son_cus/vendor/jquery/jquery.min.js"></script>
-	<script src="Son_cus/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="./Son_cus/vendor/jquery/jquery.min.js"></script>
+	<script src="./Son_cus/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

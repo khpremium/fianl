@@ -23,6 +23,10 @@
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	
 	<!-- Processes application requests -->
 	<servlet>

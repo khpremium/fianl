@@ -5,22 +5,62 @@
 
 <mapper namespace="helpC">
 	
-	<select id="Hlist" resultType="dto.BoardDTO">
-		select * from board
+	<select id="Hlist" parameterType="dto.PageDTO" resultType="dto.BoardDTO">
+		<!-- select * from board where b_category_c_num=0 order by b_num desc -->
+		<![CDATA[
+		 select b.* from
+    	 (select rownum as rm, a.*   from(
+    	 select * from board where b_category_c_num=0 order by b_num desc)a)b
+    	 where b.rm>=#{startRow} and b.rm<=#{endRow}
+	]]>
 	</select>
 	
 	<select id="Hblog" parameterType="int" resultType="dto.BoardDTO">
 		select * from board where b_num=#{b_num}
 	</select>
 	
+	<insert id="HblogIns" parameterType="dto.BoardDTO">
+		insert into board values(board_b_num_seq.nextval, #{b_content}, #{filename,jdbcType=VARCHAR}, 0, 0, #{user_id}, 222, 0, #{title}, sysdate)
+	</insert>
+	
 	<select id="Hcomlist" parameterType="int" resultType="dto.ReplyDTO">
-		select * from b_comment where board_b_num=#{board_b_num}
+		select * from b_comment where board_b_num=#{board_b_num} order by cm_num
 	</select>
 	
 	<insert id="Hcomins" parameterType="dto.ReplyDTO">
 		insert into b_comment values(b_comment_cm_num_seq.nextval, #{cm_content}, #{board_b_num}, #{user_id}, sysdate)
 	</insert>
-</mapper>   
+	
+	<update id="HviewCnt" parameterType="int">
+		update board
+		set	viewcount=viewcount+1
+		where b_num=#{b_num}
+	</update>
+	
+	<delete id="HblogDel" parameterType="int">
+		delete from board where b_num=#{b_num}
+	</delete>
+	
+	<update id="HblogUp" parameterType="dto.BoardDTO">
+		update board set title=#{title}, b_content=#{b_content}
+		<if test="filename!=null">
+			,filename=#{filename}
+		</if>
+		where b_num=#{b_num}
+	</update>
+	
+	<delete id="HcomAllDel" parameterType="int">
+		delete b_comment where board_b_num=#{board_b_num}
+	</delete>
+	
+	<select id="Hgetfile" parameterType="int" resultType="String">
+		select filename from board where b_num=#{b_num}
+	</select>
+	
+	<select id="HBlogCount" resultType="int">
+		select count(*) from board where b_category_c_num=0
+	</select>
+</mapper>
 
 
 

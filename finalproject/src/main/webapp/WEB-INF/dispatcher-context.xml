@@ -12,7 +12,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<mvc:annotation-driven></mvc:annotation-driven>
-	
+	<aop:config proxy-target-class="true" />
 	
 
 	
@@ -79,7 +79,29 @@
 	<bean class="controller.HelpCController" >
 		<property name="service" ref="service" />
 	</bean>
-
+	<!-- 첨부 파일의 임시기억장치 경로 설정(현재버전에서는 없어도됨) -->
+	<bean id="uploadDirResource" class="org.springframework.core.io.FileSystemResource">
+		<!-- <constructor-arg value="c:temp" /> -->
+		<constructor-arg value=".src/main/webapp/" />
+	</bean>
+	<!-- 첨부파일을 임시기억장소에 저장한다.(id값 일치시켜야함) -->
+	 <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	 	<property name="uploadTempDir" ref="uploadDirResource" />
+	 	<property name="maxUploadSize" value="1000000000"></property>
+	 </bean>
+	 
+	 <!-- WebSocket 등록 -->
+	<bean id="chatWebSocketHandler" class="controller.ChatWebSocketHandler" />
+	
+	<websocket:handlers>
+		<websocket:mapping handler="chatWebSocketHandler" path="/chatws.do"/>
+	</websocket:handlers>
+	
+	 
+	 <!-- [10] View 빈 선언 -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="1" />
+	</bean>
 	<!-- viewResolver -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

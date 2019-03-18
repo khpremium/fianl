@@ -19,6 +19,27 @@
 <!-- Custom styles for this template -->
 <link href="Son_cus/css/blog-home.css" rel="stylesheet">
 
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		if(${pv.currentPage}==1){
+			$('#preBtn').removeClass();
+			$('#preBtn').addClass('page-item disabled');
+		}else{
+			$('#preBtn').removeClass();
+			$('#preBtn').addClass('page-item');
+		}
+		if(${pv.currentPage}==${pv.totalPage}){
+			$('#nextBtn').removeClass();
+			$('#nextBtn').addClass('page-item disabled');
+		}else{
+			$('#nextBtn').removeClass();
+			$('#nextBtn').addClass('page-item');
+		}
+	});
+</script>
+
 </head>
 
 <body>
@@ -71,17 +92,20 @@
 						
 						<c:forEach var="dto" items="${HList}">
 						<tr>
-							<td><a href="helpBlog.do?b_num=${dto.b_num}">${dto.b_num }</td>
-							<td><a href="helpBlog.do?b_num=${dto.b_num}">${dto.title }</td>
+							<td><a href="helpBlog.do?b_num=${dto.b_num}&currentPage=${pv.currentPage}">${dto.b_num }</td>
+							<td><a href="helpBlog.do?b_num=${dto.b_num}&currentPage=${pv.currentPage}">${dto.title }</td>
 							<td>${dto.viewcount }</td>
 							<td>${dto.upload_date }</td>
 						</tr>
 						</c:forEach>
 					</table>
+					
 				</div>
-
+				<form action="boardWirete.do" method="post">
+					<input type="submit" id="bwriteBtn" value="글쓰기" />
+				</form>
 				<!-- Blog Post -->
-				<div class="card mb-4">
+				<!-- <div class="card mb-4">
 					<img class="card-img-top" src="http://placehold.it/750x300"
 						alt="Card image cap">
 					<div class="card-body">
@@ -95,10 +119,10 @@
 					<div class="card-footer text-muted">
 						Posted on January 1, 2017 by <a href="#">Start Bootstrap</a>
 					</div>
-				</div>
+				</div> -->
 
 				<!-- Blog Post -->
-				<div class="card mb-4">
+				<!-- <div class="card mb-4">
 					<img class="card-img-top" src="http://placehold.it/750x300"
 						alt="Card image cap">
 					<div class="card-body">
@@ -112,14 +136,18 @@
 					<div class="card-footer text-muted">
 						Posted on January 1, 2017 by <a href="#">Start Bootstrap</a>
 					</div>
-				</div>
+				</div> -->
 
 				<!-- Pagination -->
 				<ul class="pagination justify-content-center mb-4">
-					<li class="page-item"><a class="page-link" href="#">&larr;
-							Older</a></li>
-					<li class="page-item disabled"><a class="page-link" href="#">Newer
-							&rarr;</a></li>
+				
+					<li id="preBtn"><a class="page-link" href="helpMain.do?currentPage=${pv.currentPage-1 }">&larr;Newer
+							</a></li>
+				
+				
+					<li id="nextBtn"><a class="page-link" href="helpMain.do?currentPage=${pv.currentPage+1 }">
+							Older&rarr;</a></li>
+					
 				</ul>
 
 			</div>
@@ -165,14 +193,17 @@
 				</div>
 
 				<!-- Side Widget -->
+				
 				<div class="card my-4">
-					<h5 class="card-header">1:1 고객상담센터</h5>
+					<jsp:include page="helpchatOpen.jsp"></jsp:include>
+					<!-- <h5 class="card-header">1:1 고객상담센터</h5>
 					<div class="card-body" style="height:150px;">
 						<div id="chatMessageArea"></div>
 					</div>
-					<div><input type="text" style="width:85%;"/><input type="button" value="전송" style="width:15%;"></div>
+					<div><input type="text" style="width:85%;"/><input type="button" value="전송" style="width:15%;"></div> -->
 				</div>
-
+				
+				
 			</div>
 
 		</div>
