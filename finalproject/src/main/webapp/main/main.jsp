@@ -86,7 +86,7 @@ function chkProcess() {
 		alert('nono');
 	} else {
 		if($('.guestpro:checked').val() == 'guest') {
-			$('form').attr('action', 'select.do');
+			$('form').attr('action', 'guestInfo.do');
 		}
 		alert("됫음");
 		$("form").submit();

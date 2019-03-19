@@ -29,7 +29,7 @@ public class ReservationController {
 	}
 	
 	// http://localhost:8090/myfinal/select.do
-	@RequestMapping("/select.do")
+	@RequestMapping("/guestInfo.do")
 	public ModelAndView select(ReservationDTO rdto) {
 		ModelAndView mav = new ModelAndView();
 		// mav.addObject("list", service.searchProcess());
@@ -52,8 +52,8 @@ public class ReservationController {
 		}*/
 		mav.addObject("dep_date", rdto.getDep_date());
 		mav.addObject("arv_date", rdto.getArv_date());
-		rdto.setDep_date(rdto.getDep_date().replaceAll("-", ""));
-		rdto.setArv_date(rdto.getArv_date().replaceAll("-", ""));
+		rdto.setDep_date(rdto.getDep_date().replaceAll("-", "").substring(2));
+		rdto.setArv_date(rdto.getArv_date().replaceAll("-", "").substring(2));
 		mav.addObject("dList", service.deptListProcess(rdto));
 		mav.addObject("rList", service.returnListProcess(rdto));
 		mav.addObject("dep_name", service.cityNameProcess(rdto.getCity_code_dep()));

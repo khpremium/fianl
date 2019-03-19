@@ -198,10 +198,10 @@ function kakaoResultProcess(res) {
 									예약자<span class="resName">ㅁ</span>
 								</p>
 								<p>
-									출국<span class="filghtName1"></span>
+									출국<span class="dep_airinfo_flight"></span>
 								</p>
 								<p>
-									귀국<span class="filghtName2"></span>
+									귀국<span class="arv_airinfo_flight"></span>
 								</p>
 								<p>
 									요금<span class="price">0</span>원
@@ -216,7 +216,7 @@ function kakaoResultProcess(res) {
 								<hr/>
 								<button id="kakaopayment" class="btn btn-primary btn-lg">Kakao Pay</button>
 								<hr/>
-								<button id="payment2" class="btn btn-primary btn-lg">일반결제</button>
+								<button id="payment" class="btn btn-primary btn-lg">일반결제</button>
 								<button id="cancel" class="btn btn-primary btn-lg">취소</button>
 							</div>
 						</div>

@@ -11,18 +11,9 @@ $(document).ready(function() {
 		location.href="main.do";
 	});
 	
-	$('#payment').on('click', paymentProcess);
-	
 	$(document).on('click', 'table input[name="aa"]', test);
 	$(document).on('click', 'table input[name="bb"]', test2);
 });
-
-function paymentProcess() {
-	if($('.filghtName1').text() == '' || $('.filghtName2').text() == '') {
-		alert('항공편을 선택해주세요');
-		return false;
-	}
-}
 
 function test() {
 	console.log($('input[name="aa"]').index(this));
@@ -32,18 +23,18 @@ function test() {
 	// alert($(parent).children('td:eq(0)').text());
 	if(one == 0) {
 		if(two == 0) {
-			$('.filghtName1').text($(parent).children('td:eq(1)').text());
+			$('.dep_airinfo_flight').text($(parent).children('td:eq(1)').text());
 			$('.price').text(num);
 			$('.totalPrice').text(num * p_count);
 		} else {
 			var currNum = Number($('.price').text());
-			$('.filghtName1').text($(parent).children('td:eq(1)').text());
+			$('.dep_airinfo_flight').text($(parent).children('td:eq(1)').text());
 			$('.price').text(currNum + num);
 			$('.totalPrice').text((currNum * p_count) + (num * p_count));
 		}
 	} else {
 		var currNum = Number($('.price').text());
-		$('.filghtName1').text($(parent).children('td:eq(1)').text());
+		$('.dep_airinfo_flight').text($(parent).children('td:eq(1)').text());
 		$('.price').text(currNum - one + num);
 		$('.totalPrice').text((currNum * p_count) - (one * p_count) + (num * p_count));
 	}
@@ -56,18 +47,18 @@ function test2() {
 	var num = Number($(parent).children('td:eq(4)').text());
 	if(two == 0) {
 		if(one == 0) {
-			$('.filghtName2').text($(parent).children('td:eq(1)').text());
+			$('.arv_airinfo_flight').text($(parent).children('td:eq(1)').text());
 			$('.price').text(num);
 			$('.totalPrice').text(num * p_count);
 		} else {
 			var currNum = Number($('.price').text());
-			$('.filghtName2').text($(parent).children('td:eq(1)').text());
+			$('.arv_airinfo_flight').text($(parent).children('td:eq(1)').text());
 			$('.price').text(currNum + num);
 			$('.totalPrice').text((currNum * p_count) + (num * p_count));
 		}
 	} else {
 		var currNum = Number($('.price').text());
-		$('.filghtName2').text($(parent).children('td:eq(1)').text());
+		$('.arv_airinfo_flight').text($(parent).children('td:eq(1)').text());
 		$('.price').text(currNum - two + num);
 		$('.totalPrice').text((currNum * p_count) - (two * p_count) + (num * p_count));
 	}
