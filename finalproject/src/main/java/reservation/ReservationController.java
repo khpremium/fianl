@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,7 +30,7 @@ public class ReservationController {
 	}
 	
 	// http://localhost:8090/myfinal/select.do
-	@RequestMapping("/guestInfo.do")
+	@RequestMapping(value = "/guestInfo.do", method = RequestMethod.POST)
 	public ModelAndView select(ReservationDTO rdto) {
 		ModelAndView mav = new ModelAndView();
 		// mav.addObject("list", service.searchProcess());
@@ -38,7 +39,7 @@ public class ReservationController {
 		return mav;
 	}
 	
-	@RequestMapping("/selectFlight.do")
+	@RequestMapping(value = "/selectFlight.do", method = RequestMethod.POST)
 	public ModelAndView selectFlight(ReservationDTO rdto, HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView();
 		/*if(guestchk == "noguest") {
@@ -61,6 +62,11 @@ public class ReservationController {
 		mav.addObject("rdto", rdto);
 		mav.setViewName("/reservation/select");
 		return mav;
+	}
+	
+	@RequestMapping(value = {"/selectFlight.do", "/guestInfo.do"} , method = RequestMethod.GET)
+	public String redirectMain() {
+		return "redirect:/main.do";
 	}
 	
 	@RequestMapping("/reservation.do")

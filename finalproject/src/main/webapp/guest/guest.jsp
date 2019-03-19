@@ -16,11 +16,22 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('button').on('click', function() {
-			
-		});
-	});
+	$(document).ready(
+			function() {
+				$('button').on(
+						'click',
+						function() {
+							if ($('#non_name').val() == ''
+									|| $('#non_phone').val() == ''
+									|| $('#non_email').val() == ''
+									|| $('#non_pass').val() == '') {
+								alert('정보를 전부 입력해주세요');
+								return false;
+							} else {
+								$('form').submit();
+							}
+						});
+			});
 </script>
 </head>
 <body id="page-top">
@@ -49,11 +60,19 @@
 		</div>
 	</nav>
 
-	<header class="bg-primary text-white">
-		<div class="container text-center">
-			<h1>Welcome to Scrolling Nav</h1>
-			<p class="lead">A landing page template freshly redesigned for
-				Bootstrap 4</p>
+	<!-- Header -->
+	<header class="bg-primary py-5 mb-5">
+		<div class="container h-100">
+			<div class="row h-100 align-items-center">
+				<div class="col-lg-12">
+					<h1 class="display-4 text-white mt-5 mb-2">Business Name or
+						Tagline</h1>
+					<p class="lead mb-5 text-white-50">Lorem ipsum dolor sit amet,
+						consectetur adipisicing elit. Non possimus ab labore provident
+						mollitia. Id assumenda voluptate earum corporis facere quibusdam
+						quisquam iste ipsa cumque unde nisi, totam quas ipsam.</p>
+				</div>
+			</div>
 		</div>
 	</header>
 
@@ -62,14 +81,14 @@
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
 
-					<form action="selectFlight.do" method="get">
+					<form action="selectFlight.do" method="post">
 						<table>
 							<tr>
 								<th colspan="2">정보입력</th>
 							</tr>
 							<tr>
 								<td>name</td>
-								<td><input type="text" name="non_name"></td>
+								<td><input type="text" name="non_name" id="non_name"></td>
 							</tr>
 							<tr>
 								<td>gender</td>
@@ -79,16 +98,16 @@
 							</tr>
 							<tr>
 								<td>phone</td>
-								<td><input type="text" name="non_phone"
+								<td><input type="text" name="non_phone" id="non_phone"
 									placeholder="'-'를 제외하고 입력하세요"></td>
 							</tr>
 							<tr>
 								<td>email</td>
-								<td><input type="text" name="non_email"></td>
+								<td><input type="text" name="non_email" id="non_email"></td>
 							</tr>
 							<tr>
 								<td>password</td>
-								<td><input type="password" name="non_pass"></td>
+								<td><input type="password" name="non_pass" id="non_pass"></td>
 							</tr>
 						</table>
 						<input type="hidden" name="dep_date" value="${rdto.dep_date}">
