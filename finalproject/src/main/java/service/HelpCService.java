@@ -21,4 +21,6 @@ public interface HelpCService {
 	public int hBlogCountProcess();
 	public int hBlogCountProcess2(String searchText);
 	public List<BoardDTO> hListProcess2(PageDTO pdto);
+	public String hFileProcess(int b_num);
+	public void hComDelProcess(int cm_num);
 }

@@ -30,8 +30,6 @@ public class HelpCDaoImp implements HelpCDAO{
 
 	@Override
 	public List<ReplyDTO> hComListMethod(int board_b_num) {
-		System.out.println("hComListMethod");
-		
 		return sqlSession.selectList("helpC.Hcomlist", board_b_num);
 	}
 
@@ -90,6 +88,17 @@ public class HelpCDaoImp implements HelpCDAO{
 	@Override
 	public List<BoardDTO> hListMethod2(PageDTO pdto) {
 		return sqlSession.selectList("helpC.Hlist2", pdto);
+	}
+
+	@Override
+	public String hFileMethod(int b_num) {
+		return sqlSession.selectOne("helpC.Hfile", b_num);
+	}
+
+	@Override
+	public void hComDelMethod(int cm_num) {
+		sqlSession.delete("helpC.HComDel", cm_num);
+		
 	}
      
 } 

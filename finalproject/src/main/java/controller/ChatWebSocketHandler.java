@@ -36,7 +36,6 @@ public class ChatWebSocketHandler extends TextWebSocketHandler{
 			//각 세션에게 메시지를 전송
 			socket.sendMessage(sentMsg);
 		}
-		
 	}
 	
 	@Override

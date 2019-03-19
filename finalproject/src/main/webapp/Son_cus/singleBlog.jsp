@@ -36,8 +36,42 @@
 			$('#sbf').attr('action', 'blogUpForm.do');
 			$('#sbf').submit();
 		});
+		
+		/*댓글삭제*/
+		$(document).on("click", '[src="images/삭제.png"]', reply_del);
+		
+		/*댓글 수정*/
+		$(document).on("click", '[src="images/수정.png"]', reply_updForm);
 	});
 
+	
+	function reply_updForm(){
+		var condiv = $(this).prev().prev().prev().children()[2];
+		var context = $(condiv, 'div').text();
+		alert(context);
+		$(condiv).parent().append('<input type="text">');
+		$(condiv).next().val(context);
+	}
+	
+	function reply_updPro(){
+		$.ajax({
+			type : 'GET',
+			dataType : 'json',
+			url : 'hComUpd.do?cm_num='+$(this).prev().val()+'&b_num=${bdto.b_num}&cm_content='+$(this).next().val(),
+			
+		});
+	}
+	
+	function reply_del(){
+		$.ajax({
+			type : 'GET',
+			dataType : 'json',
+			url : 'hComDel.do?cm_num='+$(this).next().val()+'&b_num=${bdto.b_num}',
+			success : reply_list_result
+		});
+		
+	}
+	
 	function reply_list() {
 		/* alert($('#comInsText').val());
 		alert(bnumm); */
@@ -56,8 +90,8 @@
 
 		$.each(res, function(index, value) {
 							var sdata = new Date(value.c_date);
-							var sm = sdata.getFullYear()+"/";
-							sm+=(sdata.getMonth()+1)+"/";
+							var sm = sdata.getFullYear()+"-";
+							sm+=(sdata.getMonth()+1)+"-";
 							sm+=sdata.getDate();
 							$('#comlist')
 									.append(
@@ -65,9 +99,12 @@
 													+ value.user_id
 													+ '</h4><h6 class="mt-0">'
 													+ sm
-													+ '</h6>'
+													+ '</h6><div id="cm_content">'
 													+ value.cm_content
-													+ '</div></div>');
+													+ '</div></div><input type="image" src="images/삭제.png"  width="30px"	height="30px">'
+													+'<input type="hidden" name="cm_num" value="'+value.cm_num+'">'
+													+'<input type="image" src="images/수정.png" width="30px"	height="32px">'
+													+'<input type="hidden" name="cm_content" value="'+value.cm_content +'"></div>');
 						});
 		
 		$('#comInsText').val('');
@@ -176,8 +213,12 @@
 							<div class="media-body">
 								<h4 class="mt-0">${cdto.user_id }</h4>
 								<h6 class="mt-0">${cdto.c_date }</h6>
-								${cdto.cm_content }
+								<div id="cm_content">${cdto.cm_content } </div>
 							</div>
+							<input type="image" src="images/삭제.png" width="30px"	height="30px">
+							<input type="hidden" name="cm_num" value="${cdto.cm_num }">
+							<input type="image" src="images/수정.png" width="30px"	height="32px">
+							<input type="hidden" name="cm_content" value="${cdto.cm_content }">
 						</div>
 					</c:forEach>
 					<!-- Comment with nested comments -->

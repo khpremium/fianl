@@ -75,6 +75,14 @@
     	 and upper(title) like '%' || upper(#{searchWord}) || '%'
 		]]>
 	</select>
+	
+	<select id="Hfile" parameterType="int" resultType="String">
+		select filename form board where b_num=#{b_num}
+	</select>
+	
+	<delete id="HComDel" parameterType="int">
+		delete from b_comment where cm_num=#{cm_num}
+	</delete>
 </mapper>
 
 

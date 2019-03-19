@@ -20,4 +20,6 @@ public interface HelpCDAO {
 	public int hBlogCountMethod();
 	public int hBlogCountMethod2(String searchText);
 	public List<BoardDTO> hListMethod2(PageDTO pdto);
+	public String hFileMethod(int b_num);
+	public void hComDelMethod(int cm_num);
 }

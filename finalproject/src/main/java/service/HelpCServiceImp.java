@@ -124,5 +124,15 @@ public class HelpCServiceImp implements HelpCService{
 	public List<BoardDTO> hListProcess2(PageDTO pdto) {
 		return hdao.hListMethod2(pdto);
 	}
+
+	@Override
+	public String hFileProcess(int b_num) {
+		return hdao.hFileMethod(b_num);
+	}
+
+	@Override
+	public void hComDelProcess(int cm_num) {
+		hdao.hComDelMethod(cm_num);
+	}
 	
 }

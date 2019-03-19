@@ -10,6 +10,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.tiles.request.Request;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestAttribute;
@@ -42,7 +43,7 @@ public class HelpCController {
 	public ModelAndView helpMain(PageDTO pv) {
 		ModelAndView mav = new ModelAndView();
 		int totalRecord =  service.hBlogCountProcess();
-		if(totalRecord >= 1) {
+		if(totalRecord >= 1) { 
 			if (pv.getCurrentPage() == 0) {
 				currentPage =1;
 			} else {
@@ -60,7 +61,6 @@ public class HelpCController {
 	@RequestMapping("/helpBlog.do")
 	public ModelAndView helpBlog(int b_num, int currentPage) {
 		ModelAndView mav = new ModelAndView();
-		service.hReplyCntProcess(b_num);
 		mav.addObject("currentPage", currentPage);
 		mav.addObject("cList", service.hcomListProcess(b_num));
 		mav.addObject("bdto", service.hBlogProcess(b_num));
@@ -88,7 +88,7 @@ public class HelpCController {
 			String fileName = file.getOriginalFilename();
 			UUID random = UUID.randomUUID();
 			
-			String root = request.getSession().getServletContext().getRealPath("/");
+			/*String root = request.getSession().getServletContext().getRealPath("/");*/
 			//System.out.println(root);
 			/*String saveDirectory = root+"temp"+File.separator;*/
 			String saveDirectory = "C:/Users/user2/git/fianl/finalproject/src/main/webapp/images";
@@ -114,8 +114,14 @@ public class HelpCController {
 	}
 	
 	@RequestMapping("/blogDel.do")
-	public String blogDel(int b_num) {
+	public String blogDel(int b_num, HttpRequest request) {
 		service.hComAllDelProcess(b_num);
+		String filename = service.hFileProcess(b_num);
+		if (filename != null) {
+			String saveDirectory = "C:/Users/user2/git/fianl/finalproject/src/main/webapp/images";
+			File fe = new File(saveDirectory, filename);
+			fe.delete();
+		}
 		service.hBlogDelProcess(b_num);
 		return "redirect:/helpMain.do";
 	}
@@ -154,6 +160,13 @@ public class HelpCController {
 		
 		mav.setViewName("helpC");
 		return mav;
+	}
+	
+	@RequestMapping("/hComDel.do")
+	public @ResponseBody List<ReplyDTO> hComDel(int cm_num, int b_num) {
+		service.hComDelProcess(cm_num);
+		
+		return service.hcomListProcess(b_num);
 	}
 	
 	//http://localhost:8090/myfinal/kakaoLogin.do
