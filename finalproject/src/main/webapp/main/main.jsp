@@ -205,13 +205,13 @@ function cityprocess(){
         </select>
         
         <label>인원 수</label>
-		<input class="count" value="1" readonly="" name="p_count">
+		<input class="count" value="1" readonly="readonly" name="p_count">
 		<input class="test1" value="-" type="button" count_range="m">
 		<input class="test1" value="+" type="button" count_range="p">	
 			
         <br/>
         <br/>
-        <label>출국일</label><input type="date" class="date" id="dep_date" name="dep_date">       
+        <label>출국일</label><input type="date" class="date" id="dep_date" name="dep_date">
         <label>귀국일</label><input type="date" class="date" id="arv_date" name="arv_date">
         <br/>
         <br/>
