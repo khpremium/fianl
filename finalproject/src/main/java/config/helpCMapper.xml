@@ -28,7 +28,7 @@
 	</select>
 	
 	<insert id="Hcomins" parameterType="dto.ReplyDTO">
-		insert into b_comment values(b_comment_cm_num_seq.nextval, #{cm_content}, #{board_b_num}, #{user_id}, sysdate)
+		insert into b_comment values(b_comment_cm_num_seq.nextval, #{cm_content}, #{board_b_num}, #{user_id}, sysdate, null)
 	</insert>
 	
 	<update id="HviewCnt" parameterType="int">

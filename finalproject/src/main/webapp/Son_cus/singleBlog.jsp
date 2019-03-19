@@ -54,21 +54,22 @@
 		/* alert(res); */
 		$('#comlist').empty();
 
-		$
-				.each(
-						res,
-						function(index, value) {
+		$.each(res, function(index, value) {
+							var sdata = new Date(value.c_date);
+							var sm = sdata.getFullYear()+"/";
+							sm+=(sdata.getMonth()+1)+"/";
+							sm+=sdata.getDate();
 							$('#comlist')
 									.append(
 											'<div class="media mb-4"><img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""><div class="media-body"><h4 class="mt-0">'
 													+ value.user_id
 													+ '</h4><h6 class="mt-0">'
-													+ value.c_date
+													+ sm
 													+ '</h6>'
 													+ value.cm_content
 													+ '</div></div>');
 						});
-		alert("reply_list_result end!");
+		
 		$('#comInsText').val('');
 		/* <div class="media mb-4"><img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""><div class="media-body"><h4 class="mt-0">${cdto.user_id }</h4><h6 class="mt-0">${cdto.c_date }</h6>${cdto.cm_content }</div></div> */
 	}
@@ -128,8 +129,8 @@
 				<!-- Preview Image -->
 				<c:if test="${bdto.filename!=null }">
 					<img class="img-fluid rounded"
-						src="C:/job/workspace_spring/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/finalproject/temp/${bdto.filename }"
-						alt="">
+						src="images/${bdto.filename}"
+						alt="#">
 					<hr>
 				</c:if>
 				<!-- Post Content -->

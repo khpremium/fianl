@@ -176,9 +176,7 @@
 				</div> -->
 
 			<!-- Side Widget -->
-			<div class="card my-4">
-					<jsp:include page="helpchatOpen.jsp"></jsp:include>
-			</div>
+			
 
 		</div>
 

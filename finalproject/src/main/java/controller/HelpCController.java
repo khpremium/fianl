@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.tiles.request.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -89,8 +90,8 @@ public class HelpCController {
 			
 			String root = request.getSession().getServletContext().getRealPath("/");
 			//System.out.println(root);
-			String saveDirectory = root+"temp"+File.separator;
-			/*String saveDirectory = "C:\\job\\workspace_spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\finalproject\\images";*/
+			/*String saveDirectory = root+"temp"+File.separator;*/
+			String saveDirectory = "C:/Users/user2/git/fianl/finalproject/src/main/webapp/images";
 			File fe = new File(saveDirectory);
 			if(!fe.exists()) {
 				fe.mkdir();
@@ -155,4 +156,9 @@ public class HelpCController {
 		return mav;
 	}
 	
+	//http://localhost:8090/myfinal/kakaoLogin.do
+	@RequestMapping("/kakaoLogin.do")
+	public String kakaoLogin() {
+		return "kakaoLogin";
+	}
 }
