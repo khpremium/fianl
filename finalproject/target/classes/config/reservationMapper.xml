@@ -31,11 +31,17 @@
 		update from airinfo set seat=seat-1 where flight=#{flight}
 	</update>
 	
-	<insert id="client">
-		insert into reservation(rv_num) values()
+	<insert id="client" parameterType="reservation.ReservationDTO">
+		insert into
+		reservation(rv_num, payment_chk, airinfo_flight, user_id, p_count)
+		values(#{rv_num}, #{payment_chk}, #{airinfo_flight}, #{user_id}, #{p_count})
 	</insert>
 	
-	<insert id="guest"></insert>
+	<insert id="guest" parameterType="reservation.ReservationDTO">
+		insert into
+		reservation(rv_num, payment_chk, airinfo_flight, non_name, non_gender, non_phonenumber, non_email, non_pass, p_count)
+		values(#{rv_num}, #{payment_chk}, #{airinfo_flight}, #{non_name}, #{non_gender}, #{non_phone}, #{non_email}, #{non_pass}, #{p_count})
+	</insert>
 	
 </mapper>
 

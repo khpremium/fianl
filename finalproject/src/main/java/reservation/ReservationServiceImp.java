@@ -40,8 +40,14 @@ public class ReservationServiceImp implements ReservationService {
 			dao.seatUptMethod(rdto.getArv_airinfo_flight());
 		}
 		if(rdto.getGuestchk().equals("noguest")) {
+			rdto.setAirinfo_flight(rdto.getDep_airinfo_flight());
+			dao.clientResMethod(rdto);
+			rdto.setAirinfo_flight(rdto.getArv_airinfo_flight());
 			dao.clientResMethod(rdto);
 		} else {
+			rdto.setAirinfo_flight(rdto.getDep_airinfo_flight());
+			dao.guestResMethod(rdto);
+			rdto.setAirinfo_flight(rdto.getArv_airinfo_flight());
 			dao.guestResMethod(rdto);
 		}
 	}

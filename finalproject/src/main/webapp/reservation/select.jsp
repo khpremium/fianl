@@ -49,7 +49,10 @@ $(document).ready(function(){
     var elNaverPayBtn = document.getElementById("naverpayment");
 
     elNaverPayBtn.addEventListener("click", function() {
-    	
+    	if($('.dep_airinfo_flight') == '' || $('.arv_airinfo_flight') == '') {
+    		alert('비행편을 선택해주세요.');
+    		return false;
+    	}
         oPay.open({
           "merchantUserKey": "123",
           "merchantPayKey": "123",
@@ -62,6 +65,11 @@ $(document).ready(function(){
     });
     
     $('#kakaopayment').on('click', function() {
+    	if($('.dep_airinfo_flight') == '' || $('.arv_airinfo_flight') == '') {
+    		alert('비행편을 선택해주세요.');
+    		return false;
+    	}
+    	
     	$.ajax({
     		type : 'GET',
     		url : 'kakaoPro.do',
@@ -195,7 +203,16 @@ function kakaoResultProcess(res) {
 							<!-- 오른쪽 편명, 요금, 가격 -->
 							<div id="choice">
 								<p>
-									예약자<span class="resName">ㅁ</span>
+									예약자<span class="resName">
+										<c:choose>
+											<c:when test="${rdto.guestchk == 'guest'}">
+												${rdto.non_name}님
+											</c:when>
+											<c:otherwise>
+												client님
+											</c:otherwise>
+										</c:choose>
+									</span>
 								</p>
 								<p>
 									출국<span class="dep_airinfo_flight"></span>
