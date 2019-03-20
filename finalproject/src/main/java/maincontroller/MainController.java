@@ -35,7 +35,7 @@ public class MainController {
 		/*session.getAttribute(id);*/
 		mav.addObject("aList",service.ListProcess());
 		mav.addObject("rList",service.rListProcess("222"));
-		mav.setViewName("main/main");
+		mav.setViewName("view/main");
 		return mav;
 	}// list
 	
