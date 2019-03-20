@@ -33,6 +33,4 @@ public class MainController {
 		return mav;
 	}// list
 	
-	
-	
 }// class

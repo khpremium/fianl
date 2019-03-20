@@ -16,22 +16,27 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(
-			function() {
-				$('button').on(
-						'click',
-						function() {
-							if ($('#non_name').val() == ''
-									|| $('#non_phone').val() == ''
-									|| $('#non_email').val() == ''
-									|| $('#non_pass').val() == '') {
-								alert('정보를 전부 입력해주세요');
-								return false;
-							} else {
-								$('form').submit();
-							}
-						});
-			});
+	$(document).ready(function() {
+		var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		var phoneRule = /^[A-Za-z0-9]{10,11}$/;
+		$('button').on('click', function() {
+			if ($('#non_name').val() == ''
+				|| $('#non_phonenumber').val() == ''
+				|| $('#non_email').val() == ''
+				|| $('#non_pass').val() == '') {
+				alert('정보를 전부 입력해주세요');
+				return false;
+			} else if(!emailRule.test($('#non_email').val())) {
+				alert('이메일을 확인해주세요.');
+				return false;
+			} else if(!phoneRule.test($('#non_phonenumber').val())) {
+				alert('전화번호를 확인해주세요.');
+				return false;
+			} else {
+				$('form').submit();
+			}
+		});
+	});
 </script>
 </head>
 <body id="page-top">
@@ -98,7 +103,7 @@
 							</tr>
 							<tr>
 								<td>phone</td>
-								<td><input type="text" name="non_phone" id="non_phone"
+								<td><input type="text" name="non_phonenumber" id="non_phonenumber"
 									placeholder="'-'를 제외하고 입력하세요"></td>
 							</tr>
 							<tr>

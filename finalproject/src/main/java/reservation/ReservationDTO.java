@@ -5,13 +5,13 @@ public class ReservationDTO {
 	private int payment_chk;
 	private String airinfo_flight;
 	private String client_id;
-	private int p_count;
 	private String non_name;
-	private String non_phone;
+	private String non_phonenumber;
 	private String non_email;
 	private String non_gender;
 	private String non_birth;
 	private String non_pass;
+	private int p_count;
 	private String guestchk;
 	private String city_code_dep;
 	private String city_code_arv;
@@ -128,12 +128,12 @@ public class ReservationDTO {
 		this.non_name = non_name;
 	}
 
-	public String getNon_phone() {
-		return non_phone;
+	public String getNon_phonenumber() {
+		return non_phonenumber;
 	}
 
-	public void setNon_phone(String non_phone) {
-		this.non_phone = non_phone;
+	public void setNon_phonenumber(String non_phonenumber) {
+		this.non_phonenumber = non_phonenumber;
 	}
 
 	public String getNon_email() {
