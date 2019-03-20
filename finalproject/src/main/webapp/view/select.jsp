@@ -148,10 +148,8 @@
 				<h1 class="mt-4">${dep_name}→${arv_name}</h1>
 
 				<!-- Date/Time -->
-				<p>${dep_date}~ ${arv_date}</p>
+				<p>${dep_date}</p>
 
-				비행기선택ㄱㄱ
-				<p>여정1</p>
 				<!-- 출발비행기 -->
 				<div id="dept">
 					<table>
@@ -179,7 +177,13 @@
 						</c:forEach>
 					</table>
 				</div>
-				<p>여정2</p>
+
+				<!-- Title -->
+				<h1 class="mt-4">${arv_name}→${dep_name}</h1>
+
+				<!-- Date/Time -->
+				<p>${arv_date}</p>
+				
 				<!-- 도착비행기 -->
 				<div id="arrv">
 					<table>

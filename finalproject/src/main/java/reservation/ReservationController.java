@@ -76,9 +76,16 @@ public class ReservationController {
 		if(rdto.getGuestchk() == null)
 			mav.setViewName("redirect:/main.do");
 		else {
-			mav.addObject("rv_code", rdto.getRv_code());
-			mav.setViewName("/view/guestalert");
+			mav.setViewName("redirect:/guestAlert.do?rv_code=" + rdto.getRv_code());
 		}
+		return mav;
+	}
+	
+	@RequestMapping("/guestAlert.do")
+	public ModelAndView guestAlert(String rv_code) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("rv_code", rv_code);
+		mav.setViewName("/view/guestalert");
 		return mav;
 	}
 	

@@ -64,7 +64,7 @@
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
 					<span>고객님의 예약번호는</span><br>
-					<h4>${rv_num}</h4><span>입니다.</span><br>
+					<h4>${rv_code}</h4><span>입니다.</span><br>
 					<a href="main.do" class="btn btn-primary">확인</a>
 				</div>
 			</div>
