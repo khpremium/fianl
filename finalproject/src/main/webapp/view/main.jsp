@@ -85,9 +85,6 @@ function chkProcess() {
 	} else if($("#arv_date").val() == '') {
 		alert('nono');
 	} else {
-		if($('.guestpro:checked').val() == 'guest') {
-			$('form').attr('action', 'guestInfo.do');
-		}
 		alert("됫음");
 		$("form").submit();
 	}
@@ -135,10 +132,10 @@ function cityprocess(){
 </head>
 <body>
 
-  <!-- 헤더 메뉴부분 끝 -->
+  <!-- 헤더 메뉴부분 시작 -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Start Bootstrap</a>
+      <a class="navbar-brand" href="#">Start Airline</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -150,13 +147,19 @@ function cityprocess(){
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="#">Join us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
+            <a class="nav-link" href="#">Notice</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="#">Board</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Priview</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">MyPage</a>
           </li>
         </ul>
       </div>
@@ -164,18 +167,22 @@ function cityprocess(){
   </nav>
   <!-- 헤더 메뉴부분 끝 -->
   
-  <!-- Header --><!-- 퍼런색 부분 -->
+  <!-- Header --><!-- 회식 바탕 부분 -->
   <header class="bg-primary py-5 mb-5">
     <div class="container h-100">
       <div class="row h-100 align-items-center">
         <div class="col-lg-12">
-          <h1 class="display-4 text-white mt-5 mb-2">Business Name or Tagline</h1>
-          <p class="lead mb-5 text-white-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non possimus ab labore provident mollitia. Id assumenda voluptate earum corporis facere quibusdam quisquam iste ipsa cumque unde nisi, totam quas ipsam.</p>
+          <h1 class="display-4 text-white mt-5 mb-2">Travel Reservation or Information</h1>
+          <p class="lead mb-5 text-white-50">
+			Life is short and the world is wide. Therefore,
+		 	it is good to start exploring the world quickly,<br/>		 	
+		 	Go when you are worried about going !
+			</p>
         </div>
       </div>
     </div>
   </header>
-  <!-- 퍼런색 부분끝 -->
+  <!-- 회색 바탕 부분끝 -->
 
   <!-- Page Content -->
   <div class="container">
@@ -184,7 +191,7 @@ function cityprocess(){
     <div class="row">
     
       <div class="col-md-8 mb-5">
-      	<form action="selectFlight.do" method="post">
+      	<form action="selectFlight.do" method="get">
         <h2>Reservaion now</h2>
         <hr/>
         
@@ -202,24 +209,24 @@ function cityprocess(){
         <c:forEach items="${aList}" var="dto">
         <option value="${dto.city_code}">${dto.city_name}</option>
         </c:forEach>
-        </select>
-        
+        </select>   
+             
         <label>인원 수</label>
-		<input class="count" value="1" readonly="readonly" name="p_count">
+		<input class="count" value="1" readonly="" name="">
 		<input class="test1" value="-" type="button" count_range="m">
 		<input class="test1" value="+" type="button" count_range="p">	
 			
         <br/>
         <br/>
-        <label>출국일</label><input type="date" class="date" id="dep_date" name="dep_date">
-        <label>귀국일</label><input type="date" class="date" id="arv_date" name="arv_date">
+        <label>출국일</label><input type="date" class="date" id="dep_date">       
+        <label>귀국일</label><input type="date" class="date" id="arv_date">
         <br/>
         <br/>
         
         <input type="radio" name="guestchk" class="guestpro" value="noguest" checked="checked">
 		<label>회원</label> 
 		&nbsp;<input type="radio" name="guestchk" class="guestpro" value="guest">
-		<label>비회원</label>
+		<label>비회원</label>       
         <br/>
         <br/>
         
@@ -237,17 +244,16 @@ function cityprocess(){
         <h2>Contact Us</h2>
         <hr>
         <address>
-          <strong>Start Bootstrap</strong>
-          <br>3481 Melrose Place
-          <br>Beverly Hills, CA 90210
-          <br>
+          <strong>Start Airline</strong>
+          <br>823-24 역삼동 
+          <br>서울 강남구 테헤란로14길 6 남도빌딩 2층          
         </address>
         <address>
           <abbr title="Phone">P:</abbr>
-          (123) 456-7890
+          (02) 1544-9970
           <br>
           <abbr title="Email">E:</abbr>
-          <a href="mailto:#">name@example.com</a>
+          <a href="mailto:#">Airline@gmail.com</a>
         </address>
         <hr/>
         <hr/>
@@ -262,45 +268,22 @@ function cityprocess(){
 
 	<!-- 여행 미리보기 시작 -->
     <div class="row">
-      <div class="col-md-4 mb-5">
-      <c:forEach var="rdto" items="${rList}">
+    
+     <c:forEach var="rdto" items="${rList}" varStatus="status" begin="1" end="3">
+      <div class="col-md-4 mb-5">     
         <div class="card h-100">
           <img class="card-img-top" src="view/images/오사카.jpg" alt="">
           <div class="card-body">
             <h4 class="card-title">${rdto.title}</h4>
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-          </div>
-          
+          </div>          
           <div class="card-footer">
             <a href="#" class="btn btn-primary">Find Out More!</a>
           </div>
-        </div>
-        </c:forEach>
+        </div>        
       </div>
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
+      </c:forEach>
+     
     </div>
     <!-- 여행 미리보기 끝 -->
     <!-- /.row -->
