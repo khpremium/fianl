@@ -100,5 +100,11 @@ public class HelpCDaoImp implements HelpCDAO{
 		sqlSession.delete("helpC.HComDel", cm_num);
 		
 	}
+
+	@Override
+	public void hComUpdMethod(ReplyDTO rdto) {
+		sqlSession.update("helpC.HComUpd", rdto);
+		
+	}
      
 } 

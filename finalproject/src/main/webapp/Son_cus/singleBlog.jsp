@@ -40,25 +40,33 @@
 		/*댓글삭제*/
 		$(document).on("click", '[src="images/삭제.png"]', reply_del);
 		
-		/*댓글 수정*/
+		/*댓글 수정폼*/
 		$(document).on("click", '[src="images/수정.png"]', reply_updForm);
+		
+		/*댓글 수정Pro*/
+		$(document).on("click", '[src="images/수정2.png"]', reply_updPro);
 	});
 
 	
 	function reply_updForm(){
 		var condiv = $(this).prev().prev().prev().children()[2];
 		var context = $(condiv, 'div').text();
-		alert(context);
-		$(condiv).parent().append('<input type="text">');
+		
+		var cm_num = $(this).prev().val();
+		$(condiv).parent().append('<input type="text" id="comupText" name="cm_content">'
+					+'<input type="hidden" name="cm_num" value="'+cm_num+'">'
+					+'<input type="image" id="updProBtn" src="images/수정2.png" width="30px" height="32px">');
 		$(condiv).next().val(context);
+		$(condiv, 'div').remove();
+		$('[src="images/수정.png"]').remove();
 	}
 	
 	function reply_updPro(){
 		$.ajax({
 			type : 'GET',
 			dataType : 'json',
-			url : 'hComUpd.do?cm_num='+$(this).prev().val()+'&b_num=${bdto.b_num}&cm_content='+$(this).next().val(),
-			
+			url : 'hComUpd.do?cm_num='+$('#updProBtn').prev().val()+'&cm_content='+$('#updProBtn').prev().prev().val()+'&board_b_num=${bdto.b_num}',
+			success : reply_list_result
 		});
 	}
 	
@@ -199,8 +207,13 @@
 						<div class="form-group">
 							<textarea class="form-control" rows="3" id="comInsText"></textarea>
 						</div>
+						<%-- login
+						<c:if test="(String)session.getAttribute('id')!=null"> --%>
 						<button type="submit" class="btn btn-primary" id="comIns">Submit</button>
-
+						<%-- <c:otherwise>
+						<div>로그인후 이용가능</div>
+						</c:otherwise>
+						</c:if> --%>
 					</div>
 				</div>
 
@@ -247,25 +260,7 @@
 
 				<!-- Categories Widget -->
 				<div class="card my-4">
-					<h5 class="card-header">Categories</h5>
-					<div class="card-body">
-						<div class="row">
-							<div class="col-lg-6">
-								<ul class="list-unstyled mb-0">
-									<li><a href="#">Web Design</a></li>
-									<li><a href="#">HTML</a></li>
-									<li><a href="#">Freebies</a></li>
-								</ul>
-							</div>
-							<div class="col-lg-6">
-								<ul class="list-unstyled mb-0">
-									<li><a href="#">JavaScript</a></li>
-									<li><a href="#">CSS</a></li>
-									<li><a href="#">Tutorials</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
+					<jsp:include page="map.jsp"></jsp:include>
 				</div>
 
 				<!-- Side Widget -->

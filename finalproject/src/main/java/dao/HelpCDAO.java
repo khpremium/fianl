@@ -22,4 +22,5 @@ public interface HelpCDAO {
 	public List<BoardDTO> hListMethod2(PageDTO pdto);
 	public String hFileMethod(int b_num);
 	public void hComDelMethod(int cm_num);
+	public void hComUpdMethod(ReplyDTO rdto);
 }

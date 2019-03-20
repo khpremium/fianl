@@ -134,5 +134,11 @@ public class HelpCServiceImp implements HelpCService{
 	public void hComDelProcess(int cm_num) {
 		hdao.hComDelMethod(cm_num);
 	}
+
+	@Override
+	public void hComUpdProcess(ReplyDTO rdto) {
+		hdao.hComUpdMethod(rdto);
+		
+	}
 	
 }

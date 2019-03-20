@@ -169,6 +169,13 @@ public class HelpCController {
 		return service.hcomListProcess(b_num);
 	}
 	
+	@RequestMapping("/hComUpd.do")
+	public @ResponseBody List<ReplyDTO> hComUpd(ReplyDTO rdto){
+		service.hComUpdProcess(rdto);
+		
+		return service.hcomListProcess(rdto.getBoard_b_num());
+	}
+	
 	//http://localhost:8090/myfinal/kakaoLogin.do
 	@RequestMapping("/kakaoLogin.do")
 	public String kakaoLogin() {

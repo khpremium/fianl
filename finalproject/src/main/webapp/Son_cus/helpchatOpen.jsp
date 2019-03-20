@@ -44,12 +44,13 @@
 	<table>
 		<tr>
 		<td>
+		<%-- login
+		<c:if test="null==(String)session.getAttribute('id')"></c:if> --%>
 		<input id="chatOpenBtn" type="button" value="문의 오픈채팅" style="  padding:5px; border:'2px solid #ccc'; '-webkit-border-radius': 5px; border-radius: 5px;">
 		</td>
 		<td>
 		<!-- 카톡1:1 -->
 		<div id="plusfriend-chat-button" data-plusfriend-id="_xfAXUj" data-title="consult" data-size="small" data-color="yellow" data-shape="pc" data-support-multiple-densities="true"></div>		
-		
 		
 		</td>
 		</tr>

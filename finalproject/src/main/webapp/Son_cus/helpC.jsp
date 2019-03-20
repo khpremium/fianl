@@ -107,9 +107,12 @@
 					</table>
 
 				</div>
+				<%-- login
+				<c:if test="test01==(String)session.getAttribute('id')"></c:if> --%>
 				<form action="boardWirete.do" method="post">
 					<input type="submit" id="bwriteBtn" value="글쓰기" />
 				</form>
+				
 				<!-- Blog Post -->
 				<!-- <div class="card mb-4">
 					<img class="card-img-top" src="http://placehold.it/750x300"
@@ -189,12 +192,9 @@
 
 				<!-- Categories Widget -->
 				<div class="card my-4">
-					<h5 class="card-header">Categories</h5>
-					<div class="card-body">
-						<div class="row">
-							<div class="col-lg-6">
-								<ul class="list-unstyled mb-0">
-									<li><a href="#">Web Design</a></li>
+					<jsp:include page="map.jsp"></jsp:include>
+								<!-- <ul class="list-unstyled mb-0">
+									<li><a href="http://map.daum.net/link/to/케이에이치에어,35.587951,127.087007">지도보기</a></li>
 									<li><a href="#">HTML</a></li>
 									<li><a href="#">Freebies</a></li>
 								</ul>
@@ -204,12 +204,7 @@
 									<li><a href="#">JavaScript</a></li>
 									<li><a href="#">CSS</a></li>
 									<li><a href="#">Tutorials</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-
+								</ul> -->
 				<!-- Side Widget -->
 
 				<div class="card my-4">

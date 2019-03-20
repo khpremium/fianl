@@ -23,4 +23,5 @@ public interface HelpCService {
 	public List<BoardDTO> hListProcess2(PageDTO pdto);
 	public String hFileProcess(int b_num);
 	public void hComDelProcess(int cm_num);
+	public void hComUpdProcess(ReplyDTO rdto);
 }
