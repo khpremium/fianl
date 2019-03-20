@@ -18,8 +18,6 @@ $(document).ready(function() {
 function test() {
 	var parent = $(this).parent().parent();
 	var num = Number($(parent).children('td:eq(4)').text());
-	alert($(parent).children('td:eq(0)').text());
-	alert(num);
 	if(one == 0) {
 		if(two == 0) {
 			$('.dep_airinfo_flight').text($(parent).children('td:eq(1)').text());
