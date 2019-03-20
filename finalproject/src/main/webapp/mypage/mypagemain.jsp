@@ -21,7 +21,7 @@
 table.type09 {
     border-collapse: collapse;
     text-align: center;
-    /* line-height: 1.5; */
+    line-height: 1.5;
 	height: 60%;
 	width: 100%;
 }
@@ -46,6 +46,10 @@ table.type09 td {
     vertical-align: top;
     border-bottom: 1px solid #ccc;
 }
+
+.centered { display: table; margin-left: auto; margin-right: auto; }
+
+
 </style>
 
 
@@ -143,9 +147,17 @@ table.type09 td {
     </tbody>
 </table>
         
+       
         
       </div>
+      <hr/>     
+      <div class="centered">
+      <input type="button" class="btn btn-primary btn-lg" value="수정하기">
+      </div>
     </div>
+    
+    
+       
     <!-- /#page-content-wrapper -->
 	<!-- 페이지 내용 끝 -->
 	

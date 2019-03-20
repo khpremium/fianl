@@ -14,9 +14,9 @@ public class ClientServiceImp implements ClientService {
 	}
 
 	@Override
-	public ClientDTO profileProcess(String id) {
+	public ClientDTO profileProcess(String user_id) {
 		// TODO Auto-generated method stub
-		return cdao.profile(id);
+		return cdao.profile(user_id);
 	}
 
 	

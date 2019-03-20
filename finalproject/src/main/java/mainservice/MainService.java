@@ -7,5 +7,5 @@ import maindto.MainReviewDTO;
 
 public interface MainService {
 	public List<MainDto> ListProcess();
-	public List<MainReviewDTO> rListProcess(int num);
+	public List<MainReviewDTO> rListProcess(String city_code);
 }

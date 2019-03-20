@@ -24,9 +24,9 @@ public class MainServiceImp implements MainService {
 	}
 
 	@Override
-	public List<MainReviewDTO> rListProcess(int num) {
+	public List<MainReviewDTO> rListProcess(String city_code) {
 		// TODO Auto-generated method stub
-		return dao.rlist(num);
+		return dao.rlist(city_code);
 	}
 
 }

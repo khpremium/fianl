@@ -26,9 +26,9 @@ public class MainDaoImp implements MainDao{
 	}
 
 	@Override
-	public List<MainReviewDTO> rlist(int num) {
+	public List<MainReviewDTO> rlist(String city_code) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("main.reviewList",num);
+		return sqlSession.selectList("main.reviewList",city_code);
 	}
 
 	
