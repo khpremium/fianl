@@ -12,7 +12,11 @@
 
 <!-- Custom styles for this template -->
 <link href="view/css/scrolling-nav.css" rel="stylesheet">
-
+<style type="text/css">
+	div .mx-auto {
+		text-align: center;
+	}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 </script>

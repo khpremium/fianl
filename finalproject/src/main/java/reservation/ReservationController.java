@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 // http://localhost:8090/myfinal/selectFlight.do
 
@@ -70,23 +71,19 @@ public class ReservationController {
 	}
 	
 	@RequestMapping("/reservation.do")
-	public ModelAndView guestReservation(ReservationDTO rdto) {
-		ModelAndView mav = new ModelAndView();
+	public String guestReservation(ReservationDTO rdto, RedirectAttributes reattr) {
 		service.reservationProcess(rdto);
 		if(rdto.getGuestchk() == null)
-			mav.setViewName("redirect:/main.do");
+			return "redirect:/main.do";
 		else {
-			mav.setViewName("redirect:/guestAlert.do?rv_code=" + rdto.getRv_code());
+			reattr.addFlashAttribute("rv_code", rdto.getRv_code());
+			return "redirect:/guestAlert.do";
 		}
-		return mav;
 	}
 	
 	@RequestMapping("/guestAlert.do")
-	public ModelAndView guestAlert(String rv_code) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("rv_code", rv_code);
-		mav.setViewName("/view/guestalert");
-		return mav;
+	public String guestAlert() {
+		return "/view/guestalert";
 	}
 	
 	@RequestMapping("/kakaoPro.do")
