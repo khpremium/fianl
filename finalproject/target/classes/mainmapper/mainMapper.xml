@@ -9,8 +9,8 @@
 		select * from city 
 	</select>
 	
-	<select id="reviewList" parameterType="int" resultType="maindto.MainReviewDTO">
-		select * from board where city_code=#{num} and b_category_c_num=1
+	<select id="reviewList" parameterType="string" resultType="maindto.MainReviewDTO">
+		select * from board where city_code=#{city_code} and b_category_c_num=1
 	</select>
 	
 </mapper>

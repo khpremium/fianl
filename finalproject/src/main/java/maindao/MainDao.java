@@ -7,5 +7,5 @@ import maindto.MainReviewDTO;
 
 public interface MainDao {
 	public List<MainDto> list();
-	public List<MainReviewDTO> rlist(int num);
+	public List<MainReviewDTO> rlist(String city_code);
 }

@@ -9,7 +9,7 @@ public class MainReviewDTO {
 	private int viewcount;
 	private int b_like;
 	private String client_id;
-	private int city_code;
+	private String city_code;
 	private int b_category_c_num;
 	private String title;
 	private Date upload_date;
@@ -66,11 +66,13 @@ public class MainReviewDTO {
 		this.client_id = client_id;
 	}
 
-	public int getCity_code() {
+
+
+	public String getCity_code() {
 		return city_code;
 	}
 
-	public void setCity_code(int city_code) {
+	public void setCity_code(String city_code) {
 		this.city_code = city_code;
 	}
 

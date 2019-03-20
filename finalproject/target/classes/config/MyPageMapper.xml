@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="mypage">
+
+	<select id="profile" parameterType="string" resultType="mypage.ClientDTO">
+		select * from client where id = #{id}
+	</select>
+
+	<select id="reservation" parameterType="String" resultType="mypage.ReservationDTO">
+		select * from reservation r, airinfo a, CLIENT c
+		where r.AIRINFO_FLIGHT=a.flight and r.user_id=c.ID and r.user_id = #{id} order by rv_num desc
+	</select>
+
+	<insert id="mypinsert" parameterType="string" >
+	
+	</insert>
+
+</mapper>
