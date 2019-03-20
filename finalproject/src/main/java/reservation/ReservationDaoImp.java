@@ -49,5 +49,10 @@ public class ReservationDaoImp implements ReservationDAO {
 	public void seatUptMethod(String flight) {
 		sqlSession.update("res.seatUpt", flight);
 	}
+
+	@Override
+	public int rvChkMethod(String rv_num) {
+		return sqlSession.selectOne("res.rvchk", rv_num);
+	}
 	
 }

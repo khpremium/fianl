@@ -10,4 +10,5 @@ public interface ReservationDAO {
 	public void clientResMethod(ReservationDTO rdto);
 	public void guestResMethod(ReservationDTO rdto);
 	public void seatUptMethod(String flight);
+	public int rvChkMethod(String rv_num);
 }

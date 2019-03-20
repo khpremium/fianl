@@ -7,18 +7,18 @@
 <title>Insert title here</title>
 
 <!-- Bootstrap core CSS -->
-<link href="guest/vendor/bootstrap/css/bootstrap.min.css"
+<link href="view/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="guest/css/scrolling-nav.css" rel="stylesheet">
+<link href="view/css/scrolling-nav.css" rel="stylesheet">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-		var phoneRule = /^[A-Za-z0-9]{10,11}$/;
+		var phoneRule = /^[0-9]{10,11}$/;
 		$('button').on('click', function() {
 			if ($('#non_name').val() == ''
 				|| $('#non_phonenumber').val() == ''
@@ -35,6 +35,10 @@
 			} else {
 				$('form').submit();
 			}
+		});
+		
+		$('#non_phonenumber').on('keyup', function() {
+			$(this).val($(this).val().replace(/[^0-9]/g,""));
 		});
 	});
 </script>
@@ -139,13 +143,13 @@
 	</footer>
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="guest/vendor/jquery/jquery.min.js"></script>
-	<script src="guest/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="view/vendor/jquery/jquery.min.js"></script>
+	<script src="view/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Plugin JavaScript -->
-	<script src="guest/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="view/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Custom JavaScript for this theme -->
-	<script src="guest/js/scrolling-nav.js"></script>
+	<script src="view/js/scrolling-nav.js"></script>
 </body>
 </html>

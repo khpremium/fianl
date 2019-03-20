@@ -29,7 +29,7 @@ public class MainController {
 		ModelAndView mav= new ModelAndView();
 		mav.addObject("aList",service.ListProcess());
 		// mav.addObject("rList",service.rListProcess(2));
-		mav.setViewName("main/main");
+		mav.setViewName("view/main");
 		return mav;
 	}// list
 	

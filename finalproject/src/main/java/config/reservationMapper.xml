@@ -5,16 +5,14 @@
 
 <mapper namespace="res">
 
-	<select id="dList" parameterType="reservation.ReservationDTO"
-		resultType="reservation.AirinfoDTO">
+	<select id="dList" parameterType="reservation.ReservationDTO" resultType="reservation.AirinfoDTO">
 		select * from airinfo
 		where d_time like #{dep_date} || '%'
 		and city_code_dep=#{city_code_dep}
 		and city_code_arv=#{city_code_arv}
 	</select>
 
-	<select id="rList" parameterType="reservation.ReservationDTO"
-		resultType="reservation.AirinfoDTO">
+	<select id="rList" parameterType="reservation.ReservationDTO" resultType="reservation.AirinfoDTO">
 		select * from airinfo
 		where d_time like #{arv_date} || '%'
 		and city_code_dep=#{city_code_arv}
@@ -26,30 +24,33 @@
 	</select>
 
 	<select id="name" parameterType="string" resultType="string">
-		select
-		city_name from city where city_code=#{city_code}
+		select city_name from city where city_code=#{city_code}
 	</select>
 
 	<update id="seatUpt" parameterType="string">
-		update from airinfo set
+		update airinfo set
 		seat=seat-1 where flight=#{flight}
 	</update>
 
+	<!-- #{data, jdbcType=VARCHAR} null처리 -->
 	<insert id="client" parameterType="reservation.ReservationDTO">
 		insert into
-		reservation(rv_num, payment_chk, airinfo_flight, user_id, p_count)
-		values(#{rv_num}, #{payment_chk}, #{airinfo_flight}, #{user_id},
-		#{p_count})
+		reservation(rv_num, rv_code, payment_chk, airinfo_flight, user_id, p_count)
+		values(rv_num_seq.nextval, #{rv_code}, #{payment_chk}, #{airinfo_flight}, #{client_id, jdbcType=VARCHAR}, #{p_count})
 	</insert>
 
 	<insert id="guest" parameterType="reservation.ReservationDTO">
 		insert into
-		reservation(rv_num,
+		reservation(rv_num, rv_code,
 		payment_chk, airinfo_flight, non_name, non_gender, non_phonenumber,
 		non_email, non_pass, p_count)
-		values(#{rv_num}, #{payment_chk},
-		#{airinfo_flight}, #{non_name}, #{non_gender}, #{non_phone},
+		values(rv_num_seq.nextval, #{rv_code}, #{payment_chk},
+		#{airinfo_flight}, #{non_name}, #{non_gender}, #{non_phonenumber},
 		#{non_email}, #{non_pass}, #{p_count})
 	</insert>
+	
+	<select id="rvchk" parameterType="string" resultType="int">
+		select count(*) from reservation where rv_code=#{rv_code}
+	</select>
 
 </mapper>

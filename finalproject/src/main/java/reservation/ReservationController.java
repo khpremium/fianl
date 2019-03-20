@@ -35,7 +35,7 @@ public class ReservationController {
 		ModelAndView mav = new ModelAndView();
 		// mav.addObject("list", service.searchProcess());
 		mav.addObject("rdto", rdto);
-		mav.setViewName("/guest/guest");
+		mav.setViewName("/view/guest");
 		return mav;
 	}
 	
@@ -60,7 +60,7 @@ public class ReservationController {
 		mav.addObject("dep_name", service.cityNameProcess(rdto.getCity_code_dep()));
 		mav.addObject("arv_name", service.cityNameProcess(rdto.getCity_code_arv()));
 		mav.addObject("rdto", rdto);
-		mav.setViewName("/reservation/select");
+		mav.setViewName("/view/select");
 		return mav;
 	}
 	
@@ -70,9 +70,16 @@ public class ReservationController {
 	}
 	
 	@RequestMapping("/reservation.do")
-	public String guestReservation(ReservationDTO rdto) {
+	public ModelAndView guestReservation(ReservationDTO rdto) {
+		ModelAndView mav = new ModelAndView();
 		service.reservationProcess(rdto);
-		return "redirect:/main.do";
+		if(rdto.getGuestchk() == null)
+			mav.setViewName("redirect:/main.do");
+		else {
+			mav.addObject("rv_code", rdto.getRv_code());
+			mav.setViewName("/view/guestalert");
+		}
+		return mav;
 	}
 	
 	@RequestMapping("/kakaoPro.do")
@@ -116,7 +123,7 @@ public class ReservationController {
 	public ModelAndView kakaoResult(String result) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("result", result);
-		mav.setViewName("/reservation/kakaores");
+		mav.setViewName("/view/kakaores");
 		return mav;
 	}
 

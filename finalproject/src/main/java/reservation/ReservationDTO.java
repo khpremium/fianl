@@ -1,7 +1,7 @@
 package reservation;
 
 public class ReservationDTO {
-	private String rv_num;
+	private String rv_code;
 	private int payment_chk;
 	private String airinfo_flight;
 	private String client_id;
@@ -80,12 +80,12 @@ public class ReservationDTO {
 		this.arv_date = arv_date;
 	}
 
-	public String getRv_num() {
-		return rv_num;
+	public String getRv_code() {
+		return rv_code;
 	}
 
-	public void setRv_num(String rv_num) {
-		this.rv_num = rv_num;
+	public void setRv_code(String rv_code) {
+		this.rv_code = rv_code;
 	}
 
 	public int getPayment_chk() {

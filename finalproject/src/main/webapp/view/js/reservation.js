@@ -11,30 +11,32 @@ $(document).ready(function() {
 		location.href="main.do";
 	});
 	
-	$(document).on('click', 'table input[name="aa"]', test);
-	$(document).on('click', 'table input[name="bb"]', test2);
+	$(document).on('click', 'table input[name="dept"]', test);
+	$(document).on('click', 'table input[name="arrv"]', test2);
 });
 
 function test() {
-	console.log($('input[name="aa"]').index(this));
-	console.log(p_count);
 	var parent = $(this).parent().parent();
 	var num = Number($(parent).children('td:eq(4)').text());
-	// alert($(parent).children('td:eq(0)').text());
+	alert($(parent).children('td:eq(0)').text());
+	alert(num);
 	if(one == 0) {
 		if(two == 0) {
 			$('.dep_airinfo_flight').text($(parent).children('td:eq(1)').text());
+			$('#dep_airinfo_flight').val($(parent).children('td:eq(1)').text());
 			$('.price').text(num);
 			$('.totalPrice').text(num * p_count);
 		} else {
 			var currNum = Number($('.price').text());
 			$('.dep_airinfo_flight').text($(parent).children('td:eq(1)').text());
+			$('#dep_airinfo_flight').val($(parent).children('td:eq(1)').text());
 			$('.price').text(currNum + num);
 			$('.totalPrice').text((currNum * p_count) + (num * p_count));
 		}
 	} else {
 		var currNum = Number($('.price').text());
 		$('.dep_airinfo_flight').text($(parent).children('td:eq(1)').text());
+		$('#dep_airinfo_flight').val($(parent).children('td:eq(1)').text());
 		$('.price').text(currNum - one + num);
 		$('.totalPrice').text((currNum * p_count) - (one * p_count) + (num * p_count));
 	}
@@ -42,23 +44,25 @@ function test() {
 }
 
 function test2() {
-	console.log($(this).index());
 	var parent = $(this).parent().parent();
 	var num = Number($(parent).children('td:eq(4)').text());
 	if(two == 0) {
 		if(one == 0) {
 			$('.arv_airinfo_flight').text($(parent).children('td:eq(1)').text());
+			$('#arv_airinfo_flight').val($(parent).children('td:eq(1)').text());
 			$('.price').text(num);
 			$('.totalPrice').text(num * p_count);
 		} else {
 			var currNum = Number($('.price').text());
 			$('.arv_airinfo_flight').text($(parent).children('td:eq(1)').text());
+			$('#arv_airinfo_flight').val($(parent).children('td:eq(1)').text());
 			$('.price').text(currNum + num);
 			$('.totalPrice').text((currNum * p_count) + (num * p_count));
 		}
 	} else {
 		var currNum = Number($('.price').text());
 		$('.arv_airinfo_flight').text($(parent).children('td:eq(1)').text());
+		$('#arv_airinfo_flight').val($(parent).children('td:eq(1)').text());
 		$('.price').text(currNum - two + num);
 		$('.totalPrice').text((currNum * p_count) - (two * p_count) + (num * p_count));
 	}

@@ -5,7 +5,7 @@ public class AirinfoDTO {
 	private String airline;
 	private String d_time;
 	private String a_time;
-	private int price;
+	private int price_ad;
 	private int seat;
 	private String city_code_dep;
 	private String city_code_arv;
@@ -46,12 +46,12 @@ public class AirinfoDTO {
 		this.a_time = a_time;
 	}
 
-	public int getPrice() {
-		return price;
+	public int getPrice_ad() {
+		return price_ad;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public void setPrice_ad(int price_ad) {
+		this.price_ad = price_ad;
 	}
 
 	public int getSeat() {
