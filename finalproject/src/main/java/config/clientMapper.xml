@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="client">
+	<select id="list" resultType="dto.ClientDTO">
+		select * from client
+		order by id desc
+	</select>
+	
+	<insert id="ins" parameterType="dto.ClientDTO" >
+		insert into client(id, pass, name, phonenum, email, point, gender, birth)
+		values(#{id, jdbcType=VARCHAR}, #{pass, jdbcType=VARCHAR}, #{name, jdbcType=VARCHAR}, #{phonenum, jdbcType=VARCHAR},
+		 #{email, jdbcType=VARCHAR}, #{point, jdbcType=INTEGER}, #{gender, jdbcType=VARCHAR}, #{birth, jdbcType=VARCHAR})
+	</insert>
+	
+	<select id="confirmEmail" parameterType="dto.ClientDTO" resultType="int">
+		SELECT COUNT(*) FROM client where email=#{email}
+	</select>
+	
+	<select id="idcheck" parameterType="String" resultType="Integer">
+		SELECT COUNT(*) FROM client where id = #{id}
+	</select>
+	
+	<select id="loginCheck" parameterType="dto.ClientDTO" resultType="dto.ClientDTO">
+		select id from client
+		where id=#{id} and pass=#{pass}	
+	</select>
+	
+	<select id="viewMember" resultType="dto.ClientDTO">
+		select * from client where id=#{id, jdbcType=VARCHAR} and pass=#{pass, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="findId" resultType="clientDTO">
+		select email from Client where name=#{name} and email=#{email}
+	</select>
+	
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
