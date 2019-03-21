@@ -28,6 +28,8 @@
         <ul class="navbar-nav ml-auto">
                  <li class="login_wrap">
 		           <a href="#">
+		           <c:if>
+		           </c:if>
 		           <img src="images/util_menu_1.gif" alt="로그인" />
 		           </a>
 		             <!-- 로그인 폼 -->
