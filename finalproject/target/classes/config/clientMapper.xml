@@ -32,7 +32,7 @@
 		select * from client where id=#{id, jdbcType=VARCHAR} and pass=#{pass, jdbcType=VARCHAR}
 	</select>
 	
-	<select id="findId" resultType="clientDTO">
+	<select id="findId" resultType="dto.ClientDTO">
 		select email from Client where name=#{name} and email=#{email}
 	</select>
 	

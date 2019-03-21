@@ -34,8 +34,7 @@
 	</bean>
 
 	<!-- [3] SqlSessionTemplate 빈 선언 -->
-	<bean id="sqlSession"
-		class="org.mybatis.spring.SqlSessionTemplate">
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
 
@@ -45,8 +44,7 @@
 	</bean>
 
 	<!-- [5]선언적 트랜잭션: <tx:advice>태그를 이용한 트랜잭션 처리 -->
-	<tx:advice id="txAdvice"
-		transaction-manager="transactionManager">
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="*Process" rollback-for="java.lang.Exception" />
 		</tx:attributes>

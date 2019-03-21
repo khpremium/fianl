@@ -41,7 +41,7 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>socketServlet</servlet-name>
+		<servlet-name>finalServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
@@ -51,7 +51,7 @@
 	</servlet>
 		
 	<servlet-mapping>
-		<servlet-name>socketServlet</servlet-name>
+		<servlet-name>finalServlet</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 
