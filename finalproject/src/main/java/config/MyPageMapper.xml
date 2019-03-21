@@ -18,5 +18,9 @@
 		select p_count from reservation
 			where rv_code=#{rv_code} and rownum=1
 	</select>
+	
+	<select id="ppsearch" parameterType="String" resultType="mypage.MypassportDTO">
+		
+	</select>
 
 </mapper>

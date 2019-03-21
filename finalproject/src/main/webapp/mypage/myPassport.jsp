@@ -93,95 +93,66 @@ div.button
       <!--하얀색 헤더 끝-->
 
 	<!-- 페이지 내용 시작 -->          
-     <h1>${passport}</h1>
+    <%--  <h1>${passport}</h1>
+     <p>
+     <c:forEach var="i" begin="1" end="${passport}">
+     	<input type="text" value="${i}"><br/>
+     </c:forEach>
+     </p>
+      --%>
      
+    
      
-   <%--  <h1 align="center">My Reservation</h1>
+   <h1 align="center">Passport Insert</h1>
 	<br/>
-				
-				<h1>출국 항공기 예약 내용</h1>				
+				<c:forEach var="i" begin="1" end="${passport}">
+				<h1>탑승객 ${i}번 </h1>				
 				<!-- 출발비행기 -->
 				<div id="dept">
 					<table>
 						<tr>
-							<th>항공사</th>
-							<th>편명</th>
-							<th>출발시간</th>
-							<th>도착시간</th>
-							<th>성함</th>
-							<th>예약번호</th>
-							<th>탑승객 수</th>
-							<th>선택 취소</th>
-						</tr>
-						
+							<th>한글 성명</th>
+							<th>영문 성명</th>
+							<th>법정 생년월일</th>
+							<th>여권번호</th>
+							<th>여권 만료일</th>
+							<th>국가</th>
+							<th>저장</th>
+						</tr>						
 							<tr>
 							
-								<td>${myres[1].airline}</td>
-								<td>${myres[1].airinfo_flight}</td>
-								<td>
-								<fmt:parseDate value="${myres[1].d_time}" var="dtime" pattern="yyyyMMddHHmm"/>
-								<fmt:formatDate value="${dtime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/>														
+								<td>								
+								<input type="text" style="border:1px solid black;">								
 								</td>
 								<td>
-								<fmt:parseDate value="${myres[1].a_time}" var="atime" pattern="yyyyMMddHHmm"/>
-								<fmt:formatDate value="${atime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/>
+								<input type="text" value="lastname/firstname" style="border:1px solid black;">
 								</td>
-								<td>${myres[1].name}</td>
-								<td>${myres[1].rv_code}</td>
-								<td>${myres[1].p_count}</td>								
+								<td>
+								<input type="text" value="ex)1991.07.06" style="border:1px solid black;">														
+								</td>
+								<td>
+								<input type="text" value="9자리 여권번호" style="border:1px solid black;">
+								</td>
+								<td>
+								<input type="text" style="border:1px solid black;">
+								</td>
+								<td>
+								<input type="text" value="한글로 입력해주세요" style="border:1px solid black;">
+								</td>																
 							  <td><input type="radio" name="cancel"/></td>							  						
 							</tr>						
-					</table>
-					
-				</div>
-				
+					</table>					
+				</div>				
 				<br/>
 				<br/>
-				
-				<h1>귀국 항공기 예약 내역</h1>				
-				<!-- 도착비행기 -->
-				<div id="arrv">
-					<table>
-						<tr>
-							<th>항공사</th>
-							<th>편명</th>
-							<th>출발시간</th>
-							<th>도착시간</th>
-							<th>성함</th>
-							<th>예약번호</th>
-							<th>탑승객 수</th>
-							<th>선택 취소</th>
-						</tr>
-						
-							<tr>
+				</c:forEach>
 							
-								<td>${myres[0].airline}</td>
-								<td>${myres[0].airinfo_flight}</td>
-								
-								<td>
-								<fmt:parseDate value="${myres[0].d_time}" var="dtime" pattern="yyyyMMddHHmm"/>
-								<fmt:formatDate value="${dtime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/>
-								</td>
-								<td>
-								<fmt:parseDate value="${myres[0].a_time}" var="atime" pattern="yyyyMMddHHmm"/>
-								<fmt:formatDate value="${atime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/>
-								</td>
-								<td>${myres[0].name}</td>
-								<td>${myres[0].rv_code}</td>
-								<td>${myres[0].p_count}</td>
-							  <td><input type="radio" name="cancel"/></td>							  						
-							</tr>
-						
-					</table>
-					
-				</div>
-				
 				<div>				
 				<div class="button">
 				<br/>
-                <input type="button" class="btn btn-primary btn-lg" value="선택 예약취소" onclick=""/><br/>
+                <input type="button" class="btn btn-primary btn-lg" value="저장하기" onclick=""/><br/>
 				</div> 
-				</div> --%>
+				</div> 
 				
 				
     
