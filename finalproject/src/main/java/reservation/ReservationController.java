@@ -31,6 +31,7 @@ public class ReservationController {
 	}
 	
 	// http://localhost:8090/myfinal/select.do
+	// 비회원 정보입력
 	@RequestMapping(value = "/guestInfo.do", method = RequestMethod.POST)
 	public ModelAndView select(ReservationDTO rdto) {
 		ModelAndView mav = new ModelAndView();
@@ -40,6 +41,7 @@ public class ReservationController {
 		return mav;
 	}
 	
+	// 비행편 선택
 	@RequestMapping(value = "/selectFlight.do", method = RequestMethod.POST)
 	public ModelAndView selectFlight(ReservationDTO rdto, HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView();
@@ -54,8 +56,8 @@ public class ReservationController {
 		}*/
 		mav.addObject("dep_date", rdto.getDep_date());
 		mav.addObject("arv_date", rdto.getArv_date());
-		rdto.setDep_date(rdto.getDep_date().replaceAll("-", "").substring(2));
-		rdto.setArv_date(rdto.getArv_date().replaceAll("-", "").substring(2));
+		rdto.setDep_date(rdto.getDep_date().replaceAll("-", ""));
+		rdto.setArv_date(rdto.getArv_date().replaceAll("-", ""));
 		mav.addObject("dList", service.deptListProcess(rdto));
 		mav.addObject("rList", service.returnListProcess(rdto));
 		mav.addObject("dep_name", service.cityNameProcess(rdto.getCity_code_dep()));
@@ -70,6 +72,7 @@ public class ReservationController {
 		return "redirect:/main.do";
 	}
 	
+	// 예약 실행
 	@RequestMapping("/reservation.do")
 	public String guestReservation(ReservationDTO rdto, RedirectAttributes reattr) {
 		service.reservationProcess(rdto);
@@ -81,11 +84,13 @@ public class ReservationController {
 		}
 	}
 	
+	// 비회원 예약번호 출력
 	@RequestMapping("/guestAlert.do")
 	public String guestAlert() {
 		return "/view/guestalert";
 	}
 	
+	// 카카오페이 rest 요청
 	@RequestMapping("/kakaoPro.do")
 	public @ResponseBody String kakaoPayment() throws IOException {
 		String input = "";
@@ -123,6 +128,7 @@ public class ReservationController {
 		return resultCode;
 	}
 	
+	// 카카오페이 결과 받아오는곳
 	@RequestMapping("/kakaoRes.do")
 	public ModelAndView kakaoResult(String result) {
 		ModelAndView mav = new ModelAndView();

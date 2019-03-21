@@ -159,7 +159,7 @@ function cityprocess(){
             <a class="nav-link" href="#">Priview</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">MyPage</a>
+            <a class="nav-link" href="profile.do">MyPage</a>
           </li>
         </ul>
       </div>
@@ -167,7 +167,7 @@ function cityprocess(){
   </nav>
   <!-- 헤더 메뉴부분 끝 -->
   
-  <!-- Header --><!-- 회식 바탕 부분 -->
+  <!-- Header --><!-- 회색 바탕 부분 -->
   <header class="bg-primary py-5 mb-5">
     <div class="container h-100">
       <div class="row h-100 align-items-center">
@@ -191,7 +191,7 @@ function cityprocess(){
     <div class="row">
     
       <div class="col-md-8 mb-5">
-      	<form action="selectFlight.do" method="get">
+      	<form action="selectFlight.do" method="post">
         <h2>Reservaion now</h2>
         <hr/>
         
@@ -212,14 +212,14 @@ function cityprocess(){
         </select>   
              
         <label>인원 수</label>
-		<input class="count" value="1" readonly="" name="">
+		<input class="count" value="1" readonly="readonly" name="p_count">
 		<input class="test1" value="-" type="button" count_range="m">
 		<input class="test1" value="+" type="button" count_range="p">	
 			
         <br/>
         <br/>
-        <label>출국일</label><input type="date" class="date" id="dep_date">       
-        <label>귀국일</label><input type="date" class="date" id="arv_date">
+        <label>출국일</label><input type="date" class="date" id="dep_date" name="dep_date">       
+        <label>귀국일</label><input type="date" class="date" id="arv_date" name="arv_date">
         <br/>
         <br/>
         
@@ -270,7 +270,7 @@ function cityprocess(){
     <div class="row">
     
      <c:forEach var="rdto" items="${rList}" varStatus="status" begin="1" end="3">
-      <div class="col-md-4 mb-5">     
+      <div class="col-md-4 mb-5">
         <div class="card h-100">
           <img class="card-img-top" src="view/images/오사카.jpg" alt="">
           <div class="card-body">
@@ -280,7 +280,7 @@ function cityprocess(){
           <div class="card-footer">
             <a href="#" class="btn btn-primary">Find Out More!</a>
           </div>
-        </div>        
+        </div>
       </div>
       </c:forEach>
      

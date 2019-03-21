@@ -19,6 +19,15 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
+$(document).ready(function() {
+	$('#copyBtn').on('click', function() {
+		// 클립보드에 복사
+		var copyText = $('#rv_code');
+		copyText.select();
+		document.execCommand("copy");
+		alert("클립보드에 복사되었습니다.");
+	});
+});
 </script>
 </head>
 <body id="page-top">
@@ -63,12 +72,15 @@
 		</div>
 	</header>
 
+	<!-- 예약번호 출력부분 -->
 	<section id="about">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
 					<span>고객님의 예약번호는</span><br>
-					<h4>${rv_code}</h4><span>입니다.</span><br>
+					<input type="text" readonly="readonly" class="h4" id="rv_code" value="${rv_code}"><br>
+					<span>입니다.</span><br><br>
+					<button class="btn btn-primary" id="copyBtn">복사</button>
 					<a href="main.do" class="btn btn-primary">확인</a>
 				</div>
 			</div>
