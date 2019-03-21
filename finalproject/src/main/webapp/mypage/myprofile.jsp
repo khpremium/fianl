@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
   <meta charset="utf-8">
@@ -47,7 +48,12 @@ table.type09 td {
     border-bottom: 1px solid #ccc;
 }
 
-.centered { display: table; margin-left: auto; margin-right: auto; }
+div.button
+{
+
+ text-align: center;
+
+}
 
 
 </style>
@@ -62,11 +68,10 @@ table.type09 td {
       <div class="sidebar-heading">Start Airline </div>
       <div class="list-group list-group-flush">
         <a href="#" class="list-group-item list-group-item-action bg-light">My Reservation</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">My Board</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">My Milage</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">My Board</a>        
         <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Passport</a> 
-        <hr/>       
+              
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -106,7 +111,7 @@ table.type09 td {
 
 	<!-- 페이지 내용 시작 -->
       <div class="container-fluid">
-        <h1 class="mt-4">Profile</h1>
+        <h1 class="mt-4" align="center">My Profile</h1>
         
         <table class="type09">
     <thead>
@@ -141,8 +146,11 @@ table.type09 td {
         <td>${myprofile.gender}</td>
     </tr> 
     <tr>
-        <th scope="row">생일</th>
-        <td>${myprofile.birth}</td>
+        <th scope="row">생년월일</th>
+        <td>
+        <fmt:parseDate value="${myprofile.birth}" var="birth" pattern="yyyyMMdd"/>
+		<fmt:formatDate value="${birth}" pattern="yyyy년 MM월 dd일 "/>
+        </td>
     </tr>    
     </tbody>
 </table>
@@ -150,10 +158,11 @@ table.type09 td {
        
         
       </div>
-      <hr/>     
-      <div class="centered">
-      <input type="button" class="btn btn-primary btn-lg" value="수정하기">
-      </div>
+        
+     <div class="button">
+     <br/>
+    <input type="button" class="btn btn-primary btn-lg" value="회원 정보수정" onclick=""/>
+	</div> 
     </div>
     
     

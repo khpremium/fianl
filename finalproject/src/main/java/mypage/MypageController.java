@@ -36,7 +36,7 @@ public class MypageController {
 		mav.setViewName("maypage/mypagemain");
 		}*/
 		mav.addObject("myprofile",service.profileProcess("test01"));
-		mav.setViewName("/mypage/mypagemain");
+		mav.setViewName("/mypage/myprofile");
 		return mav;
 	}
 	

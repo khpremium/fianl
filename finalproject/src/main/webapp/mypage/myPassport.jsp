@@ -93,8 +93,10 @@ div.button
       <!--하얀색 헤더 끝-->
 
 	<!-- 페이지 내용 시작 -->          
+     <h1>${passport}</h1>
      
-    <h1 align="center">My Reservation</h1>
+     
+   <%--  <h1 align="center">My Reservation</h1>
 	<br/>
 				
 				<h1>출국 항공기 예약 내용</h1>				
@@ -179,7 +181,7 @@ div.button
 				<br/>
                 <input type="button" class="btn btn-primary btn-lg" value="선택 예약취소" onclick=""/><br/>
 				</div> 
-				</div>
+				</div> --%>
 				
 				
     

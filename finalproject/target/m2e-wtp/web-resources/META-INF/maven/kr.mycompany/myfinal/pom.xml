@@ -197,6 +197,15 @@
 			<artifactId>spring-websocket</artifactId>
 			<version>5.1.3.RELEASE</version>
 		</dependency>
+	  	
+	  	<!--jstl 디펜던시 -->
+      <dependency>
+  		<groupId>jstl</groupId>
+  		<artifactId>jstl</artifactId>
+  		<version>1.2</version>
+  	   </dependency>
+ 
+
 
 	</dependencies>
     <build>

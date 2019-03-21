@@ -14,8 +14,9 @@
 		where r.AIRINFO_FLIGHT=a.flight and r.user_id=c.ID and r.user_id = #{id} order by rv_num desc
 	</select>
 
-	<insert id="mypinsert" parameterType="string" >
-	
-	</insert>
+	<select id="passport" parameterType="string" resultType="Integer">
+		select p_count from reservation
+			where rv_code=#{rv_code} and rownum=1
+	</select>
 
 </mapper>

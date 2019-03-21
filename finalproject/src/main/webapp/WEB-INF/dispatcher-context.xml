@@ -26,7 +26,7 @@
 			<list>
  			<value>classpath:mainmapper/mainMapper.xml</value>
  			<value>classpath:config/reservationMapper.xml</value>
- 			<value>classpath:config/MyPageMapper.xml</value>
+ 			<value>classpath:config/MyPageMapper.xml</value> 			
 			</list>
 		</property>
 	</bean>
@@ -66,6 +66,9 @@
 	<bean id="myrdao" class="mypage.ReservationDaoImp">
 		<property name="sqlSession" ref="sqlSession"/>
 	</bean>
+	<bean id="mypdao" class="mypage.MypassportDaoImp">
+		<property name="sqlSession" ref="sqlSession"/>
+	</bean>
 	
 	<!-- Service -->
 	<bean id="rservice" class="reservation.ReservationServiceImp">
@@ -80,6 +83,10 @@
 	<bean id="myrservice" class="mypage.ReservationServiceImp">
 		<property name="myrdao" ref="myrdao"/>
 	</bean>
+	<bean id="mypservice" class="mypage.MypassportServiceImp">
+		<property name="mypdao" ref="mypdao"/>
+	</bean>
+	
 	
 	
 	<!-- controller -->
@@ -94,6 +101,9 @@
 	</bean>
 	<bean class="mypage.MyReservationController">
 		<property name="service" ref="myrservice"/>
+	</bean>
+	<bean class="mypage.MypassportController">
+		<property name="service" ref="mypservice"/>
 	</bean>
 	
 	<!-- viewResolver -->
