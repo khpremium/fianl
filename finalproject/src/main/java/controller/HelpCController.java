@@ -142,8 +142,7 @@ public class HelpCController {
 	
 	@RequestMapping("/blogSearch.do")
 	public ModelAndView blogSearch(PageDTO pv) {
-		System.out.println("Search");
-		System.out.println(pv.getSearchWord());
+		/*System.out.println(pv.getSearchWord());*/
 		ModelAndView mav = new ModelAndView();
 		int totalRecord =  service.hBlogCountProcess2(pv.getSearchWord());
 		if(totalRecord >= 1) {

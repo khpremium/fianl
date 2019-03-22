@@ -215,8 +215,6 @@
 					</div>
 					<div><input type="text" style="width:85%;"/><input type="button" value="전송" style="width:15%;"></div> -->
 				</div>
-
-
 			</div>
 
 		</div>
@@ -234,8 +232,8 @@
 	</footer>
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="Son_cus/vendor/jquery/jquery.min.js"></script>
-	<script src="Son_cus/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="./Son_cus/vendor/jquery/jquery.min.js"></script>
+	<script src="./Son_cus/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

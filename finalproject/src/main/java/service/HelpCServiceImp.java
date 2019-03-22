@@ -44,7 +44,7 @@ public class HelpCServiceImp implements HelpCService{
 
 	@Override
 	public void comInsertProcess(ReplyDTO rdto) {
-		System.out.println(rdto.getCm_content());
+		/*System.out.println(rdto.getCm_content());*/
 		hdao.hComInsMethod(rdto);
 	}
 
