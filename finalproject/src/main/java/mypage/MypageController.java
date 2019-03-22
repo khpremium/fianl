@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class MypageController {
 	
 	private ClientService service;
-	private ClientDAO cdao;
 	
 	public MypageController() {
 		// TODO Auto-generated constructor stub

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
-
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -84,7 +84,7 @@ th  {
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
 		<div class="container">
-			<a class="navbar-brand" href="index.do">KH AIR</a>
+			<a class="navbar-brand" href="main.do">KH AIR</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive" aria-controls="navbarResponsive"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -112,10 +112,10 @@ th  {
 	<div class="table_area">
 	<fieldset>
 	
+		<h1 style="padding-left:40%; padding-top: 5%; color: orange;">KHPREMIUM</h1>
+		<hr/>
+		<h3 style="padding-left:43%;">회원가입</h3>
 		<table class="tbl_style_01" summary="회원가입에 필요한 개인정보를 입력함">
-			<h1 style="padding-left:40%; padding-top: 5%; color: orange;">KHPREMIUM</h1>
-			<hr/>
-			<h3 style="padding-left:43%;">회원가입</h3>
 			<colgroup>
 				<col width="20%">
 				<col width="80%">
@@ -152,7 +152,7 @@ th  {
 					</th>
 					<td>
 						<div class="cell">	
-							<input type="password" id="passwordCheck" name="pass" class="inputText" onkeyup="passwordCheckFunction()" maxlength="30"><span><h7 id="passwdCheckMessage" style="font-color: red;"></h7></span>
+							<input type="password" id="passwordCheck" name="pass" class="inputText" onkeyup="passwordCheckFunction()" maxlength="30">
 						</div>
 						<p class="error_msg dp_none" id="errRePasswd"></p> <!-- DEV. dp_none 클래스 추가시 해당 부분 hide -->
 					</td>

@@ -1,7 +1,5 @@
 package dto;
 
-import java.util.List;
-
 public class ClientDTO {
 	private String id;
 	private String pass;

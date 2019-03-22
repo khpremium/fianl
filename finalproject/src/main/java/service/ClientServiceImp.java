@@ -1,11 +1,6 @@
 package service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
-
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.ClientDAO;
 import dto.ClientDTO;

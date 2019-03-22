@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
    pageEncoding="utf-8"%>
 <!DOCTYPE html>
-
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,7 +13,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#login').on('click',function(){
-		$('#login_f').attr('action', 'loginCheck.do').submit();
+		$('#loginFrm').attr('action', 'loginCheck.do').submit();
 		
 	}); 
 });
@@ -90,7 +90,7 @@ body {
  <!-- Navigation -->
    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
       <div class="container">
-         <a class="navbar-brand" href="index.do">KH AIR</a>
+         <a class="navbar-brand" href="main.do">KH AIR</a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" 
                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

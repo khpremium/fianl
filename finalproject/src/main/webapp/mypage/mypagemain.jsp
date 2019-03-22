@@ -111,8 +111,8 @@ table.type09 td {
         <table class="type09">
     <thead>
     <tr>
-        <th scope="cols">타이틀</th>
-        <th scope="cols">내용</th>
+        <th scope="col">타이틀</th>
+        <th scope="col">내용</th>
     </tr>
     </thead>
     <tbody>

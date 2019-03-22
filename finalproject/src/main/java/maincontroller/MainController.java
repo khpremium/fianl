@@ -1,9 +1,7 @@
 package maincontroller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,8 +29,6 @@ public class MainController {
 		int num;
 		num=ran.nextInt(10)+1;*/
 		ModelAndView mav= new ModelAndView();
-		HttpSession session = req.getSession();
-		/*session.getAttribute(id);*/
 		mav.addObject("aList",service.ListProcess());
 		mav.addObject("rList",service.rListProcess("222"));
 		mav.setViewName("view/main");

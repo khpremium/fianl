@@ -1,31 +1,16 @@
 package controller;
 
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.annotation.Resource;
-
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.codehaus.jackson.JsonNode;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import dao.ClientDAO;
-import dao.ClientDaoImp;
 import dto.ClientDTO;
 import mail.MemberManagement;
 import service.ClientService;
@@ -51,19 +36,19 @@ private MemberManagement mm;
 	//메인페이지
 	@RequestMapping("/index.do")
 	public String main() {
-		return "index";
+		return "joinMain/index";
 	}
 	
 	//회원가입 페이지
 	@RequestMapping("/join.do")
 	public String joinView() {
-		return "join";
+		return "joinMain/join";
 	}
 	
 	//로그인 페이지
 	@RequestMapping("/login.do")
 	public String loginView(String id, String password) {
-		return "login";
+		return "joinMain/login";
 	}
 	
 	@RequestMapping(value="/loginCheck.do", method=RequestMethod.POST)
@@ -71,13 +56,19 @@ private MemberManagement mm;
 		ClientDTO cdto = service.loginCheck(dto, session);
 		ModelAndView mav = new ModelAndView();
 		if(cdto != null) {
-			mav.addObject("msg","success");
-			mav.setViewName("index2");
+			mav.setViewName("redirect:/main.do");
 		} else {
 			mav.addObject("msg", "failure");
-			mav.setViewName("login");
+			mav.setViewName("joinMain/login");
 		}
 		return mav;
+	}
+	
+	@RequestMapping("/logout.do")
+	public String logoutMethod(HttpSession session) {
+		System.out.println(session.getAttribute("id"));
+		session.invalidate();
+		return "redirect:/main.do";
 	}
 	
 	/*//이메일 중복체크
@@ -95,12 +86,6 @@ private MemberManagement mm;
 		return String.valueOf(result);
 	}
 	
-	//로그인 완료 페이지
-	@RequestMapping("/index2.do")
-	public String loginsuView() {
-		return "index2";
-	}
-	
 	//회원정보 삽입
 	@RequestMapping(value="/joinInsert.do", method=RequestMethod.POST)
 	public ModelAndView joinInsert(ClientDTO dto) {
@@ -113,14 +98,14 @@ private MemberManagement mm;
 	@RequestMapping("/idSearch.do")
 	public ModelAndView idSearchForm(ClientDTO dto) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("idSearch");
+		mav.setViewName("joinMain/idSearch");
 		return mav;
 	}
 	
 	//카카오 로그인
 	@RequestMapping("/kakaologin.do")
 	public String kakaoLogin() {
-		return "login2";
+		return "joinMain/login2";
 	}
 	
 }

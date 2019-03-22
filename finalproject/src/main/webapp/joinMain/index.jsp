@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
+<html>
 <head>
 
   <meta charset="UTF-8">
@@ -28,9 +29,7 @@
         <ul class="navbar-nav ml-auto">
                  <li class="login_wrap">
 		           <a href="#">
-		           <c:if>
-		           </c:if>
-		           <img src="images/util_menu_1.gif" alt="로그인" />
+		           <img src="img/util_menu_1.gif" alt="로그인" />
 		           </a>
 		             <!-- 로그인 폼 -->
 		               <form name="log_f" id="login_f" method="post" action="loginCheck.do">

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
    pageEncoding="utf-8"%>
 <!DOCTYPE html>
-
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,8 +15,6 @@
 <!-- Bootstrap core CSS -->
 <link href="joinMain/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="joinMain/vendor/bootstrap/css/idSearch.css" rel="stylesheet">
-
-<meta charset="utf-8">
 
 </head>
 <body>
