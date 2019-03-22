@@ -23,11 +23,8 @@
 	<h5 class="card-header">오시는길</h5>
 	<div class="card-body">
 		<div class="row">
-			<div class="col-lg-6">
 				<div id="map" style="width: 100%; height: 300px;"></div>
-			</div>
 		</div>
-	</div>
 	</div>
 	<script type="text/javascript">
 		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
@@ -40,9 +37,9 @@
 		var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
 		function resizeMap() {
 		    var mapContainer = document.getElementById('map');
-		    mapContainer.style.width = '100%';
+		    /* mapContainer.style.width = '100%';
 		    mapContainer.style.height = '100%'; 
-		}
+ */		}
 
 	</script>
 </body>
