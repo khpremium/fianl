@@ -19,6 +19,12 @@ public class ReservationServiceImp implements ReservationService {
 		// TODO Auto-generated method stub
 		return myrdao.reservation(user_id);
 	}
+
+	@Override
+	public void resdelProcess(String rv_code) {
+		// TODO Auto-generated method stub
+		myrdao.reservation_del(rv_code);
+	}
 	
 	
 }// class

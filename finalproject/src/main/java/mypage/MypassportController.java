@@ -27,7 +27,7 @@ public class MypassportController {
 		ModelAndView mav= new ModelAndView();
 		HttpSession session =req.getSession();
 		
-		mav.addObject("passport",service.passportProcess("aacv2df3"));
+		mav.addObject("passport",service.passportProcess("023d0d52"));
 		mav.setViewName("mypage/myPassport");
 		return mav;
 	}

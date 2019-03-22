@@ -55,6 +55,20 @@ div.button
 
 }
 
+h1 {
+        margin: 5px;
+        border: 10px solid #dddddd;
+        padding: 5px;
+      }
+
+      
+h2 {
+        margin: 5px;
+        border: 10px solid #dddddd;
+        padding: 5px;
+      } 
+
+
 
 </style>
 
@@ -67,10 +81,10 @@ div.button
    	 <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">Start Airline </div>
       <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light">My Profile</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">My Reservation</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">My Board</a>        
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Passport</a> 
+        <a href="#" class="list-group-item list-group-item-action bg-light">My Board</a>     
+        <a href="#" class="list-group-item list-group-item-action bg-light">Passport Insert</a> 
               
       </div>
     </div>
@@ -110,10 +124,10 @@ div.button
       <!--하얀색 헤더 끝-->
 
 	<!-- 페이지 내용 시작 -->
-      <div class="container-fluid">
-        <h1 class="mt-4" align="center">My Profile</h1>
+     
+        <h2 align="center">My Profile</h2>
         
-        <table class="type09">
+      <%--   <table class="type09">
     <thead>
     <tr>
         <th scope="cols">타이틀</th>
@@ -153,16 +167,28 @@ div.button
         </td>
     </tr>    
     </tbody>
-</table>
-        
+</table> --%>
+          <h1>아이디 : ${myprofile.id}</h1>
+       <h1>비밀번호 : ${myprofile.pass}</h1>
+       <h1>성함 : ${myprofile.name}</h1>
+       <h1>연락처 : ${myprofile.phonenum}</h1>
+       <h1>포인트 : ${myprofile.point}</h1>
+       <h1>성별 : ${myprofile.gender}</h1>
+       <h1>생년월일 :
+        <fmt:parseDate value="${myprofile.birth}" var="birth" pattern="yyyyMMdd"/>
+		<fmt:formatDate value="${birth}" pattern="yyyy년 MM월 dd일 "/>
+	   </h1>       
+      
+     
+     <div class="button">
+     <br/>
+    <input type="button" class="btn btn-primary btn-lg" value="회원 정보수정" onclick=""/>
+	</div>
        
         
       </div>
         
-     <div class="button">
-     <br/>
-    <input type="button" class="btn btn-primary btn-lg" value="회원 정보수정" onclick=""/>
-	</div> 
+      
     </div>
     
     

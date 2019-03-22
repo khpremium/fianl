@@ -22,5 +22,9 @@
 	<select id="ppsearch" parameterType="String" resultType="mypage.MypassportDTO">
 		
 	</select>
+	
+	<delete id="reservationdel" parameterType="String" >
+		delete from reservation where rv_code=#{rv_code}
+	</delete>
 
 </mapper>

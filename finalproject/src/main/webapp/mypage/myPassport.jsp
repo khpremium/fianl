@@ -40,6 +40,14 @@ div.button
 
 }
 
+h2 {
+        margin: 5px;
+        border: 10px solid #dddddd;
+        padding: 5px;
+      }
+
+
+
 </style>
 
 <body>
@@ -50,10 +58,11 @@ div.button
    	 <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">Start Airline </div>
       <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light">My Profile</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">My Reservation</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">My Board</a>        
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Passport</a>               
+        <a href="#" class="list-group-item list-group-item-action bg-light">My Board</a>     
+        <a href="#" class="list-group-item list-group-item-action bg-light">Passport Insert</a>
+                     
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -103,7 +112,7 @@ div.button
      
     
      
-   <h1 align="center">Passport Insert</h1>
+   <h2 align="center">Passport Insert</h2>
 	<br/>
 				<c:forEach var="i" begin="1" end="${passport}">
 				<h1>탑승객 ${i}번 </h1>				
@@ -125,19 +134,19 @@ div.button
 								<input type="text" style="border:1px solid black;">								
 								</td>
 								<td>
-								<input type="text" value="lastname/firstname" style="border:1px solid black;">
+								<input type="text" placeholder="lastname/firstname" style="border:1px solid black;">
 								</td>
 								<td>
-								<input type="text" value="ex)1991.07.06" style="border:1px solid black;">														
+								<input type="text" placeholder="ex)1991.07.06" style="border:1px solid black;">														
 								</td>
 								<td>
-								<input type="text" value="9자리 여권번호" style="border:1px solid black;">
+								<input type="text" placeholder="9자리 여권번호" style="border:1px solid black;">
 								</td>
 								<td>
 								<input type="text" style="border:1px solid black;">
 								</td>
 								<td>
-								<input type="text" value="한글로 입력해주세요" style="border:1px solid black;">
+								<input type="text" placeholder="한글로 입력해주세요" style="border:1px solid black;">
 								</td>																
 							  <td><input type="radio" name="cancel"/></td>							  						
 							</tr>						

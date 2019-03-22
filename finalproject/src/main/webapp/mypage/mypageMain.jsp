@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
   <meta charset="utf-8">
@@ -17,8 +18,25 @@
   <link href="mypage/css/simple-sidebar.css" rel="stylesheet">
 
 </head>
+<style>
+
+h1 {
+        margin: 30px;
+        border: 30px solid #dddddd;
+        padding: 30px;
+      }
 
 
+
+div.button
+{
+
+ text-align: center;
+
+}
+
+
+</style>
 
 
 <body>
@@ -73,11 +91,19 @@
 
 	<!-- 페이지 내용 시작 -->
       <div class="container-fluid">
-        <h1 class="mt-4" align="center">My Page</h1>     
+        <h2 class="mt-4" align="center">My Profile</h2>
+        
       
-        
-       
-        
+       <h1>아이디 : ${myprofile.id}</h1>
+       <h1>비밀번호 : ${myprofile.pass}</h1>
+       <h1>성함 : ${myprofile.name}</h1>
+       <h1>연락처 : ${myprofile.phonenum}</h1>
+       <h1>포인트 : ${myprofile.point}</h1>
+       <h1>성별 : ${myprofile.gender}</h1>
+       <h1>생년월일 :
+        <fmt:parseDate value="${myprofile.birth}" var="birth" pattern="yyyyMMdd"/>
+		<fmt:formatDate value="${birth}" pattern="yyyy년 MM월 dd일 "/>
+	   </h1>       
       </div>
         
      <div class="button">

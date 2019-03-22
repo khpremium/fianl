@@ -28,8 +28,21 @@
 
 <script type="text/javascript">
 
+$(document).ready(function(){
+	$('input[type="submit"]').on('click',function(e){
+		$('.del_chk').removeClass("del_none");
+		e.preventDefault();
+		$('input[type="submit"]').on('click',res_chk);
+	});
+	
+	
+});
 
-
+function res_chk(){
+	if($('.del_chk').val()=="${myres[1].rv_code}")
+		$('form').submit();
+	alert("예약이 취소되었습니다.")
+}
 
 </script>
 <style type="text/css">
@@ -38,6 +51,20 @@ div.button
 
  text-align: center;
 
+}
+
+h2 {
+        margin: 5px;
+        border: 10px solid #dddddd;
+        padding: 5px;
+      }
+
+input[type="text"]{
+	text-align: center;
+}
+
+.del_none{
+	visibility: hidden;
 }
 
 </style>
@@ -50,10 +77,10 @@ div.button
    	 <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">Start Airline </div>
       <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light">My Profile</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">My Reservation</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">My Board</a>        
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Passport</a>               
+        <a href="#" class="list-group-item list-group-item-action bg-light">My Board</a>     
+        <a href="#" class="list-group-item list-group-item-action bg-light">Passport Insert</a>               
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -94,12 +121,14 @@ div.button
 
 	<!-- 페이지 내용 시작 -->          
      
-    <h1 align="center">My Reservation</h1>
+    <h2 align="center">My Reservation</h2>
 	<br/>
 				
-				<h1>출국 항공기 예약 내용</h1>				
+				<h1>출국 항공기 예약 내용</h1>
+				<form action="reservation_delete.do" method="post">				
 				<!-- 출발비행기 -->
 				<div id="dept">
+				
 					<table>
 						<tr>
 							<th>항공사</th>
@@ -109,7 +138,7 @@ div.button
 							<th>성함</th>
 							<th>예약번호</th>
 							<th>탑승객 수</th>
-							<th>선택 취소</th>
+							
 						</tr>
 						
 							<tr>
@@ -127,12 +156,12 @@ div.button
 								<td>${myres[1].name}</td>
 								<td>${myres[1].rv_code}</td>
 								<td>${myres[1].p_count}</td>								
-							  <td><input type="radio" name="cancel"/></td>							  						
+							  							  						
 							</tr>						
 					</table>
 					
 				</div>
-				
+				<input type="hidden" name="cancel" value="${myres[1].rv_code}"/>
 				<br/>
 				<br/>
 				
@@ -148,7 +177,7 @@ div.button
 							<th>성함</th>
 							<th>예약번호</th>
 							<th>탑승객 수</th>
-							<th>선택 취소</th>
+							
 						</tr>
 						
 							<tr>
@@ -167,20 +196,25 @@ div.button
 								<td>${myres[0].name}</td>
 								<td>${myres[0].rv_code}</td>
 								<td>${myres[0].p_count}</td>
-							  <td><input type="radio" name="cancel"/></td>							  						
+							  							  						
 							</tr>
 						
 					</table>
 					
 				</div>
 				
-				<div>				
+				 		
+                </form>
+                			
 				<div class="button">
 				<br/>
-                <input type="button" class="btn btn-primary btn-lg" value="선택 예약취소" onclick=""/><br/>
-				</div> 
+                <input type="submit" class="btn btn-primary btn-lg" value="예약취소" />
+                <br/>
+                
+                <input type="text" class="del_chk del_none" placeholder="예약번호 입력">
+                
+                </div>
 				</div>
-				
 				
     
        
