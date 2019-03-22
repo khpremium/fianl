@@ -2,8 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<html>
 <head>
-
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,7 +22,6 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		
 		if(${pv.currentPage==1}){
 			$('#preBtn').removeClass();
 			$('#preBtn').addClass('page-item disabled');
@@ -30,20 +29,20 @@
 			$('#preBtn').removeClass();
 			$('#preBtn').addClass('page-item');
 		};
-		if(${pv.currentPage==pv.totalPage}){
+		
+		if(${pv.currentPage=pv.totalPage}){
 			$('#nextBtn').removeClass();
 			$('#nextBtn').addClass('page-item disabled');
-		}else{
+		}else{ 
 			$('#nextBtn').removeClass();
 			$('#nextBtn').addClass('page-item');
-		};
+		}
 	});
 </script>
 
 </head>
 
 <body>
-
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
@@ -96,10 +95,8 @@
 
 						<c:forEach var="dto" items="${HList}">
 							<tr>
-								<td><a
-									href="helpBlog.do?b_num=${dto.b_num}&currentPage=${pv.currentPage}">${dto.b_num }</td>
-								<td><a
-									href="helpBlog.do?b_num=${dto.b_num}&currentPage=${pv.currentPage}">${dto.title }</td>
+								<td><a href="helpBlog.do?b_num=${dto.b_num}&currentPage=${pv.currentPage}" >${dto.b_num }</a></td>
+								<td><a href="helpBlog.do?b_num=${dto.b_num}&currentPage=${pv.currentPage}" >${dto.title }</a></td>
 								<td>${dto.viewcount }</td>
 								<td>${dto.upload_date }</td>
 							</tr>
