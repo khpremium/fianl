@@ -4,7 +4,9 @@
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:aop="http://www.springframework.org/schema/aop"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
@@ -28,6 +30,7 @@
  				<value>classpath:config/reservationMapper.xml</value>
  				<value>classpath:config/MyPageMapper.xml</value>
 				<value>classpath:config/clientMapper.xml</value>
+				<value>classpath:config/helpCMapper.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -52,6 +55,8 @@
 	<!-- [6] 트랜잭션으로 처리할 메소드에 transactionManger설정 -->
 	<aop:config>
 		<aop:advisor advice-ref="txAdvice" pointcut="execution(* reservation.ReservationServiceImp.*Process(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* service.HelpCServiceImp.*Process(..))"/>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* service.ClientServiceImp.*Process(..))"/>
 	</aop:config>
 	
 	<!-- DAO -->
@@ -68,6 +73,9 @@
 		<property name="sqlSession" ref="sqlSession"/>
 	</bean>
 	<bean id="cdao2" class="dao.ClientDaoImp">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+	<bean id="hdao" class="dao.HelpCDaoImp">
 		<property name="sqlSession" ref="sqlSession" />
 	</bean>
 	
@@ -88,7 +96,9 @@
 		<property name="dao" ref="cdao2" />
 	</bean>
 	<bean id="service2" class="service.SendEmail" />
-	
+	<bean id="hservice" class="service.HelpCServiceImp">
+		<property name="hdao" ref="hdao" />
+	</bean>
 	
 	<!-- controller -->
 	<bean class="reservation.ReservationController">
@@ -105,6 +115,9 @@
 	</bean>
 	<bean class="controller.ClientController">
 		<property name="service" ref="cservice2" />
+	</bean>
+	<bean class="controller.HelpCController" >
+		<property name="service" ref="hservice" />
 	</bean>
 	
 	<!-- 이메일 구현 -->
@@ -129,6 +142,25 @@
 	<bean class="controller.EmailController">
 		<property name="mailService" ref="mailService" />
 	</bean>
+	
+	<!-- 첨부 파일의 임시기억장치 경로 설정(현재버전에서는 없어도됨) -->
+	<bean id="uploadDirResource" class="org.springframework.core.io.FileSystemResource">
+		<!-- <constructor-arg value="c:temp" /> -->
+		<constructor-arg value=".src/main/webapp/" />
+	</bean>
+	
+	<!-- 첨부파일을 임시기억장소에 저장한다.(id값 일치시켜야함) -->
+	 <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	 	<property name="uploadTempDir" ref="uploadDirResource" />
+	 	<property name="maxUploadSize" value="1000000000"></property>
+	 </bean>
+	 
+	 <!-- WebSocket 등록 -->
+	<bean id="chatWebSocketHandler" class="controller.ChatWebSocketHandler" />
+	
+	<websocket:handlers>
+		<websocket:mapping handler="chatWebSocketHandler" path="/chatws.do"/>
+	</websocket:handlers>
 	
 	<!-- viewResolver -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
