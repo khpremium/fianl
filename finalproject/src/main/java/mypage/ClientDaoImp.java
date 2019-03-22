@@ -1,7 +1,5 @@
 package mypage;
 
-import java.util.List;
-
 import org.mybatis.spring.SqlSessionTemplate;
 
 public class ClientDaoImp implements ClientDAO{

@@ -1,7 +1,5 @@
 package mypage;
 
-import java.util.List;
-
 public class ClientServiceImp implements ClientService {
 	private ClientDAO cdao;
 	

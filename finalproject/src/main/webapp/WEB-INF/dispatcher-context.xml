@@ -24,9 +24,10 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations">
 			<list>
- 			<value>classpath:mainmapper/mainMapper.xml</value>
- 			<value>classpath:config/reservationMapper.xml</value>
- 			<value>classpath:config/MyPageMapper.xml</value>
+ 				<value>classpath:mainmapper/mainMapper.xml</value>
+ 				<value>classpath:config/reservationMapper.xml</value>
+ 				<value>classpath:config/MyPageMapper.xml</value>
+				<value>classpath:config/clientMapper.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -66,6 +67,9 @@
 	<bean id="myrdao" class="mypage.ReservationDaoImp">
 		<property name="sqlSession" ref="sqlSession"/>
 	</bean>
+	<bean id="cdao2" class="dao.ClientDaoImp">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
 	
 	<!-- Service -->
 	<bean id="rservice" class="reservation.ReservationServiceImp">
@@ -80,6 +84,10 @@
 	<bean id="myrservice" class="mypage.ReservationServiceImp">
 		<property name="myrdao" ref="myrdao"/>
 	</bean>
+	<bean id="cservice2" class="service.ClientServiceImp">
+		<property name="dao" ref="cdao2" />
+	</bean>
+	<bean id="service2" class="service.SendEmail" />
 	
 	
 	<!-- controller -->
@@ -94,6 +102,32 @@
 	</bean>
 	<bean class="mypage.MyReservationController">
 		<property name="service" ref="myrservice"/>
+	</bean>
+	<bean class="controller.ClientController">
+		<property name="service" ref="cservice2" />
+	</bean>
+	
+	<!-- 이메일 구현 -->
+	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com"/>
+		<property name="port" value="587" />
+		<property name="username" value="yooeun2810@gmail.com" />
+		<property name="password" value="WLALS1013" />
+		<property name="defaultEncoding" value="utf-8"></property>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="mailService" class="service.MailServiceImpl">
+		<property name="javaMailSender" ref="javaMailSender"></property>
+	</bean>
+	
+	<bean class="controller.EmailController">
+		<property name="mailService" ref="mailService" />
 	</bean>
 	
 	<!-- viewResolver -->
