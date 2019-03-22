@@ -1,10 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:aop="http://www.springframework.org/schema/aop"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
@@ -12,100 +14,65 @@
 	<mvc:annotation-driven></mvc:annotation-driven>
 
 	<!-- [1] DataSource빈 선언 -->
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin://@192.168.10.25:1521:xe" />
+		<property name="url" value="jdbc:oracle:thin://@127.0.0.1:1521:xe" />
 		<property name="username" value="hr" />
 		<property name="password" value="a1234" />
 	</bean>
 
 	<!-- [2] SqlSessionFactoryBean 빈 선언 -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations">
 			<list>
- 				<value>classpath:mainmapper/mainMapper.xml</value>
- 				<value>classpath:config/reservationMapper.xml</value>
- 				<value>classpath:config/MyPageMapper.xml</value>
 				<value>classpath:config/clientMapper.xml</value>
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- [3] SqlSessionTemplate 빈 선언 -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
-	
+
 	<!-- [4] TransactionManager 빈 선언 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	
+
 	<!-- [5]선언적 트랜잭션: <tx:advice>태그를 이용한 트랜잭션 처리 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="*Process" rollback-for="java.lang.Exception" />
 		</tx:attributes>
 	</tx:advice>
-	
+
 	<!-- [6] 트랜잭션으로 처리할 메소드에 transactionManger설정 -->
 	<aop:config>
-		<aop:advisor advice-ref="txAdvice" pointcut="execution(* reservation.ReservationServiceImp.*Process(..))" />
+		<aop:pointcut expression="execution(* service.ClientServiceImp.*Process(..))" id="aa" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="aa" />
 	</aop:config>
-	
+
 	<!-- DAO -->
-	<bean id="rdao" class="reservation.ReservationDaoImp">
+	<bean id="dao" class="dao.ClientDaoImp">
 		<property name="sqlSession" ref="sqlSession" />
 	</bean>
-	<bean id="dao" class="maindao.MainDaoImp">
-		<property name="sqlSession" ref="sqlSession" />
-	</bean>
-	<bean id="cdao" class="mypage.ClientDaoImp">
-		<property name="sqlSession" ref="sqlSession"/>
-	</bean>
-	<bean id="myrdao" class="mypage.ReservationDaoImp">
-		<property name="sqlSession" ref="sqlSession"/>
-	</bean>
-	<bean id="cdao2" class="dao.ClientDaoImp">
-		<property name="sqlSession" ref="sqlSession" />
-	</bean>
-	
+
 	<!-- Service -->
-	<bean id="rservice" class="reservation.ReservationServiceImp">
-		<property name="dao" ref="rdao" />
-	</bean>
-	<bean id="service" class="mainservice.MainServiceImp">
+	<bean id="service" class="service.ClientServiceImp">
 		<property name="dao" ref="dao" />
-	</bean>
-	<bean id="cservice" class="mypage.ClientServiceImp">
-		<property name="cdao" ref="cdao"/>
-	</bean>
-	<bean id="myrservice" class="mypage.ReservationServiceImp">
-		<property name="myrdao" ref="myrdao"/>
-	</bean>
-	<bean id="cservice2" class="service.ClientServiceImp">
-		<property name="dao" ref="cdao2" />
 	</bean>
 	<bean id="service2" class="service.SendEmail" />
 	
-	
 	<!-- controller -->
-	<bean class="reservation.ReservationController">
-		<property name="service" ref="rservice" />
-	</bean>
-	<bean class="maincontroller.MainController">
-		 <property name="service" ref="service" />
-	</bean>
-	<bean class="mypage.MypageController">
-		<property name="service" ref="cservice"/>
-	</bean>
-	<bean class="mypage.MyReservationController">
-		<property name="service" ref="myrservice"/>
-	</bean>
 	<bean class="controller.ClientController">
-		<property name="service" ref="cservice2" />
+		<property name="service" ref="service" />
 	</bean>
+	
+	
 	
 	<!-- 이메일 구현 -->
 	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
@@ -130,8 +97,16 @@
 		<property name="mailService" ref="mailService" />
 	</bean>
 	
+	
 	<!-- viewResolver -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/joinMain/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 </beans>
+
+
+
+
+
+
