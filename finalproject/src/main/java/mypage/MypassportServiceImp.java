@@ -17,6 +17,12 @@ public class MypassportServiceImp implements MypassportService {
 		// TODO Auto-generated method stub
 		return mypdao.passport(rv_code);
 	}
+
+	@Override
+	public void passportinsProcess(MypassportDTO dto) {
+		// TODO Auto-generated method stub
+		mypdao.inspassport(dto);
+	}
 	
 	
 }// class

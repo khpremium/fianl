@@ -159,7 +159,7 @@ function cityprocess(){
             <a class="nav-link" href="#">Priview</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">MyPage</a>
+            <a class="nav-link" href="profile.do">MyPage</a>
           </li>
         </ul>
       </div>

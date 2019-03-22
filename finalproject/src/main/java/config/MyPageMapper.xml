@@ -26,5 +26,8 @@
 	<delete id="reservationdel" parameterType="String" >
 		delete from reservation where rv_code=#{rv_code}
 	</delete>
-
+	<insert id="passportIns" parameterType="mypage.MypassportDTO">
+	INSERT INTO PASSPORT(NAME_KR,NAME_EN,GENDER,P_BIRTH,PASSPORT_NUM,EXP_DATE,PHONENUM,P_COUNTRY)
+    VALUES(#{name_kr},#{name_en},#{gender},#{p_birth},#{passport_num},#{exp_date},#{phonenum},#{p_country})
+	</insert>
 </mapper>

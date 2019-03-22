@@ -28,7 +28,15 @@
 
 <script type="text/javascript">
 
-
+$(document).ready(function(){
+	$('input[type="submit"]').click(function(e){
+		e.preventDefault();
+		if(!confirm('정말로 여권번호 확실허냐?')) return;
+		$('form').submit();
+	});
+	
+	
+});//ready
 
 
 </script>
@@ -44,7 +52,7 @@ h2 {
         margin: 5px;
         border: 10px solid #dddddd;
         padding: 5px;
-      }
+}
 
 
 
@@ -58,10 +66,10 @@ h2 {
    	 <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">Start Airline </div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">My Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">My Reservation</a>
+        <a href="profile.do" class="list-group-item list-group-item-action bg-light">My Profile</a>
+        <a href="myreservation.do" class="list-group-item list-group-item-action bg-light">My Reservation</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">My Board</a>     
-        <a href="#" class="list-group-item list-group-item-action bg-light">Passport Insert</a>
+        <a href="passport.do" class="list-group-item list-group-item-action bg-light">Passport Insert</a>
                      
       </div>
     </div>
@@ -112,6 +120,7 @@ h2 {
      
     
      
+    <form action="inspassport.do" method="post">
    <h2 align="center">Passport Insert</h2>
 	<br/>
 				<c:forEach var="i" begin="1" end="${passport}">
@@ -122,47 +131,55 @@ h2 {
 						<tr>
 							<th>한글 성명</th>
 							<th>영문 성명</th>
+							<th>성별</th>
 							<th>법정 생년월일</th>
 							<th>여권번호</th>
 							<th>여권 만료일</th>
+							<th>연락처</th>
 							<th>국가</th>
-							<th>저장</th>
+							
 						</tr>						
 							<tr>
 							
 								<td>								
-								<input type="text" style="border:1px solid black;">								
+								<input type="text" name="aList[${i-1}].name_kr" style="border:1px solid black;">								
 								</td>
 								<td>
-								<input type="text" placeholder="lastname/firstname" style="border:1px solid black;">
+								<input type="text" name="aList[${i-1}].name_en" placeholder="lastname/firstname" style="border:1px solid black;">
 								</td>
 								<td>
-								<input type="text" placeholder="ex)1991.07.06" style="border:1px solid black;">														
+								<input type="text" name="aList[${i-1}].gender" placeholder="남성 혹은 여성" style="border:1px solid black;">
+								</td>								
+								<td>
+								<input type="text" name="aList[${i-1}].p_birth" placeholder="ex)1991.07.06" style="border:1px solid black;">														
 								</td>
 								<td>
-								<input type="text" placeholder="9자리 여권번호" style="border:1px solid black;">
+								<input type="text" name="aList[${i-1}].passport_num" placeholder="9자리 여권번호" style="border:1px solid black;">
 								</td>
 								<td>
-								<input type="text" style="border:1px solid black;">
+								<input type="text" name="aList[${i-1}].exp_date" style="border:1px solid black;">
 								</td>
 								<td>
-								<input type="text" placeholder="한글로 입력해주세요" style="border:1px solid black;">
+								<input type="text" name="aList[${i-1}].phonenum" placeholder="연락처" style="border:1px solid black;">
+								</td>								
+								<td>
+								<input type="text" name="aList[${i-1}].p_country" placeholder="한글로 입력해주세요" style="border:1px solid black;">
 								</td>																
-							  <td><input type="radio" name="cancel"/></td>							  						
-							</tr>						
-					</table>					
-				</div>				
+							  						  						
+							</tr>	
+											
+					</table><input type="hidden" name="aList[${i-1}].reservation_rv_code" value="${pass_rvcode}"/>
+				</div>
 				<br/>
 				<br/>
 				</c:forEach>
-							
-				<div>				
+				
+				</form>
+													
 				<div class="button">
 				<br/>
-                <input type="button" class="btn btn-primary btn-lg" value="저장하기" onclick=""/><br/>
+                <input type="submit" class="btn btn-primary btn-lg" value="저장하기" /><br/>
 				</div> 
-				</div> 
-				
 				
     
        

@@ -81,10 +81,10 @@ h2 {
    	 <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">Start Airline </div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">My Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">My Reservation</a>
+        <a href="profile.do" class="list-group-item list-group-item-action bg-light">My Profile</a>
+        <a href="myreservation.do" class="list-group-item list-group-item-action bg-light">My Reservation</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">My Board</a>     
-        <a href="#" class="list-group-item list-group-item-action bg-light">Passport Insert</a> 
+        <a href="passport.do" class="list-group-item list-group-item-action bg-light">Passport Insert</a> 
               
       </div>
     </div>
@@ -104,7 +104,7 @@ h2 {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="main.do">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Notice</a>

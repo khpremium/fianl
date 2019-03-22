@@ -18,6 +18,14 @@ public class MypassportDaoImp implements MypassportDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("mypage.passport",rv_code);
 	}
+
+	@Override
+	public void inspassport(MypassportDTO dto) {
+		// TODO Auto-generated method stub
+		sqlSession.insert("mypage.passportIns",dto);
+	}
+
+	
 	
 	
 }// class

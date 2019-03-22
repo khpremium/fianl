@@ -1,15 +1,15 @@
 package mypage;
 
 public class MypassportDTO {
-	
 	private String name_kr;
 	private String name_en;
 	private String gender;
-	private String phonenumber;
+	private String phonenum;
 	private String exp_date;
 	private String passport_num;
 	private String reservation_rv_code;
 	private String p_country;
+	private String p_birth;
 	
 	public MypassportDTO() {
 		// TODO Auto-generated constructor stub
@@ -39,12 +39,12 @@ public class MypassportDTO {
 		this.gender = gender;
 	}
 
-	public String getPhonenumber() {
-		return phonenumber;
+	public String getPhonenum() {
+		return phonenum;
 	}
 
-	public void setPhonenumber(String phonenumber) {
-		this.phonenumber = phonenumber;
+	public void setPhonenum(String phonenum) {
+		this.phonenum = phonenum;
 	}
 
 	public String getExp_date() {
@@ -77,6 +77,14 @@ public class MypassportDTO {
 
 	public void setP_country(String p_country) {
 		this.p_country = p_country;
+	}
+
+	public String getP_birth() {
+		return p_birth;
+	}
+
+	public void setP_birth(String p_birth) {
+		this.p_birth = p_birth;
 	}
 	
 	
