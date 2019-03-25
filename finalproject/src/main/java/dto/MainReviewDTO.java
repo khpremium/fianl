@@ -1,4 +1,4 @@
-package maindto;
+package dto;
 
 import java.sql.Date;
 

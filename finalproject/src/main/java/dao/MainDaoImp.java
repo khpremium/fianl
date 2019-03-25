@@ -1,11 +1,11 @@
-package maindao;
+package dao;
 
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
-import maindto.MainDto;
-import maindto.MainReviewDTO;
+import dto.MainDto;
+import dto.MainReviewDTO;
 
 public class MainDaoImp implements MainDao{
 	

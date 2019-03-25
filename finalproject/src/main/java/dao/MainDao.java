@@ -1,9 +1,9 @@
-package maindao;
+package dao;
 
 import java.util.List;
 
-import maindto.MainDto;
-import maindto.MainReviewDTO;
+import dto.MainDto;
+import dto.MainReviewDTO;
 
 public interface MainDao {
 	public List<MainDto> list();

@@ -1,4 +1,4 @@
-package maincontroller;
+package controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import maindto.MainDto;
-import mainservice.MainService;
+import dto.MainDto;
+import service.MainService;
 
 //http://localhost:8090/myfinal/main.do
 

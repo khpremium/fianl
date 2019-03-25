@@ -1,9 +1,9 @@
-package mainservice;
+package service;
 
 import java.util.List;
 
-import maindto.MainDto;
-import maindto.MainReviewDTO;
+import dto.MainDto;
+import dto.MainReviewDTO;
 
 public interface MainService {
 	public List<MainDto> ListProcess();

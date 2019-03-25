@@ -63,7 +63,7 @@
 	<bean id="rdao" class="reservation.ReservationDaoImp">
 		<property name="sqlSession" ref="sqlSession" />
 	</bean>
-	<bean id="dao" class="maindao.MainDaoImp">
+	<bean id="dao" class="dao.MainDaoImp">
 		<property name="sqlSession" ref="sqlSession" />
 	</bean>
 	<bean id="cdao" class="mypage.ClientDaoImp">
@@ -86,7 +86,7 @@
 	<bean id="rservice" class="reservation.ReservationServiceImp">
 		<property name="dao" ref="rdao" />
 	</bean>
-	<bean id="service" class="mainservice.MainServiceImp">
+	<bean id="service" class="service.MainServiceImp">
 		<property name="dao" ref="dao" />
 	</bean>
 	<bean id="cservice" class="mypage.ClientServiceImp">
@@ -110,7 +110,7 @@
 	<bean class="reservation.ReservationController">
 		<property name="service" ref="rservice" />
 	</bean>
-	<bean class="maincontroller.MainController">
+	<bean class="controller.MainController">
 		 <property name="service" ref="service" />
 	</bean>
 	<bean class="mypage.MypageController">

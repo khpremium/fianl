@@ -1,4 +1,4 @@
-package maindto;
+package dto;
 
 public class MainDto {
 	

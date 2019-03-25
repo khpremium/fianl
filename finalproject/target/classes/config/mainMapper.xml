@@ -5,11 +5,11 @@
 
 <mapper namespace="main">
 
-	<select id="cityList" resultType="maindto.MainDto">
+	<select id="cityList" resultType="dto.MainDto">
 		select * from city 
 	</select>
 	
-	<select id="reviewList" parameterType="string" resultType="maindto.MainReviewDTO">
+	<select id="reviewList" parameterType="string" resultType="dto.MainReviewDTO">
 		select * from board where city_code=#{city_code} and b_category_c_num=1
 	</select>
 	

@@ -1,10 +1,10 @@
-package mainservice;
+package service;
 
 import java.util.List;
 
-import maindao.MainDao;
-import maindto.MainDto;
-import maindto.MainReviewDTO;
+import dao.MainDao;
+import dto.MainDto;
+import dto.MainReviewDTO;
 
 public class MainServiceImp implements MainService {
 	private MainDao dao;
