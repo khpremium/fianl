@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- Bootstrap core CSS -->
-<link href="../Son_cus/vendor/bootstrap/css/bootstrap.min.css"
+<link href="Son_cus/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

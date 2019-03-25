@@ -24,14 +24,14 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-		if(${pv.currentPage==1}){
+		if('${pv.currentPage==1}'){
 			$('#preBtn').removeClass();
 			$('#preBtn').addClass('page-item disabled');
 		}else{
 			$('#preBtn').removeClass();
 			$('#preBtn').addClass('page-item');
 		};
-		if(${pv.currentPage==pv.totalPage}){
+		if('${pv.currentPage==pv.totalPage}'){
 			$('#nextBtn').removeClass();
 			$('#nextBtn').addClass('page-item disabled');
 		}else{
