@@ -22,4 +22,12 @@ public class ReservationDaoImp implements ReservationDAO {
 		return SqlSession.selectList("mypage.reservation",user_id);
 	}
 
+	@Override
+	public void reservation_del(String rv_code) {
+		// TODO Auto-generated method stub
+		SqlSession.delete("mypage.reservationdel",rv_code);
+	}
+
+	
+
 }

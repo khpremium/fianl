@@ -224,8 +224,14 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.2</version>
         </dependency>
-		
-		      
+	  	
+	  	<!--jstl 디펜던시 -->
+      <dependency>
+  		<groupId>jstl</groupId>
+  		<artifactId>jstl</artifactId>
+  		<version>1.2</version>
+  	   </dependency>
+
 	</dependencies>
     <build>
         <plugins>
