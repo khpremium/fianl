@@ -27,8 +27,8 @@ table tr td {
 
 input[type="text"], input[type="password"] {
 	border: none;
-	text-align: center;
 	height: 30px;
+	width: 100%;
 }
 
 input:focus {

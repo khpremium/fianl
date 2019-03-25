@@ -73,7 +73,8 @@ $(document).ready(function(){
     $('#orgbutton').on('click',chkProcess);
     
     $('form').on('submit', function() {
-    	if($('input[name="guestchk"]').val() == 'guest')
+    	alert($('input[name="guestchk"]:checked').val());
+    	if($('input[name="guestchk"]:checked').val() == 'guest')
     		$('form').attr('action', 'guestInfo.do');
     	else if('${empty id}') {
     		$(location).attr('href','login.do');

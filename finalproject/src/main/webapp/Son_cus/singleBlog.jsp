@@ -209,7 +209,7 @@
 							<textarea class="form-control" rows="3" id="comInsText"></textarea>
 						</div>
 						<%-- login
-						<c:if test="(String)session.getAttribute('id')!=null"> --%>
+						<c:if test="${id!=null}"> --%>
 						<button type="submit" class="btn btn-primary" id="comIns">Submit</button>
 						<%-- <c:otherwise>
 						<div>로그인후 이용가능</div>

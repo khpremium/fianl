@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 
 <!-- Bootstrap core CSS -->
-<link href="view/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="view/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="view/css/scrolling-nav.css" rel="stylesheet">

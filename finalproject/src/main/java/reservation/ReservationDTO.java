@@ -4,7 +4,7 @@ public class ReservationDTO {
 	private String rv_code;
 	private int payment_chk;
 	private String airinfo_flight;
-	private String client_id;
+	private String user_id;
 	private String non_name;
 	private String non_phonenumber;
 	private String non_email;
@@ -104,12 +104,12 @@ public class ReservationDTO {
 		this.airinfo_flight = airinfo_flight;
 	}
 
-	public String getClient_id() {
-		return client_id;
+	public String getUser_id() {
+		return user_id;
 	}
 
-	public void setClient_id(String client_id) {
-		this.client_id = client_id;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
 	public int getP_count() {

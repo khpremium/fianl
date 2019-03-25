@@ -26,7 +26,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations">
 			<list>
- 				<value>classpath:mainmapper/mainMapper.xml</value>
+ 				<value>classpath:config/mainMapper.xml</value>
  				<value>classpath:config/reservationMapper.xml</value>
  				<value>classpath:config/MyPageMapper.xml</value>
 				<value>classpath:config/clientMapper.xml</value>

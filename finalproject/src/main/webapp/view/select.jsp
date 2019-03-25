@@ -171,7 +171,7 @@
 												${rdto.non_name}님
 											</c:when>
 											<c:otherwise>
-												client님
+												${id}님
 											</c:otherwise>
 										</c:choose>
 									</span>
@@ -193,7 +193,8 @@
 								</p>
 								<button id="naverpayment" class="btn btn-primary btn-lg">NaverPay</button>
 								<hr />
-								<button id="kakaopayment" class="btn btn-primary btn-lg">KakaoPay</button>
+								<a href="#" id="kakaopayment">
+								<img alt="카카오페이" src="images/payment_icon_yellow_medium.png"></a>
 								<hr />
 								<button id="payment" class="btn btn-primary btn-lg">일반결제</button>
 								<a href="main.do" class="btn btn-primary btn-lg">취소</a>
@@ -214,14 +215,19 @@
 		<input type="hidden" name="payment_chk" id="payment_chk">
 		<input type="hidden" name="dep_airinfo_flight" id="dep_airinfo_flight">
 		<input type="hidden" name="arv_airinfo_flight" id="arv_airinfo_flight">
-		<c:if test="${rdto.guestchk == 'guest'}">
-			<input type="hidden" name="guestchk" value="${rdto.guestchk}">
-			<input type="hidden" name="non_name" value="${rdto.non_name}">
-			<input type="hidden" name="non_gender" value="${rdto.non_gender}">
-			<input type="hidden" name="non_phonenumber" value="${rdto.non_phonenumber}">
-			<input type="hidden" name="non_email" value="${rdto.non_email}">
-			<input type="hidden" name="non_pass" value="${rdto.non_pass}">
-		</c:if>
+		<c:choose>
+			<c:when test="${rdto.guestchk == 'guest'}">
+				<input type="hidden" name="guestchk" value="${rdto.guestchk}">
+				<input type="hidden" name="non_name" value="${rdto.non_name}">
+				<input type="hidden" name="non_gender" value="${rdto.non_gender}">
+				<input type="hidden" name="non_phonenumber" value="${rdto.non_phonenumber}">
+				<input type="hidden" name="non_email" value="${rdto.non_email}">
+				<input type="hidden" name="non_pass" value="${rdto.non_pass}">
+			</c:when>
+			<c:otherwise>
+				<input type="hidden" name="user_id" value="${id}">
+			</c:otherwise>
+		</c:choose>
 	</form>
 
 	<!-- Footer -->

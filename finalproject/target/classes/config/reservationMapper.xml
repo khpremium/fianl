@@ -36,7 +36,7 @@
 	<insert id="client" parameterType="reservation.ReservationDTO">
 		insert into
 		reservation(rv_num, rv_code, payment_chk, airinfo_flight, user_id, p_count)
-		values(rv_num_seq.nextval, #{rv_code}, #{payment_chk}, #{airinfo_flight}, #{client_id, jdbcType=VARCHAR}, #{p_count})
+		values(rv_num_seq.nextval, #{rv_code}, #{payment_chk}, #{airinfo_flight}, #{user_id}, #{p_count})
 	</insert>
 
 	<insert id="guest" parameterType="reservation.ReservationDTO">
