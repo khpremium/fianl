@@ -4,6 +4,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 //http://localhost:8090/myfinal/myreservation.do
@@ -29,6 +31,12 @@ public class MyReservationController {
 		mav.setViewName("mypage/myreservation");
 		
 		return mav;
+	}
+	
+	@RequestMapping(value="/reservation_delete.do",method=RequestMethod.POST)
+	public String deleteResrvation(String cancel) {
+		service.resdelProcess(cancel);
+		return "redirect:/myreservation.do";
 	}
 	
 }// class

@@ -29,20 +29,15 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-	$('input[type="submit"]').on('click',function(e){
-		$('.del_chk').removeClass("del_none");
+	$('input[type="submit"]').click(function(e){
 		e.preventDefault();
-		$('input[type="submit"]').on('click',res_chk);
+		if(!confirm('정말로 여권번호 확실허냐?')) return;
+		$('form').submit();
 	});
 	
 	
-});
+});//ready
 
-function res_chk(){
-	if($('.del_chk').val()=="${myres[1].rv_code}")
-		$('form').submit();
-	alert("예약이 취소되었습니다.")
-}
 
 </script>
 <style type="text/css">
@@ -57,15 +52,9 @@ h2 {
         margin: 5px;
         border: 10px solid #dddddd;
         padding: 5px;
-      }
-
-input[type="text"]{
-	text-align: center;
 }
 
-.del_none{
-	visibility: hidden;
-}
+
 
 </style>
 
@@ -80,11 +69,11 @@ input[type="text"]{
         <a href="profile.do" class="list-group-item list-group-item-action bg-light">My Profile</a>
         <a href="myreservation.do" class="list-group-item list-group-item-action bg-light">My Reservation</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">My Board</a>     
-        <a href="passport.do" class="list-group-item list-group-item-action bg-light">Passport Insert</a>               
+        <a href="passport.do" class="list-group-item list-group-item-action bg-light">Passport Insert</a>
+                     
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
-    </div>
 	<!-- 옆 각 메뉴 태그 끝 -->
 	
   
@@ -121,101 +110,76 @@ input[type="text"]{
       <!--하얀색 헤더 끝-->
 
 	<!-- 페이지 내용 시작 -->          
+    <%--  <h1>${passport}</h1>
+     <p>
+     <c:forEach var="i" begin="1" end="${passport}">
+     	<input type="text" value="${i}"><br/>
+     </c:forEach>
+     </p>
+      --%>
      
-    <h2 align="center">My Reservation</h2>
+    
+     
+    <form action="inspassport.do" method="post">
+   <h2 align="center">Passport Insert</h2>
 	<br/>
-				
-				<h1>출국 항공기 예약 내용</h1>
-				<form action="reservation_delete.do" method="post">				
+				<c:forEach var="i" begin="1" end="${passport}">
+				<h1>탑승객 ${i}번 </h1>				
 				<!-- 출발비행기 -->
 				<div id="dept">
-				
 					<table>
 						<tr>
-							<th>항공사</th>
-							<th>편명</th>
-							<th>출발시간</th>
-							<th>도착시간</th>
-							<th>성함</th>
-							<th>예약번호</th>
-							<th>탑승객 수</th>
+							<th>한글 성명</th>
+							<th>영문 성명</th>
+							<th>성별</th>
+							<th>법정 생년월일</th>
+							<th>여권번호</th>
+							<th>여권 만료일</th>
+							<th>연락처</th>
+							<th>국가</th>
 							
-						</tr>
-						
+						</tr>						
 							<tr>
 							
-								<td>${myres[1].airline}</td>
-								<td>${myres[1].airinfo_flight}</td>
-								<td>
-								<fmt:parseDate value="${myres[1].d_time}" var="dtime" pattern="yyyyMMddHHmm"/>
-								<fmt:formatDate value="${dtime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/>														
+								<td>								
+								<input type="text" name="aList[${i-1}].name_kr" style="border:1px solid black;">								
 								</td>
 								<td>
-								<fmt:parseDate value="${myres[1].a_time}" var="atime" pattern="yyyyMMddHHmm"/>
-								<fmt:formatDate value="${atime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/>
+								<input type="text" name="aList[${i-1}].name_en" placeholder="lastname/firstname" style="border:1px solid black;">
 								</td>
-								<td>${myres[1].name}</td>
-								<td>${myres[1].rv_code}</td>
-								<td>${myres[1].p_count}</td>								
-							  							  						
-							</tr>						
-					</table>
-					
+								<td>
+								<input type="text" name="aList[${i-1}].gender" placeholder="남성 혹은 여성" style="border:1px solid black;">
+								</td>								
+								<td>
+								<input type="text" name="aList[${i-1}].p_birth" placeholder="ex)1991.07.06" style="border:1px solid black;">														
+								</td>
+								<td>
+								<input type="text" name="aList[${i-1}].passport_num" placeholder="9자리 여권번호" style="border:1px solid black;">
+								</td>
+								<td>
+								<input type="text" name="aList[${i-1}].exp_date" style="border:1px solid black;">
+								</td>
+								<td>
+								<input type="text" name="aList[${i-1}].phonenum" placeholder="연락처" style="border:1px solid black;">
+								</td>								
+								<td>
+								<input type="text" name="aList[${i-1}].p_country" placeholder="한글로 입력해주세요" style="border:1px solid black;">
+								</td>																
+							  						  						
+							</tr>	
+											
+					</table><input type="hidden" name="aList[${i-1}].reservation_rv_code" value="${pass_rvcode}"/>
 				</div>
-				<input type="hidden" name="cancel" value="${myres[1].rv_code}"/>
 				<br/>
 				<br/>
+				</c:forEach>
 				
-				<h1>귀국 항공기 예약 내역</h1>				
-				<!-- 도착비행기 -->
-				<div id="arrv">
-					<table>
-						<tr>
-							<th>항공사</th>
-							<th>편명</th>
-							<th>출발시간</th>
-							<th>도착시간</th>
-							<th>성함</th>
-							<th>예약번호</th>
-							<th>탑승객 수</th>
-							
-						</tr>
-						
-							<tr>
-							
-								<td>${myres[0].airline}</td>
-								<td>${myres[0].airinfo_flight}</td>
-								
-								<td>
-								<fmt:parseDate value="${myres[0].d_time}" var="dtime" pattern="yyyyMMddHHmm"/>
-								<fmt:formatDate value="${dtime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/>
-								</td>
-								<td>
-								<fmt:parseDate value="${myres[0].a_time}" var="atime" pattern="yyyyMMddHHmm"/>
-								<fmt:formatDate value="${atime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/>
-								</td>
-								<td>${myres[0].name}</td>
-								<td>${myres[0].rv_code}</td>
-								<td>${myres[0].p_count}</td>
-							  							  						
-							</tr>
-						
-					</table>
-					
-				</div>
-				
-				 		
-                </form>
-                			
+				</form>
+													
 				<div class="button">
 				<br/>
-                <input type="submit" class="btn btn-primary btn-lg" value="예약취소" />
-                <br/>
-                
-                <input type="text" class="del_chk del_none" placeholder="예약번호 입력">
-                
-                </div>
-				</div>
+                <input type="submit" class="btn btn-primary btn-lg" value="저장하기" /><br/>
+				</div> 
 				
     
        
