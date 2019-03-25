@@ -1,7 +1,5 @@
 package dto;
 
-import java.util.Date;
-
 public class ReplyDTO {
 	private int cm_num;
 	private int board_b_num;

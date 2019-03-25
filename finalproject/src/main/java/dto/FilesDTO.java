@@ -1,7 +1,5 @@
 package dto;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class FilesDTO {
 	private int f_num;
 	private int board_b_num;
