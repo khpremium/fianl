@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<html>
 <head>
 
 <meta charset="utf-8">
@@ -97,9 +98,9 @@
 						<c:forEach var="dto" items="${HList}">
 							<tr>
 								<td><a
-									href="helpBlog.do?b_num=${dto.b_num}&currentPage=${pv.currentPage}">${dto.b_num }</td>
+									href="helpBlog.do?b_num=${dto.b_num}&currentPage=${pv.currentPage}">${dto.b_num }</a></td>
 								<td><a
-									href="helpBlog.do?b_num=${dto.b_num}&currentPage=${pv.currentPage}">${dto.title }</td>
+									href="helpBlog.do?b_num=${dto.b_num}&currentPage=${pv.currentPage}">${dto.title }</a></td>
 								<td>${dto.viewcount }</td>
 								<td>${dto.upload_date }</td>
 							</tr>
