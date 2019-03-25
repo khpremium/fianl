@@ -207,6 +207,7 @@
 									<li><a href="#">Tutorials</a></li>
 								</ul> -->
 				<!-- Side Widget -->
+				</div>
 
 				<div class="card my-4">
 					<jsp:include page="helpchatOpen.jsp"></jsp:include>
@@ -216,7 +217,6 @@
 					</div>
 					<div><input type="text" style="width:85%;"/><input type="button" value="전송" style="width:15%;"></div> -->
 				</div>
-			</div>
 
 		</div>
 		<!-- /.row -->

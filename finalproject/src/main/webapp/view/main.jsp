@@ -174,7 +174,7 @@ function cityprocess(){
             <a class="nav-link" href="join.do">Join us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Notice</a>
+            <a class="nav-link" href="helpMain.do">Notice</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Board</a>
