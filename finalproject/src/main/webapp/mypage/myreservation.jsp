@@ -84,7 +84,6 @@ input[type="text"]{
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
-    </div>
 	<!-- 옆 각 메뉴 태그 끝 -->
 	
   
@@ -215,10 +214,8 @@ input[type="text"]{
                 <input type="text" class="del_chk del_none" placeholder="예약번호 입력">
                 
                 </div>
-				</div>
-				
-    
-       
+			
+    	</div>
     <!-- /#page-content-wrapper -->
 	<!-- 페이지 내용 끝 -->
 	

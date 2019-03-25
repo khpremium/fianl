@@ -182,7 +182,7 @@ h2 {
 				</div> 
 				
     
-       
+       </div>
     <!-- /#page-content-wrapper -->
 	<!-- 페이지 내용 끝 -->
 	

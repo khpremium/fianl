@@ -1,8 +1,5 @@
 package mypage;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -15,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MypassportController {
 	private MypassportService service;
-	private MypassportDAO mypdao;
 	
 	public MypassportController() {
 		// TODO Auto-generated constructor stub
@@ -26,9 +22,8 @@ public class MypassportController {
 	}
 	
 	@RequestMapping("passport.do")
-	public ModelAndView passportList(HttpServletRequest req,String rv_code) {
+	public ModelAndView passportList(HttpSession session, String rv_code) {
 		ModelAndView mav= new ModelAndView();
-		HttpSession session =req.getSession();
 		
 		mav.addObject("passport",service.passportProcess("023d0d52"));
 		mav.addObject("pass_rvcode","023d0d52");
