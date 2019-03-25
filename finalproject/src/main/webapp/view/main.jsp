@@ -27,9 +27,6 @@
 
 /*레디*/
 $(document).ready(function(){
-		
-	
-	
 	/* 인원 수량 증가 감소  */
 	
     $('input[count_range]').click(countprocess);/* 인원 수량 증가 감소 끝  */ 
@@ -53,7 +50,7 @@ $(document).ready(function(){
     if($("#dep_date").val() < new Date().toISOString().substring(0,10)){
     		alert("지나간 날짜는 선택할 수 없습니다. ");
     		$("#dep_date").val(new Date().toISOString().substring(0,10));
-    		$("#arv_date").val('');    		
+    		$("#arv_date").val('');
    		 } //선택날짜 < 오늘 날짜
     
     if($("#dep_date").val() != '' && $("#arv_date").val() != ''){//출발일, 도착일 빈칸 설정
@@ -74,6 +71,15 @@ $(document).ready(function(){
    }) //date change
    
     $('#orgbutton').on('click',chkProcess);
+    
+    $('form').on('submit', function() {
+    	if($('input[name="guestchk"]').val() == 'guest')
+    		$('form').attr('action', 'guestInfo.do');
+    	else if('${empty id}') {
+    		$(location).attr('href','login.do');
+        	return false;
+    	}
+    });
     
 });/*레디 끝*/
 
