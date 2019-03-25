@@ -1,6 +1,5 @@
 package mypage;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -22,9 +21,8 @@ public class MyReservationController {
 	}
 	
 	@RequestMapping("myreservation.do")
-	public ModelAndView myresList(String user_id,HttpServletRequest req) {
+	public ModelAndView myresList(String user_id, HttpSession session) {
 		ModelAndView mav=new ModelAndView();
-		HttpSession session=req.getSession();
 		
 		System.out.println(service.reservationProcess("test01"));
 		mav.addObject("myres",service.reservationProcess("test01"));

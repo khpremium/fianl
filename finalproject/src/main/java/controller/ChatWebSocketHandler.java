@@ -9,8 +9,6 @@ import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-import com.sun.java.swing.plaf.windows.resources.windows;
-
 public class ChatWebSocketHandler extends TextWebSocketHandler{
 	public static List<WebSocketSession> list = new ArrayList<WebSocketSession>();
 	

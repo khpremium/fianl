@@ -7,8 +7,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,17 +41,8 @@ public class ReservationController {
 	
 	// 비행편 선택
 	@RequestMapping(value = "/selectFlight.do", method = RequestMethod.POST)
-	public ModelAndView selectFlight(ReservationDTO rdto, HttpServletRequest req) {
+	public ModelAndView selectFlight(ReservationDTO rdto) {
 		ModelAndView mav = new ModelAndView();
-		/*if(guestchk == "noguest") {
-			HttpSession session = req.getSession();
-			if(session.getAttribute("logOk") == null) {
-				session.setAttribute("rtn", "main.do");
-				mav.setViewName("redirect:/login.do");
-			} else {
-				mav.addObject("client_id", session.getAttribute("logOk"));
-			}
-		}*/
 		mav.addObject("dep_date", rdto.getDep_date());
 		mav.addObject("arv_date", rdto.getArv_date());
 		rdto.setDep_date(rdto.getDep_date().replaceAll("-", ""));

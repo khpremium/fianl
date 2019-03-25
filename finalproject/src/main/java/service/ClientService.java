@@ -1,8 +1,5 @@
 package service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import dto.ClientDTO;

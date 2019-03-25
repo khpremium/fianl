@@ -1,6 +1,5 @@
 package mypage;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -23,9 +22,8 @@ public class MypageController {
 	}
 	
 	@RequestMapping("profile.do")
-	public ModelAndView profileList(HttpServletRequest req) {
+	public ModelAndView profileList(HttpSession session) {
 		ModelAndView mav= new ModelAndView();
-		HttpSession session = req.getSession();
 		
 		/*session.getAttribute("abc");
 		if(session.getAttribute("abc")==null) {
