@@ -9,11 +9,10 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.tiles.request.Request;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.RequestAttribute;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,6 +40,7 @@ public class HelpCController {
 	
 	@RequestMapping("/helpMain.do")
 	public ModelAndView helpMain(PageDTO pv) {
+		System.out.println("main");
 		ModelAndView mav = new ModelAndView();
 		int totalRecord =  service.hBlogCountProcess();
 		if(totalRecord >= 1) { 
@@ -88,9 +88,6 @@ public class HelpCController {
 			String fileName = file.getOriginalFilename();
 			UUID random = UUID.randomUUID();
 			
-			/*String root = request.getSession().getServletContext().getRealPath("/");*/
-			//System.out.println(root);
-			/*String saveDirectory = root+"temp"+File.separator;*/
 			String saveDirectory = "C:/Users/user2/git/fianl/finalproject/src/main/webapp/images";
 			File fe = new File(saveDirectory);
 			if(!fe.exists()) {
@@ -137,6 +134,7 @@ public class HelpCController {
 	@RequestMapping("/blogUpPro.do")
 	public String blogUpPro(BoardDTO bdto, HttpServletRequest request) {
 		service.hBlogUpProcess(bdto, request);
+		System.out.println("blogupPro");
 		return "redirect:/helpMain.do";
 	}
 	
