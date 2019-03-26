@@ -50,7 +50,7 @@
 	</update>
 	
 	<delete id="HcomAllDel" parameterType="int">
-		delete b_comment where board_b_num=#{board_b_num}
+		delete from b_comment where board_b_num=#{board_b_num}
 	</delete>
 	
 	<select id="Hgetfile" parameterType="int" resultType="String">
@@ -77,7 +77,7 @@
 	</select>
 	
 	<select id="Hfile" parameterType="int" resultType="String">
-		select filename form board where b_num=#{b_num}
+		select filename from board where b_num=#{b_num}
 	</select>
 	
 	<delete id="HComDel" parameterType="int">

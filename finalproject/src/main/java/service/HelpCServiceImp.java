@@ -70,9 +70,8 @@ public class HelpCServiceImp implements HelpCService{
 	public void hBlogUpProcess(BoardDTO bdto, HttpServletRequest request) {
 		// 기존 첨부파일
 		String filename = hdao.getFilename(bdto.getB_num());
-		String root = request.getSession().getServletContext().getRealPath("/");
-		String saveDirectory = root + "temp" + File.separator;
-
+		String saveDirectory = "C:/Users/user2/git/final/finalproject/src/main/webapp/images";
+		System.out.println(filename);
 		// 수정할 첨부파일
 		MultipartFile file = bdto.getUpload();
 

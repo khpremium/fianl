@@ -89,7 +89,7 @@ public class HelpCController {
 			/*String root = request.getSession().getServletContext().getRealPath("/");*/
 			//System.out.println(root);
 			/*String saveDirectory = root+"temp"+File.separator;*/
-			String saveDirectory = "C:/Users/user2/git/fianl/finalproject/src/main/webapp/images";
+			String saveDirectory = "C:/Users/user2/git/final/finalproject/src/main/webapp/images";
 			File fe = new File(saveDirectory);
 			if(!fe.exists()) {
 				fe.mkdir();
@@ -112,11 +112,11 @@ public class HelpCController {
 	}
 	
 	@RequestMapping("/blogDel.do")
-	public String blogDel(int b_num, HttpRequest request) {
+	public String blogDel(int b_num) {
 		service.hComAllDelProcess(b_num);
 		String filename = service.hFileProcess(b_num);
 		if (filename != null) {
-			String saveDirectory = "C:/Users/user2/git/fianl/finalproject/src/main/webapp/images";
+			String saveDirectory = "C:/Users/user2/git/final/finalproject/src/main/webapp/images";
 			File fe = new File(saveDirectory, filename);
 			fe.delete();
 		}
