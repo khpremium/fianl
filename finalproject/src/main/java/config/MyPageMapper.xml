@@ -10,24 +10,39 @@
 	</select>
 
 	<select id="reservation" parameterType="String" resultType="mypage.ReservationDTO">
-		select * from reservation r, airinfo a, CLIENT c
-		where r.AIRINFO_FLIGHT=a.flight and r.user_id=c.ID and r.user_id = #{id} order by rv_num desc
+		SELECT r.*,a.*,c.*,t.city_name from reservation r, airinfo a, client c, city t
+where r.AIRINFO_FLIGHT=a.flight and r.user_id=c.ID and t.city_code = a.city_code_dep and r.user_id = #{id} order by rv_num desc
 	</select>
 
 	<select id="passport" parameterType="string" resultType="Integer">
 		select p_count from reservation
 			where rv_code=#{rv_code} and rownum=1
-	</select>
+	</select>	
 	
-	<select id="ppsearch" parameterType="String" resultType="mypage.MypassportDTO">
-		
-	</select>
 	
 	<delete id="reservationdel" parameterType="String" >
 		delete from reservation where rv_code=#{rv_code}
 	</delete>
+	
 	<insert id="passportIns" parameterType="mypage.MypassportDTO">
-	INSERT INTO PASSPORT(NAME_KR,NAME_EN,GENDER,P_BIRTH,PASSPORT_NUM,EXP_DATE,PHONENUM,P_COUNTRY)
-    VALUES(#{name_kr},#{name_en},#{gender},#{p_birth},#{passport_num},#{exp_date},#{phonenum},#{p_country})
+	INSERT INTO PASSPORT(NAME_KR,NAME_EN,GENDER,P_BIRTH,PASSPORT_NUM,EXP_DATE,PHONENUM,P_COUNTRY,RESERVATION_RV_CODE)
+    VALUES(#{name_kr},#{name_en},#{gender},#{p_birth},#{passport_num},#{exp_date},#{phonenum},#{p_country},#{reservation_rv_code})
 	</insert>
+	
+	<delete id="passportdel" parameterType="String" >
+		delete from passport where reservation_rv_code=#{reservation_rv_code}
+	</delete>
+	
+	<select id="passportSearch" parameterType="String" resultType="mypage.MypassportDTO">
+	 	select * from passport where reservation_rv_code=#{reservation_rv_code}
+	</select>
+	
+	<update id="proupdate">
+		
+	
+	</update>
+	
+	
+	
+	
 </mapper>

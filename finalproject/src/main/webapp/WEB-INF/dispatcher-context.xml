@@ -44,13 +44,14 @@
 	<!-- [5]선언적 트랜잭션: <tx:advice>태그를 이용한 트랜잭션 처리 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="*Process" rollback-for="java.lang.Exception" />
+			<tx:method name="*Process" rollback-for="java.lang.Exception" />			
 		</tx:attributes>
 	</tx:advice>
 	
 	<!-- [6] 트랜잭션으로 처리할 메소드에 transactionManger설정 -->
 	<aop:config>
 		<aop:advisor advice-ref="txAdvice" pointcut="execution(* reservation.ReservationServiceImp.*Process(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* mypage.MypassportServiceImp.*Process(..))"/>
 	</aop:config>
 	
 	<!-- DAO -->

@@ -82,10 +82,9 @@ h2 {
       <div class="sidebar-heading">Start Airline </div>
       <div class="list-group list-group-flush">
         <a href="profile.do" class="list-group-item list-group-item-action bg-light">My Profile</a>
-        <a href="myreservation.do" class="list-group-item list-group-item-action bg-light">My Reservation</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">My Board</a>     
+        <a href="myreservation.do" class="list-group-item list-group-item-action bg-light">My Reservation</a>            
         <a href="passport.do" class="list-group-item list-group-item-action bg-light">Passport Insert</a> 
-              
+        <a href="#" class="list-group-item list-group-item-action bg-light">My Board</a>     
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -172,17 +171,19 @@ h2 {
        <h1>비밀번호 : ${myprofile.pass}</h1>
        <h1>성함 : ${myprofile.name}</h1>
        <h1>연락처 : ${myprofile.phonenum}</h1>
-       <h1>포인트 : ${myprofile.point}</h1>
+       <h1>이메일 : ${myprofile.email}</h1>       
        <h1>성별 : ${myprofile.gender}</h1>
        <h1>생년월일 :
         <fmt:parseDate value="${myprofile.birth}" var="birth" pattern="yyyyMMdd"/>
 		<fmt:formatDate value="${birth}" pattern="yyyy년 MM월 dd일 "/>
-	   </h1>       
+	   </h1>
+	   <h1>포인트 : ${myprofile.point}</h1>       
       
      
      <div class="button">
      <br/>
-    <input type="button" class="btn btn-primary btn-lg" value="회원 정보수정" onclick=""/>
+    <input type="button" class="btn btn-primary btn-lg" value="정보 수정" onclick=""/>
+    <input type="button" class="btn btn-primary btn-lg" value="회원 탈퇴" onclick=""/>
 	</div>
        
         

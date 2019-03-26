@@ -39,5 +39,19 @@ public class MypageController {
 		mav.setViewName("/mypage/myprofile");
 		return mav;
 	}
+	/*
+	@RequestMapping("update.do")
+	public ModelAndView update() {
+		ModelAndView mav=new ModelAndView();
+		
+		
+		return null;
+	}
+	
+	@RequestMapping("delete.do")
+	public ModelAndView delete() {
+		
+		return null;
+	}*/
 	
 }

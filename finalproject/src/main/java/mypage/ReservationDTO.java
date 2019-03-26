@@ -21,6 +21,7 @@ public class ReservationDTO {
 	private String id;
 	private String name;
 	private String rv_code;
+	private String city_name;
 	
 	
 	public ReservationDTO() {
@@ -172,6 +173,14 @@ public class ReservationDTO {
 
 	public void setRv_code(String rv_code) {
 		this.rv_code = rv_code;
+	}
+
+	public String getCity_name() {
+		return city_name;
+	}
+
+	public void setCity_name(String city_name) {
+		this.city_name = city_name;
 	}
 		
 	
