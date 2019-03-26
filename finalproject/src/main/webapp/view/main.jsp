@@ -76,7 +76,8 @@ $(document).ready(function(){
     	alert($('input[name="guestchk"]:checked').val());
     	if($('input[name="guestchk"]:checked').val() == 'guest')
     		$('form').attr('action', 'guestInfo.do');
-    	else if('${empty id}') {
+    	else if('${empty id}' == 'true') {
+    		alert('${empty id}');
     		$(location).attr('href','login.do');
         	return false;
     	}

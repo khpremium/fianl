@@ -25,15 +25,14 @@ public class MypageController {
 	public ModelAndView profileList(HttpSession session) {
 		ModelAndView mav= new ModelAndView();
 		
-		/*session.getAttribute("abc");
-		if(session.getAttribute("abc")==null) {
-			mav.setViewName("redirect:/groot.do");
+		if(session.getAttribute("id")==null) {
+			mav.setViewName("redirect:/login.do");
 		}else {		
-		mav.addObject("myprofile",service.profileProcess((String)session.getAttribute("abc")));
-		mav.setViewName("maypage/mypagemain");
-		}*/
-		mav.addObject("myprofile",service.profileProcess("test01"));
-		mav.setViewName("/mypage/myprofile");
+			mav.addObject("myprofile",service.profileProcess((String)session.getAttribute("id")));
+			mav.setViewName("/mypage/myprofile");
+		}
+		/*mav.addObject("myprofile",service.profileProcess("test01"));
+		mav.setViewName("/mypage/myprofile");*/
 		return mav;
 	}
 	

@@ -14,9 +14,11 @@
 
 <!-- Custom styles for this template -->
 <link href="view/css/blog-post.css" rel="stylesheet">
+<link rel="stylesheet" href="view/css/reservation.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="view/css/reservation.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"></script>
 <script type="text/javascript">
 	var p_count = Number('${rdto.p_count}');

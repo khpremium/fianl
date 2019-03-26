@@ -1,7 +1,5 @@
 package controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,7 +22,7 @@ public class MainController {
 	}
 	
 	@RequestMapping("/main.do")
-	public ModelAndView listMethod(MainDto md,HttpServletRequest req){
+	public ModelAndView listMethod(MainDto md){
 		/*Random ran = new Random();
 		int num;
 		num=ran.nextInt(10)+1;*/

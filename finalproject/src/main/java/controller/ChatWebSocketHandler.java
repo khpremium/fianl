@@ -20,7 +20,6 @@ public class ChatWebSocketHandler extends TextWebSocketHandler{
 		System.out.println(session.getId()+"연결 됨");
 		// 리스트에 추가
 		list.add(session);
-		
 	}
 	
 	//클라이언트가 메시지를 보냈을때 호출되는 메소드
