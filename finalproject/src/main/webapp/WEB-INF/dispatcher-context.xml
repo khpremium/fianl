@@ -31,6 +31,7 @@
  				<value>classpath:config/MyPageMapper.xml</value>
 				<value>classpath:config/clientMapper.xml</value>
 				<value>classpath:config/helpCMapper.xml</value>
+				<value>classpath:config/adminMapper.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -109,7 +110,7 @@
 		<property name="mypdao" ref="mypdao"/>
 	</bean>
 	<bean id="aservice" class="service.AdminServiceImp">
-		<property name="dao" ref="dao" />
+		<property name="dao" ref="adao" />
 	</bean>
 	
 	<!-- controller -->

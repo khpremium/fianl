@@ -25,7 +25,7 @@ public class AdminController {
 	public ModelAndView clientSelectList() {
 		ModelAndView mav= new ModelAndView();
 		mav.addObject("aList",service.clientSelectProcess());
-		mav.setViewName("adminMain");
+		mav.setViewName("/nononono/adminMain");
 		return mav;
 	}//clientSelectList()
 	
@@ -33,7 +33,7 @@ public class AdminController {
 	public ModelAndView airInfoSelectList() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("aList",service.airInfoSelectProcess());
-		mav.setViewName("airTables");
+		mav.setViewName("/nononono/airTables");
 		return mav;
 	}
 	
@@ -41,7 +41,7 @@ public class AdminController {
 	public ModelAndView reservationInfoSelectList() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("aList",service.reservationSelectProcess());
-		mav.setViewName("resTable");
+		mav.setViewName("/nononono/resTable");
 		return mav;
 	}
 	
@@ -82,7 +82,7 @@ public class AdminController {
 		//System.out.println(id);
 		ModelAndView mav= new ModelAndView();
 		mav.addObject("dto",service.clientUpdateSelectProcess(id));
-		mav.setViewName("clientUpdate");
+		mav.setViewName("/nononono/clientUpdate");
 		return mav;
 	}//clientSelectList()
 
@@ -91,7 +91,7 @@ public class AdminController {
 		//System.out.println(flight);
 		ModelAndView mav= new ModelAndView();
 		mav.addObject("dto",service.airinfoUpdateSelectProcess(flight));
-		mav.setViewName("airinfoUpdate");
+		mav.setViewName("/nononono/airinfoUpdate");
 		return mav;
 	}//airinfoUpdateSelectList()
 	
@@ -100,7 +100,7 @@ public class AdminController {
 		//System.out.println(flight);
 		ModelAndView mav= new ModelAndView();
 		mav.addObject("dto",service.reservationUpdateSelectProcess(rv_num));
-		mav.setViewName("reservationUpdate");
+		mav.setViewName("/nononono/reservationUpdate");
 		return mav;
 	}//reservationUpdateSelectList()
 	
