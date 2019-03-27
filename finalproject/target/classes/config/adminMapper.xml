@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mt">
+
+	<select id="client" resultType="dto.ClientDTO">
+		select * from client order by id
+	</select>
+	
+	<select id="airinfo" resultType="dto.AirInfoDTO">
+		select * from airinfo order by flight
+	</select>
+	
+	<select id="reservation" resultType="dto.ReservationDTO">
+		select * from reservation order by rv_num
+	</select>
+	
+	<delete id="clientDelete" parameterType="string">
+		delete from client where id = #{id}
+	</delete>
+	
+	 <delete id="airinfoDelete" parameterType="string">
+		delete from airinfo where flight = #{flight}
+	</delete>
+	
+	<delete id="reservationDelete" parameterType="string">
+		delete from reservation where rv_num = #{rv_num}
+	</delete>
+	
+	<select id="clientChk" parameterType="string" resultType="int">
+		select count(rv_num) from reservation where user_id = #{id}
+	</select>
+	
+	<select id="airinfoChk" parameterType="string" resultType="int">
+		select count(rv_num) from reservation where airinfo_flight = #{flight}
+	</select>
+	
+	<select id="clientUpdateSelect" parameterType="string" resultType="dto.ClientDTO">
+		select * from client where id= #{id}
+	</select>
+	
+	<select id="airinfoUpdateSelect" parameterType="string" resultType="dto.AirInfoDTO">
+		select * from airinfo where flight=#{flight}
+	</select>
+	
+	<select id="reservationUpdateSelect" parameterType="string" resultType="dto.ReservationDTO">
+		select * from reservation where rv_num=#{rv_num}
+	</select>
+	
+	
+	
+	
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
