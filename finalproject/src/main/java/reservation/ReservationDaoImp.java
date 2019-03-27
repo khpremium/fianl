@@ -1,5 +1,6 @@
 package reservation;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -13,11 +14,6 @@ public class ReservationDaoImp implements ReservationDAO {
 	
 	public void setSqlSession(SqlSessionTemplate sqlSession) {
 		this.sqlSession = sqlSession;
-	}
-
-	@Override
-	public List<AirinfoDTO> search() {
-		return sqlSession.selectList("res.list");
 	}
 
 	@Override
@@ -51,8 +47,18 @@ public class ReservationDaoImp implements ReservationDAO {
 	}
 
 	@Override
-	public int rvChkMethod(String rv_num) {
-		return sqlSession.selectOne("res.rvchk", rv_num);
+	public int rvChkMethod(String rv_code) {
+		return sqlSession.selectOne("res.rvchk", rv_code);
+	}
+
+	@Override
+	public int priceMethod(String rv_code) {
+		return sqlSession.selectOne("res.price", rv_code);
+	}
+
+	@Override
+	public void pointMethod(HashMap<Object, Object> map) {
+		sqlSession.update("res.point", map);
 	}
 	
 }

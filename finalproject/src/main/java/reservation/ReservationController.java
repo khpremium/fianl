@@ -7,6 +7,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -63,8 +65,8 @@ public class ReservationController {
 	
 	// 예약 실행
 	@RequestMapping("/reservation.do")
-	public String guestReservation(ReservationDTO rdto, RedirectAttributes reattr) {
-		service.reservationProcess(rdto);
+	public String guestReservation(ReservationDTO rdto, RedirectAttributes reattr, HttpSession session) {
+		service.reservationProcess(rdto, session);
 		if(rdto.getGuestchk() == null)
 			return "redirect:/main.do";
 		else {

@@ -19,10 +19,6 @@
 		and city_code_arv=#{city_code_dep}
 	</select>
 
-	<select id="list" resultType="reservation.AirinfoDTO">
-		select * from airinfo
-	</select>
-
 	<select id="name" parameterType="string" resultType="string">
 		select city_name from city where city_code=#{city_code}
 	</select>
@@ -52,5 +48,13 @@
 	<select id="rvchk" parameterType="string" resultType="int">
 		select count(*) from reservation where rv_code=#{rv_code}
 	</select>
+	
+	<select id="price" parameterType="string" resultType="int">
+		select price_ad from airinfo where flight=#{flight} and rownum=1
+	</select>
+	
+	<update id="point" parameterType="java.util.HashMap">
+		update client set point=point+#{point} where id=#{id}
+	</update>
 
 </mapper>

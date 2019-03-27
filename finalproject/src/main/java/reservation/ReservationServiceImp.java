@@ -1,7 +1,10 @@
 package reservation;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
+
+import javax.servlet.http.HttpSession;
 
 public class ReservationServiceImp implements ReservationService {
 	private ReservationDAO dao;
@@ -12,11 +15,6 @@ public class ReservationServiceImp implements ReservationService {
 	
 	public void setDao(ReservationDAO dao) {
 		this.dao = dao;
-	}
-
-	@Override
-	public List<AirinfoDTO> searchProcess() {
-		return dao.search();
 	}
 
 	@Override
@@ -35,7 +33,7 @@ public class ReservationServiceImp implements ReservationService {
 	}
 
 	@Override
-	public void reservationProcess(ReservationDTO rdto) {
+	public void reservationProcess(ReservationDTO rdto, HttpSession session) {
 		while(true) {
 			String rv_code = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 8);
 			if(dao.rvChkMethod(rv_code) > 0)
@@ -50,7 +48,14 @@ public class ReservationServiceImp implements ReservationService {
 			dao.seatUptMethod(rdto.getDep_airinfo_flight());
 			dao.seatUptMethod(rdto.getArv_airinfo_flight());
 		}
-		if(rdto.getGuestchk() == null) {
+		if(rdto.getNon_name() == null) {
+			long point = Math.round(dao.priceMethod(rdto.getArv_airinfo_flight()) * rdto.getP_count() * 0.1);
+			point += Math.round(dao.priceMethod(rdto.getDep_airinfo_flight()) * rdto.getP_count() * 0.1);
+			System.out.println(point);
+			HashMap<Object, Object> map = new HashMap<>();
+			map.put("id", rdto.getUser_id());
+			map.put("point", point);
+			dao.pointMethod(map);
 			rdto.setAirinfo_flight(rdto.getDep_airinfo_flight());
 			dao.clientResMethod(rdto);
 			rdto.setAirinfo_flight(rdto.getArv_airinfo_flight());
