@@ -169,7 +169,6 @@ public class HelpCController {
 	@RequestMapping("/hComUpd.do")
 	public @ResponseBody List<ReplyDTO> hComUpd(ReplyDTO rdto){
 		service.hComUpdProcess(rdto);
-		
 		return service.hcomListProcess(rdto.getBoard_b_num());
 	}
 	
