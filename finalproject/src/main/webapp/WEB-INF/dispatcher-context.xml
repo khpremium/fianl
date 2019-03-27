@@ -81,6 +81,9 @@
 	<bean id="mypdao" class="mypage.MypassportDaoImp">
 		<property name="sqlSession" ref="sqlSession"/>
 	</bean>
+	<bean id="adao" class="dao.AdminDaoImp">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
 	
 	<!-- Service -->
 	<bean id="rservice" class="reservation.ReservationServiceImp">
@@ -105,6 +108,9 @@
 	<bean id="mypservice" class="mypage.MypassportServiceImp">
 		<property name="mypdao" ref="mypdao"/>
 	</bean>
+	<bean id="aservice" class="service.AdminServiceImp">
+		<property name="dao" ref="dao" />
+	</bean>
 	
 	<!-- controller -->
 	<bean class="reservation.ReservationController">
@@ -127,6 +133,9 @@
 	</bean>
 	<bean class="mypage.MypassportController">
 		<property name="service" ref="mypservice"/>
+	</bean>
+	<bean class="controller.AdminController">
+		<property name="service" ref="aservice" />
 	</bean>
 	
 	<!-- 이메일 구현 -->
