@@ -33,7 +33,7 @@
     <div class="card card-register mx-auto mt-5">
       <div class="card-header">회원 정보 수정</div>
       <div class="card-body">
-        <form>
+        <form action="clientUpdate.do" method="post">
         
         
           
@@ -41,13 +41,13 @@
             <div class="form-row">
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input type="text" id="client_id" class="form-control" value="${dto.id}" placeholder="client_id" required="required" autofocus="autofocus" readonly>
+                  <input type="text" id="client_id" class="form-control" value="${dto.id}" placeholder="client_id" required="required" autofocus="autofocus" readonly name="id">
                   <label for="client_id">아이디</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input type="text" id="client_pass" class="form-control" value="${dto.pass}" placeholder="client_pass" required="required">
+                  <input type="text" id="client_pass" class="form-control" value="${dto.pass}" placeholder="client_pass" required="required" name="pass">
                   <label for="client_pass">비밀번호</label>
                 </div>
               </div>
@@ -58,13 +58,13 @@
             <div class="form-row">
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input type="text" id="client_name" class="form-control" value="${dto.name}" placeholder="client_name" required="required" autofocus="autofocus">
+                  <input type="text" id="client_name" class="form-control" value="${dto.name}" placeholder="client_name" required="required" autofocus="autofocus" name="name">
                   <label for="client_name">이름</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input type="text" id="client_phonenum" class="form-control" value="${dto.phonenum}" placeholder="client_phonenum" required="required">
+                  <input type="text" id="client_phonenum" class="form-control" value="${dto.phonenum}" placeholder="client_phonenum" required="required" name="phonenum">
                   <label for="client_phonenum">전화번호</label>
                 </div>
               </div>
@@ -75,13 +75,13 @@
             <div class="form-row">
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input type="text" id="client_email" class="form-control" value="${dto.email}" placeholder="client_email" required="required" autofocus="autofocus">
+                  <input type="text" id="client_email" class="form-control" value="${dto.email}" placeholder="client_email" required="required" autofocus="autofocus" name="email">
                   <label for="client_email">이메일</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input type="text" id="client_point" class="form-control" value="${dto.point}" placeholder="client_point" required="required">
+                  <input type="text" id="client_point" class="form-control" value="${dto.point}" placeholder="client_point" required="required" name="point">
                   <label for="client_point">포인트</label>
                 </div>
               </div>
@@ -92,13 +92,13 @@
             <div class="form-row">
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input type="text" id="client_gender" class="form-control" value="${dto.gender}" placeholder="client_gender" required="required" autofocus="autofocus">
+                  <input type="text" id="client_gender" class="form-control" value="${dto.gender}" placeholder="client_gender" required="required" autofocus="autofocus" name="gender">
                   <label for="client_gender">성별</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input type="text" id="client_birth" class="form-control" value="${dto.birth}" placeholder="client_birth" required="required">
+                  <input type="text" id="client_birth" class="form-control" value="${dto.birth}" placeholder="client_birth" required="required" name="birth">
                   <label for="client_birth">생년월일</label>
                 </div>
               </div>
@@ -107,7 +107,7 @@
           
           
           
-          <a class="btn btn-primary btn-block" href="login.html">Register</a>
+          <button class="btn btn-primary btn-block">수정</button>
         </form>
        
       </div>

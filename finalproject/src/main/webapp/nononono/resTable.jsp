@@ -67,7 +67,7 @@
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">항공편 및 예약 관리</h6>
           <a class="dropdown-item" href="airTables.do">항공편 관리</a>
-          <a class="dropdown-item" href="resTable.do">예약 정보 관리</a>
+          <a class="dropdown-item" href="#">예약 정보 관리</a>
           <!-- <div class="dropdown-divider"></div>
           <h6 class="dropdown-header">Other Pages:</h6>
           <a class="dropdown-item" href="404.jsp">404 Page</a>
@@ -129,7 +129,7 @@
                   		<th>${dto.non_email}</th>
                   		<th>${dto.non_pass}</th>
                   		<th>${dto.p_count}</th>
-                  		<th><a  class="btn btn-secondary" id="reservationUpdateBtn">수정</a>
+                  		<th><a href="reservationUpdateForm.do?rv_num=${dto.rv_num}" class="btn btn-secondary">수정</a>
                   			<input type="hidden" value="${dto.rv_num}" id="reservation_rv_num"/>
                 			<a href="reservationDelete.do?rv_num=${dto.rv_num}" class="btn btn-danger">삭제</a></th>
                   	 
@@ -148,7 +148,108 @@
           
         </div>
 
-       
+
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            예약 정보 입력</div>
+          <div class="card-body">
+        <form action="reservationInsert.do" method="post">
+        
+        
+          
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <select class="form-control" required="required" name="airinfo_flight">
+                    <option>항공편</option>
+                    <c:forEach items="${flightList}" var="dto">
+                      <option value="${dto.flight}">${dto.city_code_dep} > ${dto.city_code_arv} / ${dto.d_time}~${dto.a_time}</option>
+                    </c:forEach>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="reservation_user_id" class="form-control" placeholder="회원 아이디" name="user_id">
+                  <label for="reservation_user_id">회원 아이디</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="non_name" class="form-control" placeholder="비회원 이름" name="non_name">
+                  <label for="non_name">비회원 이름</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="non_gender" class="form-control" placeholder="비회원 성별" name="non_gender">
+                  <label for="non_gender">비회원 성별</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="non_phonenumber" class="form-control" placeholder="비회원 전화번호" name="non_phonenumber">
+                  <label for="non_phonenumber">비회원 전화번호</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="email" id="non_email" class="form-control" placeholder="비회원 이메일" name="non_email">
+                  <label for="non_email">비회원 이메일</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="non_pass" class="form-control" placeholder="비회원 비밀번호" name="non_pass">
+                  <label for="non_pass">비회원 비밀번호</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="p_count" class="form-control" placeholder="인원" required="required" name="p_count">
+                  <label for="p_count">인원</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="reservation_payment_chk" class="form-control" placeholder="결제 여부" required="required" name="payment_chk">
+                  <label for="reservation_payment_chk">결제 여부</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="rv_code" class="form-control" placeholder="airinfo_flight" required="required" name="rv_code">
+                  <label for="rv_code">예약코드</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <button class="btn btn-primary btn-block">입력</button>
+        </form>
+          </div>
+        </div>
       </div>
       <!-- /.container-fluid -->
 

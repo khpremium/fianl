@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
-import dto.MainDto;
+import dto.CityDTO;
 import dto.MainReviewDTO;
 
-public class MainDaoImp implements MainDao{
+public class MainDaoImp implements MainDAO{
 	
 	private SqlSessionTemplate sqlSession;
 	
@@ -20,7 +20,7 @@ public class MainDaoImp implements MainDao{
 	}
 	
 	@Override
-	public List<MainDto> list() {
+	public List<CityDTO> list() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("main.cityList");
 	}

@@ -35,31 +35,21 @@
 </head>
 
 <body id="page-top">
-
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
     <a class="navbar-brand mr-1" href="adminMain.do">관리자 전용 페이지</a>
-
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle">
       <i class="fas fa-bars"></i>
     </button>
-
-    
-
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
-     
-      
     </ul>
-
   </nav>
-
   <div id="wrapper">
 
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="adminMain.do">
+        <a class="nav-link" href="#">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>회원 정보 관리</span>
         </a>
@@ -79,21 +69,11 @@
           <a class="dropdown-item" href="blank.jsp">Blank Page</a> -->
         </div>
       </li>
-    
-      
     </ul>
 
 	  <!-- Sidebar end -->
-
     <div id="content-wrapper">
-
       <div class="container-fluid">
-
-       
-
-
-       
-
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
@@ -103,7 +83,6 @@
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
-                
                   <tr>
                     <th>아이디</th>
                     <th>비밀번호</th>
@@ -113,8 +92,7 @@
                     <th>포인트</th>
                     <th>성별</th>
                     <th>생년월일</th> 
-                    <th>수정 및 삭제</th> 
-                    
+                    <th>수정 및 삭제</th>
                   </tr>
                   
                 </thead>
@@ -123,7 +101,6 @@
                  
                   <c:forEach var="dto" items="${aList}" varStatus="status"> 
                   	 <tr>
-                		
                   		<th>${dto.id}</th>
                   		<th>${dto.pass}</th>
                   		<th>${dto.name}</th> 
@@ -132,29 +109,92 @@
                   		<th>${dto.point}</th>
                   		<th>${dto.gender}</th>
                   		<th>${dto.birth}</th>
-                  		
-                  		
-                  		
                   		<th>
-                  		
-                  		
-                  		
-                  		<a class="btn btn-secondary" id="clientUpdateBtn">수정</a>
+                  		<a href="clientUpdateForm.do?id=${dto.id}" class="btn btn-secondary">수정</a>
                   		<input type="hidden" value="${dto.id}" id="client_id"/>
                 		<a href="#" class="btn btn-danger" id="clientBtn">삭제</a></th>
-                  	</tr> 
-                  	
-                  
-                  
-                   </c:forEach> 
-
-
-
-
-
+                  	</tr>
+                   </c:forEach>
                 </tbody>
               </table>
             </div>
+          </div>
+        </div>
+        
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            회원 정보 입력</div>
+          <div class="card-body">
+          
+          <form action="clientInsert.do" method="post">
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="id" placeholder="아이디" class="form-control" value="${dto.id}" required="required" name="id">
+                  <label for="id">아이디</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="pass" placeholder="비밀번호" class="form-control" value="${dto.pass}" required="required" name="pass">
+                  <label for="pass">비밀번호</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="name" placeholder="이름" class="form-control" value="${dto.name}" required="required" name="name">
+                  <label for="name">이름</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="phonenum" placeholder="전화번호" class="form-control" value="${dto.phonenum}" required="required" name="phonenum">
+                  <label for="phonenum">전화번호</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="email" placeholder="이메일" class="form-control" value="${dto.email}" required="required" name="email">
+                  <label for="email">이메일</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="point" placeholder="포인트" class="form-control" value="${dto.point}" required="required" name="point">
+                  <label for="point">포인트</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="gender" placeholder="성별" class="form-control" value="${dto.gender}" required="required" name="gender">
+                  <label for="gender">성별</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="birth" placeholder="생년월일" class="form-control" value="${dto.birth}" required="required" name="birth">
+                  <label for="birth">생년월일</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-block">입력</button>
+          </form>
+          
           </div>
         </div>
 

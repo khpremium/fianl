@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import dto.MainDto;
+import dto.CityDTO;
 import service.MainService;
 
 //http://localhost:8090/myfinal/main.do
@@ -22,7 +22,7 @@ public class MainController {
 	}
 	
 	@RequestMapping("/main.do")
-	public ModelAndView listMethod(MainDto md){
+	public ModelAndView listMethod(CityDTO md){
 		/*Random ran = new Random();
 		int num;
 		num=ran.nextInt(10)+1;*/

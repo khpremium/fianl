@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.AdminDAO;
 import dto.AirInfoDTO;
+import dto.CityDTO;
 import dto.ClientDTO;
 import dto.ReservationDTO;
 
@@ -20,18 +21,7 @@ public class AdminServiceImp implements AdminService{
 	
 	@Override
 	public List<ClientDTO> clientSelectProcess() {
-	
 		return dao.clientSelectMethod();
-	}
-
-	@Override
-	public List<AirInfoDTO> airInfoSelectProcess() {
-		return dao.airInfoSelectMethod();
-	}
-
-	@Override
-	public List<ReservationDTO> reservationSelectProcess() {
-		return dao.reservationSelectMethod();
 	}
 
 	@Override
@@ -40,25 +30,8 @@ public class AdminServiceImp implements AdminService{
 	}
 
 	@Override
-	public void airinfoDeleteProcess(String flight) {
-		dao.airinfoDeleteMethod(flight);
-		
-	}
-
-	@Override
-	public void reservationDeleteProcess(String rv_num) {
-		dao.reservationDeleteMethod(rv_num);
-	}
-
-	@Override
 	public int clientChkProcess(String id) {
-		
 		return dao.clientChkMethod(id);
-	}
-
-	@Override
-	public int airinfoChkProcess(String flight) {
-		return dao.airinfoChkMethod(flight);
 	}
 
 	@Override
@@ -67,9 +40,54 @@ public class AdminServiceImp implements AdminService{
 	}
 
 	@Override
+	public void clientUpdateProcess(ClientDTO dto) {
+		dao.clientUpdateMethod(dto);
+	}
+
+	@Override
+	public void clientInsertProcess(ClientDTO dto) {
+		dao.clientInsertMethod(dto);
+	}
+
+	@Override
+	public List<AirInfoDTO> airInfoSelectProcess() {
+		return dao.airInfoSelectMethod();
+	}
+
+	@Override
+	public void airinfoDeleteProcess(String flight) {
+		dao.airinfoDeleteMethod(flight);
+	}
+
+	@Override
+	public int airinfoChkProcess(String flight) {
+		return dao.airinfoChkMethod(flight);
+	}
+
+	@Override
 	public AirInfoDTO airinfoUpdateSelectProcess(String flight) {
 		return dao.airinfoUpdateSelectMethod(flight);
+	}
 
+	@Override
+	public void airinfoUpdateProcess(AirInfoDTO dto) {
+		dao.airinfoUpdateMethod(dto);
+	}
+
+	@Override
+	public void airinfoInsertProcess(AirInfoDTO dto) {
+		dao.airinfoInsertMethod(dto);
+	}
+
+
+	@Override
+	public List<ReservationDTO> reservationSelectProcess() {
+		return dao.reservationSelectMethod();
+	}
+
+	@Override
+	public void reservationDeleteProcess(String rv_num) {
+		dao.reservationDeleteMethod(rv_num);
 	}
 
 	@Override
@@ -78,9 +96,18 @@ public class AdminServiceImp implements AdminService{
 
 	}
 
-	
+	@Override
+	public void reservationInsertProcess(ReservationDTO dto) {
+		dao.reservationInsertMethod(dto);
+	}
 
-	
-	
+	@Override
+	public void reservationUpdateProcess(ReservationDTO dto) {
+		dao.reservationUpdateMethod(dto);
+	}
 
+	@Override
+	public List<CityDTO> cityListProcess() {
+		return dao.cityListMethod();
+	}
 }

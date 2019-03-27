@@ -9,50 +9,84 @@
 		select * from client order by id
 	</select>
 	
-	<select id="airinfo" resultType="dto.AirInfoDTO">
-		select * from airinfo order by flight
-	</select>
-	
-	<select id="reservation" resultType="dto.ReservationDTO">
-		select * from reservation order by rv_num
-	</select>
-	
 	<delete id="clientDelete" parameterType="string">
 		delete from client where id = #{id}
-	</delete>
-	
-	 <delete id="airinfoDelete" parameterType="string">
-		delete from airinfo where flight = #{flight}
-	</delete>
-	
-	<delete id="reservationDelete" parameterType="string">
-		delete from reservation where rv_num = #{rv_num}
 	</delete>
 	
 	<select id="clientChk" parameterType="string" resultType="int">
 		select count(rv_num) from reservation where user_id = #{id}
 	</select>
 	
-	<select id="airinfoChk" parameterType="string" resultType="int">
-		select count(rv_num) from reservation where airinfo_flight = #{flight}
-	</select>
-	
 	<select id="clientUpdateSelect" parameterType="string" resultType="dto.ClientDTO">
 		select * from client where id= #{id}
+	</select>
+	
+	<update id="clientUpdate" parameterType="dto.ClientDTO">
+		update client
+		set pass=#{pass}, name=#{name}, phonenum=#{phonenum},
+		email=#{email}, point=#{point}, gender=#{gender}, birth=#{birth}
+		where id=#{id}
+	</update>
+	
+	<insert id="clientInsert" parameterType="dto.ClientDTO">
+		insert into client values(#{id}, #{pass}, #{name}, #{phonenum}, #{email}, #{point}, #{gender}, #{birth}, 0)
+	</insert>
+	
+	<select id="airinfo" resultType="dto.AirInfoDTO">
+		select * from airinfo order by flight
+	</select>
+	
+	 <delete id="airinfoDelete" parameterType="string">
+		delete from airinfo where flight = #{flight}
+	</delete>
+	
+	<select id="airinfoChk" parameterType="string" resultType="int">
+		select count(rv_num) from reservation where airinfo_flight = #{flight}
 	</select>
 	
 	<select id="airinfoUpdateSelect" parameterType="string" resultType="dto.AirInfoDTO">
 		select * from airinfo where flight=#{flight}
 	</select>
 	
+	<update id="airinfoUpdate" parameterType="dto.AirInfoDTO">
+		update airinfo
+		set d_time=#{d_time}, a_time=#{a_time}, airline=#{airline},
+		seatgrade=#{seatgrade}, price_ad=#{price_ad}, seat=#{seat}
+		where flight=#{flight}
+	</update>
+	
+	<insert id="airinfoInsert" parameterType="dto.AirInfoDTO">
+		insert into airinfo values(#{flight}, #{airline}, #{d_time}, #{a_time},
+		#{seatgrade}, #{price_ad}, 0, #{seat}, #{city_code_dep}, #{city_code_arv})
+	</insert>
+	
+	<select id="reservation" resultType="dto.ReservationDTO">
+		select * from reservation order by rv_num
+	</select>
+	
+	<delete id="reservationDelete" parameterType="string">
+		delete from reservation where rv_num = #{rv_num}
+	</delete>
+	
 	<select id="reservationUpdateSelect" parameterType="string" resultType="dto.ReservationDTO">
 		select * from reservation where rv_num=#{rv_num}
 	</select>
 	
+	<update id="reservationUpdate" parameterType="dto.ReservationDTO">
+		update reservation
+		set payment_chk=#{payment_chk}, non_name=#{non_name, jdbcType=VARCHAR},
+		non_gender=#{non_gender, jdbcType=VARCHAR}, non_phonenumber=#{non_phonenumber, jdbcType=VARCHAR},
+		non_email=#{non_email, jdbcType=VARCHAR}, non_pass=#{non_pass, jdbcType=VARCHAR}, p_count=#{p_count}
+		where rv_num=#{rv_num}
+	</update>
 	
-	
-	
-
+	<insert id="reservationInsert" parameterType="dto.ReservationDTO">
+		insert into reservation values(rv_num_seq.nextval, #{payment_chk},
+		#{airinfo_flight}, #{user_id, jdbcType=VARCHAR}, #{non_name, jdbcType=VARCHAR},
+		#{non_gender, jdbcType=VARCHAR}, #{non_phonenumber, jdbcType=VARCHAR},
+		#{non_email, jdbcType=VARCHAR}, #{non_pass, jdbcType=VARCHAR},
+		#{p_count}, #{rv_code})
+	</insert>
 
 </mapper>
 

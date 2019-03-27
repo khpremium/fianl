@@ -1,13 +1,13 @@
 package dto;
 
-public class MainDto {
+public class CityDTO {
 	
 	private String country_code;	
 	private String city_code;
 	private String city_name;
 	
 	
-	public MainDto() {
+	public CityDTO() {
 		// TODO Auto-generated constructor stub
 	}
 

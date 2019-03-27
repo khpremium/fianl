@@ -2,10 +2,10 @@ package service;
 
 import java.util.List;
 
-import dto.MainDto;
+import dto.CityDTO;
 import dto.MainReviewDTO;
 
 public interface MainService {
-	public List<MainDto> ListProcess();
+	public List<CityDTO> ListProcess();
 	public List<MainReviewDTO> rListProcess(String city_code);
 }
