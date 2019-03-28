@@ -30,9 +30,9 @@ public class MypassportController {
 		ModelAndView mav= new ModelAndView();
 		HttpSession session =req.getSession();
 		
-		mav.addObject("passport",service.passportProcess("cd6fcc40"));
-		mav.addObject("pass_rvcode","cd6fcc40");
-		mav.addObject("alreadypass",service.passportSrcProcess("cd6fcc40"));
+		mav.addObject("passport",service.passportProcess("220545eb"));
+		mav.addObject("pass_rvcode","220545eb");
+		mav.addObject("alreadypass",service.passportSrcProcess("220545eb"));
 		mav.setViewName("mypage/myPassport");
 		return mav;
 	}

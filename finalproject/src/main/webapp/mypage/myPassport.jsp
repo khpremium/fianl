@@ -81,7 +81,7 @@ h2 {
      <div id="page-content-wrapper">
 		<!--  하얀색 헤더 -->
        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <button class="btn btn-primary" id="menu-toggle">Total screen</button>
+        <!-- <button class="btn btn-primary" id="menu-toggle">전체메뉴 숨기기</button> -->
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -296,10 +296,18 @@ h2 {
 
   <!-- Menu Toggle Script -->
   <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
+  var menuChk = true;
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    if(menuChk){
+    $("#menu-toggle").text("전체메뉴 보기");
+    menuChk = false;
+    }else{
+  	  $("#menu-toggle").text("전체메뉴 숨기기");
+  	  menuChk = true;
+    }
+    $("#wrapper").toggleClass("toggled");
+  });
   </script>
 
 </body>

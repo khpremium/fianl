@@ -38,10 +38,20 @@ where r.AIRINFO_FLIGHT=a.flight and r.user_id=c.ID and t.city_code = a.city_code
 	</select>
 	
 	<update id="proupdate">
-		
-	
+		update client set pass=#{pass},phonenum=#{phonenum},email=#{email} where id=#{id}
 	</update>
 	
+	<delete id="prodelete">
+		delete from client where id=#{id}
+	</delete>
+	
+	<select id="count" resultType="int">
+		select count(*) from board where B_CATEGORY_C_NUM=0
+	</select>
+	
+	<select id="list" parameterType="mypage.PagingDTO" resultType="mypage.MyBoardDTO">
+	select * from board where B_CATEGORY_C_NUM=0
+	</select>
 	
 	
 	

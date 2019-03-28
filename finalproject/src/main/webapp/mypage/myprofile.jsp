@@ -16,7 +16,9 @@
 
   <!-- Custom styles for this template -->
   <link href="mypage/css/simple-sidebar.css" rel="stylesheet">
-
+  <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+  
+  
 </head>
 <style>
 table.type09 {
@@ -68,9 +70,42 @@ h2 {
         padding: 5px;
       } 
 
-
+#out {
+ width: 100%;
+ text-align: center;
+ }
+#in {
+ display: inline-block;
+ }
 
 </style>
+<script type="text/javascript">
+ $(document).ready(function(){
+	 $('#update').bind('click',updateRun);
+	 $('#delete').bind('click',deleteRun);
+
+	 
+function updateRun(){
+	alert("수정시작");
+	$('#frm').attr('action','update.do').submit();	
+	alert("수정완료");
+}
+
+function deleteRun(){
+	alert("탈퇴시작");
+	$('#frm').attr('action','delete.do').submit();
+	alert("탈퇴가 완료 되었습니다.");
+}
+
+
+	
+		alert("${pv.endPage}");
+
+
+	 
+ })//준비 
+
+</script>
 
 
 <body>
@@ -94,7 +129,8 @@ h2 {
     <div id="page-content-wrapper">
 		<!--  하얀색 헤더 -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <button class="btn btn-primary" id="menu-toggle">Total screen</button>
+        <!-- <button class="btn btn-primary" id="menu-toggle">전체메뉴 숨기기</button> -->
+
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -124,66 +160,96 @@ h2 {
 
 	<!-- 페이지 내용 시작 -->
      
-        <h2 align="center">My Profile</h2>
-        
-      <%--   <table class="type09">
-    <thead>
-    <tr>
-        <th scope="cols">타이틀</th>
-        <th scope="cols">내용</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <th scope="row">아이디</th>
-        <td>${myprofile.id}</td>
-    </tr>
-    <tr>
-        <th scope="row">비밀번호</th>
-        <td>${myprofile.pass}</td>
-    </tr>
-    <tr>
-        <th scope="row">성함</th>
-        <td>${myprofile.name}</td>
-    </tr>
-    <tr>
-        <th scope="row">연락처</th>
-        <td>${myprofile.phonenum}</td>
-    </tr>
-    <tr>
-        <th scope="row">포인트</th>
-        <td>${myprofile.point}</td>
-    </tr>
-    <tr>
-        <th scope="row">성별</th>
-        <td>${myprofile.gender}</td>
-    </tr> 
-    <tr>
-        <th scope="row">생년월일</th>
-        <td>
-        <fmt:parseDate value="${myprofile.birth}" var="birth" pattern="yyyyMMdd"/>
-		<fmt:formatDate value="${birth}" pattern="yyyy년 MM월 dd일 "/>
-        </td>
-    </tr>    
-    </tbody>
-</table> --%>
-          <h1>아이디 : ${myprofile.id}</h1>
-       <h1>비밀번호 : ${myprofile.pass}</h1>
-       <h1>성함 : ${myprofile.name}</h1>
-       <h1>연락처 : ${myprofile.phonenum}</h1>
-       <h1>이메일 : ${myprofile.email}</h1>       
+        <h2 align="center">My Profile</h2>  
+        <form name="frm" id="frm" method="post">      
+      <table>
+      <th>
+          <h1>아이디 : ${myprofile.id} </h1>
+          <h1>성함 : ${myprofile.name}</h1>
+       <h1>비밀번호 : <input type="text" name="pass" value="${myprofile.pass}"></h1>       
+       <h1>연락처 : <input type="text" name="phonenum" value="${myprofile.phonenum}"></h1>
+       <h1>이메일 : <input type="text" name="email" value="${myprofile.email}"></h1>
        <h1>성별 : ${myprofile.gender}</h1>
        <h1>생년월일 :
         <fmt:parseDate value="${myprofile.birth}" var="birth" pattern="yyyyMMdd"/>
 		<fmt:formatDate value="${birth}" pattern="yyyy년 MM월 dd일 "/>
 	   </h1>
-	   <h1>포인트 : ${myprofile.point}</h1>       
+	   <h1>포인트 : ${myprofile.point}</h1>
+	   <input type="hidden" name="id" value="${myprofile.id}"/> 
+	   </th>   
+	     
+      </table>
+     </form>
+     <div style="position:absolute; right: 20px; left:950px; top: 150px; text-align: center;">
+     <h1>Notice</h1>
+     <table style="width:100%; text-align: center;" ><!--밑줄부터-->
+     	<thead>
+    <tr>
+      <th scope="col">number</th>
+      <th scope="col">Title</th>
+      <th scope="col">Writer</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  <c:forEach items="${aList}" var="aList">
+  <tr class="table-active">
+  	 <th scope="row" onclick="">${aList.b_num}</th>
+      <td>${aList.title}</td>
+      <td>${aList.user_id}</td>
+      <td>${aList.upload_date}</td>
       
+    </tr>
+   </c:forEach>
+ 
+    
+  </tbody>
+  
+     </table><!-- 윗줄까지 -->
+     <br/>
+   <!-- <div class="btn-group mr-2" role="group" aria-label="First group">
+    <button type="button" class="btn btn-secondary">1</button>
+    <button type="button" class="btn btn-secondary">2</button>
+    <button type="button" class="btn btn-secondary">3</button>
+    <button type="button" class="btn btn-secondary">4</button>
+   </div>
+     </div> -->
+     <div class="btn-group mr-2" role="group" aria-label="First group">
+     <!-- 이전 출력 시작 -->
+		  <c:if test="${pv.startPage>1}">
+		  
+			<a href="profile.do?currentPage=${pv.startPage-pv.blockPage}">이전</a>
+		  </c:if>
+		<!-- 이전 출력 끝 -->
+     <c:forEach var="i" begin="${pv.startPage}" end="${pv.endPage}">
+			<span>
+			  <c:url var="currPage" value="profile.do">			
+				<c:param name="currentPage" value="${i}" />
+			  </c:url>
+              <c:choose>
+              
+                <c:when test="${i==pv.currentPage}">
+                   <a href="${currPage}" class="pagecolor"> <c:out value="${i}" /></a>
+                </c:when> 
+			    <c:otherwise>	
+			       <a href="${currPage}"> <c:out value="${i}" /></a>
+			     </c:otherwise>			
+			  </c:choose>
+			</span>
+		</c:forEach>
+		<!-- 다음 출력 시작 -->
+		<c:if test="${pv.totalPage>pv.endPage}">
+			<a href="profile.do?currentPage=${pv.startPage+pv.blockPage}">다음</a>
+		</c:if>
+		<!-- 다음 출력 끝 -->
+		</div>
      
      <div class="button">
+     	
      <br/>
-    <input type="button" class="btn btn-primary btn-lg" value="정보 수정" onclick=""/>
-    <input type="button" class="btn btn-primary btn-lg" value="회원 탈퇴" onclick=""/>
+    <input type="button" id="update" class="btn btn-primary btn-lg" value="정보 수정"/>
+    <input type="button" id="delete" class="btn btn-primary btn-lg" value="회원 탈퇴"/>
+        
 	</div>
        
         
@@ -209,8 +275,16 @@ h2 {
 
   <!-- Menu Toggle Script -->
   <script>
+  var menuChk = true;
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
+      if(menuChk){
+      $("#menu-toggle").text("전체메뉴 보기");
+      menuChk = false;
+      }else{
+    	  $("#menu-toggle").text("전체메뉴 숨기기");
+    	  menuChk = true;
+      }
       $("#wrapper").toggleClass("toggled");
     });
   </script>

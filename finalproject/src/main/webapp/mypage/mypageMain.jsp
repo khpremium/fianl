@@ -123,30 +123,35 @@
 								<!-- 프로필 설정 -->
 								<div class="sh_group">
 									<div class="sh_header">
-										<h2>愁Cut profile</h2>
+										<h2>KH AIR Profile</h2>
 										<!-- 	<a href="javascript:toggle('profile');"
 											onclick="clickcr(this,'imn.prfhelp','','',event);"
 											class="link_help"><i id="i_profile"
 											class="spico ico_arr3_up">도움말</i></a> -->
 										<!-- [D] 감추기 보이기 dislay:none/block -->
 										<p id="p_profile" class="contxt" style="display: block;">
-											愁Cut에서의 <em>'나'를 표현하는 프로필</em> 정보입니다.
+											고객님의 <em>'나'를 표현하는 프로필</em> 정보입니다.
 										</p>
 
 									</div>
 									<div class="sh_content">
 										<dl class="sh_lst">
 											<dt class="nic_tit">아이디</dt>
-											<dd class="nic_desc">${sessionScope.id}</dd>
-											<dt>연락처 이메일</dt>
-											<dd>${sessionScope.email}</dd>
+											<dd class="nic_desc">${myprofile.id}</dd>											
+											<dt>패스워드</dt>
+											<dd>${myprofile.pass}</dd>
 											<dt>이름</dt>
-											<dd>${sessionScope.name }</dd>
-											<dt>등급</dt>
-											<dd>${sessionScope.grade }</dd>
-											<dt>번호</dt>
-											<dd>${sessionScope.phonenum }</dd>
-
+											<dd>${myprofile.name}</dd>
+											<dt>성별</dt>
+											<dd>${myprofile.gender}</dd>
+											<dt>연락처 이메일</dt>
+											<dd>${myprofile.email}</dd>
+											<dt>생년월일</dt>
+											<dd>
+											<fmt:parseDate value="${myprofile.birth}" var="birth" pattern="yyyyMMdd"/>
+											<fmt:formatDate value="${birth}" pattern="yyyy년 MM월 dd일 "/></dd>
+											<dt>포인트</dt>
+											<dd>${myprofile.point}</dd>
 										</dl>
 									</div>
 									<p class="btn_area_btm">
@@ -158,7 +163,7 @@
 									<a href="#">회원탈퇴</a>
 								</div>
 								<!-- 예약관리  -->
-								<div class="sh_group ">
+								<%-- <div class="sh_group ">
 									<div class="sh_header">
 										<h2>예약 관리</h2>
 										<!-- 		<a href="javascript:toggle('userInfo');"
@@ -181,7 +186,7 @@
 											onclick="clickcr(this,'imn.cntmodify','','',event);"
 											class="btn_model"><b class="btn2">수정</b></a>
 									</p>
-								</div>
+								</div> --%>
 							</div>
 
      <div class="button">
@@ -209,7 +214,9 @@
   <script>
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
+      $("#menu-toggle").text("메뉴보기");
       $("#wrapper").toggleClass("toggled");
+      
     });
   </script>
 
