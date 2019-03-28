@@ -53,7 +53,7 @@ public class MypageController {
 			}
 			pdto = new PagingDTO(currentPage, totalRecord);
 			mav.addObject("pv",pdto);
-			mav.addObject("aList",service2.listProcess(pv));
+			mav.addObject("aList",service2.listProcess(pdto));
 		}	
 		
 		mav.addObject("myprofile",service.profileProcess("test01"));
