@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <!-- 제목 부분 -->
-  <title>Business Frontpage - Start Bootstrap Template</title>
+  <title>Airline</title>
 
   <!-- Bootstrap core CSS -->
   <link href="view/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -73,11 +73,11 @@ $(document).ready(function(){
     $('#orgbutton').on('click',chkProcess);
     
     $('form').on('submit', function() {
-    	alert($('input[name="guestchk"]:checked').val());
+    	// alert($('input[name="guestchk"]:checked').val());
     	if($('input[name="guestchk"]:checked').val() == 'guest')
     		$('form').attr('action', 'guestInfo.do');
-    	else if('${empty id}' == 'true') {
-    		alert('${empty id}');
+    	else if('${id}' == '') {
+    		// alert('${empty id}');
     		$(location).attr('href','login.do');
         	return false;
     	}
@@ -89,11 +89,11 @@ function chkProcess() {
 	
 	if($("#city_code_arv option:selected").text()=='도시 선택' ||
 			$("#city_code_dep option:selected").text()=='도시 선택') {
-		alert('nono');
+		alert('도시를 선택해주세요.');
 	} else if($("#arv_date").val() == '') {
-		alert('nono');
+		alert('귀국일을 선택해주세요.');
 	} else {
-		alert("됫음");
+		// alert("됫음");
 		$("form").submit();
 	}
 }
