@@ -1,0 +1,27 @@
+table {
+	width: 100%;
+}
+
+table th {
+	background-color: rgba(0, 0, 0, 0.1);
+	font-size: 15px;
+	text-align: center;
+}
+
+table tr td {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"], input[type="password"] {
+	border: none;
+	height: 30px;
+	width: 100%;
+}
+
+input:focus {
+	outline: none;
+}
+
+span, input {
+	cursor: default;
+}

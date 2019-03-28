@@ -11,6 +11,7 @@
 
 <!-- Custom styles for this template -->
 <link href="view/css/scrolling-nav.css" rel="stylesheet">
+<link href="view/css/guestForm.css" rel="stylesheet">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
