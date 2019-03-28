@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import dto.AirInfoDTO;
+import dto.AirinfoDTO;
 import dto.ClientDTO;
 import dto.ReservationDTO;
 import service.AdminService;
@@ -97,13 +97,13 @@ public class AdminController {
 	}//airinfoUpdateSelectList()
 	
 	@RequestMapping(value="/airinfoUpdate.do", method=RequestMethod.POST)
-	public String airinfoUpdate(AirInfoDTO dto) {
+	public String airinfoUpdate(AirinfoDTO dto) {
 		service.airinfoUpdateProcess(dto);
 		return "redirect:/airTables.do";
 	}
 	
 	@RequestMapping(value="/airinfoInsert.do", method=RequestMethod.POST)
-	public String airinfoInsert(AirInfoDTO dto) {
+	public String airinfoInsert(AirinfoDTO dto) {
 		service.airinfoInsertProcess(dto);
 		return "redirect:/airTables.do";
 	}

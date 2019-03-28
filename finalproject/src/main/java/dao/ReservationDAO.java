@@ -1,7 +1,10 @@
-package reservation;
+package dao;
 
 import java.util.HashMap;
 import java.util.List;
+
+import dto.AirinfoDTO;
+import dto.ReservationDTO;
 
 public interface ReservationDAO {
 	public List<AirinfoDTO> deptListMethod(ReservationDTO dto);

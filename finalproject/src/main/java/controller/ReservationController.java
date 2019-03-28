@@ -1,4 +1,4 @@
-package reservation;
+package controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import dto.ReservationDTO;
+import service.ReservationService;
 
 // http://localhost:8090/myfinal/selectFlight.do
 

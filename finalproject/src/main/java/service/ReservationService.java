@@ -1,8 +1,11 @@
-package reservation;
+package service;
 
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+
+import dto.AirinfoDTO;
+import dto.ReservationDTO;
 
 public interface ReservationService {
 	public List<AirinfoDTO> deptListProcess(ReservationDTO dto);

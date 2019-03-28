@@ -1,9 +1,12 @@
-package reservation;
+package dao;
 
 import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
+
+import dto.AirinfoDTO;
+import dto.ReservationDTO;
 
 public class ReservationDaoImp implements ReservationDAO {
 	private SqlSessionTemplate sqlSession;

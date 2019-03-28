@@ -98,7 +98,11 @@
 								<td>${fn:substring(dto.d_time,8,10)}시
 									${fn:substring(dto.d_time,10,12)}분</td>
 								<td>${fn:substring(dto.a_time,8,10)}시
-									${fn:substring(dto.a_time,10,12)}분</td>
+									${fn:substring(dto.a_time,10,12)}분
+									<c:if test="${fn:substring(dto.a_time,8,10) < fn:substring(dto.d_time,8,10)}">
+										(+1일)
+									</c:if>
+									</td>
 								<td>${dto.price_ad}</td>
 								<td>${dto.seat}</td>
 								<td><input type="radio" name=dept value="${dto.flight}" /></td>
@@ -132,7 +136,10 @@
 								<td>${fn:substring(dto.d_time,8,10)}시
 									${fn:substring(dto.d_time,10,12)}분</td>
 								<td>${fn:substring(dto.a_time,8,10)}시
-									${fn:substring(dto.a_time,10,12)}분</td>
+									${fn:substring(dto.a_time,10,12)}분
+									<c:if test="${fn:substring(dto.a_time,8,10) < fn:substring(dto.d_time,8,10)}">
+										(+1일)
+									</c:if></td>
 								<td>${dto.price_ad}</td>
 								<td>${dto.seat}</td>
 								<td><input type="radio" name="arrv" value="${dto.flight}" /></td>

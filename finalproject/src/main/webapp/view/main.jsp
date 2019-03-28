@@ -165,6 +165,9 @@ function cityprocess(){
          		<li class="nav-item">
 					<a class="nav-link" href="login.do">login</a>
 				</li>
+                <li class="nav-item">
+                  <a class="nav-link" href="join.do">Join us</a>
+                </li>
           	</c:when>
           	<c:otherwise>
          		<li class="nav-item">
@@ -172,9 +175,6 @@ function cityprocess(){
 				</li>
           	</c:otherwise>
           </c:choose>
-          <li class="nav-item">
-            <a class="nav-link" href="join.do">Join us</a>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="helpMain.do">Notice</a>
           </li>

@@ -55,13 +55,13 @@
 	
 	<!-- [6] 트랜잭션으로 처리할 메소드에 transactionManger설정 -->
 	<aop:config>
-		<aop:advisor advice-ref="txAdvice" pointcut="execution(* reservation.ReservationServiceImp.*Process(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* service.ReservationServiceImp.*Process(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut="execution(* service.HelpCServiceImp.*Process(..))"/>
 		<aop:advisor advice-ref="txAdvice" pointcut="execution(* service.ClientServiceImp.*Process(..))"/>
 	</aop:config>
 	
 	<!-- DAO -->
-	<bean id="rdao" class="reservation.ReservationDaoImp">
+	<bean id="rdao" class="dao.ReservationDaoImp">
 		<property name="sqlSession" ref="sqlSession" />
 	</bean>
 	<bean id="dao" class="dao.MainDaoImp">
@@ -87,7 +87,7 @@
 	</bean>
 	
 	<!-- Service -->
-	<bean id="rservice" class="reservation.ReservationServiceImp">
+	<bean id="rservice" class="service.ReservationServiceImp">
 		<property name="dao" ref="rdao" />
 	</bean>
 	<bean id="service" class="service.MainServiceImp">
@@ -114,7 +114,7 @@
 	</bean>
 	
 	<!-- controller -->
-	<bean class="reservation.ReservationController">
+	<bean class="controller.ReservationController">
 		<property name="service" ref="rservice" />
 	</bean>
 	<bean class="controller.MainController">

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
-import dto.AirInfoDTO;
+import dto.AirinfoDTO;
 import dto.CityDTO;
 import dto.ClientDTO;
 import dto.ReservationDTO;
@@ -51,7 +51,7 @@ public class AdminDaoImp implements AdminDAO {
 	}
 
 	@Override
-	public List<AirInfoDTO> airInfoSelectMethod() {
+	public List<AirinfoDTO> airInfoSelectMethod() {
 	
 		return sqlSession.selectList("mt.airinfo");
 	}
@@ -68,17 +68,17 @@ public class AdminDaoImp implements AdminDAO {
 	}
 
 	@Override
-	public AirInfoDTO airinfoUpdateSelectMethod(String flight) {
+	public AirinfoDTO airinfoUpdateSelectMethod(String flight) {
 		return sqlSession.selectOne("mt.airinfoUpdateSelect",flight);
 	}
 
 	@Override
-	public void airinfoUpdateMethod(AirInfoDTO dto) {
+	public void airinfoUpdateMethod(AirinfoDTO dto) {
 		sqlSession.update("mt.airinfoUpdate", dto);
 	}
 
 	@Override
-	public void airinfoInsertMethod(AirInfoDTO dto) {
+	public void airinfoInsertMethod(AirinfoDTO dto) {
 		sqlSession.insert("mt.airinfoInsert", dto);
 	}
 

@@ -5,14 +5,14 @@
 
 <mapper namespace="res">
 
-	<select id="dList" parameterType="reservation.ReservationDTO" resultType="reservation.AirinfoDTO">
+	<select id="dList" parameterType="dto.ReservationDTO" resultType="dto.AirinfoDTO">
 		select * from airinfo
 		where d_time like #{dep_date} || '%'
 		and city_code_dep=#{city_code_dep}
 		and city_code_arv=#{city_code_arv}
 	</select>
 
-	<select id="rList" parameterType="reservation.ReservationDTO" resultType="reservation.AirinfoDTO">
+	<select id="rList" parameterType="dto.ReservationDTO" resultType="dto.AirinfoDTO">
 		select * from airinfo
 		where d_time like #{arv_date} || '%'
 		and city_code_dep=#{city_code_arv}
@@ -29,13 +29,13 @@
 	</update>
 
 	<!-- #{data, jdbcType=VARCHAR} null처리 -->
-	<insert id="client" parameterType="reservation.ReservationDTO">
+	<insert id="client" parameterType="dto.ReservationDTO">
 		insert into
 		reservation(rv_num, rv_code, payment_chk, airinfo_flight, user_id, p_count)
 		values(rv_num_seq.nextval, #{rv_code}, #{payment_chk}, #{airinfo_flight}, #{user_id}, #{p_count})
 	</insert>
 
-	<insert id="guest" parameterType="reservation.ReservationDTO">
+	<insert id="guest" parameterType="dto.ReservationDTO">
 		insert into
 		reservation(rv_num, rv_code,
 		payment_chk, airinfo_flight, non_name, non_gender, non_phonenumber,

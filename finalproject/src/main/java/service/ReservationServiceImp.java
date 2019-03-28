@@ -1,10 +1,14 @@
-package reservation;
+package service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
+
+import dao.ReservationDAO;
+import dto.AirinfoDTO;
+import dto.ReservationDTO;
 
 public class ReservationServiceImp implements ReservationService {
 	private ReservationDAO dao;

@@ -3,7 +3,7 @@ package service;
 import java.util.List;
 
 import dao.AdminDAO;
-import dto.AirInfoDTO;
+import dto.AirinfoDTO;
 import dto.CityDTO;
 import dto.ClientDTO;
 import dto.ReservationDTO;
@@ -50,7 +50,7 @@ public class AdminServiceImp implements AdminService{
 	}
 
 	@Override
-	public List<AirInfoDTO> airInfoSelectProcess() {
+	public List<AirinfoDTO> airInfoSelectProcess() {
 		return dao.airInfoSelectMethod();
 	}
 
@@ -65,17 +65,17 @@ public class AdminServiceImp implements AdminService{
 	}
 
 	@Override
-	public AirInfoDTO airinfoUpdateSelectProcess(String flight) {
+	public AirinfoDTO airinfoUpdateSelectProcess(String flight) {
 		return dao.airinfoUpdateSelectMethod(flight);
 	}
 
 	@Override
-	public void airinfoUpdateProcess(AirInfoDTO dto) {
+	public void airinfoUpdateProcess(AirinfoDTO dto) {
 		dao.airinfoUpdateMethod(dto);
 	}
 
 	@Override
-	public void airinfoInsertProcess(AirInfoDTO dto) {
+	public void airinfoInsertProcess(AirinfoDTO dto) {
 		dao.airinfoInsertMethod(dto);
 	}
 

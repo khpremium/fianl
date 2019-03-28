@@ -1,18 +1,18 @@
 package dto;
 
-public class AirInfoDTO {
+public class AirinfoDTO {
 	private String flight;
 	private String airline;
 	private String d_time;
 	private String a_time;
 	private String seatgrade;
-	private String price_ad;
+	private int price_ad;
 	private int seat;
 	private String city_code_dep;
 	private String city_code_arv;
 	
-	public AirInfoDTO() {
-	
+	public AirinfoDTO() {
+		
 	}
 
 	public String getFlight() {
@@ -47,19 +47,11 @@ public class AirInfoDTO {
 		this.a_time = a_time;
 	}
 
-	public String getSeatgrade() {
-		return seatgrade;
-	}
-
-	public void setSeatgrade(String seatgrade) {
-		this.seatgrade = seatgrade;
-	}
-
-	public String getPrice_ad() {
+	public int getPrice_ad() {
 		return price_ad;
 	}
 
-	public void setPrice_ad(String price_ad) {
+	public void setPrice_ad(int price_ad) {
 		this.price_ad = price_ad;
 	}
 
@@ -86,6 +78,13 @@ public class AirInfoDTO {
 	public void setCity_code_arv(String city_code_arv) {
 		this.city_code_arv = city_code_arv;
 	}
-	
-	
+
+	public String getSeatgrade() {
+		return seatgrade;
+	}
+
+	public void setSeatgrade(String seatgrade) {
+		this.seatgrade = seatgrade;
+	}
+
 }

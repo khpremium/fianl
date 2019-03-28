@@ -32,7 +32,7 @@
 		insert into client values(#{id}, #{pass}, #{name}, #{phonenum}, #{email}, #{point}, #{gender}, #{birth}, 0)
 	</insert>
 	
-	<select id="airinfo" resultType="dto.AirInfoDTO">
+	<select id="airinfo" resultType="dto.AirinfoDTO">
 		select * from airinfo order by flight
 	</select>
 	
@@ -44,18 +44,18 @@
 		select count(rv_num) from reservation where airinfo_flight = #{flight}
 	</select>
 	
-	<select id="airinfoUpdateSelect" parameterType="string" resultType="dto.AirInfoDTO">
+	<select id="airinfoUpdateSelect" parameterType="string" resultType="dto.AirinfoDTO">
 		select * from airinfo where flight=#{flight}
 	</select>
 	
-	<update id="airinfoUpdate" parameterType="dto.AirInfoDTO">
+	<update id="airinfoUpdate" parameterType="dto.AirinfoDTO">
 		update airinfo
 		set d_time=#{d_time}, a_time=#{a_time}, airline=#{airline},
 		seatgrade=#{seatgrade}, price_ad=#{price_ad}, seat=#{seat}
 		where flight=#{flight}
 	</update>
 	
-	<insert id="airinfoInsert" parameterType="dto.AirInfoDTO">
+	<insert id="airinfoInsert" parameterType="dto.AirinfoDTO">
 		insert into airinfo values(#{flight}, #{airline}, #{d_time}, #{a_time},
 		#{seatgrade}, #{price_ad}, 0, #{seat}, #{city_code_dep}, #{city_code_arv})
 	</insert>
