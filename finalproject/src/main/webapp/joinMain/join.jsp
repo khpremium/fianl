@@ -43,6 +43,11 @@ fieldset {
 	color: red;
 	font-size: 11px;
 }
+
+#errCustID2 {
+	color: red;
+	font-size: 11px;
+}
 .need {
 	background-color: #E6E6E6;
 }
@@ -108,7 +113,7 @@ th  {
 	</nav>
 
 	<!-- Page Content -->
-	<form action="joinInsert.do" method="post">
+	<form action="/myfinal/joinInsert.do" method="post" id="joinForm">
 	<div class="table_area">
 	<fieldset>
 	
@@ -129,7 +134,8 @@ th  {
 						<div class="cell">
 							<input type="text" id="id" name="id" class="inputText" onkeyup="idFunction()"  style="width:280px;" maxlength="15" ><span>&emsp;영/소문자 6자이상</span>
 						</div>
-						<p class="error_msg dp_none" id="errCustID"></p> <!-- DEV. dp_none 클래스 추가시 해당 부분 hide --> 
+						<p class="error_msg dp_none" id="errCustID"></p> <!-- DEV. dp_none 클래스 추가시 해당 부분 hide -->
+						<p class="error_msg dp_none" id="errCustID2"></p> 
 					</td>
 				</tr>
 				
@@ -139,8 +145,8 @@ th  {
 					</th>
 					<td>
 						<div class="cell">
-							<input type="password" id="password" name="pass" class="inputText" onkeyup="passwordCheckFunction()" maxlength="30">
-							<p class="guide_txt_02" style="display:contents;">&emsp;비밀번호는 공백없이 8~15자 이내</p>
+							<input type="password" id="password" name="pass" class="inputText" maxlength="30">
+							<p class="guide_txt_02" style="display:contents;">&emsp;비밀번호는 공백없이 6~15자 이내</p>
 						</div>
 						<p class="error_msg dp_none" id="errPasswd"></p> <!-- DEV. dp_none 클래스 추가시 해당 부분 hide -->
 					</td>
@@ -152,7 +158,7 @@ th  {
 					</th>
 					<td>
 						<div class="cell">	
-							<input type="password" id="passwordCheck" name="pass" class="inputText" onkeyup="passwordCheckFunction()" maxlength="30"><span><h7 id="passwdCheckMessage" style="font-color: red;"></h7></span>
+							<input type="password" id="passwordCheck" class="inputText" maxlength="30"><span><h7 id="passwdCheckMessage" style="font-color: red;"></h7></span>
 						</div>
 						<p class="error_msg dp_none" id="errRePasswd"></p> <!-- DEV. dp_none 클래스 추가시 해당 부분 hide -->
 					</td>
@@ -169,22 +175,14 @@ th  {
 						<p class="error_msg dp_none" id="errCustNm"></p> <!-- DEV. dp_none 클래스 추가시 해당 부분 hide -->
 					</td>
 				</tr>
-				<!-- 
-					■ 회원가입 화면 수정작업
-					 -. 수정내용 : HSMALL-1914 통합멤버십 화면 변경 (2017.01.23 / 노경은계장 → 곽상은) 
-					 -. 고객 클레임 방지를 위해 한샘몰 회원가입 화면의 휴대폰번호 인증부분을 상위로 옮김(멤버십 체크시에 하지 않음)
-					 -. 휴대폰번호는 바로 입력이 가능하며, 인증번호 전송버튼을 누르면 해당 휴대폰번호로 인증번호 발송
-					 -. 인증번호가 발송됨과 동시에 인증번호를 입력할 수 있는 박스 노출 >> certification_root
-				-->
+
 				<tr>
 					<th scope="row" class="need">
 						<label for="custPhone">휴대폰 번호</label>
 					</th>
 					<td>
 						<div class="cell">
-							<input type="tel" name="phonenum" id="phoneNum01"  class="inputText" maxlength="3" >-
-							<input type="tel" name="phonenum" id="phoneNum02"  class="inputText" maxlength="4" >-
-							<input type="tel" name="phonenum" id="phoneNum03" class="inputText"  maxlength="4" >
+							<input type="tel" name="phonenum" id="phoneNum01"  class="inputText">
 						</div>
 					</td>
 				</tr>
@@ -192,9 +190,10 @@ th  {
 				<tr>
 					<th scope="row" class="need">이메일</th>
 					<td>
+					
 						<div class="cell">	
-							<input type="text" name="email" id="email01" class="inputText" > @ <input type="text" name="email" id="email02" class="inputText" disabled value="naver.com">
-							<select name="selectEmail" id="email" name="email" class="inputText">
+							<input type="text" name="email" id="email01" class="inputText" > @ <input type="text" name="email2" id="email02" class="inputText" readonly>
+							<select id="email" name="selectEmail" class="inputText">
 								<option value="1">직접입력</option>
 								<option value="naver.com" selected>naver.com</option>
 								<option value="daum.net">daum.net</option>
@@ -202,6 +201,7 @@ th  {
 								<option value="gmail.com">gmail.com</option>
 								<option value="hanmail.net">hanmail.net</option>
 							</select>  
+							<input type="button" id="emailCheck" value="중복확인" onclick="emailFunction()">
 							<input type="button" id="checkbutton" value="전송">
 						</div>
 			
@@ -212,12 +212,6 @@ th  {
 							
 							<input type="text" name="inputCode" id="inputCode" class="inputText" placeholder="Enter code">
 							<input type="button" value="확인" class="btn_check" id="checkcode" onclick="check_button()"/>
-							
-						<!-- 	<input type="text" placeholder="인증번호 입력" style="width:306px" id="cerfi_own_phone"> 
-							<button type="button" class="botton_st_03 gray" onclick="certification.confirmCertification();">확인</button>
-							<button type="button" class="botton_st_03 gray" onclick="certification.cerfi_trans_cancel();">취소</button>
-							<button type="button" class="botton_st_03" onclick="certification.getNumber();">인증번호 재전송</button>
-							<p class="space_02"><span class="point_txt" id="cerfi_err_msg" style="display:none;">인증번호를 정확히 입력해 주세요.</span></p> -->
 						</div>
 					</td>
 				</tr>
@@ -232,6 +226,89 @@ th  {
 						</div>
 					</td>
 				</tr>
+				<tr>
+					<th scope="row" class="need">생년월일</th>
+					<td>
+						<div class="cell" style="padding-top: 15px;">
+							<select name="birth">
+						       <option value="2007">2007</option>
+						       <option value="2006">2006</option>
+						       <option value="2005">2005</option>
+						       <option value="2004">2004</option>
+						       <option value="2003">2003</option>
+						       <option value="2002">2002</option>
+						       <option value="2001">2001</option>
+						       <option value="2000">2000</option>
+						       <option value="2013">1999</option>
+						       <option value="2012">1998</option>
+						       <option value="2011">1997</option>
+						       <option value="2010">1996</option>
+						       <option value="2009">1995</option>
+						       <option value="2008">1994</option>
+						       <option value="2013">1993</option>
+						       <option value="2012">1992</option>
+						       <option value="2011">1991</option>
+						       <option value="2010">1990</option>
+						       <option value="2009">1989</option>
+						       <option value="2008">1988</option>
+						       <option value="2008">1987</option>
+						       <option value="2013">1986</option>
+						       <option value="2012">1985</option>
+						       <option value="2011">1984</option>
+						       <option value="2010">1983</option>
+						       <option value="2009">1982</option>
+						       <option value="2008">1981</option>
+						     </select>년&nbsp;
+						     <select name="birth2">
+						       <option value="1">1</option>
+						       <option value="2">2</option>
+						       <option value="3">3</option>
+						       <option value="4">4</option>
+						       <option value="5">5</option>
+						       <option value="6">6</option>
+						       <option value="7">7</option>
+						       <option value="8">8</option>
+						       <option value="9">9</option>
+						       <option value="10">10</option>
+						       <option value="11">11</option>
+						       <option value="12">12</option>
+						     </select>
+						     <select name="birth3">
+						       <option value="1">1</option>
+						       <option value="2">2</option>
+						       <option value="3">3</option>
+						       <option value="4">4</option>
+						       <option value="5">5</option>
+						       <option value="6">6</option>
+						       <option value="7">7</option>
+						       <option value="8">8</option>
+						       <option value="9">9</option>
+						       <option value="10">10</option>
+						       <option value="11">11</option>
+						       <option value="12">12</option>
+						       <option value="13">13</option>
+						       <option value="14">14</option>
+						       <option value="15">15</option>
+						       <option value="16">16</option>
+						       <option value="17">17</option>
+						       <option value="18">18</option>
+						       <option value="19">19</option>
+						       <option value="20">20</option>
+						       <option value="21">21</option>
+						       <option value="22">22</option>
+						       <option value="23">23</option>
+						       <option value="24">24</option>
+						       <option value="25">25</option>
+						       <option value="26">26</option>
+						       <option value="27">27</option>
+						       <option value="28">28</option>
+						       <option value="29">29</option>
+						       <option value="30">30</option>
+						       <option value="31">31</option>
+					     </select>일<br><br>
+						</div>
+					</td>
+				</tr>
 				
 			</tbody>
 		</table>
@@ -243,9 +320,6 @@ th  {
 	</form>
 	
 	
-	<!-- Bootstrap core JavaScript -->
-	<!-- <script src="joinMain/vendor/jquery/jquery.min.js"></script>
-	<script src="joinMain/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
 	<script src="joinMain/vendor/bootstrap/js/join.js"></script>
 	<script src="joinMain/vendor/bootstrap/js/sendMail.js"></script>
 

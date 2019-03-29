@@ -67,13 +67,15 @@ public class ClientDaoImp implements ClientDAO{
 	public int idcheck(String id) {
 		return sqlSession.selectOne("client.idcheck", id);
 	}
-	
+
 	@Override
-	public List<ClientDTO> findId(ClientDTO dto) {
-		return sqlSession.selectList("client.findId", dto);
+	public String find_id(String email) {
+		return sqlSession.selectOne("client.find_id", email);
 	}
 
-	
+	@Override
+	public int update_pw(ClientDTO dto) {
+		return sqlSession.update("client.update_pw", dto);
+	}
 
-	
 }//end class

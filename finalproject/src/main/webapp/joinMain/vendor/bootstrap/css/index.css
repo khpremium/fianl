@@ -4,10 +4,11 @@
 }
 
 #login_f{
-  width:350px;height:270px;background:url("../images/login_bg.png");
-  position:absolute;left:-110px;background-color: beige;
+  width:350px;height:285px;background:url("../images/login_bg.png");
+  position:absolute;left:-110px; background-color: #FAFAFA;
   top:-500px;z-index:15;padding:40px 0 0 30px;
 }
+
 .user_id, .user_pw{position:relative;}
 .user_id label, .user_pw label{position:absolute;top:3px;left:1px;}
 .user_pw{margin-bottom:8px;}
@@ -20,7 +21,6 @@
 .login_close_btn{position:absolute;bottom:15px;right:22px;}
 .join_btn_wrap{margin:10px 0;}
 .join_btn_wrap a{
-  padding-left:10px;
   background:url("../images/login_bullet.gif") no-repeat;
 }
-.sch_id_btn{margin-left:20px;}
+.sch_id_btn{}

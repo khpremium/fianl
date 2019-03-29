@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <head>
 
@@ -26,14 +28,20 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+        		<li style="color: rgba(255,255,255,.5);">
+        			<c:if test="${!empty sessionScope.id}">
+	                 	${sessionScope.id}님 환영합니다
+	                 	<a href="/myfinal/index.do">로그아웃</a>
+	                 </c:if>
+        		</li>
                  <li class="login_wrap">
-		           <a href="#">
-		           <c:if>
-		           </c:if>
-		           <img src="images/util_menu_1.gif" alt="로그인" />
-		           </a>
+	                 
+	                 <c:if test="${empty sessionScope.id}">
+					 	<a href="/myfinal/login.do">로그인</a>
+	                 </c:if>
+		          
 		             <!-- 로그인 폼 -->
-		               <form name="log_f" id="login_f" method="post" action="loginCheck.do">
+		               <form name="log_f" id="login_f" method="post" action="/myfinal/loginCheck.do">
 		               <fieldset>
 		               
 		                 <legend>로그인</legend>
@@ -41,7 +49,6 @@
 		                    <input type="text" name="id" id="id" placeholder="아이디" >
 		                 </p>
 		                 <p class="user_pw">
-	
 		                      <input type="password" name="pass" id="pass" placeholder="비밀번호">
 		                 <p>
 		                     <input type="checkbox" name="idSave" id="idSave" >아이디 저장
@@ -49,23 +56,23 @@
 		                 <p class="log_btn">
 		                    <input type="image" src="img/login_btn.gif" id="login" alt="로그인버튼" />
 		                 </p>
+		                 
 		                 <p class="join_btn_wrap">
-		                     <a href="/myfinal/join.do">회원가입</a>
-		                     <a href="/myfinal/idSearch.do" class="sch_id_btn">아이디/비밀번호 찾기</a>
+		                     <a href="/myfinal/join.do" style="padding-right:25px; color:black; text-decoration:none;">회원가입</a>
+		                     <a href="/myfinal/idSearch.do" class="sch_id_btn" style="color: black; text-decoration:none;">아이디/비밀번호찾기</a>
 		                 </p>
+		                 <div>
+		                 
+		                 </div>
 		                 <br/>
 		                 <p class="login_close_btn">
 		                     <a href="#">
-		                     <img src="img/login_close_btn.gif" alt="닫기버튼" />
+		                    	 <img src="img/login_close_btn.gif" alt="닫기버튼" />
 		                     </a>
 		                 </p>
 		               </fieldset>
 		             </form>
 		           </li>
-           
-          <li class="nav-item">
-            <a class="nav-link" href="join.do">회원가입</a>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Services</a>
           </li>
@@ -87,31 +94,24 @@
   <script src="joinMain/vendor/bootstrap/js/join.js"></script>
   <script type="text/javascript">
   $(document).ready(
-			function() {
-				/* 로그인 버튼 */
-				$('.login_wrap>a').on('click', function() {
-					$('#login_f').animate({
-						top : '20px'
-					}, 500);
-					return false;
-				});
-
-				/* 로그인 닫기 */
-				$('#login_f .login_close_btn>a, input[alt="로그인버튼"]').on('click',
-						function() {
-							$('#login_f').animate({
-								top : '-500px'
-							}, 500);
-							return false;
-						});
+		function() {
+			/* 로그인 버튼 */
+			$('.login_wrap>a').on('click', function() {
+				$('#login_f').animate({
+					top : '20px'
+				}, 500);
+				return false;
 			});
 
+			/* 로그인 닫기 */
+			$('#login_f .login_close_btn>a, input[alt="로그인버튼"]').on('click',
+					function() {
+						$('#login_f').animate({
+							top : '-500px'
+						}, 500);
+						return false;
+					});
+		});
   </script>
-  
-  
-  
-  
-
 </body>
-
 </html>

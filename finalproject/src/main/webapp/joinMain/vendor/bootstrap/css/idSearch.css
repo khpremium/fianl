@@ -4,11 +4,12 @@
     text-align:center;
 }
 
-.main h4{ margin: 60px auto;
+.main h4{ 
+	margin: 60px auto;
 text-align: center; font-size: 2em; }
 
 input[type=text], select, input[type=password], input[type=email] {
-    width: 100%;
+    width: 70%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -44,7 +45,7 @@ input[type=button]{
 }
 
 input[type=submit]{
-	   margin-right: 5px;
+  margin-right: 5px;
   width: 68%;
   background-color:#848484;
   color: white;

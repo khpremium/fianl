@@ -21,6 +21,7 @@ $(document).ready(function() {
 			$("#userPwd").focus();
 			return;
 		}
+		$('#login_f').submit();
 	});
 	
 	//저장된 쿠키값을 가져와서 id칸에 넣어준다 없으면 공백처리

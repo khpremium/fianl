@@ -65,14 +65,13 @@
 	<bean id="service" class="service.ClientServiceImp">
 		<property name="dao" ref="dao" />
 	</bean>
+	
 	<bean id="service2" class="service.SendEmail" />
 	
 	<!-- controller -->
 	<bean class="controller.ClientController">
 		<property name="service" ref="service" />
 	</bean>
-	
-	
 	
 	<!-- 이메일 구현 -->
 	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
@@ -94,6 +93,7 @@
 	</bean>
 	
 	<bean class="controller.EmailController">
+		<property name="service" ref="service" />
 		<property name="mailService" ref="mailService" />
 	</bean>
 	
@@ -104,9 +104,3 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 </beans>
-
-
-
-
-
-

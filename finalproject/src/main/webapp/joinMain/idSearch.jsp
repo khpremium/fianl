@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-   pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <head>
@@ -10,12 +10,52 @@
 <title>Bare - Start Bootstrap Template</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-
+$("#findBtn2").click(function() {
+	$.ajax({
+		url:"/myfinal/find_pw.do",
+		type: "POST",
+		data: {
+			id: $("#id").val(),
+			email: $("#email").val(),
+		},
+		success:function(res) {
+			alert(res);
+		},
+	})
+});
 </script>
 <!-- Bootstrap core CSS -->
-<link href="joinMain/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="joinMain/vendor/bootstrap/css/idSearch.css" rel="stylesheet">
 
+<link href="joinMain/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="joinMain/vendor/bootstrap/css/idSearch.css" rel="stylesheet"> -->
+<style type="text/css">
+#div1 {
+	margin-top: 8% ;
+}
+
+#div2 {
+	margin-top: 8% ;
+}
+fieldset {
+    border: 1px solid black;
+	width: 40%;
+	background-color: #FAFAFA; 
+	padding: 4%;
+	float:left; 
+	margin-right: 5%; 
+	margin-left:5%;
+}
+
+hr {
+	color: blue;
+	width: 80%;
+}
+#nana {
+	 margin-left:18%;
+	 
+}
+
+</style>
 <meta charset="utf-8">
 
 </head>
@@ -51,38 +91,51 @@
    </nav>
 
    <!-- Page Content -->
-	<div style="width:50%; margin-top: 8%;">
-		<form action="/idSearch.do">
-			<fieldset style="border: 1px solid grey">
-				<p>아이디 찾기</p>
-				<div>
-					<input type="text" name="name" id="name" placeholder="이름">
-				</div>
-				<div>
-					<input type="text" name="email" id="email01" class="inputText" > @ <input type="text" name="email" id="email02" class="inputText" disabled value="naver.com">
-					<select name="selectEmail" id="email" name="email" class="inputText">
-						<option value="1">직접입력</option>
-						<option value="naver.com" selected>naver.com</option>
-						<option value="daum.net">daum.net</option>
-						<option value="nate.com">nate.com</option>
-						<option value="gmail.com">gmail.com</option>
-						<option value="hanmail.net">hanmail.net</option>
-					</select>  
-				</div>
+	<div id="div1">
+			<fieldset >
+				<h5>아이디 찾기</h5>	
+				<hr/>
 				<br/>
 				<div>
-					<input type="button" value="확인" onclick="check_ok()">
+					이메일&emsp;&emsp;<input type="text" name="email1" id="email1" style="width: 50%;">	
 				</div>
-				
+				<br/>
+				<br/>
+					<p id="nana"></p>
+				<br/>
+				<br/>
+				<div style="margin-left: 27%;">
+					<button type="button" id="findBtn">찾기</button>&emsp;
+					<button type="button" onclick="history.go(-1);">취소</button>
+				</div>
+			
 			</fieldset>
-		</form>
-		
-		<form>
-			<fieldset>
-				<p>비밀번호 찾기</p>
-			</fieldset>
+
+		<form action="find_pw.do" method="post">
+		<fieldset>
+			<h5>비밀번호 찾기</h5>
+			<hr/>
+			<br/>
+			<div>
+				아이디&emsp;&emsp;<input type="text" id="id" name="id" style="width: 50%;"/>
+			</div>
+			<br/>
+			<div>
+				이메일&emsp;&emsp;<input type="text" id="email" name="email" style="width: 50%;"/>
+			</div>
+			<br/>
+			<p id="test"></p>
+			<br/>
+			<div style="margin-left: 27%;">
+				<button type="submit" id="findBtn2" >찾기</button>&emsp;
+				<button type="button" onclick="history.go(-1);">취소</button>
+			</div>
+		</fieldset>
 		</form>
 	</div>
+
+	
+	
    <!-- Bootstrap core JavaScript -->
    <script src="joinMain/vendor/jquery/jquery.min.js"></script>
    <script src="joinMain/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
