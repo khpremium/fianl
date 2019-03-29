@@ -240,7 +240,7 @@ function cityprocess(){
         <label>인원 수</label>
 		<input class="count" value="1" readonly="readonly" name="p_count">
 		<input class="test1" value="-" type="button" count_range="m">
-		<input class="test1" value="+" type="button" count_range="p">	
+		<input class="test1" value="+" type="button" count_range="p">
 			
         <br/>
         <br/>
@@ -250,17 +250,17 @@ function cityprocess(){
         <br/>
         
         <input type="radio" name="guestchk" class="guestpro" value="noguest" checked="checked">
-		<label>회원</label> 
+		<label>회원</label>
 		&nbsp;<input type="radio" name="guestchk" class="guestpro" value="guest">
-		<label>비회원</label>       
+		<label>비회원</label>
         <br/>
         <br/>
         
         <!-- 예약버튼 -->
         <input type="button" class="btn btn-primary btn-lg" id="orgbutton" value="Reservation &raquo;"><!-- Reservation &raquo; -->
-        <hr/>  
-        </form>      
-      </div> 
+        <hr/>
+        </form>
+      </div>
            
       <!-- 예약하기 끝 -->
       
@@ -271,8 +271,8 @@ function cityprocess(){
         <hr>
         <address>
           <strong>Start Airline</strong>
-          <br>823-24 역삼동 
-          <br>서울 강남구 테헤란로14길 6 남도빌딩 2층          
+          <br>823-24 역삼동
+          <br>서울 강남구 테헤란로14길 6 남도빌딩 2층
         </address>
         <address>
           <abbr title="Phone">P:</abbr>
@@ -283,7 +283,7 @@ function cityprocess(){
         </address>
         <hr/>
         <hr/>
-        <hr/>        
+        <hr/>
         <h1>Preview ↓</h1>
       </div>
       

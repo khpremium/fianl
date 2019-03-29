@@ -33,7 +33,6 @@ public class ReservationController {
 		this.service = service;
 	}
 	
-	// http://localhost:8090/myfinal/select.do
 	// 비회원 정보입력
 	@RequestMapping(value = "/guestInfo.do", method = RequestMethod.POST)
 	public ModelAndView select(ReservationDTO rdto) {
@@ -59,11 +58,6 @@ public class ReservationController {
 		mav.addObject("rdto", rdto);
 		mav.setViewName("/view/select");
 		return mav;
-	}
-	
-	@RequestMapping(value = {"/selectFlight.do", "/guestInfo.do"} , method = RequestMethod.GET)
-	public String redirectMain() {
-		return "redirect:/main.do";
 	}
 	
 	// 예약 실행
@@ -117,11 +111,6 @@ public class ReservationController {
 		return total;
 	}
 	
-	@RequestMapping("/payment.do")
-	public @ResponseBody String paymentMethod(String resultCode) {
-		return resultCode;
-	}
-	
 	// 카카오페이 결과 받아오는곳
 	@RequestMapping("/kakaoRes.do")
 	public ModelAndView kakaoResult(String result) {
@@ -129,6 +118,11 @@ public class ReservationController {
 		mav.addObject("result", result);
 		mav.setViewName("/view/kakaores");
 		return mav;
+	}
+	
+	@RequestMapping(value = {"/selectFlight.do", "/guestInfo.do"} , method = RequestMethod.GET)
+	public String redirectMain() {
+		return "redirect:/main.do";
 	}
 
 }
