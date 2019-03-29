@@ -23,4 +23,5 @@ public interface HelpCDAO {
 	public String hFileMethod(int b_num);
 	public void hComDelMethod(int cm_num);
 	public void hComUpdMethod(ReplyDTO rdto);
+	public BoardDTO hmBlogMethod();
 }

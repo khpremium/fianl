@@ -139,5 +139,10 @@ public class HelpCServiceImp implements HelpCService{
 		hdao.hComUpdMethod(rdto);
 		
 	}
+
+	@Override
+	public BoardDTO hmBoardProcess() {
+		return hdao.hmBlogMethod();
+	}
 	
 }

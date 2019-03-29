@@ -70,9 +70,8 @@
 		<![CDATA[
 		 select b.* from
     	 (select rownum as rm, a.*   from(
-    	 select * from board where b_category_c_num=0 order by b_num desc)a)b
+    	 select * from board where b_category_c_num=0 and upper(title) like '%' || upper(#{searchWord}) || '%' order by b_num desc)a)b
     	 where b.rm>=#{startRow} and b.rm<=#{endRow}
-    	 and upper(title) like '%' || upper(#{searchWord}) || '%'
 		]]>
 	</select>
 	
@@ -87,6 +86,15 @@
 	<update id="HComUpd" parameterType="dto.ReplyDTO">
 		update b_comment set cm_content = #{cm_content} where cm_num=#{cm_num}
 	</update>
+	
+	<select id="HMBoard" resultType="dto.BoardDTO">
+		<![CDATA[
+		 select b.* from
+    	 (select rownum as rm, a.*   from(
+    	 select * from board where b_category_c_num=0 order by b_num desc)a)b
+    	 where b.rm=1
+		]]>
+	</select>
 </mapper>
 
 

@@ -42,7 +42,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#returnBtn').bind('click', function() {
-			$('#frm').attr('action', 'helpMain.do');
+			$('#frm').attr('action', 'helpBoard.do');
 			$('#frm').submit();
 			// $('#frm').attr('action','list.sb').submit();
 		});

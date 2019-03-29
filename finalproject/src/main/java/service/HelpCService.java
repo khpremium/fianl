@@ -24,4 +24,5 @@ public interface HelpCService {
 	public String hFileProcess(int b_num);
 	public void hComDelProcess(int cm_num);
 	public void hComUpdProcess(ReplyDTO rdto);
+	public BoardDTO hmBoardProcess();
 }
