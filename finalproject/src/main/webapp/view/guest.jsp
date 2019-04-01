@@ -15,6 +15,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
+	/* var passchk = 0; */
 	$(document).ready(function() {
 		var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		var phoneRule = /^[0-9]{10,11}$/;
@@ -33,6 +34,16 @@
 		$('#non_phonenumber').on('keyup', function() {
 			$(this).val($(this).val().replace(/[^0-9]/g,""));
 		});
+		
+		/* $('#non_pass').on('keyup', function() {
+			if(!/^.*(?=^.{6,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/.test($(this).val())) {
+				$('#passmsg').text('안됩니다.');
+				passchk = 0;
+			} else {
+				$('#passmsg').text('');
+				passchk = 1;
+			}
+		}); */
 	});
 </script>
 </head>
@@ -104,7 +115,7 @@
 							</tr>
 							<tr>
 								<td><label for="non_pass">password</label></td>
-								<td><input type="password" name="non_pass" id="non_pass" required="required"></td>
+								<td><input type="password" name="non_pass" id="non_pass" required="required"><!-- <br><div id="passmsg"></div> --></td>
 							</tr>
 						</table>
 						<input type="hidden" name="dep_date" value="${rdto.dep_date}">
