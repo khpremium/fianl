@@ -24,19 +24,20 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-		if(${(pv.totalPage-pv.currentPage)!=0}){
-			$('#preBtn').removeClass();
-			$('#preBtn').addClass('page-item disabled');
-		}else{
+		if('${pv.startPage}'>1){
 			$('#preBtn').removeClass();
 			$('#preBtn').addClass('page-item');
-		};
-		if(${pv.currentPage==pv.totalPage}){
-			$('#nextBtn').removeClass();
-			$('#nextBtn').addClass('page-item disabled');
 		}else{
+			$('#preBtn').removeClass();
+			$('#preBtn').addClass('page-item disabled');
+		};
+		if('${pv.endPage}'<'${pv.totalPage}'){
 			$('#nextBtn').removeClass();
 			$('#nextBtn').addClass('page-item');
+			
+		}else{
+			$('#nextBtn').removeClass();
+			$('#nextBtn').addClass('page-item disabled');
 		};
 	});
 </script>
@@ -122,22 +123,27 @@
 				<%-- </c:if> --%>
 				<!-- Pagination -->
 				<ul class="pagination justify-content-center mb-4">
-
-					<li id="preBtn"><c:if test="${pv.searchWord != null }">
+				
+				
+				
+					<li id="preBtn">
+						<c:if test="${pv.searchWord != null }">
 							<a class="page-link"
 								href="blogSearch.do?currentPage=${pv.currentPage-1 }&searchWord=${pv.searchWord}">&larr;Newer</a>
-						</c:if> <c:if test="${pv.searchWord == null }">
-							<a class="page-link"
-								href="helpBoard.do?currentPage=${pv.currentPage-1 }">&larr;Newer</a>
-						</c:if></li>
+						</c:if> 
+						<c:if test="${pv.searchWord == null }">
+							<a class="page-link" href="helpBoard.do?currentPage=${pv.currentPage-1 }">&larr;Newer</a>
+						</c:if>
+					</li>
 
-					<li id="nextBtn"><c:if test="${pv.searchWord != null }">
-							<a class="page-link"
-								href="blogSearch.do?currentPage=${pv.currentPage+1 }&searchWord=${pv.searchWord}">Older&rarr;</a>
-						</c:if> <c:if test="${pv.searchWord == null }">
-							<a class="page-link"
-								href="helpBoard.do?currentPage=${pv.currentPage+1 }">Older&rarr;</a>
-						</c:if></li>
+					<li id="nextBtn">
+						<c:if test="${pv.searchWord != null }">
+							<a class="page-link" href="blogSearch.do?currentPage=${pv.currentPage+1 }&searchWord=${pv.searchWord}">Older&rarr;</a>
+						</c:if> 
+						<c:if test="${pv.searchWord == null }">
+							<a class="page-link" href="helpBoard.do?currentPage=${pv.currentPage+1 }">Older&rarr;</a>
+						</c:if>
+					</li>
 				</ul>
 				
 				
@@ -198,10 +204,9 @@
             </div>
           </div>
         </div> -->
-			<!-- 링크끝 -->
+		<!-- 링크끝 -->
 	<footer class="py-5 bg-dark" style="position: fixed;bottom: 0;width: 100%;">
-		<p class="m-0 text-center text-white">Copyright &copy; Your
-			Website 2019</p>
+		<p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
 	</footer>
 
 	<!-- Bootstrap core JavaScript -->

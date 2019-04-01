@@ -12,13 +12,8 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
-import org.springframework.mail.MailAuthenticationException;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,7 +62,7 @@ public class HelpCController {
 		ModelAndView mav = new ModelAndView();
 		int totalRecord =  service.hBlogCountProcess();
 		if(totalRecord >= 1) { 
-			if (pv.getCurrentPage() == 0) {
+			if (pv.getCurrentPage() == 0 ) {
 				currentPage =1;
 			} else {
 				currentPage = pv.getCurrentPage();

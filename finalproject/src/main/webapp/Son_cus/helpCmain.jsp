@@ -47,7 +47,7 @@
 		</script>
 	</head>
 	<body>
-
+		
 		<!-- Header -->
 			<header id="header">
 				<div class="logo"><a href="Son_cus/helpCmain.jsp">Road Trip <span>by TEMPLATED</span></a></div>
@@ -90,7 +90,7 @@
 							<p>${bdto.b_content }</p>
 						</div>
 						<footer>
-							<a href="helpBoard.do" class="button alt">공지사항 전체보기</a>
+							<a href="helpBoard.do?currentPage=1" class="button alt">공지사항 전체보기</a>
 						</footer>
 					</article>
 				</div>

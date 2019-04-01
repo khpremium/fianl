@@ -120,10 +120,9 @@
 										고객이 스카이스캐너 계정을 보유하고 있는 경우, 고객은 내 프로필로 이동해 언제든 프로필 관련 주요 개인 데이터를 이용, 수정, 다운로드 또는 삭제할 수 있습니다. 내 프로필에서는 고객의 구독 및 마케팅 메시지 수신 설정 또한 관리할 수 있습니다. 또한, 고객은 당사에서 보유하고 있는 고객의 개인 데이터와 관련한 권리를 보유하고 있습니다. 해당 내용은 아래에 자세히 설명되어 있습니다. 당사의 지원 센터로 연락하여 이러한 권리를 행사할 수 있습니다.
 									</p>
 							</div>
-							<hr/>
 							
 						
-							<p>Ac pretium parturient et scelerisque dis pulvinar nascetur suspendisse justo parturient est quis adipiscing nisi dis eu ullamcorper. Penatibus aliquet vestibulum dis pretium a ullamcorper accumsan facilisis elit ullamcorper porttitor dictumst per a a potenti interdum fusce a adipiscing nostra ac parturient. Proin a imperdiet at a scelerisque quam et at ante aenean per per faucibus senectus lobortis mi tincidunt a penatibus. Mauris vestibulum aliquet parturient odio dapibus euismod a mi ullamcorper maecenas turpis non scelerisque nibh fermentum natoque erat parturient suspendisse a magna curabitur cum.</p>
+							
 
 							<!-- <p>Aliquet a consectetur semper suscipit ridiculus mattis augue volutpat hendrerit proin hac vel tristique quis amet parturient sem. Adipiscing laoreet blandit vestibulum laoreet fermentum sed sociis lorem class ipsum scelerisque porttitor viverra vestibulum nascetur. Ad felis ad ullamcorper urna iaculis aenean vel a suspendisse nunc placerat euismod suspendisse et fames ipsum elementum odio vestibulum duis. Fringilla condimentum donec tincidunt enim volutpat nam velit quisque laoreet adipiscing nam in suspendisse mattis ad libero parturient scelerisque. Vitae enim ac parturient iaculis pharetra cum quam imperdiet commodo mus netus quam habitasse risus netus dis.</p>
 
@@ -135,9 +134,9 @@
 						</div>
 						<footer>
 							<ul class="actions">
-								<li><a href="#" class="button alt icon fa-chevron-left"><span class="label">Previous</span></a></li>
-								<li><a href="#" class="button alt icon fa-chevron-right"><span class="label">Next</span></a></li>
-							</ul>
+								<li><a href="helpMain.do" class="button alt icon fa-chevron-left"><span class="label">Previous</span></a></li>
+								<!-- <li><a href="#" class="button alt icon fa-chevron-right"><span class="label">Next</span></a></li> -->
+							</ul> 
 						</footer>
 					</article>
 				</div>

@@ -3,7 +3,7 @@ package dto;
 public class MailDTO {
 	private String from;
 	private String password;
-	private String to = "sgh9630@gmail.com";
+	private String to = "yooeun2810@gmail.com";
 	private String subject;
 	private String contents;
 	
