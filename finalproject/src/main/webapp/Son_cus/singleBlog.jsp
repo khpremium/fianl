@@ -187,7 +187,7 @@
 					<table>
 						<tr>
 							<td><a
-								href="helpMain.do?b_num=${bdto.b_num }&currentPage=${currentPage }">글
+								href="helpBoard.do?b_num=${bdto.b_num }&currentPage=${currentPage }">글
 									목록으로..</a></td>
 							<td><input type="button" value="수정" class="pull-right"
 								id="updBtn" style="text-align ': right" /> <input type="button"
@@ -245,18 +245,7 @@
 
 				<!-- Search Widget -->
 				<div class="card my-4">
-					<h5 class="card-header">Title Search</h5>
-					<div class="card-body">
-						<div class="input-group">
-							<form action="blogSearch.do" method="get">
-								<input id="searchWord" type="text" class="form-control"
-									placeholder="Search for..."> <span
-									class="input-group-btn">
-									<button class="btn btn-secondary" type="button" id="searchBtn">Go!</button>
-								</span>
-							</form>
-						</div>
-					</div>
+					<jsp:include page="helpCsearch.jsp"></jsp:include>
 				</div>
 
 				<!-- Categories Widget -->

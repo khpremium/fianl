@@ -15,11 +15,11 @@
 	<h5 class="card-header">Title Search</h5>
 	<div class="card-body">
 		<div class="input-group">
-			<form action="blogSearch.do" method="get">
-				<input id="searchWord" type="text" class="form-control"
-					placeholder="Search for..."> <span class="input-group-btn">
-					<button class="btn btn-secondary" type="button" id="searchBtn">Go!</button>
-				</span>
+			<form action="blogSearch.do" method="get" style="width:100%;">
+				<input name="searchWord" type="text" class="form-control" placeholder="Search for..." style="float:left; width:75%;">
+				<span class="input-group-btn">
+					<button class="btn btn-secondary" type="submit" id="searchBtn" style="float:right; width:25%;">Go!</button>
+				</span> 
 			</form>
 		</div>
 	</div>

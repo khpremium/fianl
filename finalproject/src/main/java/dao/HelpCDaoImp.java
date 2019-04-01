@@ -106,5 +106,10 @@ public class HelpCDaoImp implements HelpCDAO{
 		sqlSession.update("helpC.HComUpd", rdto);
 		
 	}
+
+	@Override
+	public BoardDTO hmBlogMethod() {
+		return sqlSession.selectOne("helpC.HMBoard");
+	}
      
 } 

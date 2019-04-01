@@ -24,19 +24,20 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-		if('${pv.currentPage==1}'){
-			$('#preBtn').removeClass();
-			$('#preBtn').addClass('page-item disabled');
-		}else{
+		if('${pv.startPage}'>1){
 			$('#preBtn').removeClass();
 			$('#preBtn').addClass('page-item');
-		};
-		if('${pv.currentPage==pv.totalPage}'){
-			$('#nextBtn').removeClass();
-			$('#nextBtn').addClass('page-item disabled');
 		}else{
+			$('#preBtn').removeClass();
+			$('#preBtn').addClass('page-item disabled');
+		};
+		if('${pv.endPage}'<'${pv.totalPage}'){
 			$('#nextBtn').removeClass();
 			$('#nextBtn').addClass('page-item');
+			
+		}else{
+			$('#nextBtn').removeClass();
+			$('#nextBtn').addClass('page-item disabled');
 		};
 	});
 </script>
@@ -48,8 +49,9 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="#">Start Bootstrap</a>
+			<a class="navbar-brand" href="helpMain.do">KH Air</a>
 			<jsp:include page="kakaoLogin.jsp"></jsp:include>
+			<jsp:include page="naverLogin.jsp"></jsp:include>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive" aria-controls="navbarResponsive"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -72,16 +74,21 @@
 
 	<!-- Page Content -->
 	<div class="container">
-
 		<div class="row">
-
 			<!-- Blog Entries Column -->
 			<div class="col-md-8">
-
 				<h1 class="my-4">
-					고객센터 
+					고객센터<small>-공지사항</small>
 					<c:if test="${pv.searchWord!=null }">
-					<small>"${pv.searchWord }" 검색결과</small>
+						<form action="helpBoard.do" method="get">
+							<span class="input-group-btn">
+								<button class="btn btn-secondary" type="submit" id="returnBtn"
+									style="float: right;">목록으로</button>
+							</span>
+						</form>
+					</c:if>
+					<c:if test="${pv.searchWord!=null }">
+						<small>"${pv.searchWord }" 검색결과</small>
 					</c:if>
 				</h1>
 
@@ -89,153 +96,121 @@
 				<div class="card mb-4">
 					<table cellspacing='0'>
 						<tr>
-							<th>Num</th>
-							<th>Title</th>
-							<th>Count</th>
-							<th>Date</th>
+							<th style="width: 15%; text-align: center;">Num</th>
+							<th style="width: 40%; text-align: center;">Title</th>
+							<th style="width: 15%; text-align: center;">Count</th>
+							<th style="width: 30%; text-align: center;">Date</th>
 						</tr>
-
 						<c:forEach var="dto" items="${HList}">
 							<tr>
-								<td><a
+								<td style="text-align: center;"><a
 									href="helpBlog.do?b_num=${dto.b_num}&currentPage=${pv.currentPage}">${dto.b_num }</a></td>
 								<td><a
 									href="helpBlog.do?b_num=${dto.b_num}&currentPage=${pv.currentPage}">${dto.title }</a></td>
-								<td>${dto.viewcount }</td>
-								<td>${dto.upload_date }</td>
+								<td style="text-align: center;">${dto.viewcount }</td>
+								<td style="text-align: center;">${dto.upload_date }</td>
 							</tr>
 						</c:forEach>
 					</table>
-
 				</div>
 				<%-- login
-				<c:if test="test01==(String)session.getAttribute('id')"></c:if> --%>
+				<c:if test="admin==(String)session.getAttribute('id')"> --%>
 				<form action="boardWirete.do" method="post">
+				<span class="input-group-btn">
 					<input type="submit" id="bwriteBtn" value="글쓰기" />
+				</span>
 				</form>
-				
-				<!-- Blog Post -->
-				<!-- <div class="card mb-4">
-					<img class="card-img-top" src="http://placehold.it/750x300"
-						alt="Card image cap">
-					<div class="card-body">
-						<h2 class="card-title">Post Title</h2>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex
-							quis soluta, a laboriosam. Dicta expedita corporis animi vero
-							voluptate voluptatibus possimus, veniam magni quis!</p>
-						<a href="#" class="btn btn-primary">Read More &rarr;</a>
-					</div>
-					<div class="card-footer text-muted">
-						Posted on January 1, 2017 by <a href="#">Start Bootstrap</a>
-					</div>
-				</div> -->
-
-				<!-- Blog Post -->
-				<!-- <div class="card mb-4">
-					<img class="card-img-top" src="http://placehold.it/750x300"
-						alt="Card image cap">
-					<div class="card-body">
-						<h2 class="card-title">Post Title</h2>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex
-							quis soluta, a laboriosam. Dicta expedita corporis animi vero
-							voluptate voluptatibus possimus, veniam magni quis!</p>
-						<a href="#" class="btn btn-primary">Read More &rarr;</a>
-					</div>
-					<div class="card-footer text-muted">
-						Posted on January 1, 2017 by <a href="#">Start Bootstrap</a>
-					</div>
-				</div> -->
-
+				<%-- </c:if> --%>
 				<!-- Pagination -->
 				<ul class="pagination justify-content-center mb-4">
-
+				
+				
+				
 					<li id="preBtn">
 						<c:if test="${pv.searchWord != null }">
-						<a class="page-link" href="blogSearch.do?currentPage=${pv.currentPage-1 }&searchWord=${pv.searchWord}">&larr;Newer</a>
-						</c:if>
+							<a class="page-link"
+								href="blogSearch.do?currentPage=${pv.currentPage-1 }&searchWord=${pv.searchWord}">&larr;Newer</a>
+						</c:if> 
 						<c:if test="${pv.searchWord == null }">
-						<a class="page-link" href="helpMain.do?currentPage=${pv.currentPage-1 }">&larr;Newer</a>
+							<a class="page-link" href="helpBoard.do?currentPage=${pv.currentPage-1 }">&larr;Newer</a>
 						</c:if>
 					</li>
 
 					<li id="nextBtn">
 						<c:if test="${pv.searchWord != null }">
-						<a class="page-link" href="blogSearch.do?currentPage=${pv.currentPage+1 }&searchWord=${pv.searchWord}">Older&rarr;</a>
-						</c:if>
+							<a class="page-link" href="blogSearch.do?currentPage=${pv.currentPage+1 }&searchWord=${pv.searchWord}">Older&rarr;</a>
+						</c:if> 
 						<c:if test="${pv.searchWord == null }">
-						<a class="page-link" href="helpMain.do?currentPage=${pv.currentPage+1 }">Older&rarr;</a>
+							<a class="page-link" href="helpBoard.do?currentPage=${pv.currentPage+1 }">Older&rarr;</a>
 						</c:if>
 					</li>
-
 				</ul>
-
+				
+				
 			</div>
 
 			<!-- Sidebar Widgets Column -->
-			<div class="col-md-4">
-
+			<div class="col-md-4" style="margin-top: 75px!important;">
 				<!-- Search Widget -->
 				<div class="card my-4">
-					<h5 class="card-header">Title Search</h5>
-					<div class="card-body">
-						<div class="input-group">
-							<form action="blogSearch.do" method="get">
-								<input name="searchWord" type="text" class="form-control" placeholder="Search for...">
-								<span class="input-group-btn">
-									<input type="submit" class="btn btn-secondary" value="Go!"></input>
-								</span>
-							</form>
-						</div>
-					</div>
+					<jsp:include page="helpCsearch.jsp"></jsp:include>
 				</div>
-
-				<!-- Categories Widget -->
-				<div class="card my-4">
+				<!-- Map Widget -->
+				<%-- <div class="card my-4">
 					<jsp:include page="map.jsp"></jsp:include>
-								<!-- <ul class="list-unstyled mb-0">
-									<li><a href="http://map.daum.net/link/to/케이에이치에어,35.587951,127.087007">지도보기</a></li>
-									<li><a href="#">HTML</a></li>
-									<li><a href="#">Freebies</a></li>
-								</ul>
-							</div>
-							<div class="col-lg-6">
-								<ul class="list-unstyled mb-0">
-									<li><a href="#">JavaScript</a></li>
-									<li><a href="#">CSS</a></li>
-									<li><a href="#">Tutorials</a></li>
-								</ul> -->
-				<!-- Side Widget -->
-				</div>
-
-				<div class="card my-4">
+				</div> --%>
+				
+				<!-- Chat Widget -->
+				<%-- <div class="card my-4">
 					<jsp:include page="helpchatOpen.jsp"></jsp:include>
-					<!-- <h5 class="card-header">1:1 고객상담센터</h5>
-					<div class="card-body" style="height:150px;">
-						<div id="chatMessageArea"></div>
-					</div>
-					<div><input type="text" style="width:85%;"/><input type="button" value="전송" style="width:15%;"></div> -->
-				</div>
+				</div> --%>
 
+			</div>
+			<!-- /.row -->
 		</div>
-		<!-- /.row -->
-	</div>
-	<!-- /.container -->
+		<!-- /.container -->
 	</div>
 	<!-- Footer -->
-	<footer class="py-5 bg-dark">
-		<!-- <div class="container"> -->
-			<p class="m-0 text-center text-white">Copyright &copy; Your
-				Website 2019</p>
-		<!-- </div> -->
-		<!-- /.container -->
+	<!-- 링크 -->
+				<!-- <div class="card my-4" style="margin-bottom:0px!important; background-color: #343a40;">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="helpBoard.do" style="color: white;">공지사항</a>
+                  </li>
+                  <li>
+                    <a href="#">HTML</a>
+                  </li>
+                  <li>
+                    <a href="#">Freebies</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#">JavaScript</a>
+                  </li>
+                  <li>
+                    <a href="#">CSS</a>
+                  </li>
+                  <li>
+                    <a href="#">Tutorials</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div> -->
+		<!-- 링크끝 -->
+	<footer class="py-5 bg-dark" style="position: fixed;bottom: 0;width: 100%;">
+		<p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
 	</footer>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="./Son_cus/vendor/jquery/jquery.min.js"></script>
 	<script src="./Son_cus/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 </body>
-
 </html>

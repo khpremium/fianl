@@ -38,17 +38,17 @@
 </head>
 <body>
 
-<h5 class="card-header">1:1 고객상담센터</h5>
+<h5 class="card-header">고객상담센터</h5>
 
 <div>
 	<table>
 		<tr>
-		<td>
+		<td style="vertical-align: middle;">
 		<%-- login
 		<c:if test="null==(String)session.getAttribute('id')"></c:if> --%>
 		<input id="chatOpenBtn" type="button" value="문의 오픈채팅" style="  padding:5px; border:'2px solid #ccc'; '-webkit-border-radius': 5px; border-radius: 5px;">
 		</td>
-		<td>
+		<td style="vertical-align: middle;">
 		<!-- 카톡1:1 -->
 		<div id="plusfriend-chat-button" data-plusfriend-id="_xfAXUj" data-title="consult" data-size="small" data-color="yellow" data-shape="pc" data-support-multiple-densities="true"></div>		
 		
