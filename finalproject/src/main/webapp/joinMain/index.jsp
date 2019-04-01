@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 <head>
-
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -70,6 +70,22 @@
 		                    	 <img src="img/login_close_btn.gif" alt="닫기버튼" />
 		                     </a>
 		                 </p>
+		                   <div id="naverIdLogin"></div>
+		                 
+		                 <script type="text/javascript">
+		                 	var naverLogin = new naver.LoginWithNaverId(
+		                 		{
+		                 			clientId: "sKTdXgHmzw9vu1NzZSKv",
+		                 			callbackUrl: "http://localhost:8090/myfinal/naverJoin.do",
+		                 			isPopup: false,
+		                 			loginButton: {color: "green", type:3, height:60} /* 로드인 버튼의 타입을 지정 */
+		                 		}
+		                 	);
+		                 	/*설정정보를 초기화하고 연동을 준비*/
+		                 	naverLogin.init();
+		                 	
+		               
+		                 </script>
 		               </fieldset>
 		             </form>
 		           </li>

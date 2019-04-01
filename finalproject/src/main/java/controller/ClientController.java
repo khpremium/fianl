@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import dto.ClientDTO;
+import jdk.nashorn.internal.ir.RuntimeNode.Request;
 import mail.MemberManagement;
 import service.ClientService;
 
@@ -67,6 +68,12 @@ private MemberManagement mm;
 			mav.setViewName("index");
 		}
 		return mav;
+	}
+	
+	//네이버로그인 회원가입 이동
+	@RequestMapping("/naverJoin.do")
+	public String naverLogin(String email, String name, HttpSession session) {
+		return "naverJoin";
 	}
 	
 	//아이디 중복체크
