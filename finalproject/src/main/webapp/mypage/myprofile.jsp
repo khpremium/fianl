@@ -16,7 +16,9 @@
 
   <!-- Custom styles for this template -->
   <link href="mypage/css/simple-sidebar.css" rel="stylesheet">
-
+  <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+  
+  
 </head>
 <style>
 table.type09 {
@@ -51,8 +53,24 @@ table.type09 td {
 div.button
 {
 
- text-align: center;
+ text-align: left;
+ margin-left: 11%;
 
+}
+
+.passfir{
+	 
+	 text-align: left;
+ 	 margin-left: 3%;
+}
+
+.passsec{
+	visibility: hidden;
+}
+
+.passsec{
+	 text-align: left;
+ 	 margin-left: 3%;
 }
 
 h1 {
@@ -69,8 +87,90 @@ h2 {
       } 
 
 
-
 </style>
+<script type="text/javascript">
+ $(document).ready(function(){
+	 
+	 
+	 
+	 $('#update').bind('click',updateRun);
+	 $('#delete').bind('click',deleteRun);
+
+	 
+function updateRun(e){
+	$('.passfir').removeClass("passsec");
+	e.preventDefault();
+	$('#update').on('click',passtest);
+}// updaterun
+
+function passtest(){
+	alert("테스트시작");
+	if($('.passfir').val()=="${myprofile.pass}"){
+		alert("수정시작");
+		if(!/^.*(?=^.{6,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/.test($("#pass").val())){
+			alert('숫자와 영문자 조합으로 10~15자리를 사용해야 합니다.');
+			return false;
+		}else{
+			$('#frm').attr('action','update.do').submit();	
+			alert("수정완료");
+			return false;
+		}
+	} else{
+		alert("비밀번호가 틀립니다.");
+		return false;
+	}
+
+}//passtest
+
+function deleteRun(e){	
+	$('.passfir').removeClass("passsec");
+	e.preventDefault();
+	$('#delete').on('click',deltest);
+} // deleterun
+
+function deltest(){
+	if($('.passfir').val()=="${myprofile.pass}"){
+		alert("탈퇴시작");
+		$('#frm').attr('action','delete.do').submit();
+		alert("탈퇴가 완료되었습니다.");		
+	}else{
+		alert("비밀번호가 틀립니다.");
+		return location.reload();
+	}
+}// deltest
+
+/* function passChk(){
+
+	if(pass.length < 6){
+		$('#errPasswd').html('비밀번호는 6자리 이상');
+	}else {
+		$('#errPasswd').html('');
+	}
+	
+	var regex = /^.*(?=^.{6,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+	if(!regex.test($("#password").val())){
+		alert("영어/숫자/특수문자 조합으로 입력해주세요.");
+		return false;
+	};
+	
+} */
+	
+		
+var passwordRules = /^.*(?=^.{6,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+
+
+
+var password = 'a123456@#';
+
+console.log(passwordRules .test(password));
+
+
+
+
+	 
+ })//준비 
+
+</script>
 
 
 <body>
@@ -82,10 +182,9 @@ h2 {
       <div class="sidebar-heading">Start Airline </div>
       <div class="list-group list-group-flush">
         <a href="profile.do" class="list-group-item list-group-item-action bg-light">My Profile</a>
-        <a href="myreservation.do" class="list-group-item list-group-item-action bg-light">My Reservation</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">My Board</a>     
+        <a href="myreservation.do" class="list-group-item list-group-item-action bg-light">My Reservation</a>            
         <a href="passport.do" class="list-group-item list-group-item-action bg-light">Passport Insert</a> 
-              
+        <a href="myboard.do" class="list-group-item list-group-item-action bg-light">My Board</a>     
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -95,7 +194,8 @@ h2 {
     <div id="page-content-wrapper">
 		<!--  하얀색 헤더 -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <button class="btn btn-primary" id="menu-toggle">Total screen</button>
+        <!-- <button class="btn btn-primary" id="menu-toggle">전체메뉴 숨기기</button> -->
+
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -125,64 +225,192 @@ h2 {
 
 	<!-- 페이지 내용 시작 -->
      
-        <h2 align="center">My Profile</h2>
-        
-      <%--   <table class="type09">
-    <thead>
-    <tr>
-        <th scope="cols">타이틀</th>
-        <th scope="cols">내용</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <th scope="row">아이디</th>
-        <td>${myprofile.id}</td>
-    </tr>
-    <tr>
-        <th scope="row">비밀번호</th>
-        <td>${myprofile.pass}</td>
-    </tr>
-    <tr>
-        <th scope="row">성함</th>
-        <td>${myprofile.name}</td>
-    </tr>
-    <tr>
-        <th scope="row">연락처</th>
-        <td>${myprofile.phonenum}</td>
-    </tr>
-    <tr>
-        <th scope="row">포인트</th>
-        <td>${myprofile.point}</td>
-    </tr>
-    <tr>
-        <th scope="row">성별</th>
-        <td>${myprofile.gender}</td>
-    </tr> 
-    <tr>
-        <th scope="row">생년월일</th>
-        <td>
+        <h2 align="center">My Profile</h2>  
+        <form name="frm" id="frm" method="post">
+        <!-- <div style="position:absolute; width:50%; right: 100px; left:250px; top: 150px; text-align: center;"> -->
+     <table>
+       
+       <th>
+          <h1>ID : ${myprofile.id} </h1>
+          <h1>Name : ${myprofile.name}</h1>
+       <h1>Change Password : <input type="password" name="pass" id="pass"></h1>       
+       <h1>Phone Number : <input type="text" name="phonenum" value="${myprofile.phonenum}"></h1>
+       <h1>E-Mail : <input type="text" name="email" value="${myprofile.email}">
+       
+       </h1>
+       <h1>Gender : ${myprofile.gender}</h1>
+       <h1>Birth :
         <fmt:parseDate value="${myprofile.birth}" var="birth" pattern="yyyyMMdd"/>
 		<fmt:formatDate value="${birth}" pattern="yyyy년 MM월 dd일 "/>
-        </td>
-    </tr>    
-    </tbody>
-</table> --%>
-          <h1>아이디 : ${myprofile.id}</h1>
-       <h1>비밀번호 : ${myprofile.pass}</h1>
-       <h1>성함 : ${myprofile.name}</h1>
-       <h1>연락처 : ${myprofile.phonenum}</h1>
-       <h1>포인트 : ${myprofile.point}</h1>
-       <h1>성별 : ${myprofile.gender}</h1>
-       <h1>생년월일 :
-        <fmt:parseDate value="${myprofile.birth}" var="birth" pattern="yyyyMMdd"/>
-		<fmt:formatDate value="${birth}" pattern="yyyy년 MM월 dd일 "/>
-	   </h1>       
+	   </h1>
+	   <h1>포인트 : ${myprofile.point}</h1>
+	   <input type="hidden" name="id" value="${myprofile.id}"/> 
+	   </th>     
+	 <%--  <h1>My Information</h1>	  
+     	<thead>
+    <tr>
+      <th scope="col">List</th>
+      <th scope="col">Information</th>
+    </tr>
+   </thead>
+   
+	 <tbody>
+	 
+	 <tr class="table-active">	  
+	 <th scope="row">아이디</th>
+	 <td>${myprofile.id}</td>
+	 </tr>
+	 
+	 <tr class="table-active">
+	 <th scope="row">성함</th>
+	 <td>
+	 ${myprofile.name}
+	 </td>
+	 </tr>
+	 
+	 <tr class="table-active">
+	 <th scope="row">비밀번호</th>
+	 <td><input type="text" name="pass" value="${myprofile.pass}">
+     </td>	 
+	 </tr>
+	 
+	 <tr class="table-active">
+	 <th scope="row">비밀번호 확인</th>
+	 <td>
+	 <input type="password" id="passwordCheck" class="inputText" maxlength="30">
+	 </td>
+	 </tr>
+	 	 
+	 <tr class="table-active">
+	 <th scope="row">연락처</th>
+	 <td>
+	 <input type="text" name="phonenum" value="${myprofile.phonenum}">
+     </td>
+	 </tr>
+	 
+	 <tr class="table-active">
+	 <th scope="row">E-MAIL</th>
+	 <td>
+	 <c:choose>
+	 <c:when test="${myprofile.email==null}">
+	 <input type="text" name="email" id="email01" class="inputText" > @ <input type="text" name="email" id="email02" class="inputText" disabled value="naver.com">
+	<select name="selectEmail" id="email" name="email2" class="inputText">
+	<option value="1">직접입력</option>
+	<option value="naver.com" selected>naver.com</option>
+	<option value="daum.net">daum.net</option>
+	<option value="nate.com">nate.com</option>
+	<option value="gmail.com">gmail.com</option>
+	<option value="hanmail.net">hanmail.net</option>
+	</select>		
+	<input type="button" id="emailCheck" value="중복확인" onclick="emailFunction()">
+	<input type="button" id="checkbutton" value="전송">
+	</c:when>
+	<c:otherwise>
+		${myprofile.email}
+		
+	</c:otherwise>
+	</c:choose>
+	 </td>
+	 </tr>
+	 
+	 <tr class="table-active">
+	 <th scope="row">생년월일</th>
+	 <td>
+	 <fmt:parseDate value="${myprofile.birth}" var="birth" pattern="yyyyMMdd"/>
+	 <fmt:formatDate value="${birth}" pattern="yyyy년 MM월 dd일 "/>
+	 </td>
+	 </tr>
+	 
+	 <tr class="table-active">
+	 <th scope="row">성별</th>
+	 <td>
+	 ${myprofile.gender}
+	 </td>
+	 </tr>
+	 
+	 <tr class="table-active">
+	 <th scope="row">마일리지</th>
+	 <td>
+	 ${myprofile.point}
+	 </td>
+	 </tr>
+	 
+	  </tbody>
+	  
+      </table>
+    <br/>
+    <hr/>
+    <input type="button" id="update" class="btn btn-primary btn-lg" value="정보 수정"/>
+    <input type="button" id="delete" class="btn btn-primary btn-lg" value="회원 탈퇴"/>
+     --%>
+    <!-- 정보수정 -->
+      <!-- </div> -->
+      </table>
+     </form>
+     <div style="position:absolute; right: 20px; left:1100px; top: 150px; text-align: center;">
+     <h1>Notice</h1>
+     <table style="width:100%; text-align: center;" ><!--밑줄부터-->
+     	<thead>
+    <tr>
+      <th scope="col">number</th>
+      <th scope="col">Title</th>
+      <th scope="col">Writer</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  <c:forEach items="${aList}" var="aList">
+  <tr class="table-active">
+  	 <th scope="row" onclick="">${aList.b_num}</th>
+      <td><a href="helpCmain.do?b_num=${aList.b_num}">${aList.title}</a></td>
+      <td>${aList.user_id}</td>
+      <td>${aList.upload_date}</td>
       
-     
-     <div class="button">
+    </tr>
+   </c:forEach>
+ 
+    
+  </tbody>
+  
+     </table><!-- 윗줄까지 -->
      <br/>
-    <input type="button" class="btn btn-primary btn-lg" value="회원 정보수정" onclick=""/>
+   <div class="btn-group mr-2" role="group" aria-label="First group">
+   <c:if test="${pv.startPage>1}">
+			<a href="profile.do?currentPage=${pv.startPage-pv.blockPage}">이전</a>
+		  </c:if>
+   <!-- <button type="button" class="btn btn-secondary">1</button>
+   <button type="button" class="btn btn-secondary">2</button>
+   <button type="button" class="btn btn-secondary">3</button>
+   <button type="button" class="btn btn-secondary">4</button> -->
+   <c:forEach var="i" begin="${pv.startPage}" end="${pv.endPage}">
+			<span>
+			  <c:url var="currPage" value="profile.do">			
+				<c:param name="currentPage" value="${i}"/>
+			  </c:url>
+              <c:choose>
+                <c:when test="${i==pv.currentPage}">
+                   <a href="${currPage}" class="btn btn-secondary"> <c:out value="${i}" /></a>
+                </c:when> 
+			    <c:otherwise>	
+			       <a href="${currPage}" class="btn btn-secondary" > <c:out value="${i}" /></a>
+			     </c:otherwise>			
+			  </c:choose>
+			</span>
+		</c:forEach>
+   
+   </div>
+     </div> 
+    
+     
+     <div class="button" >
+     	
+     <br/>
+     <input type="text" class="passfir passsec" placeholder="변경 전 비밀번호">
+     <br/>
+     <br/>
+     <input type="button" id="update" class="btn btn-primary btn-lg" value="정보 수정"/>
+    <input type="button" id="delete" class="btn btn-primary btn-lg" value="회원 탈퇴"/>
+        
 	</div>
        
         
@@ -207,8 +435,16 @@ h2 {
 
   <!-- Menu Toggle Script -->
   <script>
+  var menuChk = true;
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
+      if(menuChk){
+      $("#menu-toggle").text("전체메뉴 보기");
+      menuChk = false;
+      }else{
+    	  $("#menu-toggle").text("전체메뉴 숨기기");
+    	  menuChk = true;
+      }
       $("#wrapper").toggleClass("toggled");
     });
   </script>

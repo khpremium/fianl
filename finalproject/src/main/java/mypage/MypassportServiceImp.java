@@ -1,5 +1,7 @@
 package mypage;
 
+import java.util.List;
+
 public class MypassportServiceImp implements MypassportService {
 	
 	private MypassportDAO mypdao;
@@ -18,11 +20,27 @@ public class MypassportServiceImp implements MypassportService {
 		return mypdao.passport(rv_code);
 	}
 
+	
 	@Override
-	public void passportinsProcess(MypassportDTO dto) {
+	public void passportinsProcess(List<MypassportDTO> aList) {
 		// TODO Auto-generated method stub
-		mypdao.inspassport(dto);
+		mypdao.delpassport(aList.get(0).getReservation_rv_code());
+		for(MypassportDTO dto : aList) {
+		
+			mypdao.inspassport(dto);
+		}
+		
 	}
+
+	@Override
+	public List<MypassportDTO> passportSrcProcess(String reservation_rv_code) {
+		// TODO Auto-generated method stub
+		return mypdao.searchPassport(reservation_rv_code);
+	}
+
+
+	
+	
 	
 	
 }// class

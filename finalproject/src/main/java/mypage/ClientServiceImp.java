@@ -17,5 +17,21 @@ public class ClientServiceImp implements ClientService {
 		return cdao.profile(user_id);
 	}
 
+	@Override
+	public void updateMemProcess(ClientDTO cdto) {
+		
+		cdao.updateClient(cdto);
+		System.out.println("서비스임프까지 되");
+	}
+
+	@Override
+	public void deleteMemProcess(String id) {
+		// TODO Auto-generated method stub
+		cdao.deleteClient(id);
+	}
+
+	
+	
+
 	
 }

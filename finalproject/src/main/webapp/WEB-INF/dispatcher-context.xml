@@ -49,7 +49,7 @@
 	<!-- [5]선언적 트랜잭션: <tx:advice>태그를 이용한 트랜잭션 처리 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="*Process" rollback-for="java.lang.Exception" />
+			<tx:method name="*Process" rollback-for="java.lang.Exception" />			
 		</tx:attributes>
 	</tx:advice>
 	
@@ -58,6 +58,7 @@
 		<aop:advisor advice-ref="txAdvice" pointcut="execution(* service.ReservationServiceImp.*Process(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut="execution(* service.HelpCServiceImp.*Process(..))"/>
 		<aop:advisor advice-ref="txAdvice" pointcut="execution(* service.ClientServiceImp.*Process(..))"/>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* mypage.MypassportServiceImp.*Process(..))"/>
 	</aop:config>
 	
 	<!-- DAO -->
@@ -84,6 +85,12 @@
 	</bean>
 	<bean id="adao" class="dao.AdminDaoImp">
 		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+	<bean id="myndao" class="mypage.BoardDaoImp">
+		<property name="sqlSession" ref="sqlSession"/>	
+	</bean>
+	<bean id="mybdao" class="mypage.BoardDaoImp">
+		<property name="sqlSession" ref="sqlSession"/>
 	</bean>
 	
 	<!-- Service -->
@@ -112,6 +119,9 @@
 	<bean id="aservice" class="service.AdminServiceImp">
 		<property name="dao" ref="adao" />
 	</bean>
+	<bean id="mybservice" class="mypage.BoardServiceImp">
+		<property name="mybdao" ref="mybdao"/>
+	</bean>
 	
 	<!-- controller -->
 	<bean class="controller.ReservationController">
@@ -121,7 +131,8 @@
 		 <property name="service" ref="service" />
 	</bean>
 	<bean class="mypage.MypageController">
-		<property name="service" ref="cservice"/>
+		<property name="service" ref="cservice"/>		
+		 <property name="service2" ref="mybservice"/>		 
 	</bean>
 	<bean class="mypage.MyReservationController">
 		<property name="service" ref="myrservice"/>
@@ -137,6 +148,9 @@
 	</bean>
 	<bean class="controller.AdminController">
 		<property name="service" ref="aservice" />
+	</bean>
+	<bean class="mypage.MyBoardController">		
+		<property name="service" ref="mybservice"/>
 	</bean>
 	
 	<!-- 이메일 구현 -->

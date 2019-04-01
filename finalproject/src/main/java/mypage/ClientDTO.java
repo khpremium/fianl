@@ -12,7 +12,7 @@ public class ClientDTO {
 	
 	public ClientDTO() {
 		// TODO Auto-generated constructor stub
-	}// con
+	}// 
 
 	public String getId() {
 		return id;

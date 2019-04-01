@@ -19,6 +19,21 @@ public class ClientDaoImp implements ClientDAO{
 		return sqlSession.selectOne("mypage.profile",id);
 	}
 
+	@Override
+	public void updateClient(ClientDTO cdto) {
+		
+		sqlSession.update("mypage.proupdate",cdto);
+		
+	}
+
+	@Override
+	public void deleteClient(String id) {
+		// TODO Auto-generated method stub
+		sqlSession.delete("mypage.prodelete",id);
+	}
+
+	
+
 	
 	
 }// class

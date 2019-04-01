@@ -38,4 +38,6 @@ public class MyReservationController {
 		return "redirect:/myreservation.do";
 	}
 	
+	
+	
 }// class

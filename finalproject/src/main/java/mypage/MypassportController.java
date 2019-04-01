@@ -25,18 +25,19 @@ public class MypassportController {
 	public ModelAndView passportList(HttpSession session, String rv_code) {
 		ModelAndView mav= new ModelAndView();
 		
-		mav.addObject("passport",service.passportProcess("023d0d52"));
-		mav.addObject("pass_rvcode","023d0d52");
+		mav.addObject("passport",service.passportProcess("220545eb"));
+		mav.addObject("pass_rvcode","220545eb");
+		mav.addObject("alreadypass",service.passportSrcProcess("220545eb"));
 		mav.setViewName("mypage/myPassport");
 		return mav;
 	}
 	
 	@RequestMapping(value="inspassport.do",method=RequestMethod.POST)
 	public String passInsert(PassportInsDTO pdto) {
-		for(MypassportDTO dto:pdto.getaList()) {
-			service.passportinsProcess(dto);
-		System.out.println(dto.getReservation_rv_code());
-		}
+				
+			
+			service.passportinsProcess(pdto.getaList());
+		
 		return "redirect:/passport.do";
 	}
 	
