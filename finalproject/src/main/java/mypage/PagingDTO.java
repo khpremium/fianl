@@ -11,6 +11,7 @@ public class PagingDTO {
 	private int startPage; // 한 블록의 시작 페이지 번호
 	private int endPage; // 한 블록의 끝페이지 번호
 	private int number;	
+	private String user_id;
 
 	private String searchKey;
 	private String searchWord;
@@ -148,4 +149,16 @@ public class PagingDTO {
 		this.searchWord = searchWord;
 	}
 
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
+	
+	
 }

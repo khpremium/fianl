@@ -73,6 +73,9 @@
 	<bean id="myndao" class="mypage.BoardDaoImp">
 		<property name="sqlSession" ref="sqlSession"/>	
 	</bean>
+	<bean id="mybdao" class="mypage.BoardDaoImp">
+		<property name="sqlSession" ref="sqlSession"/>
+	</bean>
 	
 	<!-- Service -->
 	<bean id="rservice" class="reservation.ReservationServiceImp">
@@ -90,8 +93,8 @@
 	<bean id="mypservice" class="mypage.MypassportServiceImp">
 		<property name="mypdao" ref="mypdao"/>
 	</bean>
-	<bean id="mynservice" class="mypage.BoardServiceImp">
-		<property name="myndao" ref="myndao"></property>
+	<bean id="mybservice" class="mypage.BoardServiceImp">
+		<property name="mybdao" ref="mybdao"/>
 	</bean>
 	
 	
@@ -105,13 +108,16 @@
 	</bean>
 	<bean class="mypage.MypageController">
 		<property name="service" ref="cservice"/>		
-		 <property name="service2" ref="mynservice"/>		 
+		 <property name="service2" ref="mybservice"/>		 
 	</bean>
 	<bean class="mypage.MyReservationController">
 		<property name="service" ref="myrservice"/>
 	</bean>
 	<bean class="mypage.MypassportController">
 		<property name="service" ref="mypservice"/>
+	</bean>
+	<bean class="mypage.MyBoardController">		
+		<property name="service" ref="mybservice"/>
 	</bean>
 	
 	<!-- viewResolver -->

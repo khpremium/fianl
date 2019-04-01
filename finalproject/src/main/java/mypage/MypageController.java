@@ -56,7 +56,7 @@ public class MypageController {
 			mav.addObject("aList",service2.listProcess(pdto));
 		}	
 		
-		mav.addObject("myprofile",service.profileProcess("test01"));
+		mav.addObject("myprofile",service.profileProcess("test00"));
 		mav.setViewName("/mypage/myprofile");
 		return mav;
 	}

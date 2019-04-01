@@ -70,7 +70,7 @@ h2 {
         <a href="profile.do" class="list-group-item list-group-item-action bg-light">My Profile</a>
         <a href="myreservation.do" class="list-group-item list-group-item-action bg-light">My Reservation</a>
         <a href="passport.do" class="list-group-item list-group-item-action bg-light">Passport Insert</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">My Board</a>
+        <a href="myboard.do" class="list-group-item list-group-item-action bg-light">My Board</a>
                      
       </div>
     </div>

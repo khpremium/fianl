@@ -58,6 +58,21 @@ div.button
 
 }
 
+.passfir{
+	 
+	 text-align: left;
+ 	 margin-left: 3%;
+}
+
+.passsec{
+	visibility: hidden;
+}
+
+.passsec{
+	 text-align: left;
+ 	 margin-left: 3%;
+}
+
 h1 {
         margin: 5px;
         border: 10px solid #dddddd;
@@ -75,25 +90,81 @@ h2 {
 </style>
 <script type="text/javascript">
  $(document).ready(function(){
+	 
+	 
+	 
 	 $('#update').bind('click',updateRun);
 	 $('#delete').bind('click',deleteRun);
 
 	 
-function updateRun(){
-	alert("수정시작");
-	$('#frm').attr('action','update.do').submit();	
-	alert("수정완료");
-}
+function updateRun(e){
+	$('.passfir').removeClass("passsec");
+	e.preventDefault();
+	$('#update').on('click',passtest);
+}// updaterun
 
-function deleteRun(){
-	alert("탈퇴시작");
-	$('#frm').attr('action','delete.do').submit();
-	alert("탈퇴가 완료 되었습니다.");
-}
+function passtest(){
+	alert("테스트시작");
+	if($('.passfir').val()=="${myprofile.pass}"){
+		alert("수정시작");
+		if(!/^.*(?=^.{6,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/.test($("#pass").val())){
+			alert('숫자와 영문자 조합으로 10~15자리를 사용해야 합니다.');
+			return false;
+		}else{
+			$('#frm').attr('action','update.do').submit();	
+			alert("수정완료");
+			return false;
+		}
+	} else{
+		alert("비밀번호가 틀립니다.");
+		return false;
+	}
 
+}//passtest
 
+function deleteRun(e){	
+	$('.passfir').removeClass("passsec");
+	e.preventDefault();
+	$('#delete').on('click',deltest);
+} // deleterun
+
+function deltest(){
+	if($('.passfir').val()=="${myprofile.pass}"){
+		alert("탈퇴시작");
+		$('#frm').attr('action','delete.do').submit();
+		alert("탈퇴가 완료되었습니다.");		
+	}else{
+		alert("비밀번호가 틀립니다.");
+		return location.reload();
+	}
+}// deltest
+
+/* function passChk(){
+
+	if(pass.length < 6){
+		$('#errPasswd').html('비밀번호는 6자리 이상');
+	}else {
+		$('#errPasswd').html('');
+	}
 	
-		/* alert("${pv.endRow}"); */
+	var regex = /^.*(?=^.{6,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+	if(!regex.test($("#password").val())){
+		alert("영어/숫자/특수문자 조합으로 입력해주세요.");
+		return false;
+	};
+	
+} */
+	
+		
+var passwordRules = /^.*(?=^.{6,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+
+
+
+var password = 'a123456@#';
+
+console.log(passwordRules .test(password));
+
+
 
 
 	 
@@ -113,7 +184,7 @@ function deleteRun(){
         <a href="profile.do" class="list-group-item list-group-item-action bg-light">My Profile</a>
         <a href="myreservation.do" class="list-group-item list-group-item-action bg-light">My Reservation</a>            
         <a href="passport.do" class="list-group-item list-group-item-action bg-light">Passport Insert</a> 
-        <a href="#" class="list-group-item list-group-item-action bg-light">My Board</a>     
+        <a href="myboard.do" class="list-group-item list-group-item-action bg-light">My Board</a>     
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -160,15 +231,15 @@ function deleteRun(){
      <table>
        
        <th>
-          <h1>아이디 : ${myprofile.id} </h1>
-          <h1>성함 : ${myprofile.name}</h1>
-       <h1>비밀번호 : <input type="text" name="pass" value="${myprofile.pass}"></h1>       
-       <h1>연락처 : <input type="text" name="phonenum" value="${myprofile.phonenum}"></h1>
-       <h1>이메일 : <input type="text" name="email" value="${myprofile.email}">
+          <h1>ID : ${myprofile.id} </h1>
+          <h1>Name : ${myprofile.name}</h1>
+       <h1>Change Password : <input type="password" name="pass" id="pass"></h1>       
+       <h1>Phone Number : <input type="text" name="phonenum" value="${myprofile.phonenum}"></h1>
+       <h1>E-Mail : <input type="text" name="email" value="${myprofile.email}">
        
        </h1>
-       <h1>성별 : ${myprofile.gender}</h1>
-       <h1>생년월일 :
+       <h1>Gender : ${myprofile.gender}</h1>
+       <h1>Birth :
         <fmt:parseDate value="${myprofile.birth}" var="birth" pattern="yyyyMMdd"/>
 		<fmt:formatDate value="${birth}" pattern="yyyy년 MM월 dd일 "/>
 	   </h1>
@@ -276,7 +347,7 @@ function deleteRun(){
       <!-- </div> -->
       </table>
      </form>
-     <div style="position:absolute; right: 20px; left:950px; top: 150px; text-align: center;">
+     <div style="position:absolute; right: 20px; left:1100px; top: 150px; text-align: center;">
      <h1>Notice</h1>
      <table style="width:100%; text-align: center;" ><!--밑줄부터-->
      	<thead>
@@ -291,7 +362,7 @@ function deleteRun(){
   <c:forEach items="${aList}" var="aList">
   <tr class="table-active">
   	 <th scope="row" onclick="">${aList.b_num}</th>
-      <td>${aList.title}</td>
+      <td><a href="helpCmain.do?b_num=${aList.b_num}">${aList.title}</a></td>
       <td>${aList.user_id}</td>
       <td>${aList.upload_date}</td>
       
@@ -333,6 +404,9 @@ function deleteRun(){
      
      <div class="button" >
      	
+     <br/>
+     <input type="text" class="passfir passsec" placeholder="변경 전 비밀번호">
+     <br/>
      <br/>
      <input type="button" id="update" class="btn btn-primary btn-lg" value="정보 수정"/>
     <input type="button" id="delete" class="btn btn-primary btn-lg" value="회원 탈퇴"/>
