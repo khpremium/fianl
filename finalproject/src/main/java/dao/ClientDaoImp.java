@@ -69,13 +69,16 @@ public class ClientDaoImp implements ClientDAO{
 	}
 
 	@Override
-	public String find_id(String email) {
-		return sqlSession.selectOne("client.find_id", email);
-	}
-
-	@Override
 	public int update_pw(ClientDTO dto) {
 		return sqlSession.update("client.update_pw", dto);
 	}
 
+	@Override
+	public String find_id(String email) {
+		return sqlSession.selectOne("client.find_id", email);
+	}
+	
+	public String naverLogin(String email) {
+		return sqlSession.selectOne("client.naver",email);
+	}
 }//end class

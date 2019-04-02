@@ -3,7 +3,8 @@
 
 <!DOCTYPE html>
 <head>
-<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -54,7 +55,7 @@
 		                     <input type="checkbox" name="idSave" id="idSave" >아이디 저장
 		                 </p>
 		                 <p class="log_btn">
-		                    <input type="image" src="img/login_btn.gif" id="login" alt="로그인버튼" />
+		                    <input type="button" id="login" value="로그인" style="padding: 50% 30% 50% 30%;"/>
 		                 </p>
 		                 
 		                 <p class="join_btn_wrap">
@@ -70,22 +71,33 @@
 		                    	 <img src="img/login_close_btn.gif" alt="닫기버튼" />
 		                     </a>
 		                 </p>
-		                   <div id="naverIdLogin"></div>
+		                 <div id="naver_id_login"></div>
+		              
 		                 
-		                 <script type="text/javascript">
-		                 	var naverLogin = new naver.LoginWithNaverId(
-		                 		{
-		                 			clientId: "sKTdXgHmzw9vu1NzZSKv",
-		                 			callbackUrl: "http://localhost:8090/myfinal/naverJoin.do",
-		                 			isPopup: false,
-		                 			loginButton: {color: "green", type:3, height:60} /* 로드인 버튼의 타입을 지정 */
-		                 		}
-		                 	);
-		                 	/*설정정보를 초기화하고 연동을 준비*/
-		                 	naverLogin.init();
-		                 	
-		               
-		                 </script>
+		                <!-- //네이버아이디로로그인 버튼 노출 영역 -->
+						<script type="text/javascript">
+							var naver_id_login = new naver_id_login("sKTdXgHmzw9vu1NzZSKv", "http://localhost:8090/myfinal/index.do?");
+							var state = naver_id_login.getUniqState();
+							naver_id_login.setButton("white", 2,40);
+							naver_id_login.setDomain("https://nid.naver.com/oauth2.0/authorize");
+							naver_id_login.setState(state);
+							naver_id_login.init_naver_id_login();
+							
+							 // 접근 토큰 값 출력
+							/*  alert(naver_id_login.oauthParams.access_token); */
+							 // 네이버 사용자 프로필 조회
+							 naver_id_login.get_naver_userprofile("naverSignInCallback()");
+							 // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+							 function naverSignInCallback() {
+							  /*  alert(naver_id_login.getProfileData('email'));
+							   alert(naver_id_login.getProfileData('name')); */
+							   var email = naver_id_login.getProfileData('email');
+							   var name= naver_id_login.getProfileData('name');
+							 
+							   location.href="http://localhost:8090/myfinal/naverJoin.do?email="+email+"&name="+name;
+							 };
+						 
+						</script>
 		               </fieldset>
 		             </form>
 		           </li>

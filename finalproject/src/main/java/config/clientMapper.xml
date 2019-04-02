@@ -24,7 +24,7 @@
 	<!-- 로그인 체크 -->
 	<select id="loginCheck" parameterType="dto.ClientDTO" resultType="dto.ClientDTO">
 		select id from client
-		where id=#{id} and pass=#{pass}	
+		where id=#{id, jdbcType=VARCHAR} and pass=#{pass, jdbcType=VARCHAR}	
 	</select>
 	
 	<select id="viewMember" resultType="dto.ClientDTO">
@@ -33,6 +33,10 @@
 	
 	<!-- 아이디 찾기 -->
 	<select id="find_id" parameterType="String" resultType="String">
+		SELECT id FROM client WHERE email=#{email}
+	</select>
+	
+	<select id="naver" parameterType="String" resultType="String">
 		SELECT id FROM client WHERE email=#{email}
 	</select>
 	

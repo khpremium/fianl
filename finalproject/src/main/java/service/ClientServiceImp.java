@@ -54,7 +54,7 @@ public class ClientServiceImp implements ClientService{
 	}
 
 	@Override
-	public String find_id(HttpServletResponse resp, String email) throws IOException {
+	public String find_id(String email) throws IOException {
 		
 		String id = dao.find_id(email);
 		if(id == null) {
@@ -91,5 +91,12 @@ public class ClientServiceImp implements ClientService{
 	}
 		return pw;	
 }
+
+	@Override
+	public String naverLogin(String email, HttpSession session) {
+		String id = dao.naverLogin(email);
+		return id;
+	}
+
 
 }

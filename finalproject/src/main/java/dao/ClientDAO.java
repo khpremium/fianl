@@ -3,6 +3,8 @@ package dao;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Repository;
 
 import dto.ClientDTO;
@@ -22,4 +24,6 @@ public interface ClientDAO {
 	public String find_id(String email);
 	//회원 비밀번호 찾기(임시 비밀번호)
 	public int update_pw(ClientDTO dto);
+	//네이버 로그인
+	public String naverLogin(String email);
 }

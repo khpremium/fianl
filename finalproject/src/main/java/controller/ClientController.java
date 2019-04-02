@@ -1,10 +1,13 @@
 package controller;
 
 
+import java.io.IOException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -69,12 +72,24 @@ private MemberManagement mm;
 		}
 		return mav;
 	}
+
 	
 	//네이버로그인 회원가입 이동
 	@RequestMapping("/naverJoin.do")
-	public String naverLogin(String email, String name, HttpSession session) {
-		return "naverJoin";
+	public ModelAndView naverLogin(ClientDTO dto, String email, String name, HttpSession session) throws IOException {
+		ModelAndView mav = new ModelAndView();
+		String aa = service.naverLogin(email, session);
+		System.out.println(aa);
+		if(aa != null) {
+			mav.setViewName("index");
+		}else {
+			mav.addObject("email", email);
+			mav.addObject("name", name);
+			mav.setViewName("naverJoin");
+		}	
+		return mav;
 	}
+	
 	
 	//아이디 중복체크
 	@RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
@@ -100,10 +115,13 @@ private MemberManagement mm;
 	@RequestMapping(value="/joinInsert.do", method=RequestMethod.POST)
 	public ModelAndView joinInsert(ClientDTO dto) {
 		ModelAndView mav = new ModelAndView();
-		String email = dto.getEmail() + "@" + dto.getEmail2();
-		dto.setEmail(email);
+		int emailchk = dto.getEmail().indexOf("@");
+		if(emailchk == -1) {
+			String email = dto.getEmail() + "@" + dto.getEmail2();
+			dto.setEmail(email);
+		}
 		service.insertProcess(dto);
-		mav.setViewName("joinComplete");
+		mav.setViewName("index");
 		return mav;
 	}
 	
@@ -122,7 +140,7 @@ private MemberManagement mm;
 	//아이디 찾기
 	@RequestMapping("/find_id.do")
 	public @ResponseBody String findId(HttpServletResponse resp, String email)throws Exception {
-		return service.find_id(resp, email);
+		return service.find_id(email);
 	}
 
 	//카카오 로그인

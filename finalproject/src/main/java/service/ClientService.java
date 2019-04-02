@@ -20,8 +20,9 @@ public interface ClientService {
 	
 	public int emailCheck(String email);
 	
-	public String find_id(HttpServletResponse resp, String email) throws IOException;
+	public String find_id(String email) throws IOException;
 	
 	public String find_pw(HttpServletResponse resp, ClientDTO dto) throws IOException;
 	
+	public String naverLogin(String email, HttpSession session);
 }

@@ -11,8 +11,8 @@
 	<form action="/myfinal/joinInsert.do" method="post">
 		<input type="text" id="id" name="id"/>
 		<input type="password" id="pass" name="pass"/>
-		<input type="hidden" name="email" value="${email}">
-		<input type="hidden" name="name" value="${name}">
+		<input type="hidden" id="email" name="email" value="${email}">
+		<input type="hidden" id="name" name="name" value="${name}">
 		<button type="submit">회원가입</button>
 	</form>
 </body>
