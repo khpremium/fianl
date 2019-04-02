@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import dto.AirinfoDTO;
 import dto.ReservationDTO;
 import service.ReservationService;
 
@@ -39,7 +40,7 @@ public class ReservationController {
 		ModelAndView mav = new ModelAndView();
 		// mav.addObject("list", service.searchProcess());
 		mav.addObject("rdto", rdto);
-		mav.setViewName("/view/guest");
+		mav.setViewName("/view/guestForm");
 		return mav;
 	}
 	
@@ -75,8 +76,18 @@ public class ReservationController {
 	// 비회원 예약번호 출력
 	@RequestMapping("/guestAlert.do")
 	public String guestAlert() {
-		return "/view/guestalert";
+		return "/view/guestAlert";
 	}
+	
+	// http://localhost:8090/myfinal/guestAlert.do?code="asd1xzc5"
+	// 비회원 예약번호 출력
+	/*@RequestMapping("/guestAlert.do")
+	public ModelAndView guestAlert(String code) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("rv_code", code);
+		mav.setViewName("/view/guestAlert");
+		return mav;
+	}*/
 	
 	// 카카오페이 rest 요청
 	@RequestMapping("/kakaoPro.do")

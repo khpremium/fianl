@@ -34,9 +34,7 @@ oData 객체에는 결제 인증 결과와 전달한 returnUrl 정보가 함께 
 	});
 
 	//직접 만드신 네이버페이 결제버튼에 click Event를 할당하세요
-	var elNaverPayBtn = document.getElementById("naverpayment");
-
-	elNaverPayBtn.addEventListener("click", function() {
+	$('#naverpayment').on("click", function() {
 		if ($('#dep_airinfo_flight').val() == '' || $('#arv_airinfo_flight').val() == '') {
 			alert('비행편을 선택해주세요.');
 			return false;
@@ -100,6 +98,8 @@ oData 객체에는 결제 인증 결과와 전달한 returnUrl 정보가 함께 
 			}
 			alert(msg);
 		});
+		
+		return false;
 	});
 	
 });
