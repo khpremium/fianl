@@ -47,7 +47,7 @@ public class MypageController {
 		}	
 		
 		mav.addObject("myprofile",service.profileProcess("test00"));
-		mav.setViewName("/mypage/myprofile");
+		mav.setViewName("view/NewMyPage");
 		return mav;
 	}
 	
