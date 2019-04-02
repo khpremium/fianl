@@ -174,7 +174,6 @@ public class HelpCController {
 		pdto.setSearchWord(pv.getSearchWord());
 		mav.addObject("pv", pdto);
 		mav.addObject("HList", service.hListProcess2(pdto));
-		
 		mav.setViewName("Son_cus/helpC");
 		return mav;
 	}

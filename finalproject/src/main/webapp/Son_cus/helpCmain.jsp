@@ -3,13 +3,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Road Trip by TEMPLATED</title>
+		<title>여행박사 손진호(주)</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="Son_cus/assets/css/main.css" />
 		<script type="text/javascript">
-		/* $(document).ready(function() {
+		$(document).ready(function() {
 			$('#sendmail').on('click',function(){
 				if($('#subject').val()=='' || $('#from').val()=='' || $('#password').val()=='' || $('#contents').val()==''){
 					alert('빈 칸이 있습니다.');
@@ -43,14 +43,14 @@
 			$('#from').val('');
 			$('#password').val('');
 			$('#contents').val('');
-		} */
+		}
 		</script>
 	</head>
 	<body>
 		
 		<!-- Header -->
 			<header id="header">
-				<div class="logo"><a href="Son_cus/helpCmain.jsp">Road Trip <span>by TEMPLATED</span></a></div>
+				<div class="logo"><a href="Son_cus/helpCmain.jsp">여행박사손진호 <span>(주)</span></a></div>
 				<a href="#menu"><span>Menu</span></a>
 			</header>
 
@@ -123,11 +123,10 @@
 				<div class="inner">
 					<article class="box">
 						<header>
-							<h2>Varius a cursus aliquet</h2>
+							<h2>The way</h2>
 							<!-- <p>11.11.2016</p> -->
 						</header>
 						<div class="content">
-						
 							<table>
 								<tr>
 									<th>주소</th>
@@ -146,7 +145,6 @@
 								</tr>
 							</table>
 							<br/>
-						
 							<jsp:include page="map.jsp"></jsp:include>
 						</div>
 						<footer>
@@ -182,7 +180,6 @@
 									<td><p>언제든 고객 프로필 및 커뮤니케이션 기본 설정을 업데이트할 수 있습니다.</p></td>
 								</tr>
 							</table>
-
 						</div>
 						<footer>
 							<a href="rodlswjdqh.do" class="button alt">Read More</a>

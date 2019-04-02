@@ -9,6 +9,10 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="Son_cus/assets/css/main.css" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+		<!-- <link rel="stylesheet" href="Son_cus/assets/fonts/fontawesome-webfont.ttf" />
+		<link rel="stylesheet" href="Son_cus/assets/fonts/fontawesome-webfont.woff" />
+		<link rel="stylesheet" href="Son_cus/assets/fonts/fontawesome-webfont.woff2" /> -->
 	</head>
 	<body class="subpage">
 

@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="Son_cus/assets/fonts/fontawesome-webfont.ttf" />
+		<link rel="stylesheet" href="Son_cus/assets/fonts/fontawesome-webfont.woff" />
+		<link rel="stylesheet" href="Son_cus/assets/fonts/fontawesome-webfont.woff2" />
 <style type="text/css">
 	#Progress_Loading
 	{
