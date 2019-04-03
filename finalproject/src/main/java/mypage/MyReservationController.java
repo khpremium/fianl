@@ -20,14 +20,14 @@ public class MyReservationController {
 	public void setService(ReservationService service) {
 		this.service = service;
 	}
-	
+	/*
 	@RequestMapping("myreservation.do")
 	public ModelAndView myresList(String user_id, HttpSession session) {
 		ModelAndView mav=new ModelAndView();
 		
 		System.out.println(service.reservationProcess("test01"));
 		mav.addObject("myres",service.reservationProcess("test01"));
-		mav.setViewName("mypage/myreservation");
+		mav.setViewName("view/NewMyPage");
 		
 		return mav;
 	}
@@ -36,7 +36,7 @@ public class MyReservationController {
 	public String deleteResrvation(String cancel) {
 		service.resdelProcess(cancel);
 		return "redirect:/myreservation.do";
-	}
+	}*/
 	
 	
 	

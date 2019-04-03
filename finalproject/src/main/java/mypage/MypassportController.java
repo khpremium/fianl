@@ -21,13 +21,13 @@ public class MypassportController {
 		this.service = service;
 	}
 	
-	@RequestMapping("passport.do")
+	/*@RequestMapping("passport.do")
 	public ModelAndView passportList(HttpSession session, String rv_code) {
 		ModelAndView mav= new ModelAndView();
 		
-		mav.addObject("passport",service.passportProcess("220545eb"));
-		mav.addObject("pass_rvcode","220545eb");
-		mav.addObject("alreadypass",service.passportSrcProcess("220545eb"));
+		mav.addObject("passport",service.passportProcess("awdx15fz"));
+		mav.addObject("pass_rvcode","awdx15fz");
+		mav.addObject("alreadypass",service.passportSrcProcess("awdx15fz"));
 		mav.setViewName("mypage/myPassport");
 		return mav;
 	}
@@ -40,7 +40,7 @@ public class MypassportController {
 		
 		return "redirect:/passport.do";
 	}
-	
+	*/
 	
 	
 }//class

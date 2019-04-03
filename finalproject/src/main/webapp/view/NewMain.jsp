@@ -130,11 +130,12 @@ function cityprocess(){
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="view/index.html">Home</a></li>
-					<li><a href="view/generic.html">Join Us</a></li>
-					<li><a href="view/elements.html">Priview</a></li>
-					<li><a href="">Board</a></li>
-					<li><a href="">My Page</a></li>
+					<li><a href="main.do">Home</a></li>
+					<li><a href="helpMain.do">Notice</a></li>
+					<li><a href="join.do">Join Us</a></li>
+					<li><a href="">Priview</a></li>					
+					<li><a href="login.do">Login</a></li>
+					<li><a href="profile.do">My Page</a></li>
 				</ul>
 			</nav>
 

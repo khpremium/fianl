@@ -144,35 +144,7 @@ h2 {
 							<th>연락처</th>
 							<th>국가</th>
 							
-						</tr>						
-							<%-- <tr>
-							
-								<td>								
-								<input type="text" name="aList[${i-1}].name_kr" value="${alreadypass.name_kr}" style="border:1px solid black;">								
-								</td>
-								<td>
-								<input type="text" name="aList[${i-1}].name_en" value="${alreadypass.name_en}" placeholder="lastname/firstname" style="border:1px solid black;">
-								</td>
-								<td>
-								<input type="text" name="aList[${i-1}].gender" value="${alreadypass.gender}" placeholder="남성 혹은 여성" style="border:1px solid black;">
-								</td>								
-								<td>
-								<input type="text" name="aList[${i-1}].p_birth" value="${alreadypass.p_birth}" placeholder="ex)1991.07.06" style="border:1px solid black;">														
-								</td>
-								<td>
-								<input type="text" name="aList[${i-1}].passport_num" value="${alreadypass.passport_num}" placeholder="9자리 여권번호" style="border:1px solid black;">
-								</td>
-								<td>
-								<input type="text" name="aList[${i-1}].exp_date" value="${alreadypass.exp_date}" style="border:1px solid black;">
-								</td>
-								<td>
-								<input type="text" name="aList[${i-1}].phonenum" value="${alreadypass.phonenum}" placeholder="연락처" style="border:1px solid black;">
-								</td>								
-								<td>
-								<input type="text" name="aList[${i-1}].p_country" value="${alreadypass.p_country}" placeholder="한글로 입력해주세요" style="border:1px solid black;">
-								</td>																
-							  						  						
-							</tr>	 --%>
+						</tr>	
 							
 							<tr>
 							
@@ -236,6 +208,7 @@ h2 {
 								<td>
 								<input type="text" name="aList[${i-1}].name_en" placeholder="lastname/firstname" style="border:1px solid black;">
 								</td>
+								
 								<td>
 								<input type="text" name="aList[${i-1}].gender" placeholder="남성 혹은 여성" style="border:1px solid black;">
 								</td>								
