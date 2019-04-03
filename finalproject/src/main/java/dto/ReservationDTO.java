@@ -20,7 +20,16 @@ public class ReservationDTO {
 	private String arv_date;
 	private String dep_airinfo_flight;
 	private String arv_airinfo_flight;
+	private int usePoint;
 	
+	public int getUsePoint() {
+		return usePoint;
+	}
+
+	public void setUsePoint(int usePoint) {
+		this.usePoint = usePoint;
+	}
+
 	public String getDep_airinfo_flight() {
 		return dep_airinfo_flight;
 	}

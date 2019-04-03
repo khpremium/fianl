@@ -53,6 +53,12 @@ public class ReservationServiceImp implements ReservationService {
 			dao.seatUptMethod(rdto.getArv_airinfo_flight());
 		}
 		if(rdto.getNon_name() == null) {
+			if(rdto.getUsePoint() > 0) {
+				HashMap<Object, Object> map = new HashMap<>();
+				map.put("id", rdto.getUser_id());
+				map.put("point", rdto.getUsePoint());
+				dao.pointUseMethod(map);
+			}
 			long point = Math.round(dao.priceMethod(rdto.getArv_airinfo_flight()) * rdto.getP_count() * 0.1);
 			point += Math.round(dao.priceMethod(rdto.getDep_airinfo_flight()) * rdto.getP_count() * 0.1);
 			System.out.println(point);
@@ -70,6 +76,11 @@ public class ReservationServiceImp implements ReservationService {
 			rdto.setAirinfo_flight(rdto.getArv_airinfo_flight());
 			dao.guestResMethod(rdto);
 		}
+	}
+
+	@Override
+	public int pointProcess(String id) {
+		return dao.pointSelectMethod(id);
 	}
 	
 }

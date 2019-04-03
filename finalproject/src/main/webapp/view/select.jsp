@@ -11,15 +11,17 @@
 		<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 		<script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"></script>
 		<link rel="stylesheet" href="view/assets/css/main.css" />
-		<script type="text/javascript">
-			var p_count = Number('${rdto.p_count}');
-		</script>
+		<style type="text/css">
+			.non {
+				visibility: hidden;
+			}
+		</style>
 	</head>
 	<body>
 
 		<!-- Header -->
 			<header id="header" class="alt">
-				<div class="logo"><a href="index.html">KH Air<sup>™</sup></a></div>
+				<div class="logo"><a href="index.html">여행박사<span>(주)</span></a></div>
 				<a href="#menu"><span>Menu</span></a>
 			</header>
 
@@ -60,23 +62,27 @@
 								</thead>
 								<tbody>
 									<c:forEach items="${dList}" var="dto" varStatus="i">
-										<tr>
-											<td>${dto.airline}</td>
-											<td>${dto.flight}</td>
-											<td>${fn:substring(dto.d_time,8,10)}시
-												${fn:substring(dto.d_time,10,12)}분</td>
-											<td>${fn:substring(dto.a_time,8,10)}시
-												${fn:substring(dto.a_time,10,12)}분
-												<c:if test="${fn:substring(dto.a_time,8,10) < fn:substring(dto.d_time,8,10)}">
-													(+1일)
-												</c:if>
-												</td>
-											<td>${dto.price_ad}</td>
-											<td>${dto.seat}</td>
-											<td><input type="radio" id="dept${i.index}" name="dept" value="${dto.flight}" />
-												<label for="dept${i.index}"></label>
-											</td>
-										</tr>
+										<c:choose>
+											<c:when test="${dto.seat>=rdto.p_count}">
+												<tr>
+													<td>${dto.airline}</td>
+													<td>${dto.flight}</td>
+													<td>${fn:substring(dto.d_time,8,10)}시
+														${fn:substring(dto.d_time,10,12)}분</td>
+													<td>${fn:substring(dto.a_time,8,10)}시
+														${fn:substring(dto.a_time,10,12)}분
+														<c:if test="${fn:substring(dto.a_time,8,10) < fn:substring(dto.d_time,8,10)}">
+															(+1일)
+														</c:if>
+														</td>
+													<td>${dto.price_ad}</td>
+													<td>${dto.seat}</td>
+													<td><input type="radio" id="dept${i.index}" name="dept" value="${dto.flight}" />
+														<label for="dept${i.index}"></label>
+													</td>
+												</tr>
+											</c:when>
+										</c:choose>
 									</c:forEach>
 								</tbody>
 							</table>
@@ -107,24 +113,28 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${rList}" var="dto">
-										<tr>
-											<td>${dto.airline}</td>
-											<td>${dto.flight}</td>
-											<td>${fn:substring(dto.d_time,8,10)}시
-												${fn:substring(dto.d_time,10,12)}분</td>
-											<td>${fn:substring(dto.a_time,8,10)}시
-												${fn:substring(dto.a_time,10,12)}분
-												<c:if test="${fn:substring(dto.a_time,8,10) < fn:substring(dto.d_time,8,10)}">
-													(+1일)
-												</c:if>
-												</td>
-											<td>${dto.price_ad}</td>
-											<td>${dto.seat}</td>
-											<td><input type="radio" id="arrv${i.index}" name="arrv" value="${dto.flight}" />
-												<label for="arrv${i.index}"></label>
-											</td>
-										</tr>
+									<c:forEach items="${rList}" var="dto" varStatus="i">
+										<c:choose>
+											<c:when test="${dto.seat>=rdto.p_count}">
+												<tr>
+													<td>${dto.airline}</td>
+													<td>${dto.flight}</td>
+													<td>${fn:substring(dto.d_time,8,10)}시
+														${fn:substring(dto.d_time,10,12)}분</td>
+													<td>${fn:substring(dto.a_time,8,10)}시
+														${fn:substring(dto.a_time,10,12)}분
+														<c:if test="${fn:substring(dto.a_time,8,10) < fn:substring(dto.d_time,8,10)}">
+															(+1일)
+														</c:if>
+														</td>
+													<td>${dto.price_ad}</td>
+													<td>${dto.seat}</td>
+													<td><input type="radio" id="arrv${i.index}" name="arrv" value="${dto.flight}" />
+														<label for="arrv${i.index}"></label>
+													</td>
+												</tr>
+											</c:when>
+										</c:choose>
 									</c:forEach>
 								</tbody>
 							</table>
@@ -143,40 +153,31 @@
 							<h2>결제 정보</h2>
 						</header>
 						<div class="content">
-							<%-- <p>예약자<span class="resName">
-									<c:choose>
-										<c:when test="${rdto.guestchk == 'guest'}">
-											${rdto.non_name}님
-										</c:when>
-										<c:otherwise>
-											${id}님
-										</c:otherwise>
-									</c:choose>
-								</span>
-							</p>
-							<p>출국<span class="dep_airinfo_flight"></span></p>
-							<p>귀국<span class="arv_airinfo_flight"></span></p>
-							<p>요금<span class="price">0</span>원</p>
-							<p>탑승객수<span>${rdto.p_count}</span></p>
-							<p>총가격<span class="totalPrice">0</span>원</p> --%>
 							<ul class="alt">
-							<li>예약자<span class="resName">
+							<li>예약자
 									<c:choose>
 										<c:when test="${rdto.guestchk == 'guest'}">
-											${rdto.non_name}님
+											<span id="resName">${rdto.non_name}</span>
 										</c:when>
 										<c:otherwise>
-											${id}님
+											<span id="resName">${id}</span>
 										</c:otherwise>
 									</c:choose>
-								</span>
+								님
 							</li>
+							<c:if test="${!empty point}">
+								<li>포인트 <span id="point">${point}</span>점</li>
+							</c:if>
 							<li>출국 <span class="dep_airinfo_flight"></span></li>
 							<li>귀국 <span class="arv_airinfo_flight"></span></li>
 							<li>요금 <span class="price">0</span>원</li>
-							<li>탑승객수 <span>${rdto.p_count}</span></li>
+							<li>탑승객수 <span id="p_count">${rdto.p_count}</span></li>
 							<li>총가격 <span class="totalPrice">0</span>원</li>
 							</ul>
+							<c:if test="${point > 10000}">
+								<input type="number" max="${point}" min="10000" class="point non">
+								<input type="button" id="pointBtn" value="포인트 사용">
+							</c:if>
 						</div>
 						<footer>
 							<ul class="actions fit">
@@ -216,6 +217,7 @@
 						<c:otherwise>
 							<input type="hidden" name="user_id" value="${id}">
 						</c:otherwise>
+						<input type="hidden" name="usePoint" id="usePoint" value="0">
 					</c:choose>
 				</form>
 			</section>

@@ -56,5 +56,13 @@
 	<update id="point" parameterType="java.util.HashMap">
 		update client set point=point+#{point} where id=#{id}
 	</update>
+	
+	<select id="pointSelect" parameterType="string" resultType="int">
+		select point from client where id=#{id}
+	</select>
+	
+	<update id="pointUse" parameterType="java.util.HashMap">
+		update client set point=point-#{point} where id=#{id}
+	</update>
 
 </mapper>

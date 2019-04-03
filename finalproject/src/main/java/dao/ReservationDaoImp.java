@@ -63,5 +63,15 @@ public class ReservationDaoImp implements ReservationDAO {
 	public void pointMethod(HashMap<Object, Object> map) {
 		sqlSession.update("res.point", map);
 	}
+
+	@Override
+	public int pointSelectMethod(String id) {
+		return sqlSession.selectOne("res.pointSelect", id);
+	}
+
+	@Override
+	public void pointUseMethod(HashMap<Object, Object> map) {
+		sqlSession.update("res.pointUse", map);
+	}
 	
 }

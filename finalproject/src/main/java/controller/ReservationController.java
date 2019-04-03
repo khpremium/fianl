@@ -52,6 +52,9 @@ public class ReservationController {
 		mav.addObject("arv_date", rdto.getArv_date());
 		rdto.setDep_date(rdto.getDep_date().replaceAll("-", ""));
 		rdto.setArv_date(rdto.getArv_date().replaceAll("-", ""));
+		if(rdto.getNon_name() == null) {
+			mav.addObject("point", service.pointProcess(rdto.getUser_id()));
+		}
 		mav.addObject("dList", service.deptListProcess(rdto));
 		mav.addObject("rList", service.returnListProcess(rdto));
 		mav.addObject("dep_name", service.cityNameProcess(rdto.getCity_code_dep()));
@@ -90,17 +93,17 @@ public class ReservationController {
 	}*/
 	
 	// 카카오페이 rest 요청
-	@RequestMapping("/kakaoPro.do")
-	public @ResponseBody String kakaoPayment() throws IOException {
+	@RequestMapping(value = "/kakaoPro.do", method = RequestMethod.POST)
+	public @ResponseBody String kakaoPayment(String name, int price, int p_count) throws IOException {
 		String input = "";
 		String total = "";
 		String url = "https://kapi.kakao.com/v1/payment/ready";
 		url += "?cid=TC0ONETIME";
 		url += "&partner_order_id=partner_order_id";
-		url += "&partner_user_id=partner_user_id";
+		url += "&partner_user_id=" + name;
 		url += "&item_name=항공권";
-		url += "&quantity=1";
-		url += "&total_amount=200000";
+		url += "&quantity=" + p_count * 2;
+		url += "&total_amount=100000"/* + price*/;
 		url += "&tax_free_amount=0";
 		url += "&approval_url=http://localhost:8090/myfinal/kakaoRes.do?result=success";
 		url += "&fail_url=http://localhost:8090/myfinal/kakaoRes.do?result=fail";

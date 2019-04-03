@@ -12,4 +12,5 @@ public interface ReservationService {
 	public List<AirinfoDTO> returnListProcess(ReservationDTO dto);
 	public String cityNameProcess(String city_code);
 	public void reservationProcess(ReservationDTO rdto, HttpSession session);
+	public int pointProcess(String id);
 }

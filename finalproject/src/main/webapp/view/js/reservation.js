@@ -2,6 +2,9 @@ var IMP = window.IMP; // 생략가능
 IMP.init('imp56323824'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 var one = 0;
 var two = 0;
+var p_count = Number($('#p_count').text());
+var price = 0;
+var pointchk = false;
 
 $(document).ready(function() {
 	// 비행편 라디오버튼 클릭 이벤트
@@ -39,6 +42,7 @@ oData 객체에는 결제 인증 결과와 전달한 returnUrl 정보가 함께 
 			alert('비행편을 선택해주세요.');
 			return false;
 		}
+		
 		oPay.open({
 			"merchantUserKey" : "123",
 			"merchantPayKey" : "123",
@@ -58,13 +62,17 @@ oData 객체에는 결제 인증 결과와 전달한 returnUrl 정보가 함께 
 		}
 
 		$.ajax({
-			type : 'GET',
+			type : 'POST',
 			url : 'kakaoPro.do',
+			data : 'name=' + $('#resName').text() + '&price=' + $('.totalPrice').text() + '&p_count=' + p_count,
 			dataType : 'json',
 			success : function(res) {
 				window.open(res.next_redirect_pc_url,'_blank','width=400, height=600, left=580, top=200');
 			}
 		});
+		// alert($('#resName').text());
+		
+		return false;
 	});
 	
 	$('#payment').on('click', function() {
@@ -102,7 +110,33 @@ oData 객체에는 결제 인증 결과와 전달한 returnUrl 정보가 함께 
 		return false;
 	});
 	
+	$(document).on('click', '#pointBtn', pointUse);
+	
 });
+
+function pointUse(e) {
+	$('.point').removeClass('non');
+	pointchk = true;
+	e.preventDefault();
+	$(e).val('포인트 사용 취소');
+	$(document).on('click', '#pointBtn', pointCancel);
+}
+
+function pointCalcel(e) {
+	$('.point').addClass('non');
+	pointchk = false;
+	e.preventDefault();
+	$(e).val('포인트 사용');
+	$(document).on('click', '#pointBtn', pointUse);
+}
+
+function priceProcess() {
+	price = Number($('.price').text());
+	if(pointchk) {
+		price = price - $('.point').val();
+		$('#usePoint').val($('.point').val());
+	}
+}
 
 // 카카오페이 실행결과
 function kakaoResultProcess(res) {
