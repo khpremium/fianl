@@ -20,9 +20,9 @@ public class BoardServiceImp implements BoardService {
 	}
 
 	@Override
-	public int countProcess() {
+	public int countProcess(PagingDTO pv) {
 		// TODO Auto-generated method stub
-		return mybdao.count();
+		return mybdao.count(pv);
 	}
 
 	@Override

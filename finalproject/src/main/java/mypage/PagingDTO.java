@@ -1,15 +1,15 @@
 package mypage;
 
 public class PagingDTO {
-	private int currentPage; // 현재페이지
-	private int totalCount; // 총 레코드수
-	private int blockCount = 20; // 한 페이지에 보여줄 레코드수
-	private int blockPage = 3; // 한 블록에 보여줄 페이지수
-	private int totalPage; // 총 페이지수
-	private int startRow; // 시작 레코드 번호
-	private int endRow; // 끝 레코드번호
-	private int startPage; // 한 블록의 시작 페이지 번호
-	private int endPage; // 한 블록의 끝페이지 번호
+	private int currentPage; // �쁽�옱�럹�씠吏�
+	private int totalCount; // 珥� �젅肄붾뱶�닔
+	private int blockCount = 5; // �븳 �럹�씠吏��뿉 蹂댁뿬以� �젅肄붾뱶�닔
+	private int blockPage = 3; // �븳 釉붾줉�뿉 蹂댁뿬以� �럹�씠吏��닔
+	private int totalPage; // 珥� �럹�씠吏��닔
+	private int startRow; // �떆�옉 �젅肄붾뱶 踰덊샇
+	private int endRow; // �걹 �젅肄붾뱶踰덊샇
+	private int startPage; // �븳 釉붾줉�쓽 �떆�옉 �럹�씠吏� 踰덊샇
+	private int endPage; // �븳 釉붾줉�쓽 �걹�럹�씠吏� 踰덊샇
 	private int number;	
 	private String user_id;
 
@@ -25,24 +25,24 @@ public class PagingDTO {
 		this.currentPage = currentPage;
 		this.totalCount = totalCount;
 
-		// 시작레코드
+		// �떆�옉�젅肄붾뱶
 		startRow = (currentPage - 1) * blockCount + 1;
 
-		// 끝레코드
+		// �걹�젅肄붾뱶
 		endRow = startRow + blockCount - 1;
 
-		// 총페이지수
+		// 珥앺럹�씠吏��닔
 		totalPage = totalCount / blockCount + (totalCount % blockCount == 0 ? 0 : 1);
 
-		// 시작페이지
+		// �떆�옉�럹�씠吏�
 		startPage = (int) ((currentPage - 1) / blockPage) * blockPage + 1;
 
-		// 끝페이지
+		// �걹�럹�씠吏�
 		endPage = startPage + blockPage - 1;
 		if (totalPage < endPage)
 			endPage = totalPage;
 
-		// 리스트페이지에 출력번호
+		// 由ъ뒪�듃�럹�씠吏��뿉 異쒕젰踰덊샇
 		number = totalCount - (currentPage - 1) * blockCount;
 	}
 	

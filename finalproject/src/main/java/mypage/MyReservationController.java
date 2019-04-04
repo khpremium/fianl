@@ -21,23 +21,20 @@ public class MyReservationController {
 		this.service = service;
 	}
 	
-	@RequestMapping("myreservation.do")
-	public ModelAndView myresList(String user_id, HttpSession session) {
-		ModelAndView mav=new ModelAndView();
-		
-		System.out.println(service.reservationProcess("test01"));
-		mav.addObject("myres",service.reservationProcess("test01"));
-		mav.setViewName("mypage/myreservation");
-		
-		return mav;
-	}
-	
-	@RequestMapping(value="/reservation_delete.do",method=RequestMethod.POST)
-	public String deleteResrvation(String cancel) {
-		service.resdelProcess(cancel);
-		return "redirect:/myreservation.do";
-	}
-	
+	/*
+	 * @RequestMapping("myreservation.do") public ModelAndView myresList(String
+	 * user_id, HttpSession session) { ModelAndView mav=new ModelAndView();
+	 * 
+	 * System.out.println(service.reservationProcess("test01"));
+	 * mav.addObject("myres",service.reservationProcess("test01"));
+	 * mav.setViewName("mypage/myreservation");
+	 * 
+	 * return mav; }
+	 * 
+	 * @RequestMapping(value="/reservation_delete.do",method=RequestMethod.POST)
+	 * public String deleteResrvation(String cancel) {
+	 * service.resdelProcess(cancel); return "redirect:/myreservation.do"; }
+	 */
 	
 	
 }// class

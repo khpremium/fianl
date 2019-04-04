@@ -1,6 +1,7 @@
 package mypage;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,8 @@ public class MypageController {
 	private ClientService service;
 	private PagingDTO pdto;
 	private BoardService service2;
+	private ReservationService service3;
+	private MypassportService service4;	
 	private int currentPage;
 	
 	public MypageController() {
@@ -31,10 +34,19 @@ public class MypageController {
 		this.service2 = service2;
 	}
 	
+	public void setService3(ReservationService service3) {
+		this.service3 = service3;
+	}
+	
+	public void setService4(MypassportService service4) {
+		this.service4 = service4;
+	}
+	
 	@RequestMapping("profile.do")
 	public ModelAndView profileList(HttpServletRequest req,PagingDTO pv) {
 		ModelAndView mav= new ModelAndView();
-		int totalRecord = service2.countProcess();
+		pv.setUser_id("test00");
+		int totalRecord = service2.countProcess(pv);
 		if (totalRecord >= 1) {
 			if (pv.getCurrentPage() == 0) {
 				currentPage = 1;
@@ -43,20 +55,26 @@ public class MypageController {
 			}
 			pdto = new PagingDTO(currentPage, totalRecord);
 			mav.addObject("pv",pdto);
-			mav.addObject("aList",service2.listProcess(pdto));
+			pdto.setUser_id("test00");
+			mav.addObject("myblist",service2.mylistProcess(pdto));
 		}	
 		
 		mav.addObject("myprofile",service.profileProcess("test00"));
+		mav.addObject("myres",service3.reservationProcess("test01"));
+		mav.addObject("passport",service4.passportProcess("220545eb"));
+		mav.addObject("pass_rvcode","220545eb");
+		mav.addObject("alreadypass",service4.passportSrcProcess("220545eb"));
+		
 		mav.setViewName("view/NewMyPage");
 		return mav;
 	}
 	
 	@RequestMapping(value="/update.do",method=RequestMethod.POST)
 	public String update(ClientDTO cdto) {
-		System.out.println("ë‚˜ì˜¤ëƒ?");
+		System.out.println("³ª¿À³Ä?");
 		System.out.println(cdto.getPass()+cdto.getEmail()+cdto.getPhonenum()+cdto.getId());
 		service.updateMemProcess(cdto);
-		System.out.println("ì´ìƒí•˜ë„¤");
+		System.out.println("ÀÌ»óÇÏ³×");
 		return "redirect:/profile.do";
 	}
 	
@@ -66,24 +84,23 @@ public class MypageController {
 		
 		return "redirect:/main.do";
 	}
+		
 	
-	/*@RequestMapping("/list.do")
-	public ModelAndView listMethod(PagingDTO pv) {
-		ModelAndView mav=new ModelAndView();
-		int totalRecord = service2.countProcess();
-		if (totalRecord >= 1) {
-			if (pv.getCurrentPage() == 0) {
-				currentPage = 1;
-			} else {
-				currentPage = pv.getCurrentPage();
-			}
-			pdto = new PagingDTO(currentPage, totalRecord);
-			mav.addObject("pv",pdto);
-		mav.addObject("aList",service2.listProcess(pv));
-		
-		
+	@RequestMapping(value="/reservation_delete.do",method=RequestMethod.POST)
+	public String deleteResrvation(String cancel) {
+		service3.resdelProcess(cancel);
+		return "redirect:/profle.do";
 	}
-		mav.setViewName("mypage/myprofile");
-		return mav;
-	}*/
+	
+	@RequestMapping(value="inspassport.do",method=RequestMethod.POST)
+	public String passInsert(PassportInsDTO pdto) {
+				
+			
+			service4.passportinsProcess(pdto.getaList());
+		
+		return "redirect:/profile.do";
+	}
+	
+	
+	
 }//end class

@@ -45,8 +45,8 @@ where r.AIRINFO_FLIGHT=a.flight and r.user_id=c.ID and t.city_code = a.city_code
 		delete from client where id=#{id}
 	</delete>
 	
-	<select id="count" resultType="int">
-		select count(*) from board where B_CATEGORY_C_NUM=0
+	<select id="count" resultType="int" parameterType="mypage.PagingDTO">
+		select count(*) from board where user_id=#{user_id}
 	</select>
 	
 	<select id="list" parameterType="mypage.PagingDTO" resultType="mypage.MyBoardDTO">
@@ -66,6 +66,8 @@ where r.AIRINFO_FLIGHT=a.flight and r.user_id=c.ID and t.city_code = a.city_code
 	where b.rm>=#{startRow} and b.rm<=#{endRow}
 	]]>
 	</select>
+	
+	
 	
 	
 	
