@@ -44,7 +44,6 @@ public class ReservationServiceImp implements ReservationService {
 				continue;
 			else {
 				rdto.setRv_code(rv_code);
-				System.out.println(rv_code);
 				break;
 			}
 		}
@@ -54,14 +53,10 @@ public class ReservationServiceImp implements ReservationService {
 		}
 		if(rdto.getNon_name() == null) {
 			if(rdto.getUsePoint() > 0) {
-				HashMap<Object, Object> map = new HashMap<>();
-				map.put("id", rdto.getUser_id());
-				map.put("point", rdto.getUsePoint());
-				dao.pointUseMethod(map);
+				dao.pointUseMethod(rdto);
 			}
 			long point = Math.round(dao.priceMethod(rdto.getArv_airinfo_flight()) * rdto.getP_count() * 0.1);
 			point += Math.round(dao.priceMethod(rdto.getDep_airinfo_flight()) * rdto.getP_count() * 0.1);
-			System.out.println(point);
 			HashMap<Object, Object> map = new HashMap<>();
 			map.put("id", rdto.getUser_id());
 			map.put("point", point);

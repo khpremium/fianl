@@ -42,7 +42,8 @@ oData 객체에는 결제 인증 결과와 전달한 returnUrl 정보가 함께 
 			alert('비행편을 선택해주세요.');
 			return false;
 		}
-		
+		priceProcess();
+		alert(price+"원 결제");
 		oPay.open({
 			"merchantUserKey" : "123",
 			"merchantPayKey" : "123",
@@ -60,7 +61,8 @@ oData 객체에는 결제 인증 결과와 전달한 returnUrl 정보가 함께 
 			alert('비행편을 선택해주세요.');
 			return false;
 		}
-
+		priceProcess();
+		alert(price+"원 결제");
 		$.ajax({
 			type : 'POST',
 			url : 'kakaoPro.do',
@@ -80,7 +82,8 @@ oData 객체에는 결제 인증 결과와 전달한 returnUrl 정보가 함께 
 			alert('비행편을 선택해주세요.');
 			return false;
 		}
-		
+		priceProcess();
+		alert(price+"원 결제");
 		IMP.request_pay({
 			pg : 'inicis', // version 1.1.0부터 지원.
 			pay_method : 'card',
@@ -112,29 +115,48 @@ oData 객체에는 결제 인증 결과와 전달한 returnUrl 정보가 함께 
 	
 	$(document).on('click', '#pointBtn', pointUse);
 	
+	$(document).on('keyup', '#pointSel', function() {
+		$(this).val($(this).val().replace(/[^0-9]/g,""));
+		
+		if(Number($(this).val()) > Number($('#point').text()))
+			$(this).val($('#point').text());
+		
+		if($(this).val().charAt(0) == '0')
+			$(this).val($(this).val().substring(1));
+		
+		if(Number($(this).val()) < 10000)
+			$(this).val(10000);
+	});
+	
 });
 
 function pointUse(e) {
 	$('.point').removeClass('non');
 	pointchk = true;
 	e.preventDefault();
-	$(e).val('포인트 사용 취소');
-	$(document).on('click', '#pointBtn', pointCancel);
+	$('#pointBtn').text('포인트 사용 취소');
+	$(document).on('click', '#pointBtn', function(e) {
+		$('.point').addClass('non');
+		pointchk = false;
+		e.preventDefault();
+		$('#pointBtn').text('포인트 사용');
+		$(document).on('click', '#pointBtn', pointUse);
+	});
 }
 
-function pointCalcel(e) {
+/*function pointCancel(e) {
 	$('.point').addClass('non');
 	pointchk = false;
 	e.preventDefault();
 	$(e).val('포인트 사용');
 	$(document).on('click', '#pointBtn', pointUse);
-}
+}*/
 
 function priceProcess() {
-	price = Number($('.price').text());
+	price = Number($('.totalPrice').text());
 	if(pointchk) {
-		price = price - $('.point').val();
-		$('#usePoint').val($('.point').val());
+		price = price - Number($('#pointSel').val());
+		$('#usePoint').val(Number($('#pointSel').val()));
 	}
 }
 

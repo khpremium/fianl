@@ -70,8 +70,8 @@ public class ReservationDaoImp implements ReservationDAO {
 	}
 
 	@Override
-	public void pointUseMethod(HashMap<Object, Object> map) {
-		sqlSession.update("res.pointUse", map);
+	public void pointUseMethod(ReservationDTO rdto) {
+		sqlSession.update("res.pointUse", rdto);
 	}
 	
 }

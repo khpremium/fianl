@@ -46,14 +46,14 @@ public class ReservationController {
 	
 	// 비행편 선택
 	@RequestMapping(value = "/selectFlight.do", method = RequestMethod.POST)
-	public ModelAndView selectFlight(ReservationDTO rdto) {
+	public ModelAndView selectFlight(ReservationDTO rdto, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("dep_date", rdto.getDep_date());
 		mav.addObject("arv_date", rdto.getArv_date());
 		rdto.setDep_date(rdto.getDep_date().replaceAll("-", ""));
 		rdto.setArv_date(rdto.getArv_date().replaceAll("-", ""));
 		if(rdto.getNon_name() == null) {
-			mav.addObject("point", service.pointProcess(rdto.getUser_id()));
+			mav.addObject("point", service.pointProcess((String)session.getAttribute("id")));
 		}
 		mav.addObject("dList", service.deptListProcess(rdto));
 		mav.addObject("rList", service.returnListProcess(rdto));

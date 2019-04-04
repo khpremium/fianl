@@ -20,8 +20,8 @@
 	<body>
 
 		<!-- Header -->
-			<header id="header" class="alt">
-				<div class="logo"><a href="index.html">여행박사<span>(주)</span></a></div>
+			<header id="header">
+				<div class="logo"><a href="index.html">Road Trip <span>by TEMPLATED</span></a></div>
 				<a href="#menu"><span>Menu</span></a>
 			</header>
 
@@ -40,7 +40,7 @@
 			to the full filename of your image. This is used in each section to set
 			the background image.
 		-->
-			<section id="banner" class="wrapper bg-img" data-bg="banner3.jpg">
+			<section id="post" class="wrapper bg-img" data-bg="banner2.jpg">
 				<div class="inner">
 					<article class="box">
 						<header>
@@ -87,14 +87,7 @@
 								</tbody>
 							</table>
 						</div>
-					</article>
-				</div>
-				<a href="#one" class="more">Learn More</a>
-			</section>
-			
-			<section id="one" class="wrapper post bg-img" data-bg="banner2.jpg">
-				<div class="inner">
-					<article class="box">
+						<br>
 						<header>
 							<h2>${arv_name}→${dep_name}</h2>
 							<span>${arv_date}</span><br><br>
@@ -140,12 +133,7 @@
 							</table>
 						</div>
 					</article>
-				</div>
-				<a href="#post" class="more">Learn More</a>
-			</section>
-			
-			<section id="post" class="wrapper bg-img" data-bg="banner4.jpg">
-				<div class="inner">
+					
 					<article class="box">
 						<br/>
 						
@@ -175,8 +163,8 @@
 							<li>총가격 <span class="totalPrice">0</span>원</li>
 							</ul>
 							<c:if test="${point > 10000}">
-								<input type="number" max="${point}" min="10000" class="point non">
-								<input type="button" id="pointBtn" value="포인트 사용">
+								<input type="text" id="pointSel" class="point non" value="10000">
+								<label class="button alt" id="pointBtn" for="pointSel">포인트 선택</label>
 							</c:if>
 						</div>
 						<footer>
@@ -217,8 +205,8 @@
 						<c:otherwise>
 							<input type="hidden" name="user_id" value="${id}">
 						</c:otherwise>
-						<input type="hidden" name="usePoint" id="usePoint" value="0">
 					</c:choose>
+					<input type="hidden" name="usePoint" id="usePoint" value="0">
 				</form>
 			</section>
 		<!-- Footer -->

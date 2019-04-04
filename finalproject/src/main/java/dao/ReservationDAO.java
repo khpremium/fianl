@@ -17,5 +17,5 @@ public interface ReservationDAO {
 	public int priceMethod(String rv_code);
 	public void pointMethod(HashMap<Object, Object> map);
 	public int pointSelectMethod(String id);
-	public void pointUseMethod(HashMap<Object, Object> map);
+	public void pointUseMethod(ReservationDTO rdto);
 }
