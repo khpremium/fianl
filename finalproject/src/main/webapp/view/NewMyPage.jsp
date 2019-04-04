@@ -97,11 +97,12 @@ function mybod(){
 }
 
 
-
-
 </script>
 
 <style type="text/css">
+
+
+
 input{
 	text-align: center;
 	font: bold;
@@ -249,7 +250,7 @@ input{
 				<div class="inner">
 					<article class="box">
 						<header>
-							<h2>${myprofile.name} 님이 작성 한 글</h2>							
+							<h2>${myprofile.name} 님이 작성 한 글</h2>
 						</header>
 						<div class="table-wrapper">
 							<table class="alt">
@@ -298,7 +299,7 @@ input{
 							<!-- footer 내용 -->
 						</footer>
 					</article>								
-				</div>					
+				</div>
 				<a href="#two" class="more">Learn More</a>
 			</section>
 	
@@ -311,7 +312,7 @@ input{
 				<div class="inner" style="width:1400px;">
 					<article class="box">
 						<header>
-							<h2>My Reservation</h2>							
+							<h2>My Reservation</h2>
 						</header>
 						<form action="reservation_delete.do" method="post">	
 						<div class="table-wrapper">
