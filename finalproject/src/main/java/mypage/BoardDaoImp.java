@@ -25,17 +25,19 @@ public class BoardDaoImp implements BoardDAO{
 		return sqlSession.selectList("mypage.list",pv);
 	}
 
-	@Override
-	public int count() {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("mypage.count");
-	}
+	
 
 
 	@Override
 	public List<MyBoardDTO> mylist(PagingDTO pv) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("mypage.myboardlist",pv);
+	}
+
+	@Override
+	public int count(PagingDTO pv) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mypage.count",pv);
 	}
 
     

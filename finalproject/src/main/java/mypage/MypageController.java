@@ -19,7 +19,7 @@ public class MypageController {
 	private PagingDTO pdto;
 	private BoardService service2;
 	private ReservationService service3;
-	private MypassportService service4;
+	private MypassportService service4;	
 	private int currentPage;
 	
 	public MypageController() {
@@ -45,7 +45,8 @@ public class MypageController {
 	@RequestMapping("profile.do")
 	public ModelAndView profileList(HttpServletRequest req,PagingDTO pv) {
 		ModelAndView mav= new ModelAndView();
-		int totalRecord = service2.countProcess();
+		pv.setUser_id("test00");
+		int totalRecord = service2.countProcess(pv);
 		if (totalRecord >= 1) {
 			if (pv.getCurrentPage() == 0) {
 				currentPage = 1;
@@ -54,14 +55,15 @@ public class MypageController {
 			}
 			pdto = new PagingDTO(currentPage, totalRecord);
 			mav.addObject("pv",pdto);
-			mav.addObject("aList",service2.listProcess(pdto));
+			pdto.setUser_id("test00");
+			mav.addObject("myblist",service2.mylistProcess(pdto));
 		}	
 		
 		mav.addObject("myprofile",service.profileProcess("test00"));
-		mav.addObject("myres",service3.reservationProcess("test01"));
-		mav.addObject("passport",service4.passportProcess("awdx15fz"));
-		mav.addObject("pass_rvcode","awdx15fz");
-		mav.addObject("alreadypass",service4.passportSrcProcess("awdx15fz"));
+		mav.addObject("myres",service3.reservationProcess("test10"));
+		mav.addObject("passport",service4.passportProcess("c093bca2"));
+		mav.addObject("pass_rvcode","c093bca2");
+		mav.addObject("alreadypass",service4.passportSrcProcess("c093bca2"));
 		
 		mav.setViewName("view/NewMyPage");
 		return mav;
@@ -69,10 +71,10 @@ public class MypageController {
 	
 	@RequestMapping(value="/update.do",method=RequestMethod.POST)
 	public String update(ClientDTO cdto) {
-		System.out.println("나오냐?");
+		System.out.println("������?");
 		System.out.println(cdto.getPass()+cdto.getEmail()+cdto.getPhonenum()+cdto.getId());
 		service.updateMemProcess(cdto);
-		System.out.println("이상하네");
+		System.out.println("�̻��ϳ�");
 		return "redirect:/profile.do";
 	}
 	

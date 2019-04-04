@@ -14,9 +14,6 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
-
-
-
 /*레디*/
 $(document).ready(function(){
 	/* 인원 수량 증가 감소  */
@@ -78,7 +75,6 @@ $(document).ready(function(){
        
     
 });/*레디 끝*/
-
 function chkProcess() {
 	
 	if($("#city_code_arv option:selected").text()=='도시 선택' ||
@@ -91,7 +87,6 @@ function chkProcess() {
 		$("form").submit();
 	}
 }
-
 function countprocess(e){
     e.preventDefault();
     var type = $(this).attr('count_range');
@@ -109,7 +104,6 @@ function countprocess(e){
         $count.val(parseInt(count_val)+1);
     }
 }
-
 function cityprocess(){    	
     if($("#city_code_dep option:selected").text()==$("#city_code_arv option:selected").text()){
  	   /* $("#city_code_arv").prop('disabled',true); */
@@ -277,11 +271,8 @@ function cityprocess(){
 		<!-- Footer -->
 			<!-- <footer id="footer">
 				<div class="inner">
-
 					<h2>Contact Me</h2>
-
 					<form action="#" method="post">
-
 						<div class="field half first">
 							<label for="name">Name</label>
 							<input name="name" id="name" type="text" placeholder="Name">
@@ -298,17 +289,14 @@ function cityprocess(){
 							<li><input value="Send Message" class="button alt" type="submit"></li>
 						</ul>
 					</form>
-
 					<ul class="icons">
 						<li><a href="#" class="icon round fa-twitter"><span class="label">Twitter</span></a></li>
 						<li><a href="#" class="icon round fa-facebook"><span class="label">Facebook</span></a></li>
 						<li><a href="#" class="icon round fa-instagram"><span class="label">Instagram</span></a></li>
 					</ul>
-
 					<div class="copyright">
 						&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
 					</div>
-
 				</div>
 			</footer> -->
 

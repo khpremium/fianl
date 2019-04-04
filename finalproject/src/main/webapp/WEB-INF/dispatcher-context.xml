@@ -151,8 +151,8 @@
 	<bean class="controller.AdminController">
 		<property name="service" ref="aservice" />
 	</bean>
-	<bean class="mypage.MyBoardController">		
-		<property name="service" ref="mybservice"/>
+	<bean class="mypage.MyBoardController">		<!-- 
+		<property name="service" ref="mybservice"/> -->
 	</bean>
 	
 	<!-- 이메일 구현 -->

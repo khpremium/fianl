@@ -16,16 +16,13 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-
-
-
 /*레디*/
 $(document).ready(function(){ 
 		
 	$('#update').bind('click',updateRun);
 	$('#delete').bind('click',deleteRun);
-
 	$('input[type="submit"]').on('click',function(e){
 		if($('input[name="cancel"]').val()==''){
 			alert("예약된 내용이 없습니다.");
@@ -35,23 +32,21 @@ $(document).ready(function(){
 		e.preventDefault();
 		$('input[type="submit"]').on('click',res_chk);
 	});
-
 	$('#savepass').click(function(e){
 		e.preventDefault();
-		if(!confirm('정말로 여권번호 확실허냐?')) return;
+		if(!confirm('입력 된 정보를 저장 하시겠습니까?')) return;		
 		$('form').submit();
+		alert("저장 되었습니다.");
 	});
 	
 });/*레디 끝*/
-
 function updateRun(e){
 	$('.passfir').removeClass("passsec");
 	e.preventDefault();
 	$('#update').on('click',passtest);
 }// updaterun
-
 function passtest(){
-	alert("테스트시작");
+	alert("수정을 시작합니다.");
 	if($('.passfir').val()=="${myprofile.pass}"){		
 		if(!/^.*(?=^.{6,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/.test($("#pass").val())){
 			alert('숫자와 영문자 조합으로 10~15자리를 사용해야 합니다.');
@@ -65,18 +60,15 @@ function passtest(){
 		alert("비밀번호가 틀립니다.");
 		return false;
 	}
-
 }//passtest
-
 function deleteRun(e){	
 	$('.passfir').removeClass("passsec");
 	e.preventDefault();
 	$('#delete').on('click',deltest);
 } // deleterun
-
 function deltest(){
 	if($('.passfir').val()=="${myprofile.pass}"){
-		alert("탈퇴시작");
+		if(!confirm('탈퇴 하시겠습니까?')) return;
 		$('#frm').attr('action','delete.do').submit();
 		alert("탈퇴가 완료되었습니다.");		
 	}else{
@@ -84,7 +76,6 @@ function deltest(){
 		return location.reload();
 	}
 }
-
 function res_chk(){
 	if($('.del_chk').val()=="${myres[1].rv_code}"){
 		alert("예약이 취소되었습니다.");
@@ -94,8 +85,16 @@ function res_chk(){
 	}else if($('.del_chk').val()!="${myres[1].rv_code}"){
 		alert("예약번호가 틀립니다.")
 	}
-
 }//end res_chk
+
+function myres(){
+	$(location).attr("href","#two");
+	
+}
+
+function mybod(){
+	$(location).attr("href","#one");
+}
 
 
 </script>
@@ -108,32 +107,26 @@ input{
 	text-align: center;
 	font: bold;
 }
-
 .passfir{
 	 width : 30px;
 	 text-align: left;
  	 margin-left: 3%;
 }
-
 .passsec{
 	visibility: hidden;
 }
-
 .passsec{
 	 width : 30px;
 	 text-align: left;
  	 margin-left: 3%;
 }
-
 .del_none{
 	visibility: hidden;
 }
-
 #savepass{
 	margin-left: 45%;
 	
 }
-
 </style>
 
 </head>
@@ -147,11 +140,12 @@ input{
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="view/index.html">Home</a></li>
-					<li><a href="view/generic.html">Join Us</a></li>
-					<li><a href="view/elements.html">Priview</a></li>
-					<li><a href="">Board</a></li>
-					<li><a href="">My Page</a></li>
+					<li><a href="main.do">Home</a></li>
+					<li><a href="helpMain.do">Notice</a></li>
+					<li><a href="join.do">Join Us</a></li>
+					<li><a href="">Priview</a></li>					
+					<li><a href="login.do">Login</a></li>
+					<li><a href="profile.do">My Page</a></li>
 				</ul>
 			</nav>
 
@@ -163,7 +157,7 @@ input{
 		-->
 		
 
-		<!-- Two -->
+		<!-- profile -->
 	<section id="banner" class="bg-img" data-bg="one.jpg">
 		<div class="inner">
 			<article class="box">
@@ -220,24 +214,20 @@ input{
 					</div>
 					
 					<div class="6u 12u$(xsmall)">
-						<label for="point">예약내역</label>
+						<label for="#one">${myprofile.name} 님의 예약 내역</label>
 						<c:choose>
-						<c:when test="${myres[1].rv_code!=null}">
-						<input name="reservation" id="reservation" type="text" readonly value="1건 " >
-						</c:when>
+							<c:when test="${myres[1].rv_code!=null}">
+								<input type="text" readonly value="1건" onclick="myres();">
+							</c:when>
+							<c:otherwise>
+								<input type="text" readonly value="0 건">
+							</c:otherwise>
 						</c:choose>
 					</div>
 					
 					<div class="6u$ 12u$(xsmall)">
-						<label for="point">작성한 글</label>
-						<c:choose>
-						<c:when test="${myres[1].rv_code!=null}">
-						<input name="myboard" id="myboard" type="text" readonly value="1개" >
-						</c:when>
-						<c:otherwise>
-						<input name="myboard" id="myboard" type="text" readonly value="0개" >
-						</c:otherwise>
-						</c:choose>
+						<label>${myprofile.name} 님이 작성한 글</label>
+							<input type="text" readonly value="${pv.totalCount}건" onclick="mybod();">
 					</div>
 							
 				</div>
@@ -255,13 +245,74 @@ input{
 		</div>
 				<a href="#one" class="more">Learn More</a>
 	</section>
+	<!-- one -->
+		<section id="one" class="wrapper post bg-img" data-bg="three.jpg">
+				<div class="inner">
+					<article class="box">
+						<header>
+							<h2>${myprofile.name} 님이 작성 한 글</h2>
+						</header>
+						<div class="table-wrapper">
+							<table class="alt">
+						<thead>
+							<tr>
+								<th style="text-align: center;">Board Number</th>
+								<th style="text-align: center;">Title</th>
+								<th style="text-align: center;">Writer Id</th>
+								<th style="text-align: center;">Write Date</th>									
+							</tr>						
+						</thead>
+								
+						<tbody>
+							<c:forEach items="${myblist}" var="myblist">
+								<tr>
+									<td>${myblist.b_num}</td>
+									<td>${myblist.title}</td>
+									<td>${myblist.user_id}</td>
+									<td>${myblist.upload_date}</td>
+								</tr>							
+							</c:forEach>	 
+						</tbody>
+					</table>
+				<c:if test="${pv.startPage>1}">
+					<a href="profile.do?currentPage=${pv.startPage-pv.blockPage}">이전</a>
+				</c:if>
+				
+				<c:forEach var="i" begin="${pv.startPage}" end="${pv.endPage}">
+					<span>
+						<c:url var="currPage" value="profile.do?#one">			
+							<c:param name="currentPage" value="${i}"/>
+						</c:url>
+					<c:choose>
+						<c:when test="${i==pv.currentPage}">
+							<a href="${currPage}"> <c:out value="${i}" /></a>
+						</c:when> 
+						<c:otherwise>	
+							<a href="${currPage}"> <c:out value="${i}" /></a>
+						</c:otherwise>			
+					</c:choose>
+					</span>
+				</c:forEach>
+			</div>												
+					<footer>
+							<br/>
+							<!-- footer 내용 -->
+						</footer>
+					</article>								
+				</div>
+				<a href="#two" class="more">Learn More</a>
+			</section>
+	
+	
+	
+	
 
-		<!-- one -->
-			<section id="one" class="wrapper post bg-img" data-bg="two1.jpg">
+		<!-- two -->
+			<section id="two" class="wrapper post bg-img" data-bg="two1.jpg">
 				<div class="inner" style="width:1400px;">
 					<article class="box">
 						<header>
-							<h2>My Reservation</h2>							
+							<h2>My Reservation</h2>
 						</header>
 						<form action="reservation_delete.do" method="post">	
 						<div class="table-wrapper">
@@ -302,8 +353,6 @@ input{
 									<th>${myres[1].p_count}</th>
 									
 								 </tr>
-								 
-								 
 								 
 								 <tr>
 								 	<th>${myres[0].airline}</th>
@@ -349,8 +398,11 @@ input{
 				</div>					
 				<a href="#post" class="more">Learn More</a>
 			</section>
+			
+			
+			
 
-		<!-- two -->
+		<!-- post -->
 		
 			<section id="post" class="wrapper bg-img" data-bg="four.jpg">
 			
@@ -481,11 +533,8 @@ input{
 		<!-- Footer -->
 			<!-- <footer id="footer">
 				<div class="inner">
-
 					<h2>Contact Me</h2>
-
 					<form action="#" method="post">
-
 						<div class="field half first">
 							<label for="name">Name</label>
 							<input name="name" id="name" type="text" placeholder="Name">
@@ -502,17 +551,14 @@ input{
 							<li><input value="Send Message" class="button alt" type="submit"></li>
 						</ul>
 					</form>
-
 					<ul class="icons">
 						<li><a href="#" class="icon round fa-twitter"><span class="label">Twitter</span></a></li>
 						<li><a href="#" class="icon round fa-facebook"><span class="label">Facebook</span></a></li>
 						<li><a href="#" class="icon round fa-instagram"><span class="label">Instagram</span></a></li>
 					</ul>
-
 					<div class="copyright">
 						&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
 					</div>
-
 				</div>
 			</footer> -->
 

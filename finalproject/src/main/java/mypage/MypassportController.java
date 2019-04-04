@@ -21,6 +21,24 @@ public class MypassportController {
 		this.service = service;
 	}
 	
+
+	/*
+	 * @RequestMapping("passport.do") public ModelAndView passportList(HttpSession
+	 * session, String rv_code) { ModelAndView mav= new ModelAndView();
+	 * 
+	 * mav.addObject("passport",service.passportProcess("220545eb"));
+	 * mav.addObject("pass_rvcode","220545eb");
+	 * mav.addObject("alreadypass",service.passportSrcProcess("220545eb"));
+	 * mav.setViewName("mypage/myPassport"); return mav; }
+	 * 
+	 * @RequestMapping(value="inspassport.do",method=RequestMethod.POST) public
+	 * String passInsert(PassportInsDTO pdto) {
+	 * 
+	 * 
+	 * service.passportinsProcess(pdto.getaList());
+	 * 
+	 * return "redirect:/passport.do"; }
+	 */
 	/*@RequestMapping("passport.do")
 	public ModelAndView passportList(HttpSession session, String rv_code) {
 		ModelAndView mav= new ModelAndView();
@@ -41,7 +59,6 @@ public class MypassportController {
 		return "redirect:/passport.do";
 	}
 	*/
-	
 	
 }//class
 
