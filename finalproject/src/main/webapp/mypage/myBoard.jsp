@@ -134,7 +134,7 @@ h2 {
     
     <div class="btn-group mr-2" role="group" aria-label="First group">
    <c:if test="${pv.startPage>1}">
-			<a href="myboard.do?currentPage=${pv.startPage-pv.blockPage}">이전</a>
+			<a href=".do?currentPage=${pv.startPage-pv.blockPage}">이전</a>
 		  </c:if>
    <!-- <button type="button" class="btn btn-secondary">1</button>
    <button type="button" class="btn btn-secondary">2</button>
