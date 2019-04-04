@@ -1,5 +1,6 @@
 package mypage;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class ReservationServiceImp implements ReservationService {
@@ -24,6 +25,12 @@ public class ReservationServiceImp implements ReservationService {
 	public void resdelProcess(String rv_code) {
 		// TODO Auto-generated method stub
 		myrdao.reservation_del(rv_code);
+	}
+
+	@Override
+	public List<ReservationDTO> reschkProcess(HashMap<String,Object> map) {
+		// TODO Auto-generated method stub
+		return myrdao.reschk(map);
 	}
 	
 	

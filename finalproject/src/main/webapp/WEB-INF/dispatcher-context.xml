@@ -135,10 +135,10 @@
 		 <property name="service2" ref="mybservice"/>		 
 		<property name="service3" ref="myrservice"/>		
 		<property name="service4" ref="mypservice"/>		 
-	</bean><!-- 
+	</bean> 
 	<bean class="mypage.MyReservationController">
 		<property name="service" ref="myrservice"/>
-	</bean> -->
+	</bean>
 	<bean class="controller.ClientController">
 		<property name="service" ref="cservice2" />
 	</bean>

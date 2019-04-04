@@ -130,6 +130,7 @@ function cityprocess(){
 					<li><a href="">Priview</a></li>					
 					<li><a href="login.do">Login</a></li>
 					<li><a href="profile.do">My Page</a></li>
+					<li><a href="myreservation.do">Reservation Check</a></li>
 				</ul>
 			</nav>
 
@@ -189,11 +190,11 @@ function cityprocess(){
 						</footer>
 				</article>	
 				</div>
-				<a href="#one" class="more">Learn More</a>
+				<a href="" class="more">Learn More</a>
 			</section>
 
 		<!-- One -->
-			<section id="one" class="wrapper post bg-img" data-bg="two.jpg">
+		<!-- 	<section id="one" class="wrapper post bg-img" data-bg="two.jpg">
 				<div class="inner">
 					<article class="box">
 						<header>
@@ -201,19 +202,19 @@ function cityprocess(){
 							<br/>
 						</header>
 						
-						<div class="content"><!-- 예약 div  -->
+						<div class="content">예약 div 
 	
-						</div><!-- 예약 div끝  -->
+						</div>예약 div끝 
 						<footer>
 							<a href="generic.html" class="button alt">What am i?</a>
 						</footer>
 					</article>
 				</div>
 				<a href="#two" class="more">Learn More</a>
-			</section>
+			</section> -->
 
 		<!-- Two -->
-			<section id="two" class="wrapper post bg-img" data-bg="three.jpg">
+			<!-- <section id="two" class="wrapper post bg-img" data-bg="three.jpg">
 				<div class="inner">
 					<article class="box">
 						<header>
@@ -229,10 +230,10 @@ function cityprocess(){
 					</article>
 				</div>
 				<a href="#three" class="more">Learn More</a>
-			</section>
+			</section> -->
 
 		<!-- Three -->
-			<section id="three" class="wrapper post bg-img" data-bg="banner4.jpg">
+			<!-- <section id="three" class="wrapper post bg-img" data-bg="banner4.jpg">
 				<div class="inner">
 					<article class="box">
 						<header>
@@ -248,10 +249,10 @@ function cityprocess(){
 					</article>
 				</div>
 				<a href="#four" class="more">Learn More</a>
-			</section>
+			</section> -->
 
 		<!-- Four -->
-			<section id="four" class="wrapper post bg-img" data-bg="banner3.jpg">
+			<!-- <section id="four" class="wrapper post bg-img" data-bg="banner3.jpg">
 				<div class="inner">
 					<article class="box">
 						<header>
@@ -266,7 +267,7 @@ function cityprocess(){
 						</footer>
 					</article>
 				</div>
-			</section>
+			</section> -->
 
 		<!-- Footer -->
 			<!-- <footer id="footer">
