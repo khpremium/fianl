@@ -70,7 +70,6 @@
 								<input type="hidden" name="city_code_dep" value="${rdto.city_code_dep}">
 								<input type="hidden" name="city_code_arv" value="${rdto.city_code_arv}">
 								<input type="hidden" name="p_count" value="${rdto.p_count}">
-								<input type="hidden" name="guestchk" value="${rdto.guestchk}">
 							</form>
 						</div>
 						<footer>

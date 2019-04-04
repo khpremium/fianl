@@ -13,7 +13,6 @@ public class ReservationDTO {
 	private String non_pass;
 	private int p_count;
 	private String rv_code;
-	private String guestchk;
 	private String city_code_dep;
 	private String city_code_arv;
 	private String dep_date;
@@ -48,14 +47,6 @@ public class ReservationDTO {
 
 	public ReservationDTO() {
 		
-	}
-
-	public String getGuestchk() {
-		return guestchk;
-	}
-
-	public void setGuestchk(String guestchk) {
-		this.guestchk = guestchk;
 	}
 
 	public String getCity_code_dep() {

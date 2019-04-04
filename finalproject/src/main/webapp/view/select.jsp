@@ -144,7 +144,7 @@
 							<ul class="alt">
 							<li>예약자
 									<c:choose>
-										<c:when test="${rdto.guestchk == 'guest'}">
+										<c:when test="${!empty rdto.non_name}">
 											<span id="resName">${rdto.non_name}</span>
 										</c:when>
 										<c:otherwise>
@@ -194,8 +194,7 @@
 					<input type="hidden" name="dep_airinfo_flight" id="dep_airinfo_flight">
 					<input type="hidden" name="arv_airinfo_flight" id="arv_airinfo_flight">
 					<c:choose>
-						<c:when test="${rdto.guestchk == 'guest'}">
-							<input type="hidden" name="guestchk" value="${rdto.guestchk}">
+						<c:when test="${!empty rdto.non_name}">
 							<input type="hidden" name="non_name" value="${rdto.non_name}">
 							<input type="hidden" name="non_gender" value="${rdto.non_gender}">
 							<input type="hidden" name="non_phonenumber" value="${rdto.non_phonenumber}">

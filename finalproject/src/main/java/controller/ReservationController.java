@@ -68,7 +68,7 @@ public class ReservationController {
 	@RequestMapping("/reservation.do")
 	public String guestReservation(ReservationDTO rdto, RedirectAttributes reattr, HttpSession session) {
 		service.reservationProcess(rdto, session);
-		if(rdto.getGuestchk() == null)
+		if(rdto.getNon_name() == null)
 			return "redirect:/main.do";
 		else {
 			reattr.addFlashAttribute("rv_code", rdto.getRv_code());
