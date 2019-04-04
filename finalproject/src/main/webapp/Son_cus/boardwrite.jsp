@@ -12,7 +12,11 @@
 <meta name="author" content="">
 
 <title>고객센터-공지사항</title>
-
+<style type="text/css">
+body {
+	padding-top: 0px!important;
+}
+</style>
 <!-- Bootstrap core CSS -->
 <link href="Son_cus/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -32,19 +36,11 @@
 	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
 	crossorigin="anonymous">
 
-<!-- Latest compiled and minified JavaScript -->
-<!-- <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"></script>
- -->
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#returnBtn').bind('click', function() {
-			$('#frm').attr('action', 'helpBoard.do');
-			$('#frm').submit();
-			// $('#frm').attr('action','list.sb').submit();
+			window.close();
 		});
 
 		$('#resetBtn').on('click', function() {
@@ -52,14 +48,29 @@
 			$('#b_content').val('');
 			$('#upload').val('');
 		});
-		$('#writeBtn').on('click', function() {
-			$('#frm').attr('action', 'wirtePro.do').submit();
-			this.preventDefault();
-
-		});
+		$('#writeBtn').on('click', blogWrite);
 		
 
 	});
+	function blogWrite(){
+		var form = $('#frm')[0];
+	    var data = new FormData(form);
+		$.ajax({
+			type : 'POST',
+			dataType : 'text',
+			url : 'wirtePro.do',
+			data : data,
+			contentType : false,
+			enctype : 'multipart/form-data',
+			processData : false,
+			cache: false,
+			success : blogWPro()
+		});
+	}
+	function blogWPro() {
+		opener.parent.location.reload();
+		window.close();
+	}
 </script>
 
 <style type="text/css">
@@ -67,36 +78,11 @@
 </head>
 
 <body>
-
-	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
-			<a class="navbar-brand" href="#">Start Bootstrap</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" aria-controls="navbarResponsive"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a class="nav-link" href="#">Home
-							<span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Services</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Contact</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
 	<!-- Page Content -->
 	<div class="container">
-
 		<div class="row">
 			<div class="col-lg-8">
+				<h2 style="text-align: center;">공지사항 글쓰기</h2>
 				<div class="container">
 					<form id="frm" method="post" encType="multipart/form-data">
 						<table class="table table-bordered">
@@ -120,7 +106,7 @@
 								<td colspan="2"><input type="button" value="등록"
 									class="pull-right" id="writeBtn" /> <input type="button"
 									value="reset" class="pull-left" id="resetBtn" /> <input
-									type="button" value="글 목록으로... " class="pull-right"
+									type="button" value="닫기 " class="pull-right"
 									id="returnBtn" /> <!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
                     <a class="btn btn-default" type="reset"> reset </a>
                     <a class="btn btn-default" onclick="javascript:location.href='list.jsp'">글 목록으로...</a> -->
@@ -132,69 +118,10 @@
 				</div>
 			</div>
 
-
-			<!-- Sidebar Widgets Column -->
-			<!-- <div class="col-md-4">
-
-				Search Widget
-				<div class="card my-4">
-					<h5 class="card-header">Search</h5>
-					<div class="card-body">
-						<div class="input-group">
-							<input type="text" class="form-control"
-								placeholder="Search for..."> <span
-								class="input-group-btn">
-								<button class="btn btn-secondary" type="button">Go!</button>
-							</span>
-						</div>
-					</div>
-				</div>
-
-				Categories Widget
-				<div class="card my-4">
-					<h5 class="card-header">Categories</h5>
-					<div class="card-body">
-						<div class="row">
-							<div class="col-lg-6">
-								<ul class="list-unstyled mb-0">
-									<li><a href="#">Web Design</a></li>
-									<li><a href="#">HTML</a></li>
-									<li><a href="#">Freebies</a></li>
-								</ul>
-							</div>
-							<div class="col-lg-6">
-								<ul class="list-unstyled mb-0">
-									<li><a href="#">JavaScript</a></li>
-									<li><a href="#">CSS</a></li>
-									<li><a href="#">Tutorials</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div> -->
-
-			<!-- Side Widget -->
-			
-
-		<!-- </div> -->
-
-
 	</div>
 	<!-- /.row -->
 
 	</div>
-	<!-- /.container -->
-
-	<!-- Footer -->
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your
-				Website 2019</p>
-		</div>
-		<!-- /.container -->
-	</footer>
-
-	<!-- Bootstrap core JavaScript -->
 	<script src="Son_cus/vendor/jquery/jquery.min.js"></script>
 	<script src="Son_cus/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
