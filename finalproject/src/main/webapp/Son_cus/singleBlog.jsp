@@ -91,7 +91,7 @@ body{
 		$.ajax({
 			type : 'GET',
 			dataType : 'json',
-			url : 'comInsertList.do?user_id=test01&cm_content='
+			url : 'comInsertList.do?user_id='+'${sessionScope.id}'+'&cm_content='
 					+ $('#comInsText').val() + '&board_b_num=${bdto.b_num}',
 			success : reply_list_result
 		});
@@ -202,13 +202,14 @@ body{
 						<div class="form-group">
 							<textarea class="form-control" rows="3" id="comInsText"></textarea>
 						</div>
-						<%-- login
-						<c:if test="(String)session.getAttribute('id')!=null"> --%>
-						<button type="submit" class="btn btn-primary" id="comIns">Submit</button>
-						<%-- <c:otherwise>
-						<div>로그인후 이용가능</div>
-						</c:otherwise>
-						</c:if> --%>
+						<c:choose>
+							<c:when test="${sessionScope.id!=null}">
+								<button type="submit" class="btn btn-primary" id="comIns">Submit</button>
+							</c:when>
+							<c:otherwise>
+								<div>로그인후 이용가능</div>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 
