@@ -30,8 +30,6 @@ import service.HelpCService;
 //http://localhost:8090/myfinal/helpMain.do
 //http://localhost:8090/myfinal/helpBoard.do
 
-
-
 @Controller
 public class HelpCController {
 	private HelpCService service;
@@ -145,17 +143,15 @@ public class HelpCController {
 	}
 	
 	@RequestMapping("/blogUpForm.do")
-	public ModelAndView blogUpForm(int b_num) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("bdto", service.hBlogProcess(b_num));
-		mav.setViewName("Son_cus/boardup");
-		return mav;
+	public String blogUpForm() {
+		return "Son_cus/boardup";
 	}
 	
 	@RequestMapping("/blogUpPro.do")
-	public String blogUpPro(BoardDTO bdto, HttpServletRequest request) {
+	public void blogUpPro(BoardDTO bdto, HttpServletRequest request) {
+		/*System.out.println(bdto.getTitle());*/
 		service.hBlogUpProcess(bdto, request);
-		return "redirect:/helpBoard.do";
+		
 	}
 	
 	@RequestMapping("/blogSearch.do")
@@ -174,7 +170,6 @@ public class HelpCController {
 		pdto.setSearchWord(pv.getSearchWord());
 		mav.addObject("pv", pdto);
 		mav.addObject("HList", service.hListProcess2(pdto));
-		
 		mav.setViewName("Son_cus/helpC");
 		return mav;
 	}

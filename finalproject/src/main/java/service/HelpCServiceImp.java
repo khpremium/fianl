@@ -71,10 +71,9 @@ public class HelpCServiceImp implements HelpCService{
 		// 기존 첨부파일
 		String filename = hdao.getFilename(bdto.getB_num());
 		String saveDirectory = "C:/Users/user2/git/final/finalproject/src/main/webapp/images";
-		System.out.println(filename);
+		/*System.out.println(filename);*/
 		// 수정할 첨부파일
 		MultipartFile file = bdto.getUpload();
-
 		// 수정한 첨부파일이 있으면
 		if (!file.isEmpty()) {
 			// 중복파일명을 처리하기 위해 난수 발생

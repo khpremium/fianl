@@ -13,17 +13,23 @@
 <meta name="author" content="">
 
 <title>고객센터-공지사항</title>
-
+<!-- <link rel="stylesheet" href="Son_cus/assets/css/main.css" /> -->
 <!-- Bootstrap core CSS -->
 <link href="Son_cus/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
-
+<!-- <link rel="stylesheet" href="Son_cus/assets/css/main.css" /> -->
 <!-- Custom styles for this template -->
 <link href="Son_cus/css/blog-post.css" rel="stylesheet">
-
+<style type="text/css">
+body{
+	background-color: white!important;
+}
+</style>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		<%-- <%session.setAttribute("id","test01");%> --%>
+		
 		$('#comIns').on('click', reply_list);
 
 		/* 삭제버튼 */
@@ -34,8 +40,7 @@
 
 		/* 수정버튼 */
 		$('#updBtn').on('click', function() {
-			$('#sbf').attr('action', 'blogUpForm.do');
-			$('#sbf').submit();
+			openWin = window.open("blogUpForm.do", "a", "width=506, height=546, left=150, top=100");
 		});
 		
 		/*댓글삭제*/
@@ -47,7 +52,6 @@
 		/*댓글 수정Pro*/
 		$(document).on("click", '[src="images/수정2.png"]', reply_updPro);
 	});
-
 	
 	function reply_updForm(){
 		var condiv = $(this).prev().prev().prev().children()[2];
@@ -96,25 +100,28 @@
 	function reply_list_result(res) {
 		/* alert(res); */
 		$('#comlist').empty();
-
 		$.each(res, function(index, value) {
 							var sdata = new Date(value.c_date);
 							var sm = sdata.getFullYear()+"-";
 							sm+=(sdata.getMonth()+1)+"-";
 							sm+=sdata.getDate();
-							$('#comlist')
-									.append(
-											'<div class="media mb-4"><img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""><div class="media-body"><h4 class="mt-0">'
-													+ value.user_id
-													+ '</h4><h6 class="mt-0">'
-													+ sm
-													+ '</h6><div id="cm_content">'
-													+ value.cm_content
-													+ '</div></div><input type="image" src="images/삭제.png"  width="30px"	height="30px">'
-													+'<input type="hidden" name="cm_num" value="'+value.cm_num+'">'
-													+'<input type="image" src="images/수정.png" width="30px"	height="32px">'
-													+'<input type="hidden" name="cm_content" value="'+value.cm_content +'"></div>');
-						});
+							var coment = '<div class="media mb-4"><img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">';
+								coment	+='<div class="media-body"><h4 class="mt-0">';
+								coment+= value.user_id;
+								coment+= '</h4><h6 class="mt-0">';
+								coment+= sm;
+								coment+= '</h6><div id="cm_content">';
+								coment+= value.cm_content;
+								coment+= '</div></div>';
+								if(value.user_id=='${sessionScope.id}'){
+									coment+='<input type="image" src="images/삭제.png"  width="30px"	height="30px">'
+									coment+='<input type="hidden" name="cm_num" value="'+value.cm_num+'">'
+									coment+='<input type="image" src="images/수정.png" width="30px"	height="32px">'
+									coment+'<input type="hidden" name="cm_content" value="'+value.cm_content +'"></div>';
+								}				
+							$('#comlist').append(coment);			
+												
+		});
 		
 		$('#comInsText').val('');
 		/* <div class="media mb-4"><img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""><div class="media-body"><h4 class="mt-0">${cdto.user_id }</h4><h6 class="mt-0">${cdto.c_date }</h6>${cdto.cm_content }</div></div> */
@@ -125,38 +132,19 @@
 
 <body>
 
-	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
-			<a class="navbar-brand" href="#">Start Bootstrap</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" aria-controls="navbarResponsive"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a class="nav-link" href="#">Home
-							<span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Services</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Contact</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
+	<%-- <div id="header">
+		<jsp:include page="menuTest.jsp"></jsp:include>
+	</div> --%>
 	<!-- Page Content -->
+	<!-- <section id="one" class="wrapper post bg-img" data-bg="../Son_cus/images/blogback.jpg"> -->
+	<!-- <article class="box"> -->
+	<!-- <div class="inner"> -->
 	<div class="container">
-
 		<div class="row">
-
 			<!-- Post Content Column -->
+			
 			<div class="col-lg-8">
-
+				<!-- <article class="box" style="margin-top:150px;"> -->
 				<!-- Title -->
 				<h1 class="mt-4">${bdto.title }</h1>
 				<%-- <input type="hidden" value="${bdto.b_num }" id="bnum"> --%>
@@ -187,18 +175,24 @@
 					<table>
 						<tr>
 							<td><a
-								href="helpBoard.do?b_num=${bdto.b_num }&currentPage=${currentPage }">글
-									목록으로..</a></td>
-							<td><input type="button" value="수정" class="pull-right"
-								id="updBtn" style="text-align ': right" /> <input type="button"
-								value="삭제" class="pull-right" id="delBtn"
-								style="text-align ': right" /></td>
+								href="helpBoard.do?b_num=${bdto.b_num }&currentPage=${currentPage }">뒤로</a></td>
+							<c:if test="${ admin==sessionScope.id}">
+								<td>
+									<input type="button" value="수정" class="pull-right" id="updBtn" style="text-align ': right" />
+									<input type="button" value="삭제" class="pull-right" id="delBtn" style="text-align ': right" />
+								</td>
+							</c:if>
 						</tr>
 					</table>
-					<input type="hidden" name="b_num" value="${bdto.b_num }"> <input
-						type="hidden" name="currentPage" value="${currentPage }">
+					<input type="hidden" id="b_num" name="b_num" value="${bdto.b_num }">
+					<input type="hidden" name="currentPage" value="${currentPage }">
+					<input type="hidden" id="user_id" name="user_id" value="${bdto.user_id }">
+					<input type="hidden" id="title" name="title" value="${bdto.title }">
+					<input type="hidden" id="b_content" name="b_content" value="${bdto.b_content }">
+					<input type="hidden" id="upload" name="upload" value="${bdto.upload }">
 				</form>
 				<hr>
+				<!-- </article> -->
 				<!-- Comments Form -->
 				<div class="card my-4">
 					<h5 class="card-header">Leave a Comment:</h5>
@@ -229,56 +223,25 @@
 								<h6 class="mt-0">${cdto.c_date }</h6>
 								<div id="cm_content">${cdto.cm_content } </div>
 							</div>
-							<input type="image" src="images/삭제.png" width="30px"	height="30px">
-							<input type="hidden" name="cm_num" value="${cdto.cm_num }">
-							<input type="image" src="images/수정.png" width="30px"	height="32px">
-							<input type="hidden" name="cm_content" value="${cdto.cm_content }">
+							<c:if test="${cdto.user_id==sessionScope.id}">
+								<input type="image" src="images/삭제.png" width="30px"	height="30px">
+								<input type="hidden" name="cm_num" value="${cdto.cm_num }">
+								<input type="image" src="images/수정.png" width="30px"	height="32px">
+								<input type="hidden" name="cm_content" value="${cdto.cm_content }">
+							</c:if>
 						</div>
 					</c:forEach>
 					<!-- Comment with nested comments -->
 				</div>
-
 			</div>
-
-			<!-- Sidebar Widgets Column -->
-			<div class="col-md-4">
-
-				<!-- Search Widget -->
-				<div class="card my-4">
-					<jsp:include page="helpCsearch.jsp"></jsp:include>
-				</div>
-
-				<!-- Categories Widget -->
-				<div class="card my-4">
-					<jsp:include page="map.jsp"></jsp:include>
-				</div>
-
-				<!-- Side Widget -->
-				<div class="card my-4">
-					<jsp:include page="helpchatOpen.jsp"></jsp:include>
-				</div>
-
-			</div>
-
 		</div>
 		<!-- /.row -->
-
 	</div>
-	<!-- /.container -->
-
-	<!-- Footer -->
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your
-				Website 2019</p>
-		</div>
-		<!-- /.container -->
-	</footer>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="./Son_cus/vendor/jquery/jquery.min.js"></script>
 	<script src="./Son_cus/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+	
 </body>
 
 </html>

@@ -9,6 +9,10 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="Son_cus/assets/css/main.css" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+		<!-- <link rel="stylesheet" href="Son_cus/assets/fonts/fontawesome-webfont.ttf" />
+		<link rel="stylesheet" href="Son_cus/assets/fonts/fontawesome-webfont.woff" />
+		<link rel="stylesheet" href="Son_cus/assets/fonts/fontawesome-webfont.woff2" /> -->
 	</head>
 	<body class="subpage">
 
@@ -33,7 +37,7 @@
 			to the full filename of your image. This is used in each section to set
 			the background image.
 		-->
-			<section id="post" class="wrapper bg-img" data-bg="../Son_cus/images/banner2.jpg">
+			<section id="post" class="wrapper bg-img" data-bg="../Son_cus/images/backg7.jpg">
 				<div class="inner">
 					<article class="box">
 						<header>

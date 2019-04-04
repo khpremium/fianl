@@ -38,6 +38,7 @@
     					success: function(res){
     						alert(res.id);
     						alert(JSON.stringify(res));
+    						alert(res.kaccount_email);
     					}
     				});
     			}

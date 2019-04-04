@@ -12,6 +12,11 @@
 <body>
 	<!-- 네이버아이디로로그인 버튼 노출 영역 -->
   <div id="naver_id_login"></div>
+  <form method="post" id="navLogin">
+  	<input type="hidden" id="email" name="email" />
+  	<input type="hidden" id="name" name="name" />
+  
+  </form>
   <!-- //네이버아이디로로그인 버튼 노출 영역 -->
   <script type="text/javascript">
   	var naver_id_login = new naver_id_login("_V0nrzRxpUqcrcALw405", "http://localhost:8090/myfinal/helpMain.do?");
@@ -31,6 +36,9 @@
       alert(naver_id_login.getProfileData('email'));
       alert(naver_id_login.getProfileData('nickname'));
       alert(naver_id_login.getProfileData('name'));
+      $('#email').val(naver_id_login.getProfileData('email'));
+      $('#name').val(naver_id_login.getProfileData('name'));
+      $('#navLogin').attr('action', '.do');
     }
   </script>
 </body>

@@ -1,15 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Road Trip by TEMPLATED</title>
+		<title>여행박사 손진호(주)</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="Son_cus/assets/css/main.css" />
 		<script type="text/javascript">
-		/* $(document).ready(function() {
+		$(document).ready(function() {
+			
+			/* if('${pv.startPage}'>1){
+				$('#preBtn').removeClass();
+				$('#preBtn').addClass('button small');
+			}else{
+				$('#preBtn').removeClass();
+				$('#preBtn').addClass('button alt small');
+			};
+			if('${pv.endPage}'<'${pv.totalPage}'){
+				$('#nextBtn').removeClass();
+				$('#nextBtn').addClass('button small');
+			}else{
+				$('#nextBtn').removeClass();
+				$('#nextBtn').addClass('button alt small');
+			}; */
+			
 			$('#sendmail').on('click',function(){
 				if($('#subject').val()=='' || $('#from').val()=='' || $('#password').val()=='' || $('#contents').val()==''){
 					alert('빈 칸이 있습니다.');
@@ -43,14 +60,14 @@
 			$('#from').val('');
 			$('#password').val('');
 			$('#contents').val('');
-		} */
+		}
 		</script>
 	</head>
 	<body>
 		
 		<!-- Header -->
 			<header id="header">
-				<div class="logo"><a href="Son_cus/helpCmain.jsp">Road Trip <span>by TEMPLATED</span></a></div>
+				<div class="logo"><a href="helpMain.do">여행박사손진호 <span>(주)</span></a></div>
 				<a href="#menu"><span>Menu</span></a>
 			</header>
 
@@ -69,7 +86,7 @@
 			to the full filename of your image. This is used in each section to set
 			the background image.
 		-->
-			<section id="banner" class="bg-img" data-bg="../Son_cus/images/banner.jpg">
+			<section id="banner" class="bg-img" data-bg="../Son_cus/images/backg1.jpg">
 				<div class="inner">
 					<header>
 						<h1>About KHAir</h1>
@@ -79,7 +96,7 @@
 			</section>
 
 		<!-- One -->
-			<section id="one" class="wrapper post bg-img" data-bg="../Son_cus/images/banner2.jpg">
+			<section id="one" class="wrapper post bg-img" data-bg="../Son_cus/images/backg2.jpg">
 				<div class="inner">
 					<article class="box">
 						<header>
@@ -98,7 +115,7 @@
 			</section>
 
 		<!-- Two -->
-			<section id="two" class="wrapper post bg-img" data-bg="../Son_cus/images/banner5.jpg">
+			<section id="two" class="wrapper post bg-img" data-bg="../Son_cus/images/backg3.jpg">
 				<div class="inner">
 					<article class="box">
 						<header>
@@ -119,15 +136,14 @@
 			</section>
 
 		<!-- Three -->
-			<section id="three" class="wrapper post bg-img" data-bg="../Son_cus/images/banner4.jpg">
+			<section id="three" class="wrapper post bg-img" data-bg="../Son_cus/images/backg4.jpg">
 				<div class="inner">
 					<article class="box">
 						<header>
-							<h2>Varius a cursus aliquet</h2>
+							<h2>The way</h2>
 							<!-- <p>11.11.2016</p> -->
 						</header>
 						<div class="content">
-						
 							<table>
 								<tr>
 									<th>주소</th>
@@ -146,7 +162,6 @@
 								</tr>
 							</table>
 							<br/>
-						
 							<jsp:include page="map.jsp"></jsp:include>
 						</div>
 						<footer>
@@ -157,7 +172,7 @@
 			</section>
 
 		<!-- Four -->
-			<section id="four" class="wrapper post bg-img" data-bg="../Son_cus/images/banner3.jpg">
+			<section id="four" class="wrapper post bg-img" data-bg="../Son_cus/images/backg5.jpg">
 				<div class="inner">
 					<article class="box">
 						<header>
@@ -182,7 +197,6 @@
 									<td><p>언제든 고객 프로필 및 커뮤니케이션 기본 설정을 업데이트할 수 있습니다.</p></td>
 								</tr>
 							</table>
-
 						</div>
 						<footer>
 							<a href="rodlswjdqh.do" class="button alt">Read More</a>
