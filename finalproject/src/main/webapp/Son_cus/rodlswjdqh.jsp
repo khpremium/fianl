@@ -37,7 +37,7 @@
 			to the full filename of your image. This is used in each section to set
 			the background image.
 		-->
-			<section id="post" class="wrapper bg-img" data-bg="../Son_cus/images/banner2.jpg">
+			<section id="post" class="wrapper bg-img" data-bg="../Son_cus/images/backg7.jpg">
 				<div class="inner">
 					<article class="box">
 						<header>

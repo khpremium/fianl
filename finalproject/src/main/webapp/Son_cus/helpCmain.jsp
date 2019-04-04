@@ -86,7 +86,7 @@
 			to the full filename of your image. This is used in each section to set
 			the background image.
 		-->
-			<section id="banner" class="bg-img" data-bg="../Son_cus/images/banner.jpg">
+			<section id="banner" class="bg-img" data-bg="../Son_cus/images/backg1.jpg">
 				<div class="inner">
 					<header>
 						<h1>About KHAir</h1>
@@ -96,7 +96,7 @@
 			</section>
 
 		<!-- One -->
-			<section id="one" class="wrapper post bg-img" data-bg="../Son_cus/images/banner2.jpg">
+			<section id="one" class="wrapper post bg-img" data-bg="../Son_cus/images/backg2.jpg">
 				<div class="inner">
 					<article class="box">
 						<header>
@@ -115,7 +115,7 @@
 			</section>
 
 		<!-- Two -->
-			<section id="two" class="wrapper post bg-img" data-bg="../Son_cus/images/banner5.jpg">
+			<section id="two" class="wrapper post bg-img" data-bg="../Son_cus/images/backg3.jpg">
 				<div class="inner">
 					<article class="box">
 						<header>
@@ -136,7 +136,7 @@
 			</section>
 
 		<!-- Three -->
-			<section id="three" class="wrapper post bg-img" data-bg="../Son_cus/images/banner4.jpg">
+			<section id="three" class="wrapper post bg-img" data-bg="../Son_cus/images/backg4.jpg">
 				<div class="inner">
 					<article class="box">
 						<header>
@@ -172,7 +172,7 @@
 			</section>
 
 		<!-- Four -->
-			<section id="four" class="wrapper post bg-img" data-bg="../Son_cus/images/banner3.jpg">
+			<section id="four" class="wrapper post bg-img" data-bg="../Son_cus/images/backg5.jpg">
 				<div class="inner">
 					<article class="box">
 						<header>

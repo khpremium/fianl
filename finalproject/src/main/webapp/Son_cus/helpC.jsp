@@ -85,7 +85,7 @@
 				</ul>
 			</nav>
 	
-	<section id="one" class="wrapper post bg-img" data-bg="../Son_cus/images/blogback.jpg">
+	<section id="one" class="wrapper post bg-img" data-bg="../Son_cus/images/backg6.jpg">
 	
 	<!-- Page Content -->
 	<!-- <div class="inner"> -->
