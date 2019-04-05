@@ -28,9 +28,9 @@ public class ReservationServiceImp implements ReservationService {
 	}
 
 	@Override
-	public List<ReservationDTO> reschkProcess(HashMap<String,Object> map) {
+	public List<ReservationDTO> reschkProcess(ReservationDTO rdto) {
 		// TODO Auto-generated method stub
-		return myrdao.reschk(map);
+		return myrdao.reschk(rdto);
 	}
 	
 	

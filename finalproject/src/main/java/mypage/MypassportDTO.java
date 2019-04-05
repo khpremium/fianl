@@ -10,6 +10,8 @@ public class MypassportDTO {
 	private String reservation_rv_code;
 	private String p_country;
 	private String p_birth;
+	private String rv_code;
+	private String non_pass;
 	
 	public MypassportDTO() {
 		// TODO Auto-generated constructor stub
@@ -85,6 +87,22 @@ public class MypassportDTO {
 
 	public void setP_birth(String p_birth) {
 		this.p_birth = p_birth;
+	}
+
+	public String getRv_code() {
+		return rv_code;
+	}
+
+	public void setRv_code(String rv_code) {
+		this.rv_code = rv_code;
+	}
+
+	public String getNon_pass() {
+		return non_pass;
+	}
+
+	public void setNon_pass(String non_pass) {
+		this.non_pass = non_pass;
 	}
 	
 	

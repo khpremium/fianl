@@ -138,6 +138,7 @@
 	</bean> 
 	<bean class="mypage.MyReservationController">
 		<property name="service" ref="myrservice"/>
+		<property name="service4" ref="mypservice"/>
 	</bean>
 	<bean class="controller.ClientController">
 		<property name="service" ref="cservice2" />

@@ -67,9 +67,10 @@ where r.AIRINFO_FLIGHT=a.flight and r.user_id=c.ID and t.city_code = a.city_code
 	]]>
 	</select>
 	
-	<select id="reschk" parameterType="hashmap" resultType="mypage.ReservationDTO">
-		SELECT r.*,a.*,t.city_name from reservation r, airinfo a, city t
-where r.AIRINFO_FLIGHT=a.flight and r.rv_code = #{rv_code} and non_pass=#{non_pass} and t.city_code = a.city_code_dep
+	<select id="reschk" parameterType="mypage.ReservationDTO" resultType="mypage.ReservationDTO">
+		SELECT r.*,a.*,t.city_name 
+		from reservation r, airinfo a, city t
+		where r.AIRINFO_FLIGHT=a.flight and r.rv_code = #{rv_code} and non_pass=#{non_pass} and t.city_code = a.city_code_dep
 	</select>
 	
 	

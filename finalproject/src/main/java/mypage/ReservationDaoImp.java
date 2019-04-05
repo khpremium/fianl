@@ -30,9 +30,9 @@ public class ReservationDaoImp implements ReservationDAO {
 	}
 
 	@Override
-	public List<ReservationDTO> reschk(HashMap<String,Object> map) {
+	public List<ReservationDTO> reschk(ReservationDTO rdto) {
 		// TODO Auto-generated method stub
-		return SqlSession.selectList("mypage.reschk",map);
+		return SqlSession.selectList("mypage.reschk",rdto);
 	}
 
 	
