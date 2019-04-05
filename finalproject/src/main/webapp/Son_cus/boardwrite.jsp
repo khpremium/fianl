@@ -107,9 +107,7 @@ body {
 									class="pull-right" id="writeBtn" /> <input type="button"
 									value="reset" class="pull-left" id="resetBtn" /> <input
 									type="button" value="닫기 " class="pull-right"
-									id="returnBtn" /> <!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
-                    <a class="btn btn-default" type="reset"> reset </a>
-                    <a class="btn btn-default" onclick="javascript:location.href='list.jsp'">글 목록으로...</a> -->
+									id="returnBtn" />
 								</td>
 							</tr>
 						</table>

@@ -12,21 +12,6 @@
 		<script type="text/javascript">
 		$(document).ready(function() {
 			
-			/* if('${pv.startPage}'>1){
-				$('#preBtn').removeClass();
-				$('#preBtn').addClass('button small');
-			}else{
-				$('#preBtn').removeClass();
-				$('#preBtn').addClass('button alt small');
-			};
-			if('${pv.endPage}'<'${pv.totalPage}'){
-				$('#nextBtn').removeClass();
-				$('#nextBtn').addClass('button small');
-			}else{
-				$('#nextBtn').removeClass();
-				$('#nextBtn').addClass('button alt small');
-			}; */
-			
 			$('#sendmail').on('click',function(){
 				if($('#subject').val()=='' || $('#from').val()=='' || $('#password').val()=='' || $('#contents').val()==''){
 					alert('빈 칸이 있습니다.');
@@ -64,7 +49,6 @@
 		</script>
 	</head>
 	<body>
-		
 		<!-- Header -->
 			<header id="header">
 				<div class="logo"><a href="helpMain.do">여행박사손진호 <span>(주)</span></a></div>
@@ -80,12 +64,6 @@
 				</ul>
 			</nav>
 
-		<!-- Banner -->
-		<!--
-			Note: To show a background image, set the "data-bg" attribute below
-			to the full filename of your image. This is used in each section to set
-			the background image.
-		-->
 			<section id="banner" class="bg-img" data-bg="../Son_cus/images/backg1.jpg">
 				<div class="inner">
 					<header>
