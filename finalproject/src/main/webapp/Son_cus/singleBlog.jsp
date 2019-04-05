@@ -53,7 +53,6 @@ body{
 		$(document).on("click", '[src="images/수정2.png"]', reply_updPro);
 		
 		
-		content = content.replaceAll("\n", "<br/>");
 
 	});
 	
@@ -165,7 +164,7 @@ body{
 						<tr>
 							<td><a
 								href="helpBoard.do?b_num=${bdto.b_num }&currentPage=${currentPage }">뒤로</a></td>
-							<c:if test="${ admin==sessionScope.id}">
+							<c:if test="${ 'admin'==sessionScope.id}">
 								<td>
 									<input type="button" value="수정" class="pull-right" id="updBtn" style="text-align ': right" />
 									<input type="button" value="삭제" class="pull-right" id="delBtn" style="text-align ': right" />
