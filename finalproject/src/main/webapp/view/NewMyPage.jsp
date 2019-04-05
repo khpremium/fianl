@@ -25,7 +25,7 @@ $(document).ready(function(){
 	$('#delete').bind('click',deleteRun);
 	$('input[type="submit"]').on('click',function(e){
 		if($('input[name="cancel"]').val()==''){
-			alert("예약된 내용이 없습니다.");
+			alert("예약된 내용이 없습니다..");
 			return;
 		}
 		$('.del_chk').removeClass("del_none");
