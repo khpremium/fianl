@@ -53,7 +53,10 @@ body {
 
 	});
 	function blogWrite(){
-		var form = $('#frm')[0];
+	    var str = document.getElementById("b_content").value;
+	    str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+	    document.getElementById("b_content").value = str;
+	    var form = $('#frm')[0];
 	    var data = new FormData(form);
 		$.ajax({
 			type : 'POST',
@@ -111,7 +114,7 @@ body {
 								</td>
 							</tr>
 						</table>
-						<input type="hidden" name="user_id" value="test01" />
+						<input type="hidden" name="user_id" value="admin" />
 					</form>
 				</div>
 			</div>

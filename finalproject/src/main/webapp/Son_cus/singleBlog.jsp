@@ -51,6 +51,10 @@ body{
 		
 		/*댓글 수정Pro*/
 		$(document).on("click", '[src="images/수정2.png"]', reply_updPro);
+		
+		
+		content = content.replaceAll("\n", "<br/>");
+
 	});
 	
 	function reply_updForm(){
