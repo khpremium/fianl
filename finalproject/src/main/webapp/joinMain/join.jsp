@@ -118,7 +118,7 @@ th  {
 	<fieldset>
 	
 		<table class="tbl_style_01" summary="회원가입에 필요한 개인정보를 입력함">
-			<h1 style="padding-left:40%; padding-top: 5%; color: orange;">KHPREMIUM</h1>
+			<h1 style="padding-left:45%; padding-top: 5%; color: orange;">KH AIR</h1>
 			<hr/>
 			<h3 style="padding-left:43%;">회원가입</h3>
 			<colgroup>

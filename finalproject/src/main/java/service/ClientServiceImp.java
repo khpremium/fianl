@@ -93,7 +93,7 @@ public class ClientServiceImp implements ClientService{
 }
 
 	@Override
-	public String naverLogin(String email, HttpSession session) {
+	public String naverLogin(String email) {
 		String id = dao.naverLogin(email);
 		return id;
 	}

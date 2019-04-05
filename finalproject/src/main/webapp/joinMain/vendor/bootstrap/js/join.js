@@ -117,7 +117,7 @@ $('#checkbutton').on('click', function() {
 */
 	
 	if (checkEmail == false) {
-		alert("중복확인 먼저해라~~");
+		alert("중복확인 먼저하세요.");
 		return;
 	}
 		
@@ -203,7 +203,7 @@ $(function(){
 //취소 버튼
 $(document).ready(function() {
 	$('#joinCancle').on('click', function(){
-		location.href="index.do";
+		location.href="newIndex.do";
 	});
 });
 

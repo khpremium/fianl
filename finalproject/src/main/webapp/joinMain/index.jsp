@@ -72,31 +72,30 @@
 		                     </a>
 		                 </p>
 		                 <div id="naver_id_login"></div>
-		              
 		                 
-		                <!-- //네이버아이디로로그인 버튼 노출 영역 -->
+		                <!-- 네이버아이디로로그인 버튼 노출 영역 -->
 						<script type="text/javascript">
 							var naver_id_login = new naver_id_login("sKTdXgHmzw9vu1NzZSKv", "http://localhost:8090/myfinal/index.do?");
 							var state = naver_id_login.getUniqState();
+							
 							naver_id_login.setButton("white", 2,40);
 							naver_id_login.setDomain("https://nid.naver.com/oauth2.0/authorize");
 							naver_id_login.setState(state);
 							naver_id_login.init_naver_id_login();
 							
-							 // 접근 토큰 값 출력
-							/*  alert(naver_id_login.oauthParams.access_token); */
-							 // 네이버 사용자 프로필 조회
-							 naver_id_login.get_naver_userprofile("naverSignInCallback()");
-							 // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-							 function naverSignInCallback() {
-							  /*  alert(naver_id_login.getProfileData('email'));
-							   alert(naver_id_login.getProfileData('name')); */
-							   var email = naver_id_login.getProfileData('email');
-							   var name= naver_id_login.getProfileData('name');
-							 
-							   location.href="http://localhost:8090/myfinal/naverJoin.do?email="+email+"&name="+name;
-							 };
-						 
+							// 접근 토큰 값 출력
+							alert(naver_id_login.oauthParams.access_token);
+							// 네이버 사용자 프로필 조회
+							naver_id_login.get_naver_userprofile("naverSignInCallback()");
+							// 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+							function naverSignInCallback() {
+								alert(naver_id_login.getProfileData('email'));
+								alert(naver_id_login.getProfileData('name')); 
+								var email = naver_id_login.getProfileData('email');
+								var name= naver_id_login.getProfileData('name');
+								
+								location.href="http://localhost:8090/myfinal/naverJoin.do?email="+email+"&name="+name;
+							};
 						</script>
 		               </fieldset>
 		             </form>
@@ -133,12 +132,12 @@
 
 			/* 로그인 닫기 */
 			$('#login_f .login_close_btn>a, input[alt="로그인버튼"]').on('click',
-					function() {
-						$('#login_f').animate({
-							top : '-500px'
-						}, 500);
-						return false;
-					});
+				function() {
+					$('#login_f').animate({
+						top : '-600px'
+					}, 500);
+					return false;
+				});
 		});
   </script>
 </body>

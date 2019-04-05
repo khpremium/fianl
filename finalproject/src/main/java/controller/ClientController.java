@@ -21,13 +21,14 @@ import jdk.nashorn.internal.ir.RuntimeNode.Request;
 import mail.MemberManagement;
 import service.ClientService;
 
-//http://localhost:8090/myfinal/index.do
+//http://localhost:8090/myfinal/newIndex.do
 
 @Controller
 public class ClientController {
 	
 private ClientService service;
 	
+
 @Resource(name = "memberManagement")
 private MemberManagement mm;
 
@@ -40,10 +41,10 @@ private MemberManagement mm;
 	}
 	
 	//메인페이지
-	@RequestMapping("/index.do")
+	@RequestMapping("/newIndex.do")
 	public String main(HttpSession session) {
 		session.invalidate();
-		return "index";
+		return "newIndex";
 	}
 	
 	//회원가입 페이지
@@ -51,13 +52,7 @@ private MemberManagement mm;
 	public String joinView() {
 		return "join";
 	}
-	
-	//로그인 페이지
-	@RequestMapping("/login.do")
-	public String loginView(String id, String password) {
-		return "login";
-	}
-	
+
 	//로그인 체크
 	@RequestMapping(value="/loginCheck.do", method=RequestMethod.POST)
 	public ModelAndView loginCheck(ClientDTO dto, HttpSession session) {
@@ -65,10 +60,10 @@ private MemberManagement mm;
 		ModelAndView mav = new ModelAndView();
 		if(cdto != null) {
 			mav.addObject("msg","success");
-			mav.setViewName("index");
+			mav.setViewName("newIndex");
 		} else {
 			mav.addObject("msg", "failure");
-			mav.setViewName("index");
+			mav.setViewName("newIndex");
 		}
 		return mav;
 	}
@@ -78,10 +73,20 @@ private MemberManagement mm;
 	@RequestMapping("/naverJoin.do")
 	public ModelAndView naverLogin(ClientDTO dto, String email, String name, HttpSession session) throws IOException {
 		ModelAndView mav = new ModelAndView();
-		String aa = service.naverLogin(email, session);
-		System.out.println(aa);
+		ClientDTO cdto = service.loginCheck(dto, session);
+		session.setAttribute("email", email);
+		
+		String aa = service.naverLogin(email);
+		
 		if(aa != null) {
-			mav.setViewName("index");
+			if(cdto != null) {
+				mav.addObject("msg","success");
+				mav.setViewName("newIndex");
+			} else {
+				session.setAttribute("id", aa);
+				mav.addObject("msg", "failure");
+				mav.setViewName("newIndex");
+			}
 		}else {
 			mav.addObject("email", email);
 			mav.addObject("name", name);
@@ -104,16 +109,10 @@ private MemberManagement mm;
 		int result = service.emailCheck(dto.getEmail());
 		return String.valueOf(result);
 	}
-	
-	//로그인 완료 페이지
-	@RequestMapping("/index2.do")
-	public String loginsuView() {
-		return "index";
-	}
-	
+
 	//회원정보 삽입
 	@RequestMapping(value="/joinInsert.do", method=RequestMethod.POST)
-	public ModelAndView joinInsert(ClientDTO dto) {
+	public ModelAndView joinInsert(ClientDTO dto, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		int emailchk = dto.getEmail().indexOf("@");
 		if(emailchk == -1) {
@@ -121,7 +120,8 @@ private MemberManagement mm;
 			dto.setEmail(email);
 		}
 		service.insertProcess(dto);
-		mav.setViewName("index");
+		session.setAttribute("id", dto.getId());
+		mav.setViewName("newIndex");
 		return mav;
 	}
 	
@@ -148,7 +148,11 @@ private MemberManagement mm;
 	public String kakaoLogin() {
 		return "login2";
 	}
+	
+	@RequestMapping("/setSession.do")
+	public String se1321321(String seId, HttpSession session) {
+		session.setAttribute("id", seId);
+		return "newIndex";
+	}
 
 }//end class
-
-

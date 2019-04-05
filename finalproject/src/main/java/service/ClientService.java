@@ -24,5 +24,5 @@ public interface ClientService {
 	
 	public String find_pw(HttpServletResponse resp, ClientDTO dto) throws IOException;
 	
-	public String naverLogin(String email, HttpSession session);
+	public String naverLogin(String email);
 }
