@@ -69,6 +69,12 @@ oData 객체에는 결제 인증 결과와 전달한 returnUrl 정보가 함께 
 			data : 'name=' + $('#resName').text() + '&price=' + $('.totalPrice').text() + '&p_count=' + p_count,
 			dataType : 'json',
 			success : function(res) {
+				/*var filter = "win16|win32|win64|mac|macintel";
+				if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
+					
+				}else {
+					
+				}*/
 				window.open(res.next_redirect_pc_url,'_blank','width=400, height=600, left=580, top=200');
 			}
 		});
@@ -126,6 +132,9 @@ oData 객체에는 결제 인증 결과와 전달한 returnUrl 정보가 함께 
 		
 		if(Number($(this).val()) < 10000)
 			$(this).val(10000);
+		
+		if(Number($(this).val()) > Number($('.totalPrice').text()))
+			$(this).val($('.totalPrice').text());
 	});
 	
 });
