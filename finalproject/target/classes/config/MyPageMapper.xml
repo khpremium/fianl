@@ -74,5 +74,9 @@ where r.AIRINFO_FLIGHT=a.flight and r.user_id=c.ID and t.city_code = a.city_code
 	</select>
 	
 	
+	<select id="reservation_chk" parameterType="mypage.ReservationDTO" resultType="mypage.ReservationDTO">
+		select * from reservation where rv_code=#{rv_code} and non_pass=#{non_pass}
+	</select>
+	
 	
 </mapper>

@@ -71,10 +71,10 @@ public class MypageController {
 	
 	@RequestMapping(value="/update.do",method=RequestMethod.POST)
 	public String update(ClientDTO cdto) {
-		System.out.println("������?");
+		
 		System.out.println(cdto.getPass()+cdto.getEmail()+cdto.getPhonenum()+cdto.getId());
 		service.updateMemProcess(cdto);
-		System.out.println("�̻��ϳ�");
+		
 		return "redirect:/profile.do";
 	}
 	

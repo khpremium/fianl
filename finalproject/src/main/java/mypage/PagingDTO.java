@@ -54,6 +54,7 @@ public class PagingDTO {
 	}
 
 	public int getNumber() {
+		
 		return number;
 	}
 

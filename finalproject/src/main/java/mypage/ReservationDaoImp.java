@@ -35,6 +35,12 @@ public class ReservationDaoImp implements ReservationDAO {
 		return SqlSession.selectList("mypage.reschk",rdto);
 	}
 
+	@Override
+	public List<ReservationDTO> reservationcheck(ReservationDTO dto) {
+		// TODO Auto-generated method stub
+		return SqlSession.selectList("mypage.reservation_chk", dto);
+	}
+
 	
 
 }

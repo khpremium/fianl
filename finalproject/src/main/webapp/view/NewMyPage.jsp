@@ -21,7 +21,8 @@
 /*레디*/
 $(document).ready(function(){ 
 		
-	$('#update').bind('click',updateRun);
+	/* $('#update').bind('click',updateRun); */
+	$(document).on('click','#update',updateRun);
 	$('#delete').bind('click',deleteRun);
 	$('input[type="submit"]').on('click',function(e){
 		if($('input[name="cancel"]').val()==''){
@@ -49,12 +50,12 @@ function passtest(){
 	alert("수정을 시작합니다.");
 	if($('.passfir').val()=="${myprofile.pass}"){		
 		if(!/^.*(?=^.{6,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/.test($("#pass").val())){
-			alert('숫자와 영문자 조합으로 10~15자리를 사용해야 합니다.');
+			alert('숫자와 영문자 특수문자 포함 조합으로 10~15자리를 사용해야 합니다.');
 			return false;
 		}else{			
 			$('#frm').attr('action','update.do').submit();	
 			alert("수정완료");
-			return false;			
+			return false;
 		}
 	} else{
 		alert("비밀번호가 틀립니다.");
@@ -183,7 +184,7 @@ input{
 						
 					<div class="6u 12u$(xsmall)">
 						<label for="pass">비밀번호</label>
-						<input name="pass" id="pass" type="password" placeholder="수정할 비밀번호를 입력해주세요">
+						<input name="pass" id="pass" type="text" placeholder="수정할 비밀번호를 입력해주세요">
 
 					</div>
 						
@@ -231,6 +232,7 @@ input{
 					</div>
 							
 				</div>
+				</form>
 				<br/>
 					<footer>
 					<input type="hidden" name="id" value="${myprofile.id}"/>							
@@ -239,7 +241,6 @@ input{
 							<input type="button" id="update" class="button alt small" value="수정"/>&nbsp;&nbsp;
     						<input type="button" id="delete" class="button alt small" value="탈퇴"/>
 					</footer>
-				</form>
 				</div>
 			</article>
 		</div>
@@ -520,7 +521,7 @@ input{
     <p>&nbsp; &#187; 여권유효기간이 6개월 미만인 경우 입국허가요건이 국가별로 상이 하므로 외교통상부 사이트에서 확인하시기 바랍니다.</p>
     <p>&nbsp; &#187; 등록하신 여권정보에 변동사항이 있을 경우 출국 72시간전 까지 재등록이 가능합니다.</p>
     <p>&nbsp; &#187; 여권정보가 다르거나 누락된 경우 항공편 탑승 및 현지 입국이 거절될 수 있습니다.</p>
-    <p>&nbsp; &#187; 고객 상담 문의 처리 시간 : 평일기준 09:00~17:00 / 주말, 공휴일 제외&nbsp;&nbsp;<a href="helpMain.do">고객문의 게시판</a></p>
+    <p>&nbsp; &#187; 고객 상담 문의 처리 시간 : 평일기준 09:00~17:00 / 주말, 공휴일 제외&nbsp;&nbsp;<a href="helpMain.do">고객문의 게시판</a>&nbsp;&nbsp;<a href="#banner">마이 페이지 홈으로</a></p>
 						</footer>
 					</article>
 				</div>
@@ -531,26 +532,8 @@ input{
 			
 
 		<!-- Footer -->
-			<!-- <footer id="footer">
-				<div class="inner">
-					<h2>Contact Me</h2>
-					<form action="#" method="post">
-						<div class="field half first">
-							<label for="name">Name</label>
-							<input name="name" id="name" type="text" placeholder="Name">
-						</div>
-						<div class="field half">
-							<label for="email">Email</label>
-							<input name="email" id="email" type="email" placeholder="Email">
-						</div>
-						<div class="field">
-							<label for="message">Message</label>
-							<textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
-						</div>
-						<ul class="actions">
-							<li><input value="Send Message" class="button alt" type="submit"></li>
-						</ul>
-					</form>
+			 <footer id="footer">
+				
 					<ul class="icons">
 						<li><a href="#" class="icon round fa-twitter"><span class="label">Twitter</span></a></li>
 						<li><a href="#" class="icon round fa-facebook"><span class="label">Facebook</span></a></li>
@@ -560,7 +543,7 @@ input{
 						&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
 					</div>
 				</div>
-			</footer> -->
+			</footer> 
 
 		<!-- Scripts -->
 			<script src="view/assets/js/jquery.min.js"></script>

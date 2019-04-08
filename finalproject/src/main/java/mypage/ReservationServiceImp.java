@@ -3,6 +3,10 @@ package mypage;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import dto.ClientDTO;
+
 public class ReservationServiceImp implements ReservationService {
 	private ReservationDAO myrdao;
 	
@@ -31,6 +35,12 @@ public class ReservationServiceImp implements ReservationService {
 	public List<ReservationDTO> reschkProcess(ReservationDTO rdto) {
 		// TODO Auto-generated method stub
 		return myrdao.reschk(rdto);
+	}
+
+	@Override
+	public List<ReservationDTO> reservationcheckPro(ReservationDTO dto, HttpSession session) {
+		return myrdao.reservationcheck(dto);
+	
 	}
 	
 	

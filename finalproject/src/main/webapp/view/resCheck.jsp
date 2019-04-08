@@ -27,8 +27,7 @@ $(document).ready(function(){
 		url:'resok.do',
 		dataType : 'text',
 		data : postString,
-		success : pros,
-		error : reserror
+		success : pros
 	});//ajax 
 	
 	});
@@ -40,9 +39,16 @@ $(document).ready(function(){
 });/*레디 끝*/
 
 function pros(res){
-	alert(res);
+	if(res=="예약 내역 확인페이지로 이동합니다."){
+		alert(res);
+		$('form').submit();
+		
+	}
+	else {
+		alert(res);
+	}
 	
-	location.href="rescheckok.do";
+	// location.href="rescheckok.do";
 }
 
 function reserror(){
@@ -87,10 +93,12 @@ function reserror(){
 							<br/>
 						</header>
 						
-						<div class="content"> 
+						<div class="content">
+						<form action="rescheckok.do" method="post">
 							<input type="text" class="query" id="rv_code" name="rv_code" placeholder="예약 번호 입력">
 							<input type="text" class="query" id="non_pass" name="non_pass" placeholder="비밀 번호 입력">
 							<br/>
+							</form>
 						</div>
 						
 						<footer>

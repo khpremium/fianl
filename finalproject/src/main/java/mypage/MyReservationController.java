@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
+import dto.ClientDTO;
+
 //http://localhost:8090/myfinal/reschk.do
 
 @Controller
@@ -25,6 +27,8 @@ public class MyReservationController {
 	private int non_person;
 	private List<MypassportDTO> non_passsrc;
 	private String reservation_rv_code;
+	private String non_pass_rvcode;
+	private PassportInsDTO pdto;
 	
 	
 	public MyReservationController() {
@@ -40,45 +44,58 @@ public class MyReservationController {
 		this.service4 = service4;
 	}
 
-	@RequestMapping("resok.do")
-	public @ResponseBody String myresList(ReservationDTO rdto,PassportInsDTO pdto,HttpServletRequest request) {
+	@RequestMapping(value="resok.do",produces="application/text;charset=utf8")
+	public @ResponseBody String myresList(ReservationDTO rdto,PassportInsDTO pdto,HttpServletRequest request,HttpSession session) {
 		
 		System.out.println("통신성공?ㅇㅇ");
 		System.out.println(rdto.getRv_code());
 		
-		aList=service.reschkProcess(rdto);
-		System.out.println(service4.passportProcess(rdto.getRv_code()));
-		non_person=service4.passportProcess(rdto.getRv_code());
-		System.out.println(service4.passportSrcProcess(rdto.getRv_code()));
-		non_passsrc=service4.passportSrcProcess(rdto.getRv_code());
-		System.out.println(aList);	
-		return "sususus";
+		if(!service.reservationcheckPro(rdto, session).isEmpty()) {
+			return "예약 내역 확인페이지로 이동합니다.";
+		} else {
+			return "예약번호가 존재하지 않습니다.";
+		}
 	}
 	
 	@RequestMapping("rescheckok.do")
-	public ModelAndView reschkeckok() {
+	public ModelAndView reschkeckok(ReservationDTO rdto) {
 		ModelAndView mav = new ModelAndView();
+		System.out.println(rdto.getRv_code());
+		System.out.println(rdto.getNon_pass());
+		aList=service.reschkProcess(rdto);
+		
+		non_person=service4.passportProcess(rdto.getRv_code());
+		non_passsrc=service4.passportSrcProcess(rdto.getRv_code());
+			
+		non_pass_rvcode=rdto.getRv_code();
 		
 		mav.addObject("myreschk",aList);
 		mav.addObject("non_person",non_person);
 		mav.addObject("non_passsrc", non_passsrc);
+		mav.addObject("non_rvcode", non_pass_rvcode);
+		mav.addObject("non_pass",rdto.getNon_pass());
 		mav.setViewName("mypage/mypageMain");
 		
 		return mav;
 	}
 	
 	@RequestMapping(value="non_inspassport.do",method=RequestMethod.POST)
-	public String passInsert(PassportInsDTO pdto) {
-		/*service4.passportinsProcess(pdto.getaList());*/
-		return "redirect:/profile.do";
+	public ModelAndView passInsert(PassportInsDTO pdto) {
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("rv_code",pdto.getaList().get(0).getReservation_rv_code());
+		mav.addObject("non_pass",pdto.getaList().get(0).getNon_pass());
+		mav.setViewName("redirect:/rescheckok.do#post");
+		service4.passportinsProcess(pdto.getaList());
+		return mav;
 	}
 	
 	
 
 	@RequestMapping(value = "/non_reservation_delete.do", method = RequestMethod.POST)
-	public String deleteResrvation(String cancel) {
-		/*service.resdelProcess(cancel);*/
-		return "redirect:/myreservation.do";
+	public String deleteResrvation(String non_cancel) {
+		service.resdelProcess(non_cancel);
+		return "redirect:/reschk.do";
 	}
 
 	@RequestMapping("reschk.do")
@@ -88,5 +105,6 @@ public class MyReservationController {
 		return mav;
 	}
 
-
+	
+	
 }// class
