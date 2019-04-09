@@ -10,7 +10,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#chatOpenBtn').on('click', function(){
-			if('${sessionScope.id}'==null){
+			if('${sessionScope.id}'==''){
 				alert('로그인후 이용가능합니다.');
 				return false;
 			}
