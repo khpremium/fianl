@@ -1,24 +1,20 @@
-//아이디 찾기
-var emailCheck = true;
+$(document).ready(function(){
+	$("#findBtn").on("click", function() {
+		$.ajax({
+			type: 'GET',
+			url: 'find_id.do?email=' + $("#email1").val(),
+			dataType: 'text',
+			success: emailCheck
+		});
+		$("#nana").show();
+	});
+});
 
-function check_ok(){
-	if(document.getElementById("name").value == ""){
-		alert("이름을 입력해주세요.");
-		reg_frm.name.focus();
-		return false;
+function emailCheck(res){
+	if(res != "") {
+		$('#nana').text('아이디는' + res+ '입니다');
+	}else {
+		$('#nana').text('가입된 아이디가 없습니다');
 	}
 	
-	if (document.getElementById("email").value == "") {
-		alert("이메일을 입력해주세요.");
-		reg_frm.email.focus();
-		return false;
-	}
-	
-	else if(codecheck == false){
-		alert("이메일 인증을 해주세요.");
-		reg_frm.emailcheck.focus();
-		return false;
-	}
-	
-	return true;
 }

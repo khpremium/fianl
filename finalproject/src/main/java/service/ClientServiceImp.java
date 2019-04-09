@@ -1,6 +1,14 @@
 package service;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.ClientDAO;
 import dto.ClientDTO;
@@ -39,24 +47,56 @@ public class ClientServiceImp implements ClientService{
 	public int idCheck(String id) {
 		return dao.idcheck(id);
 	}
-
+	
 	@Override
-	public String findId(ClientDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+	public int emailCheck(String email) {
+		return dao.emailCheck(email);
 	}
 
-/*	@Override
-	public @ResponseBody String findId(ClientDTO dto) {
-		List<ClientDTO> list = dao.findId(dto);
-		for(int i=0; i<list.size(); i++) {
-			String email = list.get(i).getEmail();
-			list.add(dto);
+	@Override
+	public String find_id(String email) throws IOException {
+		
+		String id = dao.find_id(email);
+		if(id == null) {
+			return "";
+		}else {
+			return id;
 		}
-		return email;
-	}*/
+	}
 
+	public String find_pw(HttpServletResponse resp, ClientDTO dto) throws IOException {
+		resp.setContentType("text/html;charset=utf-8");
+		PrintWriter out = resp.getWriter();
 
-
+		String pw = "";
+		
+		if(dao.idcheck(dto.getId()) == 0) {
+			out.print("아이디가 없습니다");
+			out.close();
+		}else {
+			
+			
+			for(int i=0; i<12; i++) {
+				pw += (char)((Math.random() *26) + 97);
+			}
+			dto.setPass(pw);
+			dao.update_pw(dto);
+			System.out.println(pw);
+			System.out.println(dto);
+			out.println("이메일로 임시비번 발송완료");
+			out.close();
 	
+			return pw;
+		
+	}
+		return pw;	
+}
+
+	@Override
+	public String naverLogin(String email) {
+		String id = dao.naverLogin(email);
+		return id;
+	}
+
+
 }

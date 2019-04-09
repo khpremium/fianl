@@ -6,6 +6,7 @@ public class ClientDTO {
 	private String name;
 	private String phonenum;
 	private String email;
+	private String email2;
 	private int point;
 	private String gender;
 	private String birth;
@@ -46,6 +47,12 @@ public class ClientDTO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getEmail2() {
+		return email2;
+	}
+	public void setEmail2(String email2) {
+		this.email2 = email2;
 	}
 	public int getPoint() {
 		return point;

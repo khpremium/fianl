@@ -10,17 +10,20 @@
 $(document).ready(function() {
 	$("#login").click(function(){
 		var userId =$("#id").val();
-		var userPw =$("#password").val();
+		var userPw =$("#pass").val();
+		console.log($(location).attr('href').substring($(location).attr('href').lastIndexOf('/')));
 		if(userId === "") {
 			alert("아이디를 입력하세요");
 			$("#userId").focus();
 			return;
 		}
 		if(userPw === "") {
-			alert("비밀번호를를 입력하세요");
+			alert("비밀번호를 입력하세요");
 			$("#userPwd").focus();
 			return;
 		}
+		$('#login_f').append('<input type="hidden" name="path" value="' + $(location).attr('href').substring($(location).attr('href').lastIndexOf('/')) + '" />');
+		$('#login_f').submit();
 	});
 	
 	//저장된 쿠키값을 가져와서 id칸에 넣어준다 없으면 공백처리
@@ -72,5 +75,6 @@ function getCookie(cookieName) {
     }
     return unescape(cookieValue);
 }
+
 
 

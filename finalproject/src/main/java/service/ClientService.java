@@ -1,5 +1,10 @@
 package service;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dto.ClientDTO;
@@ -13,6 +18,11 @@ public interface ClientService {
 
 	public int idCheck(String id);
 	
-	public String findId(ClientDTO dto); 
+	public int emailCheck(String email);
 	
+	public String find_id(String email) throws IOException;
+	
+	public String find_pw(HttpServletResponse resp, ClientDTO dto) throws IOException;
+	
+	public String naverLogin(String email);
 }

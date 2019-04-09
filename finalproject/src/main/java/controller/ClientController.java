@@ -1,6 +1,10 @@
 package controller;
 
+
+import java.io.IOException;
+
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -15,13 +19,14 @@ import dto.ClientDTO;
 import mail.MemberManagement;
 import service.ClientService;
 
-//http://localhost:8090/myfinal/index.do
+//http://localhost:8090/myfinal/newIndex.do
 
 @Controller
 public class ClientController {
 	
 private ClientService service;
 	
+
 @Resource(name = "memberManagement")
 private MemberManagement mm;
 
@@ -34,50 +39,61 @@ private MemberManagement mm;
 	}
 	
 	//메인페이지
-	@RequestMapping("/index.do")
-	public String main() {
-		return "joinMain/index";
+	@RequestMapping("/newIndex.do")
+	public String main(HttpSession session) {
+		session.invalidate();
+		return "/joinMain/newIndex";
 	}
 	
 	//회원가입 페이지
 	@RequestMapping("/join.do")
 	public String joinView() {
-		return "joinMain/join";
+		return "/joinMain/join";
 	}
-	
-	//로그인 페이지
-	@RequestMapping("/login.do")
-	public String loginView(String id, String password) {
-		return "joinMain/login";
-	}
-	
+
+	//로그인 체크
 	@RequestMapping(value="/loginCheck.do", method=RequestMethod.POST)
-	public ModelAndView loginCheck(ClientDTO dto, HttpSession session) {
+	public ModelAndView loginCheck(ClientDTO dto, String path, HttpSession session) {
 		ClientDTO cdto = service.loginCheck(dto, session);
+		System.out.println(path);
 		ModelAndView mav = new ModelAndView();
 		if(cdto != null) {
-			mav.setViewName("redirect:/main.do");
+			mav.addObject("msg","success");
+			mav.setViewName("redirect:" + path);
 		} else {
 			mav.addObject("msg", "failure");
-			mav.setViewName("joinMain/login");
+			mav.setViewName("redirect:" + path);
 		}
 		return mav;
 	}
+
 	
-	@RequestMapping("/logout.do")
-	public String logoutMethod(HttpSession session) {
-		System.out.println(session.getAttribute("id"));
-		session.invalidate();
-		return "redirect:/main.do";
+	//네이버로그인 회원가입 이동
+	@RequestMapping("/naverJoin.do")
+	public ModelAndView naverLogin(ClientDTO dto, String email, String name, HttpSession session) throws IOException {
+		ModelAndView mav = new ModelAndView();
+		ClientDTO cdto = service.loginCheck(dto, session);
+		session.setAttribute("email", email);
+		
+		String aa = service.naverLogin(email);
+		
+		if(aa != null) {
+			if(cdto != null) {
+				mav.addObject("msg","success");
+				mav.setViewName("/joinMain/newIndex");
+			} else {
+				session.setAttribute("id", aa);
+				mav.addObject("msg", "failure");
+				mav.setViewName("/joinMain/newIndex");
+			}
+		}else {
+			mav.addObject("email", email);
+			mav.addObject("name", name);
+			mav.setViewName("/joinMain/naverJoin");
+		}	
+		return mav;
 	}
 	
-	/*//이메일 중복체크
-	@RequestMapping(value = "/emailCheck", method = RequestMethod.POST)
-	public void emailCheck(HttpServletResponse response, String memberemail) throws IOException {
-		int result = 1;
-		result = mm.emailCheck(memberemail, result);
-		response.getWriter().print(result);
-	}*/
 	
 	//아이디 중복체크
 	@RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
@@ -86,26 +102,56 @@ private MemberManagement mm;
 		return String.valueOf(result);
 	}
 	
+	//아이디찾기폼 이메일 중복체크
+	@RequestMapping(value="/emailCheck.do", method=RequestMethod.POST)
+	public @ResponseBody String emailCheck(@ModelAttribute("dto") ClientDTO dto, Model model) {
+		int result = service.emailCheck(dto.getEmail());
+		return String.valueOf(result);
+	}
+
 	//회원정보 삽입
 	@RequestMapping(value="/joinInsert.do", method=RequestMethod.POST)
-	public ModelAndView joinInsert(ClientDTO dto) {
+	public ModelAndView joinInsert(ClientDTO dto, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		int emailchk = dto.getEmail().indexOf("@");
+		if(emailchk == -1) {
+			String email = dto.getEmail() + "@" + dto.getEmail2();
+			dto.setEmail(email);
+		}
 		service.insertProcess(dto);
+		session.setAttribute("id", dto.getId());
+		mav.setViewName("/joinMain/newIndex");
 		return mav;
+	}
+	
+	//아이디 찾기 페이지로 간다~
+	@RequestMapping("/idSearch.do")
+	public String idSearch() {
+		return "/joinMain/idSearch";
+	}
+	
+	//비밀번호 찾기 페이지
+	@RequestMapping("/passSearch.do")
+	public String passSearch() {
+		return "/joinMain/passSearch";
 	}
 	
 	//아이디 찾기
-	@RequestMapping("/idSearch.do")
-	public ModelAndView idSearchForm(ClientDTO dto) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("joinMain/idSearch");
-		return mav;
+	@RequestMapping("/find_id.do")
+	public @ResponseBody String findId(HttpServletResponse resp, String email)throws Exception {
+		return service.find_id(email);
 	}
-	
+
 	//카카오 로그인
 	@RequestMapping("/kakaologin.do")
 	public String kakaoLogin() {
-		return "joinMain/login2";
+		return "/joinMain/login2";
 	}
 	
-}
+	@RequestMapping("/setSession.do")
+	public String se1321321(String seId, HttpSession session) {
+		session.setAttribute("id", seId);
+		return "/joinMain/newIndex";
+	}
+
+}//end class
