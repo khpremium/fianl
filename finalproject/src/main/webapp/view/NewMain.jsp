@@ -61,7 +61,7 @@ $(document).ready(function(){
    
     $('#orgbutton').on('click',chkProcess);
     
-    $('form').on('submit', function() {
+    $('#resForm').on('submit', function() {
     	// alert($('input[name="guestchk"]:checked').val());
     	if($('input[name="guestchk"]:checked').val() == 'guest')
     		$('form').attr('action', 'guestInfo.do');
@@ -115,25 +115,7 @@ function cityprocess(){
 </script>
 </head>
 <body>
-		<!-- Header -->
-			<header id="header">
-				<div class="logo"><a href="view/index.html">Road Trip <span>by TEMPLATED</span></a></div>
-				<a href="#menu"><span>Menu</span></a>
-			</header>
-
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="main.do">Home</a></li>
-					<li><a href="helpMain.do">Notice</a></li>
-					<li><a href="join.do">Join Us</a></li>
-					<li><a href="">Priview</a></li>
-					<li><a href="login.do">Login</a></li>
-					<li><a href="profile.do">My Page</a></li>
-					<li><a href="myreservation.do">Reservation Check</a></li>
-				</ul>
-			</nav>
-
+		<c:import url="../joinMain/newIndex.jsp"></c:import>
 		<!-- Banner -->
 		<!--
 			Note: To show a background image, set the "data-bg" attribute below
@@ -147,7 +129,7 @@ function cityprocess(){
 						<h1>KH Start Air
 						    Reservation Now</h1>						
 					</header>
-					<form action="selectFlight.do" method="post">
+					<form id="resForm" action="selectFlight.do" method="post">
 					<div class="content"><!-- 예약 div  -->
 		<!-- <label>출발지 선택 </label> -->
         <select name="city_code_dep" id="city_code_dep" >        
