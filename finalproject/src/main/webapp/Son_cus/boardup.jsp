@@ -43,13 +43,17 @@ body {
 		$('#returnBtn').bind('click', function() {
 			window.close();
 		});
-
+		
+		//리셋버튼누르면 원래 자료로 되돌림
 		$('#resetBtn').on('click', function() {
-			$('#title').val('${bdto.title }');
-			$('#b_content').val('${bdto.b_content }');
-			$('#upload').val('${bdto.filename }');
+			$('#title').val(opener.document.getElementById("title").value);
+			document.getElementById("b_content").value = opener.document.getElementById("b_content").value;
+			document.getElementById("upload").value = opener.document.getElementById("upload").value;
 		});
+		
 		$('#writeBtn').on('click', update);
+		
+		//부모창의 값가져와서 현제페이지에 듸움
 		$('#title').val(opener.document.getElementById("title").value);
 		document.getElementById("b_num").value = opener.document.getElementById("b_num").value;
 		document.getElementById("b_content").value = opener.document.getElementById("b_content").value;
@@ -57,6 +61,8 @@ body {
 		document.getElementById("user_id").value = opener.document.getElementById("user_id").value;
 		
 	});
+	
+	//업데이트처리
 	function update(){
 		var form = $('#frm')[0];
 	    var data = new FormData(form);
@@ -72,6 +78,7 @@ body {
 			success : blogUpPro()
 		});
 	}
+	//업데이트 끝나면 부모창 새로고침하고 창을 닫음
 	function blogUpPro() {
 		opener.parent.location.reload();
 		window.close();
@@ -115,9 +122,7 @@ body {
 									class="pull-right" id="writeBtn" /> <input type="button"
 									value="reset" class="pull-left" id="resetBtn" /> <input
 									type="button" value="닫기 " class="pull-right"
-									id="returnBtn" /> <!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
-                    <a class="btn btn-default" type="reset"> reset </a>
-                    <a class="btn btn-default" onclick="javascript:location.href='list.jsp'">글 목록으로...</a> -->
+									id="returnBtn" />
 								</td>
 							</tr>
 						</table>

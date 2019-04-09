@@ -17,8 +17,6 @@
 <link href="Son_cus/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
-<!-- Custom styles for this template -->
-<!-- <link href="Son_cus/css/blog-home.css" rel="stylesheet"> -->
 <link rel="stylesheet" href="Son_cus/assets/css/main.css" />
 <style> 
 /* 마스크 뛰우기 */
@@ -72,7 +70,7 @@
 <body>
 	<!-- Header -->
 			<header id="header">
-				<div class="logo"><a href="helpMain.do">여행박사손진호 <span>(주)</span></a></div>
+				<div class="logo"><a href="helpMain.do">KH Air <span>(주)</span></a></div>
 				<a href="#menu"><span>Menu</span></a>
 			</header>
 		
@@ -88,21 +86,11 @@
 	<section id="one" class="wrapper post bg-img" data-bg="../Son_cus/images/backg6.jpg">
 	
 	<!-- Page Content -->
-	<!-- <div class="inner"> -->
 		<div class="inner">
 			<article class="box">
-			<!-- Blog Entries Column -->
 			<!-- <article class="box"> -->
 				<header>
 					<h2 >공지사항</h2><p>
-						<c:if test="${pv.searchWord!=null }">
-							<form action="helpBoard.do" method="get">
-								<!-- <span class="input-group-btn">
-									<button class="btn btn-secondary" type="submit" id="returnBtn"
-										style="float: right;">목록으로</button>
-								</span> -->
-							</form>
-						</c:if>
 						<c:if test="${pv.searchWord!=null }">
 							<h4 style="color:white;">"${pv.searchWord }" 검색결과</h4>
 						</c:if>
@@ -155,34 +143,18 @@
 					</article>
 			</div>
 
-			<!-- Sidebar Widgets Column -->
-		<!-- 	<div class="box" style="margin-top: 75px!important;">
-				
-	
-			</div> -->
-			<!-- /.row -->
-		<!-- </div> -->
-		<!-- /.container -->
-	
 	</section>
 	<!-- Footer -->
 	<footer id="footer">
-				<jsp:include page="sendEmail.jsp"></jsp:include>
-			</footer>
-	<!-- <footer class="py-5 bg-dark" style="position: fixed;bottom: 0;width: 100%;">
-		<p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-	</footer> -->
-	
-	<!-- Bootstrap core JavaScript -->
-	<!-- <script src="./Son_cus/vendor/jquery/jquery.min.js"></script>
-	<script src="./Son_cus/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	 --><!-- Scripts -->
-			<script src="Son_cus/assets/js/jquery.min.js"></script>
-			<script src="Son_cus/assets/js/jquery.scrolly.min.js"></script>
-			<script src="Son_cus/assets/js/jquery.scrollex.min.js"></script>
-			<script src="Son_cus/assets/js/skel.min.js"></script>
-			<script src="Son_cus/assets/js/util.js"></script>
-			<script src="Son_cus/assets/js/main.js"></script>
+		<jsp:include page="sendEmail.jsp"></jsp:include>
+	</footer>
+	<!-- Scripts -->
+		<script src="Son_cus/assets/js/jquery.min.js"></script>
+		<script src="Son_cus/assets/js/jquery.scrolly.min.js"></script>
+		<script src="Son_cus/assets/js/jquery.scrollex.min.js"></script>
+		<script src="Son_cus/assets/js/skel.min.js"></script>
+		<script src="Son_cus/assets/js/util.js"></script>
+		<script src="Son_cus/assets/js/main.js"></script>
 	
 </body>
 </html>

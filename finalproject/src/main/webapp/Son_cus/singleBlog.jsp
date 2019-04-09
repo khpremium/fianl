@@ -51,6 +51,9 @@ body{
 		
 		/*댓글 수정Pro*/
 		$(document).on("click", '[src="images/수정2.png"]', reply_updPro);
+		
+		
+
 	});
 	
 	function reply_updForm(){
@@ -119,36 +122,21 @@ body{
 									coment+='<input type="image" src="images/수정.png" width="30px"	height="32px">'
 									coment+'<input type="hidden" name="cm_content" value="'+value.cm_content +'"></div>';
 								}				
-							$('#comlist').append(coment);			
-												
+							$('#comlist').append(coment);						
 		});
-		
 		$('#comInsText').val('');
-		/* <div class="media mb-4"><img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""><div class="media-body"><h4 class="mt-0">${cdto.user_id }</h4><h6 class="mt-0">${cdto.c_date }</h6>${cdto.cm_content }</div></div> */
 	}
 </script>
 
 </head>
 
 <body>
-
-	<%-- <div id="header">
-		<jsp:include page="menuTest.jsp"></jsp:include>
-	</div> --%>
-	<!-- Page Content -->
-	<!-- <section id="one" class="wrapper post bg-img" data-bg="../Son_cus/images/blogback.jpg"> -->
-	<!-- <article class="box"> -->
-	<!-- <div class="inner"> -->
 	<div class="container">
 		<div class="row">
 			<!-- Post Content Column -->
-			
 			<div class="col-lg-8">
-				<!-- <article class="box" style="margin-top:150px;"> -->
 				<!-- Title -->
 				<h1 class="mt-4">${bdto.title }</h1>
-				<%-- <input type="hidden" value="${bdto.b_num }" id="bnum"> --%>
-
 				<!-- Author -->
 				<p class="lead">
 					by <a href="#">admin<%-- ${bdto.client_id } --%></a>
@@ -176,7 +164,7 @@ body{
 						<tr>
 							<td><a
 								href="helpBoard.do?b_num=${bdto.b_num }&currentPage=${currentPage }">뒤로</a></td>
-							<c:if test="${ admin==sessionScope.id}">
+							<c:if test="${ 'admin'==sessionScope.id}">
 								<td>
 									<input type="button" value="수정" class="pull-right" id="updBtn" style="text-align ': right" />
 									<input type="button" value="삭제" class="pull-right" id="delBtn" style="text-align ': right" />

@@ -53,7 +53,10 @@ body {
 
 	});
 	function blogWrite(){
-		var form = $('#frm')[0];
+	    var str = document.getElementById("b_content").value;
+	    str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+	    document.getElementById("b_content").value = str;
+	    var form = $('#frm')[0];
 	    var data = new FormData(form);
 		$.ajax({
 			type : 'POST',
@@ -107,13 +110,11 @@ body {
 									class="pull-right" id="writeBtn" /> <input type="button"
 									value="reset" class="pull-left" id="resetBtn" /> <input
 									type="button" value="닫기 " class="pull-right"
-									id="returnBtn" /> <!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
-                    <a class="btn btn-default" type="reset"> reset </a>
-                    <a class="btn btn-default" onclick="javascript:location.href='list.jsp'">글 목록으로...</a> -->
+									id="returnBtn" />
 								</td>
 							</tr>
 						</table>
-						<input type="hidden" name="user_id" value="test01" />
+						<input type="hidden" name="user_id" value="admin" />
 					</form>
 				</div>
 			</div>
