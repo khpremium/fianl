@@ -12,7 +12,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>항공편 관리</title>
+  <title>게시판 관리</title>
   
   
   
@@ -61,14 +61,15 @@
           <span>회원 정보 관리</span>
         </a>
       </li>
-      <li class="nav-item dropdown active">
+      
+      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-folder"></i>
           <span>항공편 및 예약 관리</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">항공편 및 예약 관리</h6>
-          <a class="dropdown-item" href="#">항공편 관리</a>
+          <a class="dropdown-item" href="airTables.do">항공편 관리</a>
           <a class="dropdown-item" href="resTable.do">예약 정보 관리</a>
           <!-- <div class="dropdown-divider"></div>
           <h6 class="dropdown-header">Other Pages:</h6>
@@ -77,7 +78,7 @@
         </div>
       </li>
       
-       <li class="nav-item">
+      <li class="nav-item active">
       	<a class="nav-link" href="boardTable.do">
       		<i class="fas fa-fw fa-table">
       		</i>
@@ -100,22 +101,18 @@
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
-            항공편 관리</div>
+            게시판 관리</div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>항공편</th>
-                    <th>항공사</th>
-                    <th>출발시간</th>
-                    <th>도착시간</th>
-                    <th>좌석 등급</th>
-                    <th>성인 가격</th>
-                    <th>잔여 좌석</th>
-                    <th>출발 국가</th>
-                    <th>도착 국가</th>
-                    <th>수정 및 삭제</th>
+                    <th>글 번호</th>
+                    <th>작성자 아이디</th>
+                    <th>글 제목</th>
+                    <th>게시 날짜</th>
+                    <th>좋아요</th>
+                    <th>작성자 포인트 수정</th>
                     
                   </tr>
                 </thead>
@@ -127,133 +124,36 @@
                
                  <c:forEach var="dto" items="${aList}"> 
                   	 <tr>
-                  		<th>${dto.flight}</th>
-                  		<th>${dto.airline}</th>
-                  		<th>${dto.d_time}</th>
-                  		<th>${dto.a_time}</th>
-                  		<th>${dto.seatgrade}</th>
-                  		<th>${dto.price_ad}</th>
-                  		<th>${dto.seat}</th>
-                  		<th>${dto.city_code_dep}</th>
-                  		<th>${dto.city_code_arv}</th>
+                  		<th>${dto.b_num}</th>
+                  		<th>${dto.user_id}</th>
+                  		<th>${dto.title}</th>
+                  		<th>${dto.upload_date}</th>
+                  		<th>${dto.b_like}</th>
                   		
-                  		<th>
+                  		<th><a href="boardLikeResetPointForm.do?user_id=${dto.user_id}" class="btn btn-secondary">작성자 포인트 수정</a></th>
                   		
-                  		<a href="airinfoUpdateForm.do?flight=${dto.flight}" class="btn btn-secondary">수정</a>                  		
-                  		<input type="hidden" value="${dto.flight}" id="airinfo_flight"/>
-                		<a href="#" class="btn btn-danger" id="airinfoBtn">삭제</a></th>
-                		
-                		<!-- airinfoDelete.do?flight=${dto.flight} -->
+                  		
+                  		
+                  		
                   	</tr> 
                	</c:forEach>
                  
               
                   
                </tbody>
+               
+               
               </table>
             </div>
+            <a href="likeReset.do" style="float:right; color:white;" class="btn btn-danger">좋아요 초기화</a>
           </div>
-          
+      
         </div>
 
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-table"></i>
-            항공편 입력</div>
-          <div class="card-body">
-        <form action="airinfoInsert.do" method="post">
         
-        
-          <div class="form-group">
-            <div class="form-label-group">
-              <input type="text" id="flight" class="form-control" placeholder="항공편" required="required" name="flight">
-              <label for="flight">항공편</label>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col-md-6">
-                <div class="form-label-group">
-                  <input type="text" id="airinfo_d_time" class="form-control" placeholder="출발 시간" required="required" name="d_time">
-                  <label for="airinfo_d_time">출발 시간</label>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-label-group">
-                  <input type="text" id="airinfo_a_time" class="form-control" placeholder="도착 시간" required="required" name="a_time">
-                  <label for="airinfo_a_time">도착 시간</label>
-                </div>
-              </div>
-            </div>
-          </div>
-         
-         <div class="form-group">
-            <div class="form-row">
-              <div class="col-md-6">
-                <div class="form-label-group">
-                  <input type="text" id="airinfo_airline" class="form-control" placeholder="항공사" required="required" name="airline">
-                  <label for="airinfo_airline">항공사</label>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-label-group">
-                  <input type="text" id="airinfo_seatgrade" class="form-control" placeholder="좌석 등급" required="required" name="seatgrade">
-                  <label for="airinfo_seatgrade">좌석 등급</label>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col-md-6">
-                <div class="form-label-group">
-                  <input type="text" id="airinfo_price_ad" class="form-control" placeholder="가격" required="required" name="price_ad">
-                  <label for="airinfo_price_ad">가격</label>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-label-group">
-                  <input type="text" id="airinfo_seat" class="form-control" placeholder="남은 좌석" required="required" name="seat">
-                  <label for="airinfo_seat">남은 좌석</label>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col-md-6">
-                <div class="form-label-group">
-                  <select class="form-control" name="city_code_dep">
-                    <option >출발 도시</option>
-                    <c:forEach items="${cityList}" var="dto">
-                      <option value="${dto.city_code}">${dto.city_name}</option>
-                    </c:forEach>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-label-group">
-                  <select class="form-control" name="city_code_arv">
-                    <option>도착 도시</option>
-                    <c:forEach items="${cityList}" var="dto">
-                      <option value="${dto.city_code}">${dto.city_name}</option>
-                    </c:forEach>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          
-          
-          <button class="btn btn-primary btn-block">입력</button>
-        </form>
             
           </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+         
         </div>
        
       </div>

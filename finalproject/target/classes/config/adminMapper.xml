@@ -29,8 +29,34 @@
 	</update>
 	
 	<insert id="clientInsert" parameterType="dto.ClientDTO">
-		insert into client values(#{id}, #{pass}, #{name}, #{phonenum}, #{email}, #{point}, #{gender}, #{birth}, 0)
+		insert into client values(#{id}, #{pass}, #{name}, #{phonenum}, #{email}, #{point}, #{gender}, #{birth})
 	</insert>
+	
+	<select id="boardTable" resultType="dto.BoardDTO">
+		select * from board where b_category_c_num=2 order by b_num 
+	</select>
+	
+	<select id="boardLikeResetPointSelect" parameterType="string" resultType="dto.ClientDTO">
+		select * from client where id=#{user_id}
+	</select>
+	
+	<update id="likeReset" parameterType="int">
+		update board
+		set b_like=0
+		where b_category_c_num=2
+	</update>
+	
+	<delete id="likeResetDelete" parameterType="string">
+		delete from like_chk 
+		where catnum=2
+	</delete>
+	
+	<update id="boardLikeResetPoint" parameterType="dto.ClientDTO">
+		update client
+		set point=#{point}
+		where id=#{id}		
+	</update>
+	
 	
 	<select id="airinfo" resultType="dto.AirinfoDTO">
 		select * from airinfo order by flight
@@ -87,6 +113,8 @@
 		#{non_email, jdbcType=VARCHAR}, #{non_pass, jdbcType=VARCHAR},
 		#{p_count}, #{rv_code})
 	</insert>
+	
+	
 
 </mapper>
 

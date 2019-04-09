@@ -54,6 +54,7 @@
           <span>회원 정보 관리</span>
         </a>
       </li>
+      
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-folder"></i>
@@ -69,9 +70,23 @@
           <a class="dropdown-item" href="blank.jsp">Blank Page</a> -->
         </div>
       </li>
+      
+      <li class="nav-item">
+      	<a class="nav-link" href="boardTable.do">
+      		<i class="fas fa-fw fa-table">
+      		</i>
+      		<span>게시판 관리</span>
+      	</a>
+      </li>
+      
+      
+      
     </ul>
 
 	  <!-- Sidebar end -->
+	  
+	  
+	  
     <div id="content-wrapper">
       <div class="container-fluid">
         <!-- DataTables Example -->
@@ -115,6 +130,7 @@
                 		<a href="#" class="btn btn-danger" id="clientBtn">삭제</a></th>
                   	</tr>
                    </c:forEach>
+                   
                 </tbody>
               </table>
             </div>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.AdminDAO;
 import dto.AirinfoDTO;
+import dto.BoardDTO;
 import dto.CityDTO;
 import dto.ClientDTO;
 import dto.ReservationDTO;
@@ -109,5 +110,30 @@ public class AdminServiceImp implements AdminService{
 	@Override
 	public List<CityDTO> cityListProcess() {
 		return dao.cityListMethod();
+	}
+
+	@Override
+	public List<BoardDTO> boardTableSelectProcess() {
+		return dao.boardTableSelectMethod();
+	}
+
+	@Override
+	public void boardLikeResetPointProcess(ClientDTO dto) {
+		dao.boardLikeResetPoint(dto);
+	}
+
+	@Override
+	public ClientDTO boardLikeResetSelect(String user_id) {
+		return dao.boardLikeResetSelectMethod(user_id);
+	}
+
+	@Override
+	public void likeResetProcess(BoardDTO dto) {
+		dao.likeResetMethod(dto);
+	}
+
+	@Override
+	public void likeResetDeleteProcess(BoardDTO dto) {
+		dao.likeResetDeleteMethod(dto);
 	}
 }
