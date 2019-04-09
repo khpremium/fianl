@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>여행박사 손진호(주)</title>
+		<title>KH Air(주)</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -51,7 +51,7 @@
 	<body>
 		<!-- Header -->
 			<header id="header">
-				<div class="logo"><a href="helpMain.do">여행박사손진호 <span>(주)</span></a></div>
+				<div class="logo"><a href="helpMain.do">KH Air <span>(주)</span></a></div>
 				<a href="#menu"><span>Menu</span></a>
 			</header>
 
@@ -101,7 +101,7 @@
 							<!-- <p>12.21.2016</p> -->
 						</header>
 						<div class="content">
-							<p>여행박사손진호(주)는 채팅 상담 내용을 저장, 보관할 수 있고, 고객께서 유사 또는 동일한 내용으로 다시 상담하는 경우, 상담내용과 관련하여 관련 분쟁이 발생하는 경우 등 필요한 경우에 한하여 이를 열람할 수 있으며, 법령에서 정한 경우 외에는 이를 제3자에게 제공하지 않습니다.
+							<p>KH Air(주)는 채팅 상담 내용을 저장, 보관할 수 있고, 고객께서 유사 또는 동일한 내용으로 다시 상담하는 경우, 상담내용과 관련하여 관련 분쟁이 발생하는 경우 등 필요한 경우에 한하여 이를 열람할 수 있으며, 법령에서 정한 경우 외에는 이를 제3자에게 제공하지 않습니다.
 								<br/>채팅 상담 내용 및 기록은 「개인정보 보호법」, 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」, 「부정경쟁방지 및 영업비밀보호에 관한 법률」의 적용을 받습니다.</p>
 						</div>
 						<footer>

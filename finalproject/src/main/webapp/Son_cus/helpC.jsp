@@ -70,7 +70,7 @@
 <body>
 	<!-- Header -->
 			<header id="header">
-				<div class="logo"><a href="helpMain.do">여행박사손진호 <span>(주)</span></a></div>
+				<div class="logo"><a href="helpMain.do">KH Air <span>(주)</span></a></div>
 				<a href="#menu"><span>Menu</span></a>
 			</header>
 		
