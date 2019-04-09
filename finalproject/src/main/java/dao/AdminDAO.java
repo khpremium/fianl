@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import dto.AirinfoDTO;
+import dto.BoardDTO;
 import dto.CityDTO;
 import dto.ClientDTO;
 import dto.ReservationDTO;
@@ -29,4 +30,10 @@ public interface AdminDAO {
 	public void reservationInsertMethod(ReservationDTO dto);
 	
 	public List<CityDTO> cityListMethod();
+	
+	public List<BoardDTO> boardTableSelectMethod();
+	public void boardLikeResetPoint(ClientDTO dto);
+	public ClientDTO boardLikeResetSelectMethod(String user_id);
+	public void likeResetMethod(BoardDTO dto);
+	public void likeResetDeleteMethod(BoardDTO dto);
 }

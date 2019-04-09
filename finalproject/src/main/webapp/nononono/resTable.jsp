@@ -74,6 +74,14 @@
           <a class="dropdown-item" href="blank.jsp">Blank Page</a> -->
         </div>
       </li>
+      
+       <li class="nav-item">
+      	<a class="nav-link" href="boardTable.do">
+      		<i class="fas fa-fw fa-table">
+      		</i>
+      		<span>게시판 관리</span>
+      	</a>
+      </li>
     
       
     </ul>

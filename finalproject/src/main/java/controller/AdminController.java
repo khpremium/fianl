@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import dto.AirinfoDTO;
+import dto.BoardDTO;
 import dto.ClientDTO;
 import dto.ReservationDTO;
 import service.AdminService;
@@ -108,6 +109,41 @@ public class AdminController {
 		return "redirect:/airTables.do";
 	}
 	
+	@RequestMapping("/likeReset.do")
+	public String likeReset(BoardDTO dto) {
+		service.likeResetProcess(dto);
+		service.likeResetDeleteProcess(dto);
+	
+		return "redirect:/boardTable.do";
+	}
+	
+	@RequestMapping("/boardTable.do")
+	public ModelAndView boardTableSelectList() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("aList",service.boardTableSelectProcess());
+		mav.setViewName("/nononono/boardTable");
+		return mav;
+		
+	}
+	
+	@RequestMapping("boardLikeResetPointForm.do")
+	public ModelAndView boardLikeResetSelect(String user_id) {
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("dto",service.boardLikeResetSelect(user_id));
+		mav.setViewName("/nononono/boardLikeResetPoint");
+		return mav;
+	}
+	
+	@RequestMapping(value="/boardLikeResetPoint.do", method=RequestMethod.POST)
+	public String boardLikeResetPoint(ClientDTO dto) {
+		service.boardLikeResetPointProcess(dto);
+		return "redirect:/boardTable.do";
+	}
+	
+	
+	
+	/*boardLikeResetPoint*/
+	
 	@RequestMapping("/resTable.do")
 	public ModelAndView reservationInfoSelectList() {
 		ModelAndView mav = new ModelAndView();
@@ -144,5 +180,7 @@ public class AdminController {
 		service.reservationInsertProcess(dto);
 		return "redirect:/resTable.do";
 	}
+	
+	
 	
 }//end class

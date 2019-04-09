@@ -3,7 +3,12 @@ $(document).ready(function(){
 	$(document).on('click','#airinfoBtn',airinfoProcess);
 	$(document).on('click','#airinfoUpdateBtn',airinfoUpdateSelectProcess);
 	$(document).on('click','#reservationUpdateBtn',reservationUpdateSelectProcess);
+	
+	
+	
 });
+
+
 
 function clientProcess(){
 	var id = $(this).prev().val();
