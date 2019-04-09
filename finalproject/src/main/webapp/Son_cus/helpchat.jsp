@@ -37,7 +37,7 @@
 		//전송 버튼을 누를 때 이벤트 처리
 		$('#sendBtn').on('click',function(){
 			/* var nick = $('#nickname').val(); */
-			var nick = getParameterByName("id");
+			var nick = '${sessionScope.id};
 			var msg = $('#message').val();
 			
 			//메세지 전송
