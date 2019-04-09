@@ -10,12 +10,16 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#chatOpenBtn').on('click', function(){
+			if('${sessionScope.id}'==null){
+				alert('로그인후 이용가능합니다.');
+				return false;
+			}
 			 var scWidth = screen.availWidth;
 			 var scHeight = screen.availHeight;
 
 			 var left = (parseInt(scWidth)-400);   // 창의 왼쪽 간격을
 			 var top = (parseInt(scHeight)-400); //창의 높이를
-			window.open('Son_cus/helpchat.jsp?id=test01','1:1문의','width=350, height=300, left='+left+', top='+top+'');
+			window.open('Son_cus/helpchat.jsp?id=${sessionScope.id}','1:1문의','width=350, height=300, left='+left+', top='+top+'');
 		});
 	});
 </script>
