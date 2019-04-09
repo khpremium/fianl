@@ -1,5 +1,6 @@
 package mypage;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -26,6 +27,18 @@ public class ReservationDaoImp implements ReservationDAO {
 	public void reservation_del(String rv_code) {
 		// TODO Auto-generated method stub
 		SqlSession.delete("mypage.reservationdel",rv_code);
+	}
+
+	@Override
+	public List<ReservationDTO> reschk(ReservationDTO rdto) {
+		// TODO Auto-generated method stub
+		return SqlSession.selectList("mypage.reschk",rdto);
+	}
+
+	@Override
+	public List<ReservationDTO> reservationcheck(ReservationDTO dto) {
+		// TODO Auto-generated method stub
+		return SqlSession.selectList("mypage.reservation_chk", dto);
 	}
 
 	

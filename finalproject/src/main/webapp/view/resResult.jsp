@@ -20,39 +20,82 @@
 <script type="text/javascript">
 /*레디*/
 $(document).ready(function(){ 
-	
-	alert("${non_rvcode}");
+		
+	$('#update').bind('click',updateRun);
+	$('#delete').bind('click',deleteRun);
 	$('input[type="submit"]').on('click',function(e){
-		if($('input[name="non_cancel"]').val()==''){
-			alert("예약된 내용이 없습니다..");
+		if($('input[name="cancel"]').val()==''){
+			alert("예약된 내용이 없습니다.");
 			return;
 		}
 		$('.del_chk').removeClass("del_none");
 		e.preventDefault();
 		$('input[type="submit"]').on('click',res_chk);
 	});
-	
 	$('#savepass').click(function(e){
 		e.preventDefault();
 		if(!confirm('입력 된 정보를 저장 하시겠습니까?')) return;		
-		$('button').submit();
+		$('form').submit();
 		alert("저장 되었습니다.");
 	});
 	
 });/*레디 끝*/
-function res_chk(){
-	if($('.del_chk').val()=="${myreschk[1].rv_code}"){
-		
-		if(!confirm("예약을 취소하시겠습니까?")) return;
-		alert("예약이 취소되었습니다.");
-		$('#resdelete').submit();
-		
-	}else if($('.del_chk').val()==null){
-		alert("예약된 내용이 없습니다.");
-	}else if($('.del_chk').val()!="${myreschk[1].rv_code}"){
-		alert("예약번호가 틀립니다.")
+function updateRun(e){
+	$('.passfir').removeClass("passsec");
+	e.preventDefault();
+	$('#update').on('click',passtest);
+}// updaterun
+function passtest(){
+	alert("수정을 시작합니다.");
+	if($('.passfir').val()=="${myprofile.pass}"){		
+		if(!/^.*(?=^.{6,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/.test($("#pass").val())){
+			alert('숫자와 영문자 조합으로 10~15자리를 사용해야 합니다.');
+			return false;
+		}else{			
+			$('#frm').attr('action','update.do').submit();	
+			alert("수정완료");
+			return false;			
+		}
+	} else{
+		alert("비밀번호가 틀립니다.");
+		return false;
+	}
+}//passtest
+function deleteRun(e){	
+	$('.passfir').removeClass("passsec");
+	e.preventDefault();
+	$('#delete').on('click',deltest);
+} // deleterun
+function deltest(){
+	if($('.passfir').val()=="${myprofile.pass}"){
+		if(!confirm('탈퇴 하시겠습니까?')) return;
+		$('#frm').attr('action','delete.do').submit();
+		alert("탈퇴가 완료되었습니다.");		
+	}else{
+		alert("비밀번호가 틀립니다.");
+		return location.reload();
 	}
 }
+function res_chk(){
+	if($('.del_chk').val()=="${myres[1].rv_code}"){
+		alert("예약이 취소되었습니다.");
+		$('form').submit();    	
+	}else if($('.del_chk').val()==null){
+		alert("예약된 내용이 없습니다.");
+	}else if($('.del_chk').val()!="${myres[1].rv_code}"){
+		alert("예약번호가 틀립니다.")
+	}
+}//end res_chk
+
+function myres(){
+	$(location).attr("href","#two");
+	
+}
+
+function mybod(){
+	$(location).attr("href","#one");
+}
+
 
 </script>
 
@@ -106,23 +149,17 @@ input{
 				</ul>
 			</nav>
 
-		<!-- Banner -->
-		<!--
-			Note: To show a background image, set the "data-bg" attribute below
-			to the full filename of your image. This is used in each section to set
-			the background image.
-		-->
-		<section id="two" class="wrapper post bg-img" data-bg="two1.jpg">
+		<!-- two -->
+			<section id="two" class="wrapper post bg-img" data-bg="two1.jpg">
 				<div class="inner" style="width:1400px;">
 					<article class="box">
 						<header>
 							<h2>My Reservation</h2>
 						</header>
-						<form action="non_reservation_delete.do" id="resdelete" method="post">	
+						<form action="reservation_delete.do" method="post">	
 						<div class="table-wrapper">
 						
-						 <input type="hidden" name="non_cancel" value="${myreschk[1].rv_code}"/>
-						  
+						<input type="hidden" name="cancel" value="${myres[1].rv_code}"/>
 							<table class="alt">
 							
 								<thead>
@@ -141,45 +178,45 @@ input{
 								
 								<tbody>
 								 <tr>
-								 	<th>${myreschk[1].airline}</th>
-									<th>${myreschk[1].airinfo_flight}</th>
-									<th>${myreschk[1].city_name}</th>
-									<th>${myreschk[0].city_name}</th>
+								 	<th>${myres[1].airline}</th>
+									<th>${myres[1].airinfo_flight}</th>
+									<th>${myres[1].city_name}</th>
+									<th>${myres[0].city_name}</th>
 									<th>
-										<fmt:parseDate value="${myreschk[1].d_time}" var="dtime" pattern="yyyyMMddHHmm"/>
+										<fmt:parseDate value="${myres[1].d_time}" var="dtime" pattern="yyyyMMddHHmm"/>
 										<fmt:formatDate value="${dtime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/>
 									</th>
 									<th>
-										<fmt:parseDate value="${myreschk[1].a_time}" var="atime" pattern="yyyyMMddHHmm"/>
+										<fmt:parseDate value="${myres[1].a_time}" var="atime" pattern="yyyyMMddHHmm"/>
 										<fmt:formatDate value="${atime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/>
 									</th>
-									<th>${myreschk[1].name}</th>
-									<th>${myreschk[1].rv_code}</th>
-									<th>${myreschk[1].p_count}</th>
+									<th>${myres[1].name}</th>
+									<th>${myres[1].rv_code}</th>
+									<th>${myres[1].p_count}</th>
 									
 								 </tr>
 								 
 								 <tr>
-								 	<th>${myreschk[0].airline}</th>
-									<th>${myreschk[0].airinfo_flight}</th>
-									<th>${myreschk[0].city_name}</th>
-									<th>${myreschk[1].city_name}</th>
+								 	<th>${myres[0].airline}</th>
+									<th>${myres[0].airinfo_flight}</th>
+									<th>${myres[0].city_name}</th>
+									<th>${myres[1].city_name}</th>
 									<th>
-										<fmt:parseDate value="${myreschk[0].d_time}" var="dtime" pattern="yyyyMMddHHmm"/>
+										<fmt:parseDate value="${myres[0].d_time}" var="dtime" pattern="yyyyMMddHHmm"/>
 										<fmt:formatDate value="${dtime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/>
 									</th>
 									<th>
-										<fmt:parseDate value="${myreschk[0].a_time}" var="atime" pattern="yyyyMMddHHmm"/>
+										<fmt:parseDate value="${myres[0].a_time}" var="atime" pattern="yyyyMMddHHmm"/>
 										<fmt:formatDate value="${atime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/>
 									</th>
-									<th>${myreschk[0].name}</th>
-									<th>${myreschk[0].rv_code}</th>
-									<th>${myreschk[0].p_count}</th>									
+									<th>${myres[0].name}</th>
+									<th>${myres[0].rv_code}</th>
+									<th>${myres[0].p_count}</th>									
 								 </tr>								 							 
 								</tbody>																							
 							</table>
 							<c:choose>
-							<c:when test="${myreschk[1].rv_code!=null}">
+							<c:when test="${myres[1].rv_code!=null}">
 							<a href="#post">&#187;&nbsp;여권번호 입력 페이지<br/></a>
 							</c:when>
 							</c:choose>	
@@ -187,7 +224,7 @@ input{
 						</form>									
 								<input type="text" class="del_chk del_none" placeholder="예약번호 입력">
 								<br/>
-								<input type="submit" id="non_reservationcanel" class="button alt" value="예약취소" />
+								<input type="submit" id="reservationcanel" class="button alt" value="예약취소" />
 								<footer>
 							<br/>
 						
@@ -213,11 +250,11 @@ input{
 			
 				<div class="inner" style="width:1200px;">
 					<article class="box" >
-					<form action="non_inspassport.do" method="post"> 
+					<form action="inspassport.do" method="post">
 						<header>
 							<h2>여권 정보</h2>
 						</header>
-					<c:forEach items="${non_passsrc}" var="non_passsrc" varStatus="status">	
+					<c:forEach items="${alreadypass}" var="alreadypass" varStatus="status">	
 					<header>
 							<p>탑승객 ${status.index+1}번</p>
 						</header>
@@ -241,39 +278,38 @@ input{
 							<tr>
 							
 								<th>								
-<input type="text" name="aList[${status.index}].name_kr" value="${non_passsrc.name_kr}" style="text-align:center; width: 80px; font-size: small;">								
+<input type="text" name="aList[${status.index}].name_kr" value="${alreadypass.name_kr}" style="text-align:center; width: 80px; font-size: small;">								
 								</th>
 								<th>
-<input type="text" name="aList[${status.index}].name_en" value="${non_passsrc.name_en}" placeholder="lastname/firstname" style="text-align:center; width: 140px; font-size: small;">
+<input type="text" name="aList[${status.index}].name_en" value="${alreadypass.name_en}" placeholder="lastname/firstname" style="text-align:center; width: 140px; font-size: small;">
 								</th>
 								<th>
-<input type="text" name="aList[${status.index}].gender" value="${non_passsrc.gender}" placeholder="남성/여성" style="text-align:center; width: 90px; font-size: small;">
+<input type="text" name="aList[${status.index}].gender" value="${alreadypass.gender}" placeholder="남성/여성" style="text-align:center; width: 90px; font-size: small;">
 								</th>								
 								<th>
-<input type="text" name="aList[${status.index}].p_birth" value="${non_passsrc.p_birth}" placeholder="ex)19910706" style="text-align:center; width: 120px; font-size: small;">														
+<input type="text" name="aList[${status.index}].p_birth" value="${alreadypass.p_birth}" placeholder="ex)19910706" style="text-align:center; width: 120px; font-size: small;">														
 								</th>
 								<th>
-<input type="text" name="aList[${status.index}].passport_num" value="${non_passsrc.passport_num}" placeholder="9자리 번호" style="text-align:center; width: 100px; font-size: small;">
+<input type="text" name="aList[${status.index}].passport_num" value="${alreadypass.passport_num}" placeholder="9자리 번호" style="text-align:center; width: 100px; font-size: small;">
 								</th>
 								<th>
-<input type="text" name="aList[${status.index}].exp_date" value="${non_passsrc.exp_date}" style="text-align:center; width: 100px; font-size: small;">
+<input type="text" name="aList[${status.index}].exp_date" value="${alreadypass.exp_date}" style="text-align:center; width: 100px; font-size: small;">
 								</th>
 								<th>
-<input type="text" name="aList[${status.index}].phonenum" value="${non_passsrc.phonenum}" placeholder="연락처" style="text-align:center; width: 125px; font-size: small;">
+<input type="text" name="aList[${status.index}].phonenum" value="${alreadypass.phonenum}" placeholder="연락처" style="text-align:center; width: 125px; font-size: small;">
 								</th>								
 								<th>
-<input type="text" name="aList[${status.index}].p_country" value="${non_passsrc.p_country}" placeholder="한글명" style="text-align:center; width: 65px; font-size: small;">
+<input type="text" name="aList[${status.index}].p_country" value="${alreadypass.p_country}" placeholder="한글명" style="text-align:center; width: 65px; font-size: small;">
 								</th>																
 							  						  						
 							</tr>	
 							</tbody>				
-					</table><input type="hidden" name="aList[${status.index}].reservation_rv_code" value="${non_rvcode}" />
-					<input type="hidden" name="aList[${status.index}].non_pass" value="${non_pass}" />
+					</table><input type="hidden" name="aList[${status.index}].reservation_rv_code" value="${pass_rvcode}"/>
 					
 				</div>									
 					
 					</c:forEach>
-			<c:forEach var="i" begin="${fn:length(non_passsrc)+1}" end="${non_person}">
+			<c:forEach var="i" begin="${fn:length(alreadypass)+1}" end="${passport}">
 						<header>
 							<p>탑승객 ${i}번</p>
 						</header>
@@ -312,11 +348,10 @@ input{
 									
 								 </tr>	 
 								</tbody>								
-							</table><input type="hidden" name="aList[${i-1}].reservation_rv_code" value="${non_rvcode}"/>
-							<input type="hidden" name="aList[${i-1}].non_pass" value="${non_pass}"/>
+							</table><input type="hidden" name="aList[${i-1}].reservation_rv_code" value="${pass_rvcode}"/>
 						</div>						
 				</c:forEach>
-			</form> 
+			</form>
 						<footer>
 							<input type="submit" class="button alt" id="savepass" value="저장하기">
 							<br/>
@@ -329,11 +364,11 @@ input{
     <p>&nbsp; &#187; 여권정보가 다르거나 누락된 경우 항공편 탑승 및 현지 입국이 거절될 수 있습니다.</p>
     <p>&nbsp; &#187; 고객 상담 문의 처리 시간 : 평일기준 09:00~17:00 / 주말, 공휴일 제외&nbsp;&nbsp;<a href="helpMain.do">고객문의 게시판</a></p>
 						</footer>
-						
 					</article>
 				</div>
-			</section>  
-
+			</section>
+			
+		
 
 		<!-- Scripts -->
 			<script src="view/assets/js/jquery.min.js"></script>

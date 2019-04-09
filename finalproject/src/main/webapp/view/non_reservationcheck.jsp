@@ -21,7 +21,7 @@
 /*레디*/
 $(document).ready(function(){ 
 	
-	alert("${non_rvcode}");
+	
 	$('input[type="submit"]').on('click',function(e){
 		if($('input[name="non_cancel"]').val()==''){
 			alert("예약된 내용이 없습니다..");

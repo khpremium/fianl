@@ -2234,7 +2234,7 @@
 		}
 
 	label {
-		display: block;
+		/* display: block; */
 		font-size: 0.9em;
 		font-weight: 300;
 		margin: 0 0 1em 0;
@@ -3467,7 +3467,7 @@
 		-ms-transition: -ms-transform 0.5s ease, box-shadow 0.5s ease, visibility 0.5s;
 		transition: transform 0.5s ease, box-shadow 0.5s ease, visibility 0.5s;
 		-webkit-overflow-scrolling: touch;
-		background: #f64242;
+		background: rgba(0, 0, 0, 0.5);
 		box-shadow: none;
 		color: #ffffff;
 		height: 100%;
