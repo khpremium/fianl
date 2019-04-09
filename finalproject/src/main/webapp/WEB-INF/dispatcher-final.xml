@@ -3,14 +3,18 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:aop="http://www.springframework.org/schema/aop"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+   <mvc:annotation-driven></mvc:annotation-driven>
 
 	<!-- [1] DataSource빈 선언 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">		
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin://@127.0.0.1:1521:xe" />
+		<property name="url" value="jdbc:oracle:thin://@192.168.10.25:1521:xe" />
 		<property name="username" value="hr" />
 		<property name="password" value="a1234" />
 	</bean>
@@ -20,7 +24,11 @@
 		<property name="dataSource" ref="dataSource"></property>
 		 <property name="mapperLocations">
 		  <list>
+		     <value>classpath:config/suggestMapper.xml</value>
 		     <value>classpath:config/boardMapper.xml</value>
+		     <value>classpath:config/filesMapper.xml</value>
+		     <value>classpath:config/commentMapper.xml</value>
+		     <value>classpath:config/like_chkMapper.xml</value>
 		  </list>
 		</property> 
 	</bean>	
@@ -74,9 +82,13 @@
     <!-- 파일 업로드 끝 -->
 
 	<!-- [9] Controller 빈 선언 -->
-    <bean class="controller.BoardController">
+    <bean class="controller.SuggestController">
        <property name="service" ref="service"></property>
     </bean>		
+	<bean class="controller.BoardController">
+       <property name="service" ref="service"></property>
+    </bean>	
+	
 	
 	<!-- [10] View 빈 선언 -->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
@@ -85,7 +97,7 @@
 	
 	<!-- 언제나 가장 마지막에 위치해야 함. 가장 낮은 우선순위 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/" />
+		<property name="prefix" value="/SHINnara/" />
 		<property name="suffix" value=".jsp" />		
 		<property name="order" value="1"></property>
 	</bean>
