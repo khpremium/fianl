@@ -74,7 +74,7 @@ public class MyReservationController {
 		mav.addObject("non_passsrc", non_passsrc);
 		mav.addObject("non_rvcode", non_pass_rvcode);
 		mav.addObject("non_pass",rdto.getNon_pass());
-		mav.setViewName("mypage/mypageMain");
+		mav.setViewName("view/non_reservationcheck");
 		
 		return mav;
 	}
@@ -101,7 +101,7 @@ public class MyReservationController {
 	@RequestMapping("reschk.do")
 	public ModelAndView rechkpage() {
 		ModelAndView mav=new ModelAndView();
-		mav.setViewName("view/resCheck");
+		mav.setViewName("view/non_resCheck");
 		return mav;
 	}
 

@@ -20,7 +20,7 @@ $(document).ready(function(){
 	
 	
 	$('#reservationchk').click(function(){
-		alert('dd');
+		alert('예약번호를 확인중입니다.');
 		var postString = 'rv_code='+$('#rv_code').val()+'&non_pass=' + $('#non_pass').val();
 	$.ajax({
 		type:'POST',
