@@ -213,6 +213,8 @@ input[type=password]{
   -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
   box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
   border: solid 0px #cbc9c9;
+  margin-left: 12%;
+  margin-top: 9%;
 }
 
 .gender {
@@ -230,9 +232,8 @@ input[type=password]{
   font-weight: 600;
   color: white;
   padding: 10px 30px 5px 30px;
-  margin: 60px 90px 20px 0px;
+  margin: 60px 90px 20px 105px;
   display: inline-block;
-  float: right;
   text-decoration: none;
   height: 27px; 
   -webkit-border-radius: 5px; 
@@ -259,7 +260,6 @@ input[type=password]{
 </style>
 <script type="text/javascript">
 	$(document).ready(function(e){
-		alert("ddd");
 		$('.button').on('click', function() {
 			$.ajax({
 				type: 'POST',
@@ -272,12 +272,9 @@ input[type=password]{
 	});
 	
 	function naver(){
-		alert("asdf");
 		opener.document.getElementById('seId').value = $('#id').val();
 		opener.parent.setSession();
-		alert("bbbbb");
 		window.close();
-		alert("ccccc");
 	}
 </script>
 </head>
@@ -291,7 +288,7 @@ input[type=password]{
 	<hr>
 	  
 		<label id="icon" for="name"><i class="icon-user"></i></label>
-			<input type="text" id="id" name="id" class="inputText" onkeyup="idFunction()" maxlength="15" placeholder="아이디">
+			<input type="text" id="id" name="id" class="inputText" onkeyup="idFunction()" maxlength="15" placeholder="아이디"><br/>
 		<label id="icon" for="name"><i class="icon-shield"></i></label>
 			<input type="password" id="pass" name="pass" class="inputText" maxlength="30" placeholder="비밀번호">
 			<!-- <div class="gender">
