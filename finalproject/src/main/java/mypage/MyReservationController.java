@@ -22,19 +22,11 @@ import dto.ClientDTO;
 @Controller
 public class MyReservationController {
 	private ReservationService service;
-	private MypassportService service4;	
-	private List<ReservationDTO> aList;
-	private int non_person;
-	private List<MypassportDTO> non_passsrc;
-	private String reservation_rv_code;
-	private String non_pass_rvcode;
-	private PassportInsDTO pdto;
-	
+	private MypassportService service4;
 	
 	public MyReservationController() {
 		// TODO Auto-generated constructor stub
 	}
-	
 	
 	public void setService(ReservationService service) {
 		this.service = service;
@@ -62,12 +54,12 @@ public class MyReservationController {
 		ModelAndView mav = new ModelAndView();
 		System.out.println(rdto.getRv_code());
 		System.out.println(rdto.getNon_pass());
-		aList=service.reschkProcess(rdto);
+		List<ReservationDTO> aList=service.reschkProcess(rdto);
 		
-		non_person=service4.passportProcess(rdto.getRv_code());
-		non_passsrc=service4.passportSrcProcess(rdto.getRv_code());
-			
-		non_pass_rvcode=rdto.getRv_code();
+		int non_person=service4.passportProcess(rdto.getRv_code());
+		List<MypassportDTO> non_passsrc=service4.passportSrcProcess(rdto.getRv_code());
+		
+		String non_pass_rvcode=rdto.getRv_code();
 		
 		mav.addObject("myreschk",aList);
 		mav.addObject("non_person",non_person);

@@ -145,15 +145,9 @@
 	</bean>
 	<bean class="controller.HelpCController" >
 		<property name="service" ref="hservice" />
-	</bean><!-- 
-	<bean class="mypage.MypassportController">
-		<property name="service" ref="mypservice"/> 
-	</bean>-->
+	</bean>
 	<bean class="controller.AdminController">
 		<property name="service" ref="aservice" />
-	</bean>
-	<bean class="mypage.MyBoardController">		<!-- 
-		<property name="service" ref="mybservice"/> -->
 	</bean>
 	
 	<!-- 이메일 구현 -->
@@ -191,7 +185,7 @@
 		<property name="uploadTempDir" ref="uploadDirResource" />
 		<property name="maxUploadSize" value="1000000000" />
 	</bean>
-	 
+	
 	<!-- WebSocket 등록 -->
 	<bean id="chatWebSocketHandler" class="controller.ChatWebSocketHandler" />
 	

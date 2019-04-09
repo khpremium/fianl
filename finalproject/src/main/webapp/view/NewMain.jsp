@@ -127,7 +127,7 @@ function cityprocess(){
 					<li><a href="main.do">Home</a></li>
 					<li><a href="helpMain.do">Notice</a></li>
 					<li><a href="join.do">Join Us</a></li>
-					<li><a href="">Priview</a></li>					
+					<li><a href="">Priview</a></li>
 					<li><a href="login.do">Login</a></li>
 					<li><a href="profile.do">My Page</a></li>
 					<li><a href="myreservation.do">Reservation Check</a></li>
@@ -147,10 +147,10 @@ function cityprocess(){
 						<h1>KH Start Air
 						    Reservation Now</h1>						
 					</header>
+					<form action="selectFlight.do" method="post">
 					<div class="content"><!-- 예약 div  -->
-	<form action="selectFlight.do" method="post">
 		<!-- <label>출발지 선택 </label> -->
-        <select name="category" id="city_code_dep" >        
+        <select name="city_code_dep" id="city_code_dep" >        
         <option style="color: white; font-weight:bold; background-color: black;">출발지 도시 선택</option>        
         <c:forEach items="${aList}" var="dto">
         <option value="${dto.city_code}" style="color: white; font-weight:bold; background-color: black;">${dto.city_name}</option>
@@ -158,7 +158,7 @@ function cityprocess(){
         </select>   
         <br/>     
        <!--  <label>도착지 선택 </label> -->
-        <select name="category" id="city_code_arv" >        
+        <select name="city_code_arv" id="city_code_arv" >        
         <option style="color: white; font-weight:bold; background-color: black;">도착지 도시 선택</option>
         <c:forEach items="${aList}" var="dto">
         <option value="${dto.city_code}" style="color: white; font-weight:bold; background-color: black;">${dto.city_name}</option>
@@ -183,14 +183,14 @@ function cityprocess(){
 		&nbsp;<input type="radio" id="priority-normal" name="guestchk" class="guestpro" value="guest">
 		<label for="priority-normal">비회원</label>
 		
-						</form>
 						</div>
 						<footer>
-							<a href="generic.html" class="button alt">Reservation &raquo;</a>
+							<input type="button" id="orgbutton" class="button alt" value="Reservation &raquo;">
 						</footer>
+						</form>
 				</article>	
 				</div>
-				<a href="" class="more">Learn More</a>
+				<!-- <a href="" class="more">Learn More</a> -->
 			</section>
 
 		<!-- One -->

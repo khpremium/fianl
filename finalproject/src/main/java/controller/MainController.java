@@ -23,9 +23,6 @@ public class MainController {
 	
 	@RequestMapping("/main.do")
 	public ModelAndView listMethod(CityDTO md){
-		/*Random ran = new Random();
-		int num;
-		num=ran.nextInt(10)+1;*/
 		ModelAndView mav= new ModelAndView();
 		mav.addObject("aList",service.ListProcess());
 		mav.addObject("rList",service.rListProcess("222"));
