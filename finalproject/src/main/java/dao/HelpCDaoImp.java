@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
-import dto.BoardDTO;
+import dto.DefaultBoardDTO;
 import dto.PageDTO;
 import dto.ReplyDTO;
 
@@ -19,12 +19,12 @@ public class HelpCDaoImp implements HelpCDAO{
 	}
 	
 	@Override
-	public List<BoardDTO> hListMethod(PageDTO pdto) {
+	public List<DefaultBoardDTO> hListMethod(PageDTO pdto) {
 		return sqlSession.selectList("helpC.Hlist", pdto);
 	}
 
 	@Override
-	public BoardDTO hBlogBlogMethod(int b_num) {
+	public DefaultBoardDTO hBlogBlogMethod(int b_num) {
 		return sqlSession.selectOne("helpC.Hblog", b_num);
 	}
 
@@ -46,7 +46,7 @@ public class HelpCDaoImp implements HelpCDAO{
 	}
 
 	@Override
-	public void hBlogInsMethod(BoardDTO bdto) {
+	public void hBlogInsMethod(DefaultBoardDTO bdto) {
 		sqlSession.insert("helpC.HblogIns", bdto);
 		
 	}
@@ -58,7 +58,7 @@ public class HelpCDaoImp implements HelpCDAO{
 	}
 
 	@Override
-	public void hBlogUpMethod(BoardDTO bdto) {
+	public void hBlogUpMethod(DefaultBoardDTO bdto) {
 		sqlSession.update("helpC.HblogUp", bdto);
 		
 	}
@@ -86,7 +86,7 @@ public class HelpCDaoImp implements HelpCDAO{
 	}
 
 	@Override
-	public List<BoardDTO> hListMethod2(PageDTO pdto) {
+	public List<DefaultBoardDTO> hListMethod2(PageDTO pdto) {
 		return sqlSession.selectList("helpC.Hlist2", pdto);
 	}
 
@@ -108,7 +108,7 @@ public class HelpCDaoImp implements HelpCDAO{
 	}
 
 	@Override
-	public BoardDTO hmBlogMethod() {
+	public DefaultBoardDTO hmBlogMethod() {
 		return sqlSession.selectOne("helpC.HMBoard");
 	}
      

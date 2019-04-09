@@ -5,7 +5,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import dto.AirinfoDTO;
-import dto.BoardDTO;
+import dto.DefaultBoardDTO;
 import dto.CityDTO;
 import dto.ClientDTO;
 import dto.ReservationDTO;
@@ -114,7 +114,7 @@ public class AdminDaoImp implements AdminDAO {
 	}
 
 	@Override
-	public List<BoardDTO> boardTableSelectMethod() {
+	public List<DefaultBoardDTO> boardTableSelectMethod() {
 		return sqlSession.selectList("mt.boardTable");
 	}
 
@@ -129,12 +129,12 @@ public class AdminDaoImp implements AdminDAO {
 	}
 
 	@Override
-	public void likeResetMethod(BoardDTO dto) {
+	public void likeResetMethod(DefaultBoardDTO dto) {
 		sqlSession.update("mt.likeReset",dto);
 	}
 
 	@Override
-	public void likeResetDeleteMethod(BoardDTO dto) {
+	public void likeResetDeleteMethod(DefaultBoardDTO dto) {
 		sqlSession.update("mt.likeResetDelete",dto);
 
 		

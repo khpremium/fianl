@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import dto.AirinfoDTO;
-import dto.BoardDTO;
+import dto.DefaultBoardDTO;
 import dto.ClientDTO;
 import dto.ReservationDTO;
 import service.AdminService;
@@ -110,7 +110,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/likeReset.do")
-	public String likeReset(BoardDTO dto) {
+	public String likeReset(DefaultBoardDTO dto) {
 		service.likeResetProcess(dto);
 		service.likeResetDeleteProcess(dto);
 	

@@ -13,7 +13,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.HelpCDAO;
-import dto.BoardDTO;
+import dto.DefaultBoardDTO;
 import dto.PageDTO;
 import dto.ReplyDTO;
 
@@ -28,12 +28,12 @@ public class HelpCServiceImp implements HelpCService{
 	}
 	
 	@Override
-	public List<BoardDTO> hListProcess(PageDTO pdto) {
+	public List<DefaultBoardDTO> hListProcess(PageDTO pdto) {
 		return hdao.hListMethod(pdto);
 	}
 
 	@Override
-	public BoardDTO hBlogProcess(int b_num) {
+	public DefaultBoardDTO hBlogProcess(int b_num) {
 		return hdao.hBlogBlogMethod(b_num);
 	}
 
@@ -55,7 +55,7 @@ public class HelpCServiceImp implements HelpCService{
 	}
 
 	@Override
-	public void hBlogInsProcess(BoardDTO bdto) {
+	public void hBlogInsProcess(DefaultBoardDTO bdto) {
 		hdao.hBlogInsMethod(bdto);
 		
 	}
@@ -67,7 +67,7 @@ public class HelpCServiceImp implements HelpCService{
 	}
 
 	@Override
-	public void hBlogUpProcess(BoardDTO bdto, HttpServletRequest request) {
+	public void hBlogUpProcess(DefaultBoardDTO bdto, HttpServletRequest request) {
 		// 기존 첨부파일
 		String filename = hdao.getFilename(bdto.getB_num());
 		String saveDirectory = "C:/Users/user2/git/final/finalproject/src/main/webapp/images";
@@ -119,7 +119,7 @@ public class HelpCServiceImp implements HelpCService{
 	}
 
 	@Override
-	public List<BoardDTO> hListProcess2(PageDTO pdto) {
+	public List<DefaultBoardDTO> hListProcess2(PageDTO pdto) {
 		return hdao.hListMethod2(pdto);
 	}
 
@@ -140,7 +140,7 @@ public class HelpCServiceImp implements HelpCService{
 	}
 
 	@Override
-	public BoardDTO hmBoardProcess() {
+	public DefaultBoardDTO hmBoardProcess() {
 		return hdao.hmBlogMethod();
 	}
 	

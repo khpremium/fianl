@@ -4,7 +4,7 @@ import java.util.List;
 
 import dao.AdminDAO;
 import dto.AirinfoDTO;
-import dto.BoardDTO;
+import dto.DefaultBoardDTO;
 import dto.CityDTO;
 import dto.ClientDTO;
 import dto.ReservationDTO;
@@ -113,7 +113,7 @@ public class AdminServiceImp implements AdminService{
 	}
 
 	@Override
-	public List<BoardDTO> boardTableSelectProcess() {
+	public List<DefaultBoardDTO> boardTableSelectProcess() {
 		return dao.boardTableSelectMethod();
 	}
 
@@ -128,12 +128,12 @@ public class AdminServiceImp implements AdminService{
 	}
 
 	@Override
-	public void likeResetProcess(BoardDTO dto) {
+	public void likeResetProcess(DefaultBoardDTO dto) {
 		dao.likeResetMethod(dto);
 	}
 
 	@Override
-	public void likeResetDeleteProcess(BoardDTO dto) {
+	public void likeResetDeleteProcess(DefaultBoardDTO dto) {
 		dao.likeResetDeleteMethod(dto);
 	}
 }

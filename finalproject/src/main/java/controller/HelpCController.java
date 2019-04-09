@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import dto.BoardDTO;
+import dto.DefaultBoardDTO;
 import dto.MailDTO;
 import dto.PageDTO;
 import dto.ReplyDTO;
@@ -105,7 +105,7 @@ public class HelpCController {
 	
 	//공지사항 글 입력 프로그램
 	@RequestMapping(value="/wirtePro.do", method=RequestMethod.POST)
-	public String writePro(BoardDTO bdto, HttpServletRequest request) {
+	public String writePro(DefaultBoardDTO bdto, HttpServletRequest request) {
 		MultipartFile file=bdto.getUpload();
 		if(!file.isEmpty()) {
 			String fileName = file.getOriginalFilename();
@@ -154,7 +154,7 @@ public class HelpCController {
 	
 	//공지사항 글 수정 프로그램
 	@RequestMapping("/blogUpPro.do")
-	public void blogUpPro(BoardDTO bdto, HttpServletRequest request) {
+	public void blogUpPro(DefaultBoardDTO bdto, HttpServletRequest request) {
 		service.hBlogUpProcess(bdto, request);
 	}
 	

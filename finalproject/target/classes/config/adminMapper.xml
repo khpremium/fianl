@@ -32,7 +32,7 @@
 		insert into client values(#{id}, #{pass}, #{name}, #{phonenum}, #{email}, #{point}, #{gender}, #{birth})
 	</insert>
 	
-	<select id="boardTable" resultType="dto.BoardDTO">
+	<select id="boardTable" resultType="dto.DefaultBoardDTO">
 		select * from board where b_category_c_num=2 order by b_num 
 	</select>
 	

@@ -3,7 +3,7 @@ package service;
 import java.util.List;
 
 import dto.AirinfoDTO;
-import dto.BoardDTO;
+import dto.DefaultBoardDTO;
 import dto.CityDTO;
 import dto.ClientDTO;
 import dto.ReservationDTO;
@@ -31,10 +31,10 @@ public interface AdminService {
 	
 	public List<CityDTO> cityListProcess();
 	
-	public List<BoardDTO> boardTableSelectProcess();
+	public List<DefaultBoardDTO> boardTableSelectProcess();
 	
 	public void boardLikeResetPointProcess(ClientDTO dto);
 	public ClientDTO boardLikeResetSelect(String user_id);
-	public void likeResetProcess(BoardDTO dto);
-	public void likeResetDeleteProcess(BoardDTO dto);
+	public void likeResetProcess(DefaultBoardDTO dto);
+	public void likeResetDeleteProcess(DefaultBoardDTO dto);
 }

@@ -10,7 +10,8 @@ public class PageDTO {
 	private int endRow; // 끝 레코드번호
 	private int startPage; // 한 블록의 시작 페이지 번호
 	private int endPage; // 한 블록의 끝페이지 번호
-	private int number;	
+	private int number;
+	private String city_code;
 	
 	private String searchKey;
 	private String searchWord;
@@ -145,6 +146,16 @@ public class PageDTO {
 
 	public void setSearchWord(String searchWord) {
 		this.searchWord = searchWord;
+	}
+
+
+	public String getCity_code() {
+		return city_code;
+	}
+
+
+	public void setCity_code(String city_code) {
+		this.city_code = city_code;
 	}
 
 }

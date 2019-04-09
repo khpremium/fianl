@@ -32,6 +32,11 @@
 				<value>classpath:config/clientMapper.xml</value>
 				<value>classpath:config/helpCMapper.xml</value>
 				<value>classpath:config/adminMapper.xml</value>
+				<value>classpath:config/suggestMapper.xml</value>
+				<value>classpath:config/boardMapper.xml</value>
+				<value>classpath:config/filesMapper.xml</value>
+				<value>classpath:config/commentMapper.xml</value>
+				<value>classpath:config/like_chkMapper.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -59,6 +64,7 @@
 		<aop:advisor advice-ref="txAdvice" pointcut="execution(* service.HelpCServiceImp.*Process(..))"/>
 		<aop:advisor advice-ref="txAdvice" pointcut="execution(* service.ClientServiceImp.*Process(..))"/>
 		<aop:advisor advice-ref="txAdvice" pointcut="execution(* mypage.MypassportServiceImp.*Process(..))"/>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* service.Board*.*(..))"/>
 	</aop:config>
 	
 	<!-- DAO -->
@@ -92,6 +98,9 @@
 	<bean id="mybdao" class="mypage.BoardDaoImp">
 		<property name="sqlSession" ref="sqlSession"/>
 	</bean>
+	<bean id="bdao" class="dao.BoardDaoImp">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
 	
 	<!-- Service -->
 	<bean id="rservice" class="service.ReservationServiceImp">
@@ -122,6 +131,9 @@
 	<bean id="mybservice" class="mypage.BoardServiceImp">
 		<property name="mybdao" ref="mybdao"/>
 	</bean>
+	<bean id="bservice" class="service.BoardServiceImp">
+		<property name="dao" ref="bdao" />
+	</bean>	
 	
 	<!-- controller -->
 	<bean class="controller.ReservationController">
@@ -149,6 +161,12 @@
 	<bean class="controller.AdminController">
 		<property name="service" ref="aservice" />
 	</bean>
+    <bean class="controller.SuggestController">
+       <property name="service" ref="bservice"></property>
+    </bean>		
+	<bean class="controller.BoardController">
+       <property name="service" ref="bservice"></property>
+    </bean>	
 	
 	<!-- 이메일 구현 -->
 	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
