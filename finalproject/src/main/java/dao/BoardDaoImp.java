@@ -10,6 +10,7 @@ import dto.CityDTO;
 import dto.CityPageDTO;
 import dto.CommentDTO;
 import dto.FilesDTO;
+import dto.Like_chkDTO;
 import dto.PageDTO;
 
 public class BoardDaoImp implements BoardDAO{
@@ -38,26 +39,13 @@ public class BoardDaoImp implements BoardDAO{
 		sqlSession.insert("like_chk.first_insert",dto);
 	}
 	
-	@Override
-	public int first_chk(BoardDTO dto) {
-		return sqlSession.selectOne("like_chk.FirstChk",dto);
-	}
+
 	
     @Override
-	public int likechk(BoardDTO dto) {
+	public Like_chkDTO likechk(BoardDTO dto) {
 		return sqlSession.selectOne("like_chk.likeChk", dto);
 	}
 	
-	@Override
-	public void chk_liked(BoardDTO dto) {
-		sqlSession.update("like_chk.chk_liked", dto);
-	}
-	
-    @Override
-	public void chk_unliked(BoardDTO dto) {
-    	sqlSession.update("like_chk.chk_unliked", dto);
-	}
-    
 	@Override
 	public void chk_del(BoardDTO dto) {
 		sqlSession.delete("like_chk.chk_del",dto);

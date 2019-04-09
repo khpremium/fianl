@@ -14,7 +14,7 @@ public class BoardDTO {
 	private int b_like;
 	private String user_id;
 	private String city_code;
-	private int catnum;
+	private int b_category_c_num;
 	private String title;
 	private Date upload_date;
 	private int userLikeChk = 0;
@@ -108,14 +108,14 @@ public class BoardDTO {
 		this.city_code = city_code;
 	}
 	
-	public int getCatnum() {
-		return catnum;
+	public int getB_category_c_num() {
+		return b_category_c_num;
 	}
-
-	public void setCatnum(int catnum) {
-		this.catnum = catnum;
+	
+	public void setB_category_c_num(int b_category_c_num) {
+		this.b_category_c_num = b_category_c_num;
 	}
-
+	
 	public String getTitle() {
 		return title;
 	}

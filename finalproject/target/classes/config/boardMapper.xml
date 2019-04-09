@@ -63,8 +63,8 @@
      <![CDATA[ 
 	 select b.* from
      (select rownum as rm, a.* from(
-     select * from board where (title like '%' || #{searchWord} || '%') or (b_content like '%' || #{searchWord} || '%') and b_category_c_num=2  order by b_num desc)a)b
-     where b.rm>=#{startRow} and b.rm<=#{endRow}
+     select * from board where (title like '%' || #{searchWord} || '%' or b_content like '%' || #{searchWord} || '%') and b_category_c_num =2 order by b_num desc)a)b
+     where b.rm>=#{startRow} and b.rm<=#{endRow} 
 	 ]]>  
     </select>
     

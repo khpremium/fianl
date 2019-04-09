@@ -212,15 +212,6 @@ public class SuggestController {
 	
 	@RequestMapping(value= "/chkCity.do", method=RequestMethod.GET)
 	public @ResponseBody List<CityDTO> getCityCode(String country_code) {
-/*		List<CityDTO> cityList = null; 
-		if(country_code.equals("KO")) {
-			cityList = service.getCityListProcess(country_code);
-		}else if(country_code.equals("CN")) {
-			cityList = service.getCityListProcess(country_code);
-		}else if(country_code.equals("JP")) {
-			cityList = service.getCityListProcess(country_code);
-		}*/
-		//return cityList;
 		return service.getCityListProcess(country_code);
 	}
 	

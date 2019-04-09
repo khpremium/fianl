@@ -10,6 +10,7 @@ import dto.CityDTO;
 import dto.CityPageDTO;
 import dto.CommentDTO;
 import dto.FilesDTO;
+import dto.Like_chkDTO;
 import dto.PageDTO;
 
 public interface BoardDAO {
@@ -28,11 +29,10 @@ public interface BoardDAO {
 	public void unliked(int b_num);
 	public int likeCount(int b_num);
 		
-	public int first_chk(BoardDTO dto);
+	//public int first_chk(BoardDTO dto);
+	//public void likechk(BoardDTO dto);
+	public Like_chkDTO likechk(BoardDTO dto);
 	public void insertLike(BoardDTO dto);
-	public int likechk(BoardDTO dto);
-	public void chk_liked(BoardDTO dto);
-	public void chk_unliked(BoardDTO dto);
 	public void chk_del(BoardDTO dto);
 	
 	public BoardDTO getMostLiked();

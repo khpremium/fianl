@@ -9,6 +9,7 @@ import dto.CityDTO;
 import dto.CityPageDTO;
 import dto.CommentDTO;
 import dto.FilesDTO;
+import dto.Like_chkDTO;
 import dto.PageDTO;
 
 
@@ -24,15 +25,11 @@ public interface BoardService {
 	public int BoardcityCountProcess(String city_code);
 	public int boardSearchCountPro(PageDTO pdto);	
 	
-	public void likedProcess(int b_num);
-	public void UnlikedProcess(int b_num);
+
 	public int likeCountProcess(int b_num);
-	
 	public int likechkProcess(BoardDTO dto);
-	public void insertLikePro(BoardDTO dto);
 	public int UserLikeChk(BoardDTO dto);
-	public void chk_likedPro(BoardDTO dto);
-	public void chk_unlikedPro(BoardDTO dto);
+
 		
 	public List<CityDTO> getCityListProcess(String country_code);
 	public List<BoardDTO> listProcess(PageDTO pdto);
