@@ -8,11 +8,11 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="view/assets/css/main.css" />
 	</head>
-	<body class="subpage">
+	<body>
 
 		<!-- Header -->
-			<header id="header" class="alt">
-				<div class="logo"><a href="index.html">KH Air<sup>™</sup></a></div>
+			<header id="header">
+				<div class="logo"><a href="index.html">Road Trip <span>by TEMPLATED</span></a></div>
 				<a href="#menu"><span>Menu</span></a>
 			</header>
 
