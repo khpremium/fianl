@@ -356,7 +356,7 @@
         <h1 class="my-4" style="color: #555;">Suggestions for you
           <small>Food&Place</small>
         </h1>
-        <c:if test="${sessionScope.user_id eq 'admin'}">
+        <c:if test="${sessionScope.id eq 'admin'}">
         <form id="frm" name="frm" method="get" action="suggestWriteForm.do">
 		   <input class="btn btn-secondary" type="submit" id="btnWrite" value="관리자 글쓰기" style="margin-left: 104%;" />
         </form>

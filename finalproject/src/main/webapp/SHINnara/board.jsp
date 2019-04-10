@@ -353,12 +353,12 @@
         <h1 class="my-4" style="color: #555;">여행 코스 제안 
           <small>Travel is the pleasure</small>
         </h1>
-        <c:if test="${empty sessionScope.user_id}">
+        <c:if test="${empty sessionScope.id}">
         <form >
 		   <input class="btn btn-secondary" type="button" id="btnWrite" value="로그인 후 글쓰기 가능" style="margin-left: 104%;" />
         </form> 
         </c:if> 
-        <c:if test="${not empty sessionScope.user_id}">
+        <c:if test="${not empty sessionScope.id}">
         <form id="frm" name="frm" method="get" action="boardWirteForm.do">
 		   <input class="btn btn-secondary" type="submit" id="btnWrite" value="글쓰기" style="margin-left: 104%;" />
         </form>       
