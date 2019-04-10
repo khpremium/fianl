@@ -474,7 +474,7 @@
 	    <div id="files"></div>
 
 
-		<input type="hidden" name="user_id" id="user_id" value="test00">
+		<input type="hidden" name="user_id" id="user_id" value="${sessionScope.id }">
 	  <div id="btnSpace" style="margin-top: 3%; margin-left: 40% ">
 		<input type="button" id="btnSave" value="글쓰기" class="btn btn-primary" style="height: 35px; width: 65px; font-size:small; text-align: center; "/> 
 		<input type="button" id="btnList" value="취소" class="btn btn-primary" style="height: 35px; width: 53px; font-size:small; text-align: center; "/>
