@@ -440,8 +440,11 @@
                 <c:if test="${not empty sessionScope.user_id  }">
                 <button type="button" id="CmWriteBtn" class="btn btn-primary" style="margin-left: 5%;margin-bottom: 5%;" >
                                      등록</button>
-                </c:if>                    
-          </div>
+                </c:if>    
+                <c:if test="${empty sessionScope.user_id}">
+                                       로그인 해주세요
+                </c:if>                
+               </div>
           </div>
         </div>
         </form>
