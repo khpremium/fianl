@@ -10,13 +10,13 @@
     .menu a{cursor:pointer;}
     .menu .hide{display:none;}
     ul{list-style-type: none}
-    .hide{margin-left: 20%; list-style-type: disc;}
+    a:hover{text-decoration: none !important;}
     .media-body h4, .media-body p{display: inline;}
     #cityList a{color: #6c757d;}
     #cityList a:hover{color:#F64747 !important;}
     .btn-primary{
     background-color: #F64747 !important;
-    border-color: #F64747 !important;}    
+    border-color: #F64747 !important;}
 #header {
 		background-color: transparent;
 		color: #fdd1d1;
@@ -489,7 +489,7 @@
       </div>
 
       <!-- Sidebar Widgets Column -->
-      <div class="col-md-4" style="margin-top: 8% !important">
+      <div class="col-md-4" style="margin-top: 6% !important">
 
         <!-- Search Widget -->
         <div class="card my-4">

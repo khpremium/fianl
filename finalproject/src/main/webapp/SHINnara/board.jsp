@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+    a:hover{text-decoration: none !important;}
     .menu a{cursor:pointer;}
     .menu .hide{display:none;}]
     ul{list-style-type: none !important;}
@@ -353,13 +354,11 @@
           <small>Travel is the pleasure</small>
         </h1>
         
-       <%--  <c:if test="${not empty sessionScope.user_id}"> --%>
-
+        <c:if test="${not empty sessionScope.user_id}">
         <form id="frm" name="frm" method="get" action="boardWirteForm.do">
 		   <input class="btn btn-secondary" type="submit" id="btnWrite" value="글쓰기" style="margin-left: 104%;" />
-        </form>
-        
-       <%-- </c:if> --%>
+        </form>       
+       </c:if>
         
         <!--  여기에 좋아요 제일 많이 받은 게시물 따로 뽑아주기 명예의 전당?  -->
         <c:if test="${not empty mlList }">

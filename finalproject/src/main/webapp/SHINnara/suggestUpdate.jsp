@@ -13,7 +13,7 @@
     .btn-primary{
     background-color: #F64747 !important;
     border-color: #F64747 !important;}
-
+    a:hover{text-decoration: none !important;}
 
 #header {
 		background-color: transparent;

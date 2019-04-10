@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+    a:hover{text-decoration: none !important;}
     .menu a{cursor:pointer;}
     .menu .hide{display:none;}
     ul{list-style-type: none !important;}
@@ -407,8 +408,10 @@ star-input>.input.focus{outline:1px dotted #ddd;}
            <input type="hidden" name="currentPage" id="currentPage" value="${currentPage}" />
            <input type="hidden" value=" ${boardDTO.b_category_c_num }" id="b_category_c_num" name="b_category_c_num">
            <input type="hidden" value="${boardDTO.user_id }" id = "user_id" name="user_id">
+           <c:if test="${sessionScope.user_id eq 'admin' }">
            <input type="submit" id="delete" value="삭제" class="btn btn-primary" style="height: 35px; width: 53px; font-size:small; text-align: center; margin-left: 60%;">
            <input type="submit" id="modify" value="수정" class="btn btn-primary" style="height: 35px; width: 53px; font-size:small; text-align: center;">
+           </c:if>
         </p>
         </form>
         <hr>
@@ -500,8 +503,10 @@ star-input>.input.focus{outline:1px dotted #ddd;}
           <div class="card-body">
               <div class="form-group">
                 <textarea class="form-control" style="width: 80%; margin: 0;"  rows="2" name="cm_content" id="cm_content"></textarea>
+                <c:if test="${not empty sessionScope.user_id }">
                 <button type="button" id="CmWriteBtn" class="btn btn-primary" style="margin-left: 5%;margin-bottom: 5%;" >
                                      등록</button>
+                </c:if>
           </div>
           </div>
         </div>
@@ -526,18 +531,13 @@ star-input>.input.focus{outline:1px dotted #ddd;}
        </div>
        </div>   
         <div id="BtnBox" style="margin-left: 76%; margin-top: 2px;">
+        <c:if test="${sessionScope.user_id eq CmDTO.user_id}">
           <p>
            <button id="${CmDTO.cm_num}" class="btn btn-primary" style="height: 35px; width: 53px; font-size:small; text-align: center;">수정</button> 
            <button id="${CmDTO.cm_num}" class="btn btn-primary" style="height: 35px; width: 53px; font-size:small; text-align: center; ">삭제</button>
           </p>
+        </c:if>  
         </div>
-        <%--         
-        <c:if test="${session.user_id eq CmDTO.user_id}">
-           <p>
-             <input type="button" id="cmModifyBtn" value="수정">
-             <input type="button" id="cmDeleteBtn" value="삭제">
-           </p>
-        </c:if> --%>
        </c:forEach>  <!-- 댓글 forEach -->
 
       

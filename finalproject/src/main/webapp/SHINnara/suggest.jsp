@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 <style>
+    a:hover{text-decoration: none !important;}
     .btn-primary{background-color: #F64747 !important; border-color: #F64747 !important;}
     .card-header{
 /*     background-color: #E6E6E6 !important;  */
@@ -355,11 +356,11 @@
         <h1 class="my-4" style="color: #555;">Suggestions for you
           <small>Food&Place</small>
         </h1>
-       <%--  <c:if test="${sessionScope.user_id eq 'admin'}"> --%>
+        <c:if test="${sessionScope.user_id eq 'admin'}">
         <form id="frm" name="frm" method="get" action="suggestWriteForm.do">
 		   <input class="btn btn-secondary" type="submit" id="btnWrite" value="관리자 글쓰기" style="margin-left: 104%;" />
         </form>
-        <%-- </c:if> --%>
+        </c:if>
         <!-- Blog Post -->
         <div class="card mb-4">
 

@@ -10,7 +10,7 @@
     .menu a{cursor:pointer;}
     .menu .hide{display:none;}]
     ul{list-style-type: none !important;}
-
+    a:hover{text-decoration: none !important;}
 #header {
 		background-color: transparent;
 		color: #fdd1d1;
