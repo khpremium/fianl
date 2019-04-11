@@ -364,19 +364,7 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 </head>
 </head>
 <body>
-
-	<header id="header">
-		<div class="logo"><a href="index.html">Road Trip <span>by TEMPLATED</span></a></div>
-		<a href="#menu"><span>Menu</span></a>
-	</header>
-<!-- Nav -->
-	<nav id="menu">
-		<ul class="links">
-			<li><a href="index.html">Home</a></li>
-			<li><a href="generic.html">Generic</a></li>
-			<li><a href="elements.html">Elements</a></li>
-		</ul>
-	</nav>
+<jsp:include page="../joinMain/newIndex.jsp"></jsp:include>
 
   <!-- Page Content -->
   <div class="container" id="container">
@@ -474,7 +462,7 @@ star-input>.input.focus{outline:1px dotted #ddd;}
       <h4>댓글 작성</h4>
        <c:forEach var="boardDTO" items="${vList}">
         <form name="commentFrm" id="commentFrm" action="commentWrite.do">
-        <input type="hidden" name="user_id" id="user_id" value="test01">
+        <input type="hidden" name="user_id" id="user_id" value="${boardDTO.user_id}">
         <input type="hidden" name="board_b_num" id="board_b_num" value="${boardDTO.b_num}">
         <div class="card my-4" style="position: inherit; width: 100%; height: 150px;">
         <!-- 별점 시작 -->
@@ -534,7 +522,7 @@ star-input>.input.focus{outline:1px dotted #ddd;}
        </div>
        </div>   
         <div id="BtnBox" style="margin-left: 76%; margin-top: 2px;">
-        <c:if test="${sessionScope.id eq CmDTO.user_id}">
+        <c:if test="${sessionScope.id eq CmDTO.user_id || sessionScope.id eq 'admin'}">
           <p>
            <button id="${CmDTO.cm_num}" class="btn btn-primary" style="height: 35px; width: 53px; font-size:small; text-align: center;">수정</button> 
            <button id="${CmDTO.cm_num}" class="btn btn-primary" style="height: 35px; width: 53px; font-size:small; text-align: center; ">삭제</button>

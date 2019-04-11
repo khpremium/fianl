@@ -409,18 +409,7 @@
 </head>
 
 <body>
-	<header id="header">
-		<div class="logo"><a href="index.html">Road Trip <span>by TEMPLATED</span></a></div>
-		<a href="#menu"><span>Menu</span></a>
-	</header>
-<!-- Nav -->
-	<nav id="menu">
-		<ul class="links">
-			<li><a href="index.html">Home</a></li>
-			<li><a href="generic.html">Generic</a></li>
-			<li><a href="elements.html">Elements</a></li>
-		</ul>
-	</nav>
+<jsp:include page="../joinMain/newIndex.jsp"></jsp:include>
   <!-- Page Content -->
   <div class="container">
 
@@ -473,7 +462,7 @@
 	    <div class="fileDrop" style="border-color: blue; width: 70%; height: 110px; margin-left: 18%; overflow-y: auto;"></div>
 	    <div id="files"></div>
 
-
+       
 		<input type="hidden" name="user_id" id="user_id" value="${sessionScope.id }">
 	  <div id="btnSpace" style="margin-top: 3%; margin-left: 40% ">
 		<input type="button" id="btnSave" value="글쓰기" class="btn btn-primary" style="height: 35px; width: 65px; font-size:small; text-align: center; "/> 
