@@ -1,12 +1,5 @@
 package dao;
 
-import java.util.HashMap;
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
-import org.springframework.stereotype.Repository;
-
 import dto.ClientDTO;
 
 public interface ClientDAO {

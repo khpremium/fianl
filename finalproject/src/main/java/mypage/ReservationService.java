@@ -1,6 +1,5 @@
 package mypage;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;

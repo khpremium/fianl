@@ -6,10 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import dto.BoardDTO;
 import dto.CityDTO;
-import dto.CityPageDTO;
 import dto.CommentDTO;
 import dto.FilesDTO;
-import dto.Like_chkDTO;
 import dto.PageDTO;
 
 

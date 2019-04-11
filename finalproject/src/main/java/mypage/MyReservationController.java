@@ -1,8 +1,6 @@
 package mypage;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,10 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
-
-import dto.ClientDTO;
 
 //http://localhost:8090/myfinal/reschk.do
 
@@ -96,7 +90,5 @@ public class MyReservationController {
 		mav.setViewName("view/non_resCheck");
 		return mav;
 	}
-
-	
 	
 }// class

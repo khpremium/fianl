@@ -13,14 +13,11 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.BoardDAO;
-import dto.BcatDTO;
 import dto.BoardDTO;
 import dto.CityDTO;
-import dto.CityPageDTO;
 import dto.CommentDTO;
 import dto.FilesDTO;
 import dto.PageDTO;
-import sun.print.resources.serviceui;
 
 public class BoardServiceImp implements BoardService {
 	

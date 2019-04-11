@@ -1,11 +1,8 @@
 package mypage;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-
-import dto.ClientDTO;
 
 public class ReservationServiceImp implements ReservationService {
 	private ReservationDAO myrdao;

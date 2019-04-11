@@ -4,10 +4,8 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
-import dto.BcatDTO;
 import dto.BoardDTO;
 import dto.CityDTO;
-import dto.CityPageDTO;
 import dto.CommentDTO;
 import dto.FilesDTO;
 import dto.Like_chkDTO;
