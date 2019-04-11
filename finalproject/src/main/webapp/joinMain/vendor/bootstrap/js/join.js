@@ -4,7 +4,7 @@ function idFunction(){
 	var id = $('#id').val();
 	
 	if(id.length < 6){
-		$('#errCustID2').html('비밀번호는 6자리 이상');
+		$('#errCustID2').html('아이디는 6자리 이상');
 	}else {
 		$('#errCustID2').html('');
 	}
@@ -15,10 +15,14 @@ function idFunction(){
 		data: {id : id},
 		success: function(data){
 			 if(data ==0){
-	                $('#errCustID').html("사용가능");                
-	            }else{
+				 if(id.length <6){
+					 $('#errCustID').html("사용불가");
+				 }else{
+	                $('#errCustID').html("사용가능");
+				 }
+	          }else{
 	                $('#errCustID').html("사용불가");
-	            }
+	          }
 	        },
 	        error:function(){
 	                alert("에러입니다");

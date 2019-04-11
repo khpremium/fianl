@@ -12,6 +12,7 @@ public interface AdminDAO {
 	public List<ClientDTO> clientSelectMethod();
 	public void clientDeleteMethod(String id);
 	public int clientChkMethod(String id);
+	public int clientChkMethod2(String id);
 	public ClientDTO clientUpdateSelectMethod(String id);
 	public void clientUpdateMethod(ClientDTO dto);
 	public void clientInsertMethod(ClientDTO dto);

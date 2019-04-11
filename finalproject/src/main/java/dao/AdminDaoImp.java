@@ -35,6 +35,11 @@ public class AdminDaoImp implements AdminDAO {
 	public int clientChkMethod(String id) {
 		return sqlSession.selectOne("mt.clientChk",id);
 	}
+	
+	@Override
+	public int clientChkMethod2(String id) {
+		return sqlSession.selectOne("mt.clientChk2",id);
+	}
 
 	@Override
 	public ClientDTO clientUpdateSelectMethod(String id) {
@@ -139,5 +144,7 @@ public class AdminDaoImp implements AdminDAO {
 
 		
 	}
+
+	
 
 }

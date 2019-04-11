@@ -370,7 +370,7 @@
            <input type="hidden" name="b_content"  value="${boardDTO.b_content}">     
            <input type="hidden" name="city_code" value="${boardDTO.city_code}" /> 
            <input type="hidden" name="b_num" id="b_num" value="${boardDTO.b_num}" /> 
-           <input type="hidden" name="user_id" id="user_id" value="${boardDTO.user_id}"/>
+           <input type="hidden" name="user_id" value="${sessionScope.id}"/>
            <input type="hidden" name="currentPage" id="currentPage" value="${currentPage}" />
            <input type="hidden" value=" ${boardDTO.b_category_c_num }" id="b_category_c_num" name="b_category_c_num">
            <c:if test="${sessionScope.id eq boardDTO.user_id || sessionScope.id eq 'admin'}">
@@ -415,7 +415,7 @@
       <h4>댓글 작성</h4>
        <c:forEach var="boardDTO" items="${vList}">
         <form name="commentFrm" id="commentFrm" action="commentWrite.do">
-        <input type="hidden" name="user_id" id="user_id" value="${boardDTO.user_id}">
+        <input type="hidden" name="user_id" id="user_id" value="${sessionScope.id}">
         <input type="hidden" name="board_b_num" id="board_b_num" value="${boardDTO.b_num}">
         <div class="card my-4" style="position: inherit; width: 100%; height: 100px;">
         <!-- 별점 시작 -->
@@ -448,15 +448,15 @@
         <div id="comment" class="comment">
         <div class="media mb-4" style="border:1px solid rgba(0,0,0,.125);width: 91%;margin-bottom: 0 !important;" id="commentArea">
           <div class="media-body" id="${cmDTO.cm_num }">
-            <h4 class="mt-0" style="margin-left: 3%; border-bottom-color: black;" id="user_id">${CmDTO.user_id }</h4>
+            <h4 class="mt-0" style="margin-left: 3%; border-bottom-color: black;" >${CmDTO.user_id }</h4>
             
             <div id="cmCon" style="margin-left: 7%; font-size:medium; margin-top: 2%; margin-bottom: 2%;" contenteditable="false" >${CmDTO.cm_content}</div>
           </div>
        </div>
        </div>   
         <div id="BtnBox" style="margin-left: 76%; margin-top: 2px;">
-        <c:if test="${sessionScope.id eq CmDTO.user_id || sessionScope.id eq 'admin'} ">
-          <p>
+        <c:if test="${sessionScope.id == CmDTO.user_id || sessionScope.id == 'admin'}">
+         <p>
            <button id="${CmDTO.cm_num}" class="btn btn-primary" style="height: 35px; width: 53px; font-size:small; text-align: center;">수정</button> 
            <button id="${CmDTO.cm_num}" class="btn btn-primary" style="height: 35px; width: 53px; font-size:small; text-align: center; ">삭제</button>
           </p>

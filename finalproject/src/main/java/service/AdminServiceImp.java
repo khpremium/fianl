@@ -32,7 +32,7 @@ public class AdminServiceImp implements AdminService{
 
 	@Override
 	public int clientChkProcess(String id) {
-		return dao.clientChkMethod(id);
+		return dao.clientChkMethod(id)+dao.clientChkMethod2(id);
 	}
 
 	@Override

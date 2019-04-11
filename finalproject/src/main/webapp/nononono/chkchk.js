@@ -18,7 +18,7 @@ function clientProcess(){
 		url:'clientChkProcess.do?id='+id,
 		success: function(res) {
 			if(res!=0){
-				alert('선택 회원의 예약내역을 먼저 삭제해주세요');
+				alert('선택 회원의 예약내역 및 게시글을 먼저 삭제해주세요');
 				console.log(res);
 				return false;
 			}else{

@@ -15,8 +15,13 @@
 	
 	<select id="clientChk" parameterType="string" resultType="int">
 		select count(rv_num) from reservation where user_id = #{id}
-		
 	</select>
+	
+	<select id="clientChk2" parameterType="string" resultType="int">
+		select count(b_num) from board where user_id = #{id}
+	</select>
+	
+	
 	
 	<select id="clientUpdateSelect" parameterType="string" resultType="dto.ClientDTO">
 		select * from client where id= #{id}

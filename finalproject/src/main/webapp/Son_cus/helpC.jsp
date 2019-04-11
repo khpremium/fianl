@@ -18,48 +18,33 @@
 	rel="stylesheet">
 
 <link rel="stylesheet" href="Son_cus/assets/css/main.css" />
-<style> 
-/* 마스크 뛰우기 */
-#mask2 {  
-    position:absolute;  
-    z-index:9000;  
-    background-color:#000;  
-    display:none;  
-    left:0;
-    top:0;
-} 
-/* 팝업으로 뜨는 윈도우 css  */ 
-.window2{
-    display: none;
-    position:absolute;  
-    left:50%;
-    top:50px;
-    margin-left: -500px;
-    width:500px;
-    height:400px;
-    background-color:#FFF;
-    z-index:10000;   
- }
- 
-</style>
+
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		if('${pv.startPage}'>1){
 			$('#preBtn').removeClass();
-			$('#preBtn').addClass('button small');
+			$('#preBtn').addClass('button alt');
+			
 		}else{
 			$('#preBtn').removeClass();
-			$('#preBtn').addClass('button alt small');
+			$('#preBtn').addClass('button alt disabled');
+			
 		};
 		if('${pv.endPage}'<'${pv.totalPage}'){
 			$('#nextBtn').removeClass();
-			$('#nextBtn').addClass('button small');
+			$('#nextBtn').addClass('button alt');
 		}else{
 			$('#nextBtn').removeClass();
-			$('#nextBtn').addClass('button alt small');
+			$('#nextBtn').addClass('button alt disabled');
+			
 		};
 		
+		
+		$('.button alt small').on('click',function(){
+			alert('');
+			return false;
+		});
 	});
 	function showPopup() { window.open("boardWirete.do", "a", "width=506, height=546, left=150, top=100"); }
 
