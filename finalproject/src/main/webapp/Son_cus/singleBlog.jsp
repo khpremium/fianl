@@ -115,7 +115,11 @@ body{
 								coment+= '</h6><div id="cm_content">';
 								coment+= value.cm_content;
 								coment+= '</div></div>';
+<<<<<<< HEAD
 								if(value.user_id=='${sessionScope.id}'||'${sessionScope.id}'=='admin'){
+=======
+								if(value.user_id=='${sessionScope.id}' || '${sessionScope.id}'=='admin'){
+>>>>>>> branch 'ttttttte' of https://github.com/khpremium/final.git
 									coment+='<input type="image" src="images/삭제.png"  width="30px"	height="30px">'
 									coment+='<input type="hidden" name="cm_num" value="'+value.cm_num+'">'
 									coment+='<input type="image" src="images/수정.png" width="30px"	height="32px">'
@@ -211,7 +215,7 @@ body{
 								<h6 class="mt-0">${cdto.c_date }</h6>
 								<div id="cm_content">${cdto.cm_content } </div>
 							</div>
-							<c:if test="${cdto.user_id==sessionScope.id || 'admin'==sessionScope.id}">
+							<c:if test="${cdto.user_id==sessionScope.id || sessionScope.id=='admin'}">
 								<input type="image" src="images/삭제.png" width="30px"	height="30px">
 								<input type="hidden" name="cm_num" value="${cdto.cm_num }">
 								<input type="image" src="images/수정.png" width="30px"	height="32px">
