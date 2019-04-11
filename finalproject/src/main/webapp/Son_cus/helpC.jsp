@@ -69,19 +69,7 @@
 
 <body>
 	<!-- Header -->
-			<header id="header">
-				<div class="logo"><a href="helpMain.do">KH Air <span>(주)</span></a></div>
-				<a href="#menu"><span>Menu</span></a>
-			</header>
-		
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="helpMain.do">Home</a></li>
-					<li><a href="Son_cus/generic.html">Generic</a></li>
-					<li><a href="Son_cus/elements.html">Elements</a></li>
-				</ul>
-			</nav>
+		<jsp:include page="../joinMain/newIndex.jsp"></jsp:include>
 	
 	<section id="one" class="wrapper post bg-img" data-bg="../Son_cus/images/backg6.jpg">
 	
@@ -120,7 +108,7 @@
 				</div>
 					<footer>
 					<%-- login --%>
-					<c:if test="admin==(String)session.getAttribute('id')">
+					<c:if test="${sessionScope.id == 'admin' }">
 					<span class="input-group-btn">
 						<input type="submit" class="button" id="bwriteBtn" value="글쓰기" onclick="showPopup();"/>
 					</span>

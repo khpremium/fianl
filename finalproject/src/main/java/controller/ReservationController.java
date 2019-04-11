@@ -66,6 +66,7 @@ public class ReservationController {
 	// 예약 실행
 	@RequestMapping("/reservation.do")
 	public String guestReservation(ReservationDTO rdto, RedirectAttributes reattr, HttpSession session) {
+		System.out.println("aaaaa");
 		service.reservationProcess(rdto, session);
 		if(rdto.getNon_name() == null)
 			return "redirect:/main.do";
@@ -94,6 +95,7 @@ public class ReservationController {
 	// 카카오페이 rest 요청
 	@RequestMapping(value = "/kakaoPro.do", method = RequestMethod.POST)
 	public @ResponseBody String kakaoPayment(String name, int price, int p_count) throws IOException {
+		System.out.println("abc");
 		String input = "";
 		String total = "";
 		String url = "https://kapi.kakao.com/v1/payment/ready";
@@ -108,7 +110,7 @@ public class ReservationController {
 		url += "&fail_url=http://localhost:8090/myfinal/kakaoRes.do?result=fail";
 		url += "&cancel_url=http://localhost:8090/myfinal/kakaoRes.do?result=cancel";
 		// url += "&query=" + URLEncoder.encode(search, "UTF-8");
-		
+		System.out.println(url);
 		URL url2 = new URL(url);
 		URLConnection conn = url2.openConnection();
 		HttpURLConnection urlConn = (HttpURLConnection) conn;
@@ -127,6 +129,7 @@ public class ReservationController {
 	// 카카오페이 결과 받아오는곳
 	@RequestMapping("/kakaoRes.do")
 	public ModelAndView kakaoResult(String result) {
+		System.out.println("zxc");
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("result", result);
 		mav.setViewName("/view/kakaores");

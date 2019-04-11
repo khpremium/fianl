@@ -160,6 +160,11 @@ public class PagingDTO {
 		this.user_id = user_id;
 	}
 
+
+	
+
+
+	
 	
 	
 }

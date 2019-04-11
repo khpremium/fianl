@@ -35,14 +35,15 @@
 </head>
 
 <body id="page-top">
+
+	
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
     <a class="navbar-brand mr-1" href="adminMain.do">관리자 전용 페이지</a>
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle">
       <i class="fas fa-bars"></i>
     </button>
     <!-- Navbar -->
-    <ul class="navbar-nav ml-auto ml-md-0">
-    </ul>
+    <div style="right:5%; position: absolute;"><a class="navbar-brand mr-1" href="/myfinal/main.do">홈</a></div>
   </nav>
   <div id="wrapper">
 

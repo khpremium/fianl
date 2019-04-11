@@ -203,7 +203,7 @@ $(function(){
 //취소 버튼
 $(document).ready(function() {
 	$('#joinCancle').on('click', function(){
-		location.href="newIndex.do";
+		location.href="/myfinal/main.do";
 	});
 });
 

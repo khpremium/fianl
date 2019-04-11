@@ -41,7 +41,7 @@ public class MypageController {
 	public void setService4(MypassportService service4) {
 		this.service4 = service4;
 	}
-	
+	//http://localhost:8090/myfinal/profile.do
 	@RequestMapping("profile.do")
 	public ModelAndView profileList(HttpSession session,PagingDTO pv) {
 		ModelAndView mav= new ModelAndView();
@@ -55,15 +55,20 @@ public class MypageController {
 				currentPage = pv.getCurrentPage();
 			}
 			pv = new PagingDTO(currentPage, totalRecord);
+			pv.setUser_id(user_id);
 			mav.addObject("pv", pv);
+			System.out.println("aa");
 			mav.addObject("myblist",service2.mylistProcess(pv));
+			System.out.println("bb");
 		}
+		System.out.println("cc");
 		List<ReservationDTO> list = service3.reservationProcess(user_id);
+		System.out.println("dd");
 		String rv_code;
 		if(!list.isEmpty())
 			rv_code = list.get(0).getRv_code();
 		else
-			rv_code = "";
+			rv_code = "a";
 		mav.addObject("myprofile",service.profileProcess(user_id));
 		mav.addObject("myres",list);
 		mav.addObject("passport",service4.passportProcess(rv_code));

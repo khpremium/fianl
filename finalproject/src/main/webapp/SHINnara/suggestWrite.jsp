@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+    a:hover{text-decoration: none !important;}
     .menu a{cursor:pointer;}
     .menu .hide{display:none;}
     ul{list-style-type: none !important;}
@@ -403,19 +404,7 @@
 </head>
 
 <body>
-
-	<header id="header">
-		<div class="logo"><a href="index.html">Road Trip <span>by TEMPLATED</span></a></div>
-		<a href="#menu"><span>Menu</span></a>
-	</header>
-<!-- Nav -->
-	<nav id="menu">
-		<ul class="links">
-			<li><a href="index.html">Home</a></li>
-			<li><a href="generic.html">Generic</a></li>
-			<li><a href="elements.html">Elements</a></li>
-		</ul>
-	</nav>
+<jsp:include page="../joinMain/newIndex.jsp"></jsp:include>
 
   <!-- Page Content -->
   <div class="container">
@@ -470,7 +459,7 @@
 	    <div id="files"></div>
 
 
-		<input type="hidden" name="user_id" id="user_id" value="test01">
+		<input type="hidden" name="user_id" id="user_id" value="${sessionScope.id }">
 	  <div id="btnSpace" style="margin-top: 3%; margin-left: 40% ">
 		<input type="button" id="btnSave" value="글쓰기" class="btn btn-primary" style="height: 35px; width: 65px; font-size:small; text-align: center; "/> 
 		<input type="button" id="btnList" value="취소" class="btn btn-primary" style="height: 35px; width: 53px; font-size:small; text-align: center; "/>

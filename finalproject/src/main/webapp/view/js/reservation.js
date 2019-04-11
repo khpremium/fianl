@@ -27,7 +27,7 @@ oData 객체에는 결제 인증 결과와 전달한 returnUrl 정보가 함께 
 				// 네이버페이 결제 승인 요청 처리
 				alert('결제성공');
 				$('#payment_chk').val(1);
-				$('form').submit();
+				$('#select').submit();
 			} else {
 				// 필요 시 oData.resultMessage 에 따라 적절한 사용자 안내 처리
 				alert('결제실패\n사유:' + oData.resultMessage);
@@ -177,7 +177,7 @@ function kakaoResultProcess(res) {
 		alert('결제에 실패하였습니다.');
 	else {
 		$('#payment_chk').val(1);
-		$('form').submit();
+		$('#select').submit();
 	}
 }
 

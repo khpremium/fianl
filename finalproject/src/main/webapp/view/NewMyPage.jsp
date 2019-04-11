@@ -133,22 +133,7 @@ input{
 </head>
 <body>
 		<!-- Header -->
-			<header id="header">
-				<div class="logo"><a href="view/index.html">KH AIR<span> In My Page</span></a></div>
-				<a href="#menu"><span>Menu</span></a>
-			</header>
-
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="main.do">Home</a></li>
-					<li><a href="helpMain.do">Notice</a></li>
-					<li><a href="join.do">Join Us</a></li>
-					<li><a href="">Priview</a></li>					
-					<li><a href="login.do">Login</a></li>
-					<li><a href="profile.do">My Page</a></li>
-				</ul>
-			</nav>
+			<jsp:include page="../joinMain/newIndex.jsp"></jsp:include>
 
 		<!-- Banner -->
 		<!--

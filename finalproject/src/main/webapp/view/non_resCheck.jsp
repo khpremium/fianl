@@ -41,7 +41,7 @@ $(document).ready(function(){
 function pros(res){
 	if(res=="예약 내역 확인페이지로 이동합니다."){
 		alert(res);
-		$('form').submit();
+		$('#reschk').submit();
 		
 	}
 	else {
@@ -59,23 +59,7 @@ function reserror(){
 </head>
 <body>
 		<!-- Header -->
-			<header id="header">
-				<div class="logo"><a href="view/index.html">Road Trip <span>by TEMPLATED</span></a></div>
-				<a href="#menu"><span>Menu</span></a>
-			</header>
-
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="main.do">Home</a></li>
-					<li><a href="helpMain.do">Notice</a></li>
-					<li><a href="join.do">Join Us</a></li>
-					<li><a href="">Priview</a></li>					
-					<li><a href="login.do">Login</a></li>
-					<li><a href="profile.do">My Page</a></li>
-					<li><a href="myreservation.do">Reservation Check</a></li>
-				</ul>
-			</nav>
+			<jsp:include page="../joinMain/newIndex.jsp"></jsp:include>
 
 		<!-- Banner -->
 		<!--
@@ -94,7 +78,7 @@ function reserror(){
 						</header>
 						
 						<div class="content">
-						<form action="rescheckok.do" method="post">
+						<form id="reschk" action="rescheckok.do" method="post">
 							<input type="text" class="query" id="rv_code" name="rv_code" placeholder="예약 번호 입력">
 							<input type="text" class="query" id="non_pass" name="non_pass" placeholder="비밀 번호 입력">
 							<br/>

@@ -39,11 +39,11 @@ private MemberManagement mm;
 	}
 	
 	//메인페이지
-	@RequestMapping("/newIndex.do")
+	/*@RequestMapping("/newIndex.do")
 	public String main(HttpSession session) {
 		session.invalidate();
 		return "/joinMain/newIndex";
-	}
+	}*/
 	
 	//회원가입 페이지
 	@RequestMapping("/join.do")
@@ -79,12 +79,13 @@ private MemberManagement mm;
 		
 		if(aa != null) {
 			if(cdto != null) {
+				session.setAttribute("id", cdto.getId());
 				mav.addObject("msg","success");
-				mav.setViewName("/joinMain/newIndex");
+				mav.setViewName("/joinMain/naver");
 			} else {
 				session.setAttribute("id", aa);
 				mav.addObject("msg", "failure");
-				mav.setViewName("/joinMain/newIndex");
+				mav.setViewName("/joinMain/naver");
 			}
 		}else {
 			mav.addObject("email", email);
@@ -120,7 +121,7 @@ private MemberManagement mm;
 		}
 		service.insertProcess(dto);
 		session.setAttribute("id", dto.getId());
-		mav.setViewName("/joinMain/newIndex");
+		mav.setViewName("redirect:/main.do");
 		return mav;
 	}
 	
@@ -151,7 +152,13 @@ private MemberManagement mm;
 	@RequestMapping("/setSession.do")
 	public String se1321321(String seId, HttpSession session) {
 		session.setAttribute("id", seId);
-		return "/joinMain/newIndex";
+		return "redirect:/main.do";
+	}
+	
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/main.do";
 	}
 
 }//end class

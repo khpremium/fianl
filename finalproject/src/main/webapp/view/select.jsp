@@ -20,19 +20,7 @@
 	<body>
 
 		<!-- Header -->
-			<header id="header">
-				<div class="logo"><a href="index.html">Road Trip <span>by TEMPLATED</span></a></div>
-				<a href="#menu"><span>Menu</span></a>
-			</header>
-
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="generic.html">Generic</a></li>
-					<li><a href="elements.html">Elements</a></li>
-				</ul>
-			</nav>
+			<jsp:include page="../joinMain/newIndex.jsp"></jsp:include>
 
 		<!-- Content -->
 		<!--
@@ -188,7 +176,7 @@
 					</article>
 				</div>
 			
-				<form action="reservation.do" method="post">
+				<form id="select" action="reservation.do" method="post">
 					<input type="hidden" name="p_count" value="${rdto.p_count}">
 					<input type="hidden" name="payment_chk" id="payment_chk">
 					<input type="hidden" name="dep_airinfo_flight" id="dep_airinfo_flight">

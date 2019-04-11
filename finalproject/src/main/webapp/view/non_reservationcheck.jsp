@@ -35,7 +35,7 @@ $(document).ready(function(){
 	$('#savepass').click(function(e){
 		e.preventDefault();
 		if(!confirm('입력 된 정보를 저장 하시겠습니까?')) return;		
-		$('button').submit();
+		$('#pass').submit();
 		alert("저장 되었습니다.");
 	});
 	
@@ -89,22 +89,7 @@ input{
 </head>
 <body>
 		<!-- Header -->
-			<header id="header">
-				<div class="logo"><a href="view/index.html">KH AIR<span> In My Page</span></a></div>
-				<a href="#menu"><span>Menu</span></a>
-			</header>
-
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="main.do">Home</a></li>
-					<li><a href="helpMain.do">Notice</a></li>
-					<li><a href="join.do">Join Us</a></li>
-					<li><a href="">Priview</a></li>					
-					<li><a href="login.do">Login</a></li>
-					<li><a href="profile.do">My Page</a></li>
-				</ul>
-			</nav>
+			<jsp:include page="../joinMain/newIndex.jsp"></jsp:include>
 
 		<!-- Banner -->
 		<!--
@@ -213,7 +198,7 @@ input{
 			
 				<div class="inner" style="width:1200px;">
 					<article class="box" >
-					<form action="non_inspassport.do" method="post"> 
+					<form id="pass" action="non_inspassport.do" method="post"> 
 						<header>
 							<h2>여권 정보</h2>
 						</header>

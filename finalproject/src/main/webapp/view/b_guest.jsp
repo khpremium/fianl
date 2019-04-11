@@ -27,7 +27,8 @@
 				alert('전화번호를 확인해주세요.');
 				return false;
 			} else {
-				$('form').submit();
+				alert('테스트');
+				$('#frm0').submit();
 			}
 		});
 		
@@ -91,7 +92,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
-					<form action="selectFlight.do" method="post">
+					<form action="selectFlight.do" id="frm0" method="post">
 						<table>
 							<tr>
 								<th colspan="2">정보입력</th>
@@ -125,7 +126,7 @@
 						<input type="hidden" name="p_count" value="${rdto.p_count}">
 						<input type="hidden" name="guestchk" value="${rdto.guestchk}">
 					</form>
-					<button>전송</button>
+					<button >전송</button>
 				</div>
 			</div>
 		</div>

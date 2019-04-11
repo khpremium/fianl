@@ -18,7 +18,8 @@ public class MypassportDaoImp implements MypassportDAO {
 	@Override
 	public int passport(String rv_code) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("mypage.passport",rv_code);
+		int p_count = sqlSession.selectOne("mypage.passport",rv_code) == null ? 0 : sqlSession.selectOne("mypage.passport",rv_code);
+		return p_count;
 	}
 
 	@Override

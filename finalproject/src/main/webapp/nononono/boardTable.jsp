@@ -45,9 +45,7 @@
    
 
     <!-- Navbar -->
-    <ul class="navbar-nav ml-auto ml-md-0">
-      
-    </ul>
+    <div style="right:5%; position: absolute;"><a class="navbar-brand mr-1" href="/myfinal/main.do">홈</a></div>
 
   </nav>
 

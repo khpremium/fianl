@@ -305,7 +305,7 @@ hr {
 			</div>
 		</fieldset>
 		</form>
-		<form action="/myfinal/newIndex.do">
+		<form action="/myfinal/main.do">
 			<button type="submit" id="main">메인으로 돌아가기</button>
 		</form>
 	</div>

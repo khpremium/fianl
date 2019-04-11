@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Road Trip by TEMPLATED</title>
+<title>KH Air</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="view/assets/css/main.css" />
@@ -64,16 +64,15 @@ $(document).ready(function(){
     $('#resForm').on('submit', function() {
     	// alert($('input[name="guestchk"]:checked').val());
     	if($('input[name="guestchk"]:checked').val() == 'guest')
-    		$('form').attr('action', 'guestInfo.do');
-    	else if('${id}' == '') {
+    		$('#resForm').attr('action', 'guestInfo.do');
+    	else if('${sessionScope.id}' == '') {
+    		alert('로그인 해 주세요');
     		// alert('${empty id}');
-    		$(location).attr('href','login.do');
+    		/* $(location).attr('href','login.do'); */
         	return false;
     	}
     });
-    
-       
-    
+	
 });/*레디 끝*/
 function chkProcess() {
 	
@@ -84,7 +83,7 @@ function chkProcess() {
 		alert('귀국일을 선택해주세요.');
 	} else {
 		// alert("됫음");
-		$("form").submit();
+		$("#resForm").submit();
 	}
 }
 function countprocess(e){

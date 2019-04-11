@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+    a:hover{text-decoration: none !important;}
     .menu a{cursor:pointer;}
     .menu .hide{display:none;}]
     ul{list-style-type: none !important;}
@@ -329,19 +330,7 @@
 </head>
 
 <body>
-	<header id="header">
-		<div class="logo"><a href="index.html">Road Trip <span>by TEMPLATED</span></a></div>
-		<a href="#menu"><span>Menu</span></a>
-	</header>
-<!-- Nav -->
-	<nav id="menu">
-		<ul class="links">
-			<li><a href="index.html">Home</a></li>
-			<li><a href="generic.html">Generic</a></li>
-			<li><a href="elements.html">Elements</a></li>
-		</ul>
-	</nav>
-
+<jsp:include page="../joinMain/newIndex.jsp"></jsp:include>
   <!-- Page Content -->
   <div class="container">
 
@@ -352,14 +341,16 @@
         <h1 class="my-4" style="color: #555;">여행 코스 제안 
           <small>Travel is the pleasure</small>
         </h1>
-        
-       <%--  <c:if test="${not empty sessionScope.user_id}"> --%>
-
+        <c:if test="${empty sessionScope.id}">
+        <form >
+		   <input class="btn btn-secondary" type="button" id="btnWrite" value="로그인 후 글쓰기 가능" style="margin-left: 104%;" />
+        </form> 
+        </c:if> 
+        <c:if test="${not empty sessionScope.id}">
         <form id="frm" name="frm" method="get" action="boardWirteForm.do">
 		   <input class="btn btn-secondary" type="submit" id="btnWrite" value="글쓰기" style="margin-left: 104%;" />
-        </form>
-        
-       <%-- </c:if> --%>
+        </form>       
+       </c:if>
         
         <!--  여기에 좋아요 제일 많이 받은 게시물 따로 뽑아주기 명예의 전당?  -->
         <c:if test="${not empty mlList }">
