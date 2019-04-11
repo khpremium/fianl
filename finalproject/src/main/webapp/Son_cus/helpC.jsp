@@ -108,7 +108,7 @@
 				</div>
 					<footer>
 					<%-- login --%>
-					<c:if test="admin==(String)session.getAttribute('id')">
+					<c:if test="${sessionScope.id == 'admin' }">
 					<span class="input-group-btn">
 						<input type="submit" class="button" id="bwriteBtn" value="글쓰기" onclick="showPopup();"/>
 					</span>
