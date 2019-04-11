@@ -41,7 +41,7 @@ public class MypageController {
 	public void setService4(MypassportService service4) {
 		this.service4 = service4;
 	}
-	
+	//http://localhost:8090/myfinal/profile.do
 	@RequestMapping("profile.do")
 	public ModelAndView profileList(HttpSession session,PagingDTO pv) {
 		ModelAndView mav= new ModelAndView();

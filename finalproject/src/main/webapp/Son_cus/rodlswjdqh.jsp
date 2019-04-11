@@ -14,19 +14,7 @@
 	<body class="subpage">
 
 		<!-- Header -->
-			<header id="header" class="alt">
-				<div class="logo"><a href="index.html">Road Trip <span>by TEMPLATED</span></a></div>
-				<a href="#menu"><span>Menu</span></a>
-			</header>
-
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="generic.html">Generic</a></li>
-					<li><a href="elements.html">Elements</a></li>
-				</ul>
-			</nav>
+			<jsp:include page="../joinMain/newIndex.jsp"></jsp:include>
 
 			<section id="post" class="wrapper bg-img" data-bg="../Son_cus/images/backg7.jpg">
 				<div class="inner">

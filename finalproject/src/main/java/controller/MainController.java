@@ -1,5 +1,7 @@
 package controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,7 +16,6 @@ public class MainController {
 	private MainService service;
 	
 	public MainController() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public void setService(MainService service) {
@@ -22,7 +23,7 @@ public class MainController {
 	}
 	
 	@RequestMapping("/main.do")
-	public ModelAndView listMethod(CityDTO md){
+	public ModelAndView listMethod(){
 		ModelAndView mav= new ModelAndView();
 		mav.addObject("aList",service.ListProcess());
 		mav.addObject("rList",service.rListProcess("222"));

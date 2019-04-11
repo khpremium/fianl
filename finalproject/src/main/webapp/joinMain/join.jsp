@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
-
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Bare - Start Bootstrap Template</title>
+<title>KH Air</title>
 <style type="text/css">
 
 fieldset {
@@ -290,12 +290,14 @@ h2 {
 	<!-- Page Content -->
 	<form action="/myfinal/joinInsert.do" method="post" id="joinForm">
 	<div class="table_area">
-	<fieldset>
-		<table class="tbl_style_01" summary="회원가입에 필요한 개인정보를 입력함">
+	
+		
 		<br/><br/><br/><br/><br/>
 			<h2>회원가입</h2>
 			<br/>
 			<hr/>
+			<fieldset>
+			<table class="tbl_style_01" summary="회원가입에 필요한 개인정보를 입력함">
 			<colgroup>
 				<col width="20%">
 				<col width="80%">

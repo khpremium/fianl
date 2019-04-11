@@ -37,11 +37,11 @@ where r.AIRINFO_FLIGHT=a.flight and r.user_id=c.ID and t.city_code = a.city_code
 	 	select * from passport where reservation_rv_code=#{reservation_rv_code}
 	</select>
 	
-	<update id="proupdate">
+	<update id="proupdate" parameterType="String">
 		update client set pass=#{pass},phonenum=#{phonenum},email=#{email} where id=#{id}
 	</update>
 	
-	<delete id="prodelete">
+	<delete id="prodelete" parameterType="String">
 		delete from client where id=#{id}
 	</delete>
 	

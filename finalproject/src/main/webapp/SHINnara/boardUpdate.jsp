@@ -10,7 +10,7 @@
     .menu a{cursor:pointer;}
     .menu .hide{display:none;}]
     ul{list-style-type: none !important;}
-
+    a:hover{text-decoration: none !important;}
 #header {
 		background-color: transparent;
 		color: #fdd1d1;
@@ -377,19 +377,7 @@
 </head>
 
 <body>
-
-	<header id="header">
-		<div class="logo"><a href="index.html">Road Trip <span>by TEMPLATED</span></a></div>
-		<a href="#menu"><span>Menu</span></a>
-	</header>
-<!-- Nav -->
-	<nav id="menu">
-		<ul class="links">
-			<li><a href="index.html">Home</a></li>
-			<li><a href="generic.html">Generic</a></li>
-			<li><a href="elements.html">Elements</a></li>
-		</ul>
-	</nav>
+<jsp:include page="../joinMain/newIndex.jsp"></jsp:include>
   <!-- Page Content -->
   <div class="container">
 
@@ -443,7 +431,7 @@
 
         <input type="hidden" name="b_num" id="b_num" value="${dto.b_num }">
         <input type="hidden" name="currentPage" id="currentPage" value="${currentPage }">
-		<input type="hidden" name="user_id" id="user_id" value="test01">
+		<input type="hidden" name="user_id" id="user_id" value="${dto.user_id }">
 	  <div id="btnSpace" style="margin-top: 3%; margin-left: 40% ">
 		<input type="button" id="btnUpdate" value="수정하기" /> 
 		<input type="button" id="btnCancel" value="취소" />

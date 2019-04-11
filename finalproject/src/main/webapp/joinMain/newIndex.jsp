@@ -4,7 +4,7 @@
 
 <html>
 	<head>
-		<title>Road Trip by TEMPLATED</title>
+		<title>KH Air</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
@@ -40,21 +40,20 @@
 
 		<!-- Header -->
 			<header id="header">
-				<div class="logo"><a href="index.html">Road Trip <span>by TEMPLATED</span></a></div>
+				<div class="logo"><a href="main.do">KH Air</a></div>
 				<a href="#menu"><span>Menu</span></a>
 			</header>
 
 		<!-- Nav -->
 			<nav id="menu">
-			<p>
 				<c:if test="${!empty sessionScope.id}">
                  	${sessionScope.id}님 환영합니다
-                 	<a href="/myfinal/newIndex.do" class="logout">로그아웃</a>
+                 	<a href="/myfinal/logout.do" class="logout">로그아웃</a>
                 </c:if>
                 <form id="seIdfrm" action="/myfinal/setSession.do" method="get">
                 	<input type="hidden" id="seId" name="seId">
                 </form>
-            </p>
+           
             <p class="login_wrap">
                 <c:if test="${empty sessionScope.id}">
 					<a class="login">로그인</a>
@@ -123,9 +122,21 @@
          		</form>
          		</p>
 				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="/myfinal/join.do">회원가입</a></li>
-					<li><a href="elements.html">Elements</a></li>
+					<li><a href="/myfinal/main.do">홈</a></li>
+					<c:choose>
+						<c:when test="${empty sessionScope.id}">
+							<li><a href="/myfinal/join.do">회원가입</a></li>
+						</c:when>					
+						<c:otherwise>
+							<li><a href="/myfinal/profile.do">마이페이지</a></li>
+						</c:otherwise>
+					</c:choose>
+					<li><a href="/myfinal/BoardList.do">여행후기 게시판</a></li>
+					<li><a href="/myfinal/List.do">여행후기 게시판</a></li>
+					<li><a href="/myfinal/helpMain.do">고객센터</a></li>
+					<c:if test="${sessionScope.id=='admin' }">
+						<li><a href="/myfinal/adminMain.do">관리자 페이지</a></li>
+					</c:if>
 					<li style="color: rgba(255,255,255,.5);"></li>
                  	<li class="login_wrap"></li>
 				</ul>

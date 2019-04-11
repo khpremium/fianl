@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+    a:hover{text-decoration: none !important;}
     .menu a{cursor:pointer;}
     .menu .hide{display:none;}
     ul{list-style-type: none !important;}
@@ -363,19 +364,7 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 </head>
 </head>
 <body>
-
-	<header id="header">
-		<div class="logo"><a href="index.html">Road Trip <span>by TEMPLATED</span></a></div>
-		<a href="#menu"><span>Menu</span></a>
-	</header>
-<!-- Nav -->
-	<nav id="menu">
-		<ul class="links">
-			<li><a href="index.html">Home</a></li>
-			<li><a href="generic.html">Generic</a></li>
-			<li><a href="elements.html">Elements</a></li>
-		</ul>
-	</nav>
+<jsp:include page="../joinMain/newIndex.jsp"></jsp:include>
 
   <!-- Page Content -->
   <div class="container" id="container">
@@ -407,8 +396,10 @@ star-input>.input.focus{outline:1px dotted #ddd;}
            <input type="hidden" name="currentPage" id="currentPage" value="${currentPage}" />
            <input type="hidden" value=" ${boardDTO.b_category_c_num }" id="b_category_c_num" name="b_category_c_num">
            <input type="hidden" value="${boardDTO.user_id }" id = "user_id" name="user_id">
+           <c:if test="${sessionScope.id eq 'admin' }">
            <input type="submit" id="delete" value="삭제" class="btn btn-primary" style="height: 35px; width: 53px; font-size:small; text-align: center; margin-left: 60%;">
            <input type="submit" id="modify" value="수정" class="btn btn-primary" style="height: 35px; width: 53px; font-size:small; text-align: center;">
+           </c:if>
         </p>
         </form>
         <hr>
@@ -471,7 +462,7 @@ star-input>.input.focus{outline:1px dotted #ddd;}
       <h4>댓글 작성</h4>
        <c:forEach var="boardDTO" items="${vList}">
         <form name="commentFrm" id="commentFrm" action="commentWrite.do">
-        <input type="hidden" name="user_id" id="user_id" value="test01">
+        <input type="hidden" name="user_id" id="user_id" value="${boardDTO.user_id}">
         <input type="hidden" name="board_b_num" id="board_b_num" value="${boardDTO.b_num}">
         <div class="card my-4" style="position: inherit; width: 100%; height: 150px;">
         <!-- 별점 시작 -->
@@ -500,8 +491,13 @@ star-input>.input.focus{outline:1px dotted #ddd;}
           <div class="card-body">
               <div class="form-group">
                 <textarea class="form-control" style="width: 80%; margin: 0;"  rows="2" name="cm_content" id="cm_content"></textarea>
+                <c:if test="${not empty sessionScope.id }">
                 <button type="button" id="CmWriteBtn" class="btn btn-primary" style="margin-left: 5%;margin-bottom: 5%;" >
                                      등록</button>
+                </c:if>
+                <c:if test="${empty sessionScope.id}">
+                                       로그인 해주세요
+                </c:if>   
           </div>
           </div>
         </div>
@@ -526,18 +522,13 @@ star-input>.input.focus{outline:1px dotted #ddd;}
        </div>
        </div>   
         <div id="BtnBox" style="margin-left: 76%; margin-top: 2px;">
+        <c:if test="${sessionScope.id eq CmDTO.user_id}">
           <p>
            <button id="${CmDTO.cm_num}" class="btn btn-primary" style="height: 35px; width: 53px; font-size:small; text-align: center;">수정</button> 
            <button id="${CmDTO.cm_num}" class="btn btn-primary" style="height: 35px; width: 53px; font-size:small; text-align: center; ">삭제</button>
           </p>
+        </c:if>  
         </div>
-        <%--         
-        <c:if test="${session.user_id eq CmDTO.user_id}">
-           <p>
-             <input type="button" id="cmModifyBtn" value="수정">
-             <input type="button" id="cmDeleteBtn" value="삭제">
-           </p>
-        </c:if> --%>
        </c:forEach>  <!-- 댓글 forEach -->
 
       

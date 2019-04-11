@@ -4,26 +4,14 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>KH Air</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="view/assets/css/main.css" />
 	</head>
 	<body>
 
 		<!-- Header -->
-			<header id="header">
-				<div class="logo"><a href="index.html">Road Trip <span>by TEMPLATED</span></a></div>
-				<a href="#menu"><span>Menu</span></a>
-			</header>
-
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="generic.html">Generic</a></li>
-					<li><a href="elements.html">Elements</a></li>
-				</ul>
-			</nav>
+			<jsp:include page="../joinMain/newIndex.jsp"></jsp:include>
 
 		<!-- Content -->
 		<!--
