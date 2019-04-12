@@ -238,20 +238,12 @@ hr {
 		}
 
 	}
-#main{
-	color: rgba(30, 22, 54, 0.6);
-	box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-top: -86px;
-	margin-left: -89px;
-	text-align: center;
-}
-#main:hover {
-	color: rgba(255, 255, 255, 0.85);
-	box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
-}
+	#main{
+	    margin-top: 5%;
+    	margin-left: 38%;
+    	padding: 2% 7% 2% 7%;
+    }
+
 </style>
 <meta charset="utf-8">
 
@@ -306,7 +298,7 @@ hr {
 		</fieldset>
 		</form>
 		<form action="/myfinal/main.do">
-			<button type="submit" id="main">메인으로 돌아가기</button>
+			<button type="submit" id="main" class="btn btn-secondary">메인으로 돌아가기</button>
 		</form>
 	</div>
 
