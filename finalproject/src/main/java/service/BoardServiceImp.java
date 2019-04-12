@@ -196,7 +196,7 @@ public class BoardServiceImp implements BoardService {
 		List<FilesDTO> list = dao.fileListMethod(dto.getB_num());
 		if(list != null) {
 			String root = request.getSession().getServletContext().getRealPath("/");
-			String saveDirectory =  "C:/Users/user2/git/fianl/finalproject/src/main/webapp/SHINnara/images";
+			String saveDirectory =  "C:/Users/user2/git/final/finalproject/src/main/webapp/SHINnara/images";
 			for(FilesDTO fdto : list) {
 				File ff = new File(saveDirectory, fdto.getF_name());
 				ff.delete();

@@ -79,4 +79,8 @@ where r.AIRINFO_FLIGHT=a.flight and r.user_id=c.ID and t.city_code = a.city_code
 	</select>
 	
 	
+	<select id="myblist_chk" parameterType="string" resultType="mypage.MyBoardDTO">
+		select * from board where user_id=#{user_id}
+	</select>
+	
 </mapper>

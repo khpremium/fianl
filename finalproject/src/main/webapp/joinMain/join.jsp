@@ -62,16 +62,16 @@ th  {
 	border-bottom: 1px solid #ddd
 
 }
-.btn1 {
+#joinBtn {
 	margin-top: 5%;
 	margin-left: 20%;
     padding: 2% 10% 2% 10%;
     text-align: center;
 }
 
-.btn2 {
+#joinCancle {
 	margin-top: 5%;
-	margin-left: 7%;
+	margin-left: 12%;
     padding: 2% 10% 2% 10%;
     text-align: center;
 }
@@ -322,7 +322,7 @@ h2 {
 					</th>
 					<td>
 						<div class="cell">
-							<input type="password" id="password" name="pass" class="inputText" maxlength="30">
+							<input type="password" id="password" name="pass" class="inputText" maxlength="15">
 							<p class="guide_txt_02" style="display:contents;">&emsp;비밀번호는 공백없이 6~15자 이내</p>
 						</div>
 						<p class="error_msg dp_none" id="errPasswd"></p> <!-- DEV. dp_none 클래스 추가시 해당 부분 hide -->
@@ -335,7 +335,7 @@ h2 {
 					</th>
 					<td>
 						<div class="cell">	
-							<input type="password" id="passwordCheck" class="inputText" maxlength="30"><span><h7 id="passwdCheckMessage" style="font-color: red;"></h7></span>
+							<input type="password" id="passwordCheck" class="inputText" maxlength="15"><span><h7 id="passwdCheckMessage" style="font-color: red;"></h7></span>
 						</div>
 						<p class="error_msg dp_none" id="errRePasswd"></p> <!-- DEV. dp_none 클래스 추가시 해당 부분 hide -->
 					</td>
@@ -347,7 +347,7 @@ h2 {
 					</th>
 					<td>
 						<div class="cell">	
-							<input type="text" class="inputText" name="name" id="name" data-rule-required="true" maxlength="15" onkeyup="nameFunction()">
+							<input type="text" class="inputText" name="name" id="name" data-rule-required="true" maxlength="4" onkeyup="nameFunction()">
 						</div>
 						<p class="error_msg dp_none" id="errCustNm"></p> <!-- DEV. dp_none 클래스 추가시 해당 부분 hide -->
 					</td>
@@ -397,8 +397,8 @@ h2 {
 					<td>
 						<div class="cell">
 							<select id="gender" name="gender" class="inputText">
-								<option value="M">남</option>
-								<option value="F">여</option>
+								<option value="남">남</option>
+								<option value="여">여</option>
 							</select>
 						</div>
 					</td>
@@ -407,7 +407,7 @@ h2 {
 					<th scope="row" class="need">생년월일</th>
 					<td>
 						<div class="cell" style="padding-top: 15px;">
-							<select name="birth">
+							<select name="birth01">
 						       <option value="2007">2007</option>
 						       <option value="2006">2006</option>
 						       <option value="2005">2005</option>
@@ -436,30 +436,30 @@ h2 {
 						       <option value="2009">1982</option>
 						       <option value="2008">1981</option>
 						     </select>년&nbsp;
-						     <select name="birth2">
-						       <option value="1">1</option>
-						       <option value="2">2</option>
-						       <option value="3">3</option>
-						       <option value="4">4</option>
-						       <option value="5">5</option>
-						       <option value="6">6</option>
-						       <option value="7">7</option>
-						       <option value="8">8</option>
-						       <option value="9">9</option>
+						     <select name="birth02">
+						       <option value="1">01</option>
+						       <option value="2">02</option>
+						       <option value="3">03</option>
+						       <option value="4">04</option>
+						       <option value="5">05</option>
+						       <option value="6">06</option>
+						       <option value="7">07</option>
+						       <option value="8">08</option>
+						       <option value="9">09</option>
 						       <option value="10">10</option>
 						       <option value="11">11</option>
 						       <option value="12">12</option>
 						     </select>
-						     <select name="birth3">
-						       <option value="1">1</option>
-						       <option value="2">2</option>
-						       <option value="3">3</option>
-						       <option value="4">4</option>
-						       <option value="5">5</option>
-						       <option value="6">6</option>
-						       <option value="7">7</option>
-						       <option value="8">8</option>
-						       <option value="9">9</option>
+						     <select name="birth03">
+						       <option value="1">01</option>
+						       <option value="2">02</option>
+						       <option value="3">03</option>
+						       <option value="4">04</option>
+						       <option value="5">05</option>
+						       <option value="6">06</option>
+						       <option value="7">07</option>
+						       <option value="8">08</option>
+						       <option value="9">09</option>
 						       <option value="10">10</option>
 						       <option value="11">11</option>
 						       <option value="12">12</option>
@@ -489,8 +489,8 @@ h2 {
 				
 			</tbody>
 		</table>
-			<input type="button" class="btn1" id="joinBtn" value="회원가입">
-			<input type="button" class="btn2" id="joinCancle" value="취소">
+			<input type="button" class="btn btn-secondary" id="joinBtn" value="회원가입">
+			<input type="button" class="btn btn-secondary" id="joinCancle" value="취소">
 		</fieldset>
 	</div>
 	<br/><br/><br/><br/><br/>

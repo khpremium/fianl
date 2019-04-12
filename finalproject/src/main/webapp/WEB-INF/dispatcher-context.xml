@@ -143,10 +143,11 @@
 		 <property name="service" ref="service" />
 	</bean>
 	<bean class="mypage.MypageController">
-		<property name="service" ref="cservice"/>		
-		 <property name="service2" ref="mybservice"/>		 
-		<property name="service3" ref="myrservice"/>		
-		<property name="service4" ref="mypservice"/>		 
+		<property name="service" ref="cservice"/>
+		 <property name="service2" ref="mybservice"/>
+		<property name="service3" ref="myrservice"/>
+		<property name="service4" ref="mypservice"/>
+		<property name="service5" ref="bservice"/>
 	</bean> 
 	<bean class="mypage.MyReservationController">
 		<property name="service" ref="myrservice"/>

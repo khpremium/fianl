@@ -19,6 +19,7 @@ function idFunction(){
 					 $('#errCustID').html("사용불가");
 				 }else{
 	                $('#errCustID').html("사용가능");
+	                $('#errCustID').css("color","green");
 				 }
 	          }else{
 	                $('#errCustID').html("사용불가");
@@ -31,18 +32,21 @@ function idFunction(){
 }
 
 //비밀번호
+var passwordCheck = false;
+
 $('input[type=password]').focusout(function(){
 	var passwd = $('#password').val();
 	var passwdcheck = $('#passwordCheck').val();
 	
 	if (passwd != passwdcheck) {
 		$('#errRePasswd').html('비밀번호가 서로 일치하지 않습니다.');
-		
 	} else {
 		if(passwd == "" && passwdcheck == ""){
 			$('#errRePasswd').html('');
 		} else {
 			$('#errRePasswd').html('비밀번호가 일치합니다.');
+			$('#errRePasswd').css("color","green");
+			passwordCheck = true;
 		}
 	}
 	
@@ -52,11 +56,14 @@ $('input[type=password]').focusout(function(){
 		$('#errPasswd').html('');
 	}
 	
-	var regex = /^.*(?=^.{6,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
-	if(!regex.test($("#password").val())){
-		alert("영어/숫자/특수문자 조합으로 입력해주세요.");
-		return false;
-	};
+});
+
+$('#password').blur(function(){
+   var regex = /^.*(?=^.{6,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+   if(!regex.test($("#password").val())){
+      $('#errPasswd').html('숫자 / 영어 / 특수문자를 포함해주세요.');
+      $('#password').focus();
+   }
 });
 
 //이름
@@ -91,17 +98,20 @@ function emailFunction(){
 	var email1 = $("#email01").val();
 	var email2 = $("#email02").val();
 	var aa = email1 + '@' + email2;
-	alert(aa);
 	
 	$.ajax({
 		type: 'POST',
 		url: '/myfinal/emailCheck.do',
 		data: {'email' : aa},
 		success: function(data) {
-				if($.trim(data)==0) {
+				if(email2.length <= 0){
+					alert("사용 불가능");
+					checkEmail = false;
+				}
+				else if($.trim(data)==0) {
 					alert("사용가능");
 					checkEmail = true;
-				}else{
+				}else {
 					alert("사용 불가능");
 				}
 			},
@@ -110,22 +120,14 @@ function emailFunction(){
 		}
 	});
 }
- 
 var checkCode;
 
 $('#checkbutton').on('click', function() {
-/*	var nodes = document.getElementsByName('email');
-	var receiver = '';
-	
-	receiver = nodes[0].value + '@' + nodes[1].value;
-*/
-	
 	if (checkEmail == false) {
 		alert("중복확인 먼저하세요.");
 		return;
 	}
 		
-	
 	var email1 = $("#email01").val();
 	var email2 = $("#email02").val();
 	
@@ -192,7 +194,6 @@ $(function(){
 	            {   
 	                // 유효성 체크
 	                var regExp_ctn = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/;
-	                
 	            }
 	            else 
 	            {
@@ -207,12 +208,16 @@ $(function(){
 //취소 버튼
 $(document).ready(function() {
 	$('#joinCancle').on('click', function(){
-		location.href="/myfinal/main.do";
+		location.href="newIndex.do";
 	});
 });
 
 $("#joinBtn").on('click', function(){
-	
+	if (passwordCheck == false) {
+	    alert("비밀번호를 확인해주세요.");
+	    return true;
+	}
+	  
 	if(codecheck == false){
 		alert("이메일 인증코드를 확인해주세요");
 		return false;
@@ -235,4 +240,12 @@ $("#joinBtn").on('click', function(){
 		alert('모든 값을 입력해 주세요.');
 	}
 	
+	//생일
+	var birth1 = $("#birth01").val();
+	var birth2 = $("#birth02").val();
+	var birth2 = $("#birth03").val();
+
+	var birth = birth1 + birth2 + birth3;
+
+
 });

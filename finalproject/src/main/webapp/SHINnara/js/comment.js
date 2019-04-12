@@ -30,7 +30,6 @@ $(document).on("click","#BtnBox button",function(){
 		var message = confirm("정말 삭제하시겠습니까?");
 		if(message==true){
 		var drno = $(this).prop("id");
-		alert(drno);
 		$.ajax({
 			   type : "GET",
 			   url : "commentDelete.do?cm_num="+drno,
@@ -61,8 +60,6 @@ $(document).on("click","#BtnBox button",function(){
 		var form_Data = new FormData();
 		var drno = $(this).prop("id");
 		var cm_content = $("#cmCon").text();
-		alert(cm_content);
-		alert(drno);
 		form_Data.append('cm_num',drno);
 		form_Data.append('cm_content',cm_content);
 		$.ajax({

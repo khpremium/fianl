@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 <style>
+    .close {width: 50px !important;}
     a:hover{text-decoration: none !important;}
     .btn-primary{background-color: #F64747 !important; border-color: #F64747 !important;}
     .card-header{

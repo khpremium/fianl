@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+    .close {width: 50px !important;}
     a:hover{text-decoration: none !important;}
     .menu a{cursor:pointer;}
     .menu .hide{display:none;}

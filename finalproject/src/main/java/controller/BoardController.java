@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -121,7 +122,7 @@ public class BoardController {
 	}//end wirte
 	
 	@RequestMapping("/boardView.do")
-	public ModelAndView viewMethod(int b_num,int currentPage) {
+	public ModelAndView viewMethod(int b_num,int currentPage, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		List<FilesDTO> ffo = service.getFiles(b_num);
 		List<String> filenames = new ArrayList<String>(); 
@@ -129,13 +130,21 @@ public class BoardController {
 			filenames.add(ff.getF_name());
 		}
 		
-		//user 좋아요 여부 확인
-		
 		List<BoardDTO> vList = service.viewProcess(b_num);
-		BoardDTO aa = vList.get(0);
-
+		
+		//user 좋아요 여부 확인
+		String user = (String) session.getAttribute("id");
+		if(user==null) {
+			vList.get(0).setUserLikeChk(1);
+			
+		}else {
+			BoardDTO likeDTO = new BoardDTO();
+			likeDTO.setB_num(vList.get(0).getB_num());
+			likeDTO.setUser_id(user);
+			vList.get(0).setUserLikeChk(service.UserLikeChk(likeDTO));
+		}
 		//System.out.println(aa.getUser_id() + aa.getB_num());
-		vList.get(0).setUserLikeChk(service.UserLikeChk(aa));
+
 		mav.addObject("vList",vList);
 		mav.addObject("currentPage", currentPage);
 		mav.addObject("cmList", service.listCmPro(b_num));

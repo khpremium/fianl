@@ -341,7 +341,6 @@
 
         if(filename) {
  		for(var index in filename) {
- 			alert(filename[index]);
  			form_Data.append('filename', filename[index]);
  		}
  	  }   

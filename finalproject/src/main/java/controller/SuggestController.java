@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -72,7 +72,7 @@ public class SuggestController {
 	    
 		mav.addObject("bList",aList);
 		mav.addObject("pv", pdto);
-		mav.setViewName("/newSuggest");
+		mav.setViewName("/SHINnara/newSuggest");
 		return mav;
 	}
 	
@@ -103,7 +103,7 @@ public class SuggestController {
 	    
 		mav.addObject("bList",aList);
 		mav.addObject("pv", pdto);
-		mav.setViewName("/suggest");
+		mav.setViewName("/SHINnara/suggest");
 		return mav;
 		
 
@@ -134,28 +134,34 @@ public class SuggestController {
 		
 	   mav.addObject("bList",aList);
 	   mav.addObject("pv", pdto);
-	   mav.setViewName("/suggest");
+	   mav.setViewName("/SHINnara/suggest");
 	   
 	   return mav;
 	}
 		
 	
 	@RequestMapping("/suggestView.do")
-	public ModelAndView viewMethod(int b_num,int currentPage) {
+	public ModelAndView viewMethod(int b_num,int currentPage, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		List<FilesDTO> ffo = service.getFiles(b_num);
 		List<String> filenames = new ArrayList<String>(); 
 		for(FilesDTO ff : ffo) {
 			filenames.add(ff.getF_name());
 		}
+			
+		List<BoardDTO> vList = service.viewProcess(b_num);
 		
 		//user 좋아요 여부 확인
-		
-		List<BoardDTO> vList = service.viewProcess(b_num);
-		BoardDTO aa = vList.get(0);
-
-		//System.out.println(aa.getUser_id() + aa.getB_num());
-		vList.get(0).setUserLikeChk(service.UserLikeChk(aa));
+		String user = (String) session.getAttribute("id");
+		if(user==null) {
+			vList.get(0).setUserLikeChk(1);
+			
+		}else {
+			BoardDTO likeDTO = new BoardDTO();
+			likeDTO.setB_num(vList.get(0).getB_num());
+			likeDTO.setUser_id(user);
+			vList.get(0).setUserLikeChk(service.UserLikeChk(likeDTO));
+		}
 		mav.addObject("vList",vList);
 		mav.addObject("currentPage", currentPage);
 		mav.addObject("cmList", service.listCmPro(b_num));
@@ -163,7 +169,7 @@ public class SuggestController {
 		mav.addObject("rateAvg", service.rateAvgPro(b_num));
 
 		mav.addObject("likeCount", service.likeCountProcess(b_num));
-		mav.setViewName("/suggestView");
+		mav.setViewName("/SHINnara/suggestView");
 		return mav;
 	}
 	
@@ -172,7 +178,7 @@ public class SuggestController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("vList",dto);
 		mav.addObject("currentPage", pv.getCurrentPage());
-		mav.setViewName("/suggestWrite");
+		mav.setViewName("/SHINnara/suggestWrite");
 		return mav;
 	}
 	
@@ -189,7 +195,7 @@ public class SuggestController {
 		mav.addObject("dto",dto);
 		mav.addObject("fdto", service.getFiles(dto.getB_num()));
 		mav.addObject("currentPage",currentPage);
-		mav.setViewName("/suggestUpdate");
+		mav.setViewName("/SHINnara/suggestUpdate");
 		return mav;
 	}
 	
@@ -231,9 +237,17 @@ public class SuggestController {
 	}
 	
 	@RequestMapping(value="/likeProcess.do",method=RequestMethod.POST)
-	public @ResponseBody Map<String, Integer> likeChk(BoardDTO dto) {
+	public @ResponseBody Map<String, Integer> likeChk(BoardDTO dto, HttpSession session) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
-		int likeChk = service.likechkProcess(dto);
+		int likeChk =0;
+		System.out.println("ddd");
+		if(session.getAttribute("id")==null) {
+			dto.setUser_id("nonUser");
+			likeChk = service.likechkProcess(dto);
+		}else {
+			likeChk = service.likechkProcess(dto);
+		}
+
 		int likeCount = service.likeCountProcess(dto.getB_num());
 		map.put("likeChk",likeChk);	
 		map.put("likeCount",likeCount);
@@ -268,7 +282,7 @@ public class SuggestController {
 		
 	   mav.addObject("bList",aList);
 	   mav.addObject("pv", pdto);
-	   mav.setViewName("/suggest");
+	   mav.setViewName("/SHINnara/suggest");
 		
 		return mav;	
 	}

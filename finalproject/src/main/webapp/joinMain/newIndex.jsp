@@ -59,7 +59,7 @@
 					<a class="login">로그인</a>
                 </c:if>
                    <!-- 로그인 폼 -->
-						<form name="log_f" id="login_f" method="post" action="/myfinal/loginCheck.do">
+						<form name="log_f" id="login_f" method="post" action="/myfinal/loginCheck.do" onkeydown="onEnterLogin()">
 						<fieldset>
 
  						<legend style="color:black ;">로그인</legend>
@@ -73,7 +73,7 @@
 							    <input type="checkbox" name="idSave" id="idSave">아이디 저장
 							</p>
 							<p class="log_btn">
-							    <input type="button" id="login" value="로그인" />
+							    <input type="submit" id="login" value="로그인" />
 							</p>
 							<p class="join_btn_wrap">
 							    <a href="join.do" style="padding-right:25px; text-decoration:none;">회원가입</a>
@@ -93,7 +93,7 @@
 
 							
 							<script type="text/javascript">
-							var naver_id_login = new naver_id_login("sKTdXgHmzw9vu1NzZSKv", "http://localhost:8090/myfinal/main.do?");
+							var naver_id_login = new naver_id_login("sKTdXgHmzw9vu1NzZSKv", "http://192.168.10.60:8090/myfinal/main.do?");
 							var state = naver_id_login.getUniqState();
 							naver_id_login.setButton("white", 2,40);
 							naver_id_login.setDomain("https://nid.naver.com/oauth2.0/authorize");

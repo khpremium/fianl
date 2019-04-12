@@ -2,6 +2,8 @@ package mypage;
 
 import java.util.List;
 
+import javax.mail.Session;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import dto.BoardDTO;
 import mypage.PagingDTO;
 
 //http://localhost:8090/myfinal/profile.do
@@ -20,7 +23,9 @@ public class MypageController {
 	private BoardService service2;
 	private ReservationService service3;
 	private MypassportService service4;	
+	private service.BoardService service5;
 	private int currentPage;
+	
 	
 	public MypageController() {
 		// TODO Auto-generated constructor stub
@@ -41,6 +46,11 @@ public class MypageController {
 	public void setService4(MypassportService service4) {
 		this.service4 = service4;
 	}
+	
+	public void setService5(service.BoardService service5) {
+		this.service5 = service5;
+	}
+	
 	//http://localhost:8090/myfinal/profile.do
 	@RequestMapping("profile.do")
 	public ModelAndView profileList(HttpSession session,PagingDTO pv) {
@@ -57,18 +67,15 @@ public class MypageController {
 			pv = new PagingDTO(currentPage, totalRecord);
 			pv.setUser_id(user_id);
 			mav.addObject("pv", pv);
-			System.out.println("aa");
 			mav.addObject("myblist",service2.mylistProcess(pv));
-			System.out.println("bb");
 		}
-		System.out.println("cc");
 		List<ReservationDTO> list = service3.reservationProcess(user_id);
-		System.out.println("dd");
 		String rv_code;
 		if(!list.isEmpty())
 			rv_code = list.get(0).getRv_code();
 		else
 			rv_code = "a";
+		
 		mav.addObject("myprofile",service.profileProcess(user_id));
 		mav.addObject("myres",list);
 		mav.addObject("passport",service4.passportProcess(rv_code));
@@ -86,10 +93,20 @@ public class MypageController {
 	}
 	
 	@RequestMapping("delete.do")
-	public String delete(String id) {
+	public String delete(String id,PagingDTO pv,HttpSession session,HttpServletRequest request, dto.BoardDTO dto) {
+		
+		dto.setUser_id(id);
+		for(MyBoardDTO bdto : service2.BoardListWho(id)){
+			
+			dto.setB_num(bdto.getB_num());
+			service5.DeleteProcess(dto, request);	
+		}	
 		service.deleteMemProcess(id);
+		session.invalidate();
 		return "redirect:/main.do";
 	}
+	
+	
 		
 	
 	@RequestMapping(value="/reservation_delete.do",method=RequestMethod.POST)

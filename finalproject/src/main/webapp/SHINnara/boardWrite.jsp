@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+    .close {width: 50px !important;}
     .menu a{cursor:pointer;}
     .menu .hide{display:none;}
     ul{list-style-type: none}
@@ -372,7 +373,6 @@
 
         if(filename) {
  		for(var index in filename) {
- 			alert(filename[index]);
  			form_Data.append('filename', filename[index]);
  		}
  	  }   

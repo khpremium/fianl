@@ -34,6 +34,7 @@ $(document).ready(function(){
 		$('input[type="submit"]').on('click',res_chk);
 	});
 	$('#savepass').click(function(e){
+		
 		e.preventDefault();
 		if(!confirm('입력 된 정보를 저장 하시겠습니까?')) return;		
 		$('form').submit();
@@ -49,7 +50,7 @@ function updateRun(e){
 function passtest(){
 	alert("수정을 시작합니다.");
 	if($('.passfir').val()=="${myprofile.pass}"){		
-		if(!/^.*(?=^.{6,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/.test($("#pass").val())){
+		if(!/^.*(?=^.{6,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/.test($("#mypass").val())){
 			alert('숫자와 영문자 특수문자 포함 조합으로 10~15자리를 사용해야 합니다.');
 			return false;
 		}else{			
@@ -62,6 +63,9 @@ function passtest(){
 		return false;
 	}
 }//passtest
+
+
+
 function deleteRun(e){	
 	$('.passfir').removeClass("passsec");
 	e.preventDefault();
@@ -69,6 +73,7 @@ function deleteRun(e){
 } // deleterun
 function deltest(){
 	if($('.passfir').val()=="${myprofile.pass}"){
+		if(!confirm('작성한 글이 모두 지워집니다')) return;
 		if(!confirm('탈퇴 하시겠습니까?')) return;
 		$('#frm').attr('action','delete.do').submit();
 		alert("탈퇴가 완료되었습니다.");		
@@ -156,8 +161,8 @@ input{
 				<div class="row uniform" style="padding:10px;">
 				
 					<div class="6u 12u$(xsmall)">
-							<label for="id">아이디</label>
-						<input name="id" id="id" type="text" readonly value="${myprofile.id}">
+							<label for="myid">아이디</label>
+						<input name="id" id="myid" type="text" readonly value="${myprofile.id}">
 					</div>
 						
 					<div class="6u$ 12u$(xsmall)">
@@ -168,8 +173,8 @@ input{
 						
 						
 					<div class="6u 12u$(xsmall)">
-						<label for="pass">비밀번호</label>
-						<input name="pass" id="pass" type="text" placeholder="수정할 비밀번호를 입력해주세요">
+						<label for="mypass">비밀번호</label>
+						<input name="pass" id="mypass" type="text" placeholder="수정할 비밀번호를 입력해주세요">
 
 					</div>
 						
@@ -212,8 +217,15 @@ input{
 					</div>
 					
 					<div class="6u$ 12u$(xsmall)">
-						<label>${myprofile.name} 님이 작성한 글</label>
-							<input type="text" readonly value="${pv.totalCount}건" onclick="mybod();">
+						<label>${myprofile.name} 님이 작성한 글</label>						
+						<c:choose>						
+						<c:when test="${empty pv.totalCount}">
+						<input type="text" readonly value="0건">
+						</c:when>
+						<c:otherwise>
+						<input type="text" readonly value="${pv.totalCount}건" onclick="mybod();">
+						</c:otherwise>
+						</c:choose>
 					</div>
 							
 				</div>
@@ -234,11 +246,12 @@ input{
 	<!-- one -->
 		<section id="one" class="wrapper post bg-img" data-bg="three.jpg">
 				<div class="inner">
+				
 					<article class="box">
 						<header>
 							<h2>${myprofile.name} 님이 작성 한 글</h2>
 						</header>
-						<div class="table-wrapper">
+						<div class="table-wrapper">						
 							<table class="alt">
 						<thead>
 							<tr>
@@ -279,12 +292,14 @@ input{
 					</c:choose>
 					</span>
 				</c:forEach>
-			</div>												
-					<footer>
+			</div>	
+			</form>		
+					<footer>					
 							<br/>
 							<!-- footer 내용 -->
 						</footer>
-					</article>								
+					</article>	
+												
 				</div>
 				<a href="#two" class="more">Learn More</a>
 			</section>
@@ -448,7 +463,7 @@ input{
 							  						  						
 							</tr>	
 							</tbody>				
-					</table><input type="hidden" name="aList[${status.index}].reservation_rv_code" value="${pass_rvcode}"/>
+					</table><input type="hidden" id="Mpasschk" name="aList[${status.index}].reservation_rv_code" value="${pass_rvcode}"/>
 					
 				</div>									
 					
@@ -492,12 +507,19 @@ input{
 									
 								 </tr>	 
 								</tbody>								
-							</table><input type="hidden" name="aList[${i-1}].reservation_rv_code" value="${pass_rvcode}"/>
+							</table><input type="hidden" id="Mpasschk" name="aList[${i-1}].reservation_rv_code" value="${pass_rvcode}"/>
 						</div>						
 				</c:forEach>
 			</form>
 						<footer>
+						<c:choose>
+						<c:when test="${!empty pass.rv_code}">
 							<input type="submit" class="button alt" id="savepass" value="저장하기">
+							</c:when>
+							<c:otherwise>
+							<p>예약하신 내용이 없습니다.</p>
+							</c:otherwise>
+							</c:choose>
 							<br/>
 							<br/>
 	<p>&nbsp; &#187; 여권상의 영문 이름과 반드시 동일해야하며 불일치시 탑승이 거절될수있습니다.</p>

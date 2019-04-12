@@ -171,47 +171,153 @@ function cityprocess(){
 						</form>
 				</article>	
 				</div>
-				<!-- <a href="" class="more">Learn More</a> -->
+				<a href="#two" class="more">Learn More</a>
 			</section>
 
 		<!-- One -->
-		<!-- 	<section id="one" class="wrapper post bg-img" data-bg="two.jpg">
+		 	<!-- <section id="one" class="wrapper post bg-img" data-bg="two.jpg">
 				<div class="inner">
 					<article class="box">
 						<header>
-							<h2>PRIEVIEW</h2>
+							<h2>공지사항ㅋㅋ</h2>
 							<br/>
 						</header>
 						
-						<div class="content">예약 div 
-	
-						</div>예약 div끝 
+									
+						<div class="content">
+					<table>
+						<tr>
+							<th style="width: 10%; text-align: center;">Num</th>
+							<th style="width: 50%; text-align: center;">Title</th>
+							<th style="width: 10%; text-align: center;">Count</th>
+							<th style="width: 30%; text-align: center;">Date</th>
+						</tr>
+						
+							<tr>
+								<td style="text-align: center;"><p style="color:white;"
+									>239</p></td>
+								<td><a
+									href="helpBlog.do?b_num=239&currentPage=1">탑승구(GATE) 수하물 위탁불가 안내</a></td>
+								<td style="text-align: center;"><p style="color:white;">1</p></td>
+								<td style="text-align: center;"><p style="color:white;">2019-04-11</p></td>
+							</tr>
+						
+							<tr>
+								<td style="text-align: center;"><p style="color:white;"
+									>223</p></td>
+								<td><a
+									href="helpBlog.do?b_num=223&currentPage=1">[항공권소식] [2019년 4월 부 유류할증료 안내]</a></td>
+								<td style="text-align: center;"><p style="color:white;">9</p></td>
+								<td style="text-align: center;"><p style="color:white;">2019-04-05</p></td>
+							</tr>
+						
+							<tr>
+								<td style="text-align: center;"><p style="color:white;"
+									>222</p></td>
+								<td><a
+									href="helpBlog.do?b_num=222&currentPage=1">[해외항공] 여행사 재발행 대행수수료 변경안내</a></td>
+								<td style="text-align: center;"><p style="color:white;">4</p></td>
+								<td style="text-align: center;"><p style="color:white;">2019-04-05</p></td>
+							</tr>
+						
+							<tr>
+								<td style="text-align: center;"><p style="color:white;"
+									>221</p></td>
+								<td><a
+									href="helpBlog.do?b_num=221&currentPage=1">[공지사항] 'KH Air' 고객서비스 실시간 채팅 오픈</a></td>
+								<td style="text-align: center;"><p style="color:white;">27</p></td>
+								<td style="text-align: center;"><p style="color:white;">2019-04-05</p></td>
+							</tr>
+						
+							<tr>
+								<td style="text-align: center;"><p style="color:white;"
+									>220</p></td>
+								<td><a
+									href="helpBlog.do?b_num=220&currentPage=1">[국내] 국내선 이용시 신분증 필수 지참 안내</a></td>
+								<td style="text-align: center;"><p style="color:white;">2</p></td>
+								<td style="text-align: center;"><p style="color:white;">2019-04-05</p></td>
+							</tr>
+						
+					</table>
+				</div>
+
+				
+						
+						 
 						<footer>
-							<a href="generic.html" class="button alt">What am i?</a>
+							
 						</footer>
 					</article>
 				</div>
+				
 				<a href="#two" class="more">Learn More</a>
-			</section> -->
+				
+			</section> --> 
 
 		<!-- Two -->
-			<!-- <section id="two" class="wrapper post bg-img" data-bg="three.jpg">
+		 <section id="two" class="wrapper post bg-img" data-bg="three.jpg">
 				<div class="inner">
 					<article class="box">
 						<header>
-							<h2>Mus elit a ultricies at</h2>
-							<p>12.21.2016</p>
+							<h2>관리자 추천 게시물</h2>
+							<p>여행지 추천</p>
 						</header>
 						<div class="content">
-							<p>Scelerisque enim mi curae erat ultricies lobortis donec velit in per cum consectetur purus a enim platea vestibulum lacinia et elit ante scelerisque vestibulum. At urna condimentum sed vulputate a duis in senectus ullamcorper lacus cubilia consectetur odio proin sociosqu a parturient nam ac blandit praesent aptent. Eros dignissim mus mauris a natoque ad suspendisse nulla a urna in tincidunt tristique enim arcu litora scelerisque eros suspendisse.</p>
-						</div>
+					<table>
+						<tr>
+							<th style="text-align: center;"><img src="SHINnara/images/9e76a52f-436b-4bd5-b2ea-d374bd5b1706_만리장성001.jpg"  style="width: 400px; height: 237.59px;"/></th>
+							<th style="text-align: center;"><img src="SHINnara/images/1dc3b9c0-65ff-4764-8fc7-80d1a3b12965_도쿄타워.png"  style="width: 400px; height: 237.59px;"/>
+</th>
+							
+							
+						</tr>
+						
+							<tr>
+								<td style="text-align: center;">
+								<a style="color:white" href="suggestView.do?currentPage=1&amp;b_num=232">만리장성</a>
+								</td>
+								
+								<td style="text-align: center;">
+								<a style="color:white" href="suggestView.do?currentPage=1&amp;b_num=231">도쿄타워</a>
+								</td>
+								
+								
+								
+							</tr>
+						
+							
+						<tr>
+								<td style="text-align: center;">
+								<p>운영시간<br/>월 - 금 오전 7:30 - 오후 5:00<br/>토 - 일 오전 7:30 - 오후 6:00<br/>“경사진 곳을 많이 걷지만 한번 가보시길..”<br/></p>
+								</td>
+								
+								<td style="text-align: center;">
+								<p>운영시간 <br/>일 - 토 오전 9:00 - 오후 11:00<br/></p>
+								</td>
+								
+								
+								
+							</tr>
+							
+						
+							
+						
+							
+						
+					</table>
+				</div>
+						
+						
+						
+						
+						
+						
 						<footer>
-							<a href="generic.html" class="button alt">Learn More</a>
+							<a href="List.do" class="button alt">게시물 전체보기</a>
 						</footer>
 					</article>
 				</div>
-				<a href="#three" class="more">Learn More</a>
-			</section> -->
+			</section> 
 
 		<!-- Three -->
 			<!-- <section id="three" class="wrapper post bg-img" data-bg="banner4.jpg">

@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+    .close {width: 50px !important;}
     .menu a{cursor:pointer;}
     .menu .hide{display:none;}
     ul{list-style-type: none;}
@@ -364,7 +365,7 @@
         <hr>
 
         <!-- Date/Time -->
-        <form id="form">
+        <form id="form" method="POST">
         <p>Posted on <fmt:formatDate pattern="yyyy/MM/dd" dateStyle="short" value="${boardDTO.upload_date}" /> 
            <input type="hidden" name="title"  value="${boardDTO.title}">            
            <input type="hidden" name="b_content"  value="${boardDTO.b_content}">     

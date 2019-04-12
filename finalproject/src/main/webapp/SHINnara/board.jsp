@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+    .close {width: 50px !important;}
     a:hover{text-decoration: none !important;}
     .menu a{cursor:pointer;}
     .menu .hide{display:none;}]
@@ -368,7 +369,7 @@
 		 <table cellspacing='0'>
 			<tr> 
 				<th>글번호</th>
-				<th width="30%" align="center" style="background-color: rgba(0,0,0,.03);">제목</th>
+				<th width="50%" align="center" style="background-color: rgba(0,0,0,.03);">제목</th>
 				<th>조회수</th>
 				<th style="background-color: rgba(0,0,0,.03);">좋아요</th>
 			</tr>

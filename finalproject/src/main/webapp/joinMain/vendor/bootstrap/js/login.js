@@ -15,16 +15,31 @@ $(document).ready(function() {
 		if(userId === "") {
 			alert("아이디를 입력하세요");
 			$("#userId").focus();
-			return;
+			return false;
 		}
 		if(userPw === "") {
 			alert("비밀번호를 입력하세요");
 			$("#userPwd").focus();
-			return;
+			return false;
 		}
+		
+		if(userId=="" || userPw=="") {
+			return false;
+		}else{
+			$('#login_f').submit();
+		}
+		
 		$('#login_f').append('<input type="hidden" name="path" value="' + $(location).attr('href').substring($(location).attr('href').lastIndexOf('/')) + '" />');
-		$('#login_f').submit();
+		
 	});
+	
+	function onEnterLogin(){
+		var keyCode = window.event.keyCode;
+		if (keyCode == 13) { //엔테키 이면
+		}
+	} //onEnterLogin()
+
+
 	
 	//저장된 쿠키값을 가져와서 id칸에 넣어준다 없으면 공백처리
 	var key = getCookie("key");

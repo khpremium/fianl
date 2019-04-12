@@ -2,6 +2,8 @@ package mypage;
 
 import java.util.List;
 
+import dto.BoardDTO;
+
 public class BoardServiceImp implements BoardService {
 	private BoardDAO mybdao;
 	
@@ -31,5 +33,14 @@ public class BoardServiceImp implements BoardService {
 		return mybdao.mylist(pv);
 	}
 
+	@Override
+	public List<MyBoardDTO> BoardListWho(String user_id) {
+		// TODO Auto-generated method stub
+		return mybdao.deleteBoardMem(user_id);
+	}
+
+
+
+	
 	
 }//end class

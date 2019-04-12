@@ -42,11 +42,9 @@ $(document).ready(function(){
 });/*레디 끝*/
 function res_chk(){
 	if($('.del_chk').val()=="${myreschk[1].rv_code}"){
-		
-		if(!confirm("예약을 취소하시겠습니까?")) return;
+		if(!confirm("예약을 취소하시겠습니까?")) return false;
 		alert("예약이 취소되었습니다.");
 		$('#resdelete').submit();
-		
 	}else if($('.del_chk').val()==null){
 		alert("예약된 내용이 없습니다.");
 	}else if($('.del_chk').val()!="${myreschk[1].rv_code}"){
