@@ -115,11 +115,7 @@ body{
 								coment+= '</h6><div id="cm_content">';
 								coment+= value.cm_content;
 								coment+= '</div></div>';
-<<<<<<< HEAD
-								if(value.user_id=='${sessionScope.id}'||'${sessionScope.id}'=='admin'){
-=======
 								if(value.user_id=='${sessionScope.id}' || '${sessionScope.id}'=='admin'){
->>>>>>> branch 'ttttttte' of https://github.com/khpremium/final.git
 									coment+='<input type="image" src="images/삭제.png"  width="30px"	height="30px">'
 									coment+='<input type="hidden" name="cm_num" value="'+value.cm_num+'">'
 									coment+='<input type="image" src="images/수정.png" width="30px"	height="32px">'

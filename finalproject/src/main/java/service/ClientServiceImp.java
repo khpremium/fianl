@@ -60,33 +60,43 @@ public class ClientServiceImp implements ClientService{
 		}
 	}
 
-	public String find_pw(HttpServletResponse resp, ClientDTO dto) throws IOException {
-		resp.setContentType("text/html;charset=utf-8");
-		PrintWriter out = resp.getWriter();
+	 public String find_pw(HttpServletResponse resp, ClientDTO dto) throws IOException {
+	      
+	      resp.setContentType("text/html;charset=utf-8");
+	      PrintWriter out = resp.getWriter();
 
-		String pw = "";
-		
-		if(dao.idcheck(dto.getId()) == 0) {
-			out.print("아이디가 없습니다");
-			out.close();
-		}else {
-			
-			
-			for(int i=0; i<12; i++) {
-				pw += (char)((Math.random() *26) + 97);
-			}
-			dto.setPass(pw);
-			dao.update_pw(dto);
-			System.out.println(pw);
-			System.out.println(dto);
-			out.println("이메일로 임시비번 발송완료");
-			out.close();
-	
-			return pw;
-		
+	      String pw = "";
+	      String email = dto.getEmail();
+	      
+	      if(dao.idcheck(dto.getId()) == 0) {
+	         out.print("<script>");
+	         out.print("alert('아이디가 없습니다'); history.go(-1);");
+	         out.print("</script>");
+	         out.flush();
+	         out.close();
+	      } else if(dao.emailCheck(email) == 0) {
+	         out.print("<script>");
+	         out.print("alert('이메일이 일치하지 않습니다.'); history.go(-1);");
+	         out.print("</script>");
+	         out.flush();
+	         out.close();
+	      }else {
+	         
+	         for(int i=0; i<12; i++) {
+	            pw += (char)((Math.random() *26) + 97);
+	         }
+	         dto.setPass(pw);
+	         dao.update_pw(dto);
+	         out.print("<script>");
+	         out.println("alert('이메일로 임시비번 발송완료'); history.go(-1)");
+	         out.print("</script>");
+	         out.flush();
+	         out.close();
+	   
+	         return pw;
+	   }
+	      return pw;   
 	}
-		return pw;	
-}
 
 	@Override
 	public String naverLogin(String email) {

@@ -23,7 +23,7 @@
 	
 	$(document).ready(function(){
 			//웹 소켓 연결
-			websocket = new WebSocket("ws://localhost:8090/myfinal/chatws.do");
+			websocket = new WebSocket("ws://192.168.10.60:8090/myfinal/chatws.do");
 			//웹 소켓 이벤트 처리
 			websocket.onopen = onOpen;
 			websocket.onmessage = onMessage;

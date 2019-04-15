@@ -142,7 +142,6 @@ $('#checkbutton').on('click', function() {
 			receiver : aa
 		},
 		success : function(code) {
-			alert(code);
 			checkCode = code;
 		},
 		error : function(err) {
@@ -207,16 +206,26 @@ $(function(){
 
 //취소 버튼
 $(document).ready(function() {
-	$('#joinCancle').on('click', function(){
-		location.href="newIndex.do";
-	});
+   $('#joinCancle').on('click', function(){
+      location.href="/myfinal/main.do";
+   });
 });
 
 $("#joinBtn").on('click', function(){
+	if ($('#id').val() == "") {
+	      alert("아이디를 확인해주세요.");
+	      return true;
+	   }
+	
 	if (passwordCheck == false) {
 	    alert("비밀번호를 확인해주세요.");
 	    return true;
 	}
+
+	if($('#name').val() == "" ){
+	      alert("이름을 확인해주세요.");
+	      return true;
+	   }
 	  
 	if(codecheck == false){
 		alert("이메일 인증코드를 확인해주세요");

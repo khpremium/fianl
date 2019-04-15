@@ -190,7 +190,8 @@
 	</bean>
 	
 	<bean class="controller.EmailController">
-		<property name="mailService" ref="mailService" />
+	   <property name="service" ref="cservice2" />
+	   <property name="mailService" ref="mailService" />
 	</bean>
 	
 	<!-- 첨부 파일의 임시기억장치 경로 설정(현재버전에서는 없어도됨) -->

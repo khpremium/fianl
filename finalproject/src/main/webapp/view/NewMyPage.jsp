@@ -37,7 +37,7 @@ $(document).ready(function(){
 		
 		e.preventDefault();
 		if(!confirm('입력 된 정보를 저장 하시겠습니까?')) return;		
-		$('form').submit();
+		$('#passins').submit();
 		alert("저장 되었습니다.");
 	});
 	
@@ -85,7 +85,7 @@ function deltest(){
 function res_chk(){
 	if($('.del_chk').val()=="${myres[1].rv_code}"){
 		alert("예약이 취소되었습니다.");
-		$('form').submit();    	
+		$('#fdelete').submit();    	
 	}else if($('.del_chk').val()==null){
 		alert("예약된 내용이 없습니다.");
 	}else if($('.del_chk').val()!="${myres[1].rv_code}"){
@@ -293,7 +293,6 @@ input{
 					</span>
 				</c:forEach>
 			</div>	
-			</form>		
 					<footer>					
 							<br/>
 							<!-- footer 내용 -->
@@ -315,7 +314,7 @@ input{
 						<header>
 							<h2>My Reservation</h2>
 						</header>
-						<form action="reservation_delete.do" method="post">	
+						<form id="fdelete" action="reservation_delete.do" method="post">	
 						<div class="table-wrapper">
 						
 						<input type="hidden" name="cancel" value="${myres[1].rv_code}"/>
@@ -409,7 +408,7 @@ input{
 			
 				<div class="inner" style="width:1200px;">
 					<article class="box" >
-					<form action="inspassport.do" method="post">
+					<form id="passins" action="inspassport.do" method="post">
 						<header>
 							<h2>여권 정보</h2>
 						</header>
@@ -513,7 +512,7 @@ input{
 			</form>
 						<footer>
 						<c:choose>
-						<c:when test="${!empty pass.rv_code}">
+						<c:when test="${!empty myres[1].rv_code}">
 							<input type="submit" class="button alt" id="savepass" value="저장하기">
 							</c:when>
 							<c:otherwise>
@@ -549,7 +548,6 @@ input{
 					<div class="copyright">
 						&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
 					</div>
-				</div>
 			</footer> 
 
 		<!-- Scripts -->

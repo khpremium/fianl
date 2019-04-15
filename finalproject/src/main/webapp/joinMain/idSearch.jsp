@@ -251,8 +251,7 @@ hr {
 <body>
 	<!-- Header -->
 	<header id="header">
-		<div class="logo"><a href="newIndex.do">KH AIR<span>(주)</span></a></div>
-		<a href="#menu"><span>Menu</span></a>
+<div class="logo"><a href="main.do">KH AIR<span>(주)</span></a></div>
 	</header>
    
    <!-- Page Content -->

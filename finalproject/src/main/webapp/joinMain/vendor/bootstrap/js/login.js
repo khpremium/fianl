@@ -28,9 +28,27 @@ $(document).ready(function() {
 		}else{
 			$('#login_f').submit();
 		}
-		
-		$('#login_f').append('<input type="hidden" name="path" value="' + $(location).attr('href').substring($(location).attr('href').lastIndexOf('/')) + '" />');
-		
+	      /*$('#login_f').append('<input type="hidden" name="path" value="' + $(location).attr('href').substring($(location).attr('href').lastIndexOf('/')) + '" />');*/
+	      
+	      $.ajax({
+	            type:'POST',
+	            url:'/myfinal/loginCheck.do',
+	            data: {pass : userPw , id : userId},
+	            dataType: 'text',
+	            success: function(data){
+	         if (data == 0) {
+	            alert('잘못 입력 하셨습니다.');
+	         } else {
+	                      alert('로그인 성공.');
+	         }
+
+	         location.href="/myfinal/main.do";
+	                 },
+	          error:function(){
+	               alert("에러입니다");
+	          }
+	      });
+	   });
 	});
 	
 	function onEnterLogin(){
@@ -62,7 +80,6 @@ $(document).ready(function() {
 			setCookie("key", $("#id").val(), 1);
 		}
 	});
-});
 
 function setCookie(cookieName, value, exdays){
     var exdate = new Date();

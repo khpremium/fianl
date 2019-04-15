@@ -368,19 +368,20 @@ h2 {
 					<th scope="row" class="need">이메일</th>
 					<td>
 					
-						<div class="cell">	
-							<input type="text" name="email" id="email01" class="inputText" > @ <input type="text" name="email2" id="email02" class="inputText" readonly>
-							<select id="email" name="selectEmail" class="inputText">
-								<option value="1">직접입력</option>
-								<option value="naver.com" selected>naver.com</option>
-								<option value="daum.net">daum.net</option>
-								<option value="nate.com">nate.com</option>
-								<option value="gmail.com">gmail.com</option>
-								<option value="hanmail.net">hanmail.net</option>
-							</select>  
-							<input type="button" id="emailCheck" value="중복확인" onclick="emailFunction()">
-							<input type="button" id="checkbutton" value="전송">
+						<div class="cell">   
+						   <input type="text" name="email" id="email01" class="inputText" > @ <input type="text" name="email2" id="email02" class="inputText">
+						      <select id="email" name="selectEmail" class="inputText">
+						         <option value="1" selected>직접입력</option>
+						         <option value="naver.com" >naver.com</option>
+						         <option value="daum.net">daum.net</option>
+						         <option value="nate.com">nate.com</option>
+						         <option value="gmail.com">gmail.com</option>
+						         <option value="hanmail.net">hanmail.net</option>
+						      </select>  
+						   <input type="button" id="emailCheck" value="중복확인" onclick="emailFunction()">
+						   <input type="button" id="checkbutton" value="전송">
 						</div>
+
 			
 						<p class="error_msg" id="errMobileNo"></p> <!-- DEV. dp_none 클래스 추가시 해당 부분 hide -->
 						

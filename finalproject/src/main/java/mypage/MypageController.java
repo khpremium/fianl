@@ -112,7 +112,7 @@ public class MypageController {
 	@RequestMapping(value="/reservation_delete.do",method=RequestMethod.POST)
 	public String deleteResrvation(String cancel) {
 		service3.resdelProcess(cancel);
-		return "redirect:/profle.do";
+		return "redirect:/profile.do";
 	}
 	
 	@RequestMapping(value="inspassport.do",method=RequestMethod.POST)

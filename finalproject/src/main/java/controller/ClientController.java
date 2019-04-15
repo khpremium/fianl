@@ -52,20 +52,16 @@ private MemberManagement mm;
 	}
 
 	//로그인 체크
-	@RequestMapping(value="/loginCheck.do", method=RequestMethod.POST)
-	public ModelAndView loginCheck(ClientDTO dto, String path, HttpSession session) {
-		ClientDTO cdto = service.loginCheck(dto, session);
-		System.out.println(path);
-		ModelAndView mav = new ModelAndView();
-		if(cdto != null) {
-			mav.addObject("msg","success");
-			mav.setViewName("redirect:" + path);
-		} else {
-			mav.addObject("msg", "failure");
-			mav.setViewName("redirect:" + path);
-		}
-		return mav;
-	}
+	   @RequestMapping(value="/loginCheck.do", method=RequestMethod.POST)
+	   public @ResponseBody String loginCheck(ClientDTO dto,  HttpSession session) {
+	      ClientDTO cdto = service.loginCheck(dto, session);
+	      
+	      if(cdto != null) {
+	         return "1";
+	      } else {
+	         return "0";
+	      }
+	   }
 
 	
 	//네이버로그인 회원가입 이동

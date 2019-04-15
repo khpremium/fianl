@@ -14,6 +14,6 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-
+	${result}
 </body>
 </html>
